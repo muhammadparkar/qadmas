@@ -25,10 +25,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-4xl bg-surface border border-hairline rounded-[40px] shadow-2xl overflow-hidden flex flex-col md:flex-row"
+            className="relative w-full max-w-4xl max-h-[90vh] bg-surface border border-hairline rounded-[24px] md:rounded-[40px] shadow-2xl overflow-y-auto md:overflow-hidden flex flex-col md:flex-row"
           >
             {/* Left: Form */}
-            <div className="flex-1 p-10 lg:p-12">
+            <div className="flex-1 p-6 md:p-10 lg:p-12">
               <div className="flex justify-between items-start mb-8">
                 <div>
                   <h2 className="text-white font-black text-3xl mb-2">Get a Quote</h2>
@@ -85,7 +85,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </div>
 
             {/* Right: Info (Darker side) */}
-            <div className="w-full md:w-[320px] bg-white/5 p-10 lg:p-12 flex flex-col justify-between relative border-l border-white/5">
+            <div className="w-full md:w-[320px] bg-white/5 p-6 md:p-10 lg:p-12 flex flex-col justify-between relative border-l border-white/5">
               <button 
                 onClick={onClose}
                 className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/5 transition-colors hidden md:block"
