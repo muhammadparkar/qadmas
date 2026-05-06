@@ -111,7 +111,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <Mail className="text-primary" size={18} />
                   </div>
                   <div className="text-sm">
-                    <p className="text-white font-bold">qadmas@tech.com</p>
+                    <p className="text-white font-bold">info@qadmastechnologies.com</p>
                     <p className="text-white/40">Inquiries</p>
                   </div>
                 </div>

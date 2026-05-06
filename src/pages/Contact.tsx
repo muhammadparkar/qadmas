@@ -111,7 +111,7 @@ export default function Contact() {
               <div className="space-y-8">
                 {[
                   { icon: <Phone size={24} />, label: "Call Us Anytime", val: ["+974 7132 8520", "+91 913 7886 399"] },
-                  { icon: <Mail size={24} />, label: "Email Support", val: ["qadmastechnologies@gmail.com"] },
+                  { icon: <Mail size={24} />, label: "Email Support", val: ["info@qadmastechnologies.com"] },
                   { icon: <MapPin size={24} />, label: "Global Offices", val: ["UAE | Qatar | India"] }
                 ].map((item, i) => (
                   <motion.div 
@@ -127,9 +127,10 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest mb-1">{item.label}</p>
-                      {item.val.map((v, j) => (
-                        <p key={j} className="text-white font-bold text-lg">{v}</p>
-                      ))}
+                      <div className="text-sm">
+                        <p className="text-white font-bold">info@qadmastechnologies.com</p>
+                        <p className="text-white/40">Inquiries</p>
+                      </div>
                     </div>
                   </motion.div>
                 ))}
