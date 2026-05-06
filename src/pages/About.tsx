@@ -106,7 +106,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
 );
 
 export default function About() {
-  const transition = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
+  const transition: any = { duration: 1.2, ease: [0.16, 1, 0.3, 1] };
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },

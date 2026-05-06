@@ -5,11 +5,8 @@ import {
   Globe,
   Code2,
   Building2,
-  Mail,
-  Zap,
-  Settings,
   BarChart3,
-  Search,
+  Settings,
   ExternalLink
 } from 'lucide-react';
 import Navbar from '../components/Navbar';

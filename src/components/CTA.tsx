@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
+import { ArrowRight, Phone, Mail } from 'lucide-react';
 
 export default function CTA() {
   return (
