@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
 
-export default function Hero() {
+interface HeroProps {
+  onGetQuoteClick?: () => void;
+}
+
+export default function Hero({ onGetQuoteClick }: HeroProps) {
   return (
     <section
       id="home"
@@ -104,16 +108,16 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center gap-4 mb-12"
         >
-          <a
-            href="#contact"
+          <button
+            onClick={onGetQuoteClick}
             id="hero-get-quote"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-[15px] transition-all duration-200"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-[15px] transition-all duration-200 cursor-pointer"
             style={{ background: 'linear-gradient(135deg, #00C5C8, #00a8ab)', color: '#001a4d' }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 0 35px rgba(0,197,200,0.5)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = 'none'; (e.currentTarget as HTMLElement).style.transform = 'none'; }}
           >
             Get a Quote <ArrowRight size={16} />
-          </a>
+          </button>
           <a
             href="#services"
             id="hero-explore-services"
