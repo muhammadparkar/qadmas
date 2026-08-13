@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { Menu, X, ArrowRight } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ContactModal from './ContactModal';
 
 export default function Navbar() {
@@ -9,6 +8,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -16,126 +16,208 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Smooth scroll to #pricing if hash matches or navigation targets pricing
+  useEffect(() => {
+    if (location.hash === '#pricing' || location.pathname === '/#pricing') {
+      setTimeout(() => {
+        const pricingEl = document.getElementById('pricing');
+        if (pricingEl) {
+          pricingEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    }
+  }, [location]);
+
+  const handlePricingClick = (e: React.MouseEvent) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      const pricingEl = document.getElementById('pricing');
+      if (pricingEl) {
+        pricingEl.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.hash = '#pricing';
+      }
+    } else {
+      e.preventDefault();
+      navigate('/');
+      setTimeout(() => {
+        const pricingEl = document.getElementById('pricing');
+        if (pricingEl) {
+          pricingEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
+    }
+  };
+
   const navLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Services', href: '/services' },
-    { label: 'Portfolio', href: '/portfolio' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'HOME', href: '/' },
+    { label: 'SERVICES', href: '/services' },
+    { label: 'PORTFOLIO', href: '/portfolio' },
+    { label: 'PRICING', href: '#pricing', isPricing: true },
+    { label: 'ABOUT US', href: '/about' },
+    { label: 'CONTACT', href: '/contact' },
   ];
 
-  const isActive = (path: string) => {
-    if (path.startsWith('/#')) return false;
-    return location.pathname === path;
+  const isActive = (link: typeof navLinks[0]) => {
+    if (link.isPricing) return location.hash === '#pricing';
+    return location.pathname === link.href;
   };
 
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        className="fixed top-0 left-0 right-0 z-50 transition-colors duration-200"
         style={{
-          background: scrolled
-            ? 'rgba(5, 9, 26, 0.92)'
-            : 'rgba(5, 9, 26, 0.6)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          borderBottom: scrolled ? '1px solid rgba(0,197,200,0.12)' : '1px solid transparent',
+          backgroundColor: scrolled ? 'rgba(5, 10, 26, 0.94)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(12px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
+          borderBottom: scrolled ? '1px solid #1b294b' : '1px solid transparent',
         }}
       >
-        <div className="mx-auto max-w-[1280px] px-6 xl:px-12 h-[64px] flex items-center justify-between">
-          <Link to="/" className="flex items-center shrink-0 mt-2 pt-2" id="nav-logo">
+        <div className="w-full px-6 lg:px-10 h-[68px] flex items-center justify-between">
+          {/* Left Qadmas Brand Logo */}
+          <Link to="/" className="flex items-center shrink-0 h-[68px]">
             <img 
               src="/full-logo.png" 
-              alt="Qadmas Technologies Logo" 
-              className="h-[180px] w-auto" 
+              alt="Qadmas Technologies" 
+              className="h-[95px] sm:h-[115px] md:h-[140px] max-h-[95px] sm:max-h-[115px] md:max-h-[140px] w-auto object-contain -my-4 md:-my-8 translate-y-[2px]"
             />
           </Link>
 
-          {/* Center Nav Links */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => {
-              const active = isActive(link.href);
-              return (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  className="px-4 py-2 text-sm font-medium transition-all duration-200 rounded-full relative flex items-center justify-center group whitespace-nowrap"
-                  style={{ color: active ? '#fff' : 'rgba(255,255,255,0.65)' }}
-                >
-                  {link.label}
-                  {active && (
-                    <motion.div 
-                      layoutId="active-nav"
-                      className="absolute bottom-[2px] left-4 right-4 h-[2px] bg-[#00C5C8]" 
-                      style={{ boxShadow: '0 0 10px #00C5C8' }}
-                    />
-                  )}
-                  {!active && (
-                    <div className="absolute bottom-[2px] left-4 right-4 h-[2px] bg-[#00C5C8] opacity-0 group-hover:opacity-50 transition-opacity" />
-                  )}
-                </Link>
-              );
-            })}
+          {/* Right Nav Elements Container (Nav Links & CTA Buttons hugged together to the right) */}
+          <div className="hidden md:flex items-center gap-8 ml-auto">
+            {/* Navigation Links */}
+            <div className="flex items-center gap-6">
+              {navLinks.map((link) => {
+                const active = isActive(link);
+                if (link.isPricing) {
+                  return (
+                    <a
+                      key={link.label}
+                      href="#pricing"
+                      onClick={handlePricingClick}
+                      className="font-geist text-[13px] font-normal uppercase tracking-tight transition-colors duration-150 relative py-1 cursor-pointer"
+                      style={{
+                        color: active ? '#00C5C8' : '#8292b4',
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = '#00C5C8')}
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.color = active ? '#00C5C8' : '#8292b4')
+                      }
+                    >
+                      {link.label}
+                      {active && (
+                        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#00C5C8]" />
+                      )}
+                    </a>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={link.label}
+                    to={link.href}
+                    className="font-geist text-[13px] font-normal uppercase tracking-tight transition-colors duration-150 relative py-1"
+                    style={{
+                      color: active ? '#00C5C8' : '#8292b4',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#00C5C8')}
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = active ? '#00C5C8' : '#8292b4')
+                    }
+                  >
+                    {link.label}
+                    {active && (
+                      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#00C5C8]" />
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Right Button Actions */}
+            <div className="flex items-center gap-3 shrink-0">
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="btn-dark text-[13px] px-[16px] py-[8px] rounded-[3px]"
+              >
+                Get a Quote
+              </button>
+
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="btn-ghost text-[13px] px-[14px] py-[8px] rounded-none flex items-center gap-1.5"
+              >
+                <span>Contact Sales</span>
+                <ArrowRight size={14} />
+              </button>
+            </div>
           </div>
 
-          {/* Right CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <button
-              onClick={() => setIsModalOpen(true)}
-              id="nav-get-started"
-              className="text-sm font-bold px-6 py-2.5 rounded-full transition-all duration-200"
-              style={{
-                background: 'linear-gradient(135deg, #00C5C8 0%, #00a8ab 100%)',
-                color: '#001a4d',
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 0 25px rgba(0,197,200,0.45)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = 'none'; }}
-            >
-              Get a Quote
-            </button>
-          </div>
-
-          {/* Mobile menu button */}
+          {/* Mobile menu toggle */}
           <button
-            className="md:hidden text-white p-1"
+            className="md:hidden text-[#eeeeee] p-1 ml-auto"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
+            aria-label="Toggle Menu"
           >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
-        {/* Mobile Dropdown */}
+        {/* Mobile Menu Dropdown */}
         {menuOpen && (
           <div
-            className="md:hidden py-4 px-6 flex flex-col gap-2"
-            style={{ borderTop: '1px solid rgba(255,255,255,0.06)', background: 'rgba(8,14,36,0.98)' }}
+            className="md:hidden py-6 px-6 flex flex-col gap-4 border-b border-[#1b294b]"
+            style={{ backgroundColor: '#050a1a' }}
           >
             {navLinks.map((link) => {
-              const active = isActive(link.href);
+              if (link.isPricing) {
+                return (
+                  <a
+                    key={link.label}
+                    href="#pricing"
+                    onClick={(e) => {
+                      setMenuOpen(false);
+                      handlePricingClick(e);
+                    }}
+                    className="font-mono-geist text-[12px] uppercase text-[#eeeeee] py-1 border-b border-[#1b294b] cursor-pointer"
+                  >
+                    {link.label}
+                  </a>
+                );
+              }
+
               return (
                 <Link
                   key={link.label}
                   to={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-sm font-medium py-2 flex items-center justify-between"
-                  style={{ color: active ? '#00C5C8' : 'rgba(255,255,255,0.75)' }}
+                  className="font-mono-geist text-[12px] uppercase text-[#eeeeee] py-1 border-b border-[#1b294b]"
                 >
                   {link.label}
-                  {active && <div className="w-1.5 h-1.5 rounded-full bg-[#00C5C8]" />}
                 </Link>
               );
             })}
-            <button
-              className="mt-2 text-sm font-bold py-3 px-4 rounded-full text-center"
-              style={{ background: 'linear-gradient(135deg, #00C5C8, #00a8ab)', color: '#001a4d' }}
-              onClick={() => {
-                setMenuOpen(false);
-                setIsModalOpen(true);
-              }}
-            >
-              Get a Quote
-            </button>
+            <div className="flex flex-col gap-2 pt-2">
+              <button
+                onClick={() => {
+                  setMenuOpen(false);
+                  setIsModalOpen(true);
+                }}
+                className="btn-dark w-full justify-center"
+              >
+                Get a Quote
+              </button>
+              <button
+                onClick={() => {
+                  setMenuOpen(false);
+                  setIsModalOpen(true);
+                }}
+                className="btn-ghost w-full justify-center"
+              >
+                Contact Sales →
+              </button>
+            </div>
           </div>
         )}
       </nav>

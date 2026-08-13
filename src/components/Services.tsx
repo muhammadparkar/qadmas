@@ -1,258 +1,237 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { ArrowRight, Code, Globe, LineChart, ShieldCheck, Database, Smartphone } from 'lucide-react';
-
-const services = [
-  {
-    icon: Code,
-    title: 'Software Development',
-    desc: 'We craft bespoke software solutions engineered for your unique business processes — scalable, robust, and built to evolve with your operations.',
-    color: '#00C5C8',
-    id: 'software-dev',
-  },
-  {
-    icon: Database,
-    title: 'Enterprise Solutions',
-    desc: 'Streamline complex workflows with enterprise-grade ERP and CRM platforms. From automation to real-time business intelligence, we connect your entire operation.',
-    color: '#7c3aed',
-    id: 'enterprise',
-  },
-  {
-    icon: Globe,
-    title: 'Custom Web Development',
-    desc: 'We design and build modern, responsive, high-converting websites — mobile-first, lightning-fast, and SEO-optimised to drive real business results.',
-    color: '#00C5C8',
-    id: 'web-dev',
-  },
-  {
-    icon: Smartphone,
-    title: 'Application Development',
-    desc: 'From intuitive iOS and Android apps to cross-platform solutions, we deliver mobile experiences that engage users and accelerate growth.',
-    color: '#10b981',
-    id: 'app-dev',
-  },
-  {
-    icon: LineChart,
-    title: 'Digital Marketing',
-    desc: 'Amplify your brand with data-driven SEO, PPC, social media, and content strategies that attract the right audience and convert them into loyal customers.',
-    color: '#f59e0b',
-    id: 'digital-marketing',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'IT Support & Maintenance',
-    desc: 'Keep your systems at peak performance with 24/7 monitoring, proactive maintenance, cybersecurity updates, and dedicated technical support.',
-    color: '#10b981',
-    id: 'it-support',
-  },
-];
-
-function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
-  const ref = useRef(null);
-  const isVisible = useInView(ref, { once: true, margin: '-80px' });
-  const Icon = service.icon;
-  const isEven = index % 2 === 0;
-
-  return (
-    <motion.div
-      ref={ref}
-      id={service.id}
-      initial={{ opacity: 0, x: isEven ? -40 : 40 }}
-      animate={isVisible ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 * (index % 2) }}
-      className="relative rounded-2xl p-7 flex flex-col cursor-pointer group"
-      style={{
-        background: 'rgba(13,21,53,0.75)',
-        border: '1px solid rgba(255,255,255,0.07)',
-        backdropFilter: 'blur(12px)',
-        transition: 'border-color 0.3s, box-shadow 0.3s, transform 0.3s',
-      }}
-      onMouseEnter={e => {
-        (e.currentTarget as HTMLElement).style.borderColor = `${service.color}50`;
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 40px ${service.color}18`;
-        (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
-      }}
-      onMouseLeave={e => {
-        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)';
-        (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-        (e.currentTarget as HTMLElement).style.transform = 'none';
-      }}
-    >
-      {/* Step number */}
-      <span className="absolute top-4 right-5 text-xs font-mono font-bold" style={{ color: 'rgba(255,255,255,0.12)' }}>
-        0{index + 1}
-      </span>
-
-      <div
-        className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
-        style={{ background: `${service.color}15`, border: `1px solid ${service.color}30` }}
-      >
-        <Icon size={20} style={{ color: service.color }} strokeWidth={1.8} />
-      </div>
-
-      <h3 className="font-semibold text-white mb-2" style={{ fontSize: '17px', letterSpacing: '-0.3px' }}>
-        {service.title}
-      </h3>
-      <p style={{ color: 'rgba(255,255,255,0.52)', fontSize: '14px', lineHeight: 1.7 }}>
-        {service.desc}
-      </p>
-
-      {/* Glow accent on hover */}
-      <div
-        className="absolute -bottom-8 -right-8 w-28 h-28 rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ background: `radial-gradient(circle, ${service.color}1a 0%, transparent 70%)` }}
-      />
-    </motion.div>
-  );
-}
+import { useState } from 'react';
+import { Code2, Building2, Globe, Smartphone, BarChart3, Settings, Server, ArrowRight } from 'lucide-react';
+import ContactModal from './ContactModal';
 
 export default function Services() {
-  const headerRef = useRef(null);
-  const headerVisible = useInView(headerRef, { once: true, margin: '-60px' });
+  const [selectedFeature, setSelectedFeature] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeQuoteService, setActiveQuoteService] = useState('');
 
-  // Connector dots that appear between rows
-  const connectorRef1 = useRef(null);
-  const connectorRef2 = useRef(null);
-  const conn1Visible = useInView(connectorRef1, { once: true, margin: '-40px' });
-  const conn2Visible = useInView(connectorRef2, { once: true, margin: '-40px' });
+  const features = [
+    {
+      id: 'software-dev',
+      label: 'Software Development',
+      title: 'Custom Software Tailored to Your Business',
+      quoteService: 'Custom Software Development',
+      desc: 'Transform your business processes with custom software engineering. Built for scalability, performance, security, and long-term reliability.',
+      icon: Code2,
+      metrics: [
+        { name: 'DELIVERY RATE', val: '100%', trend: 'positive', color: '#00C5C8' },
+        { name: 'CODE TEST COVERAGE', val: '99.4%', trend: 'positive', color: '#00C5C8' },
+        { name: 'TECH STACK', val: 'REACT · NODE · RUST', trend: 'neutral', color: '#8292b4' },
+      ],
+      codeSnippet: `// Qadmas Custom Software Architecture Module
+const qadmasEngine = new QadmasCore({
+  cluster: "production-uae",
+  microservices: ["auth", "billing", "fleet-tracker"],
+  securityLevel: "zero-trust"
+});
+await qadmasEngine.deploy(); // Deployed in 412ms`,
+    },
+    {
+      id: 'enterprise-erp',
+      label: 'Enterprise Solutions',
+      title: 'Enterprise CRM, ERP & Workflow Automation',
+      quoteService: 'Enterprise CRM / ERP Solutions',
+      desc: 'Streamline operations using custom CRM and ERP tools. Manage inventory, automate client billing, and gain actionable business intelligence.',
+      icon: Building2,
+      metrics: [
+        { name: 'WORKFLOW SPEED', val: '+300%', trend: 'positive', color: '#00C5C8' },
+        { name: 'INVENTORY PRECISION', val: '99.9%', trend: 'neutral', color: '#8292b4' },
+        { name: 'ERROR REDUCTION', val: '-95%', trend: 'positive', color: '#00C5C8' },
+      ],
+      codeSnippet: `$ qadmas erp sync --module=inventory --location="Dubai Warehouse"
+✓ 14,200 Stock SKUs synchronized with real-time trading portal
+[AUTOMATION] Monthly financial report generated for executive review`,
+    },
+    {
+      id: 'website-dev',
+      label: 'Website Development',
+      title: 'High-Performing Custom Websites & Platforms',
+      quoteService: 'Custom Website Development',
+      desc: 'Crafting modern, mobile-first, responsive websites using React, Next.js, WordPress, and Shopify that convert visitors into loyal clients.',
+      icon: Globe,
+      metrics: [
+        { name: 'PAGE SPEED SCORE', val: '99 / 100', trend: 'positive', color: '#00C5C8' },
+        { name: 'SEO PERFORMANCE', val: 'TOP 3 RANK', trend: 'positive', color: '#00C5C8' },
+        { name: 'CONVERSION INCREASE', val: '+60%', trend: 'neutral', color: '#00C5C8' },
+      ],
+      codeSnippet: `$ qadmas web build --target=production --seo-optimized
+✓ SSR rendered across 42 global edge regions in 12ms
+[PERFORMANCE] Core Web Vitals: LCP 0.8s, FID 4ms, CLS 0.00`,
+    },
+    {
+      id: 'mobile-app',
+      label: 'Application Development',
+      title: 'Cross-Platform Mobile Apps (iOS & Android)',
+      quoteService: 'Mobile Application Development (iOS/Android)',
+      desc: 'Deliver seamless mobile experiences using Flutter, React Native, and Kotlin with intuitive UI/UX and real-time backend sync.',
+      icon: Smartphone,
+      metrics: [
+        { name: 'PLATFORMS', val: 'iOS + ANDROID', trend: 'neutral', color: '#8292b4' },
+        { name: 'APP CRASH RATE', val: '0.001%', trend: 'positive', color: '#00C5C8' },
+        { name: 'STORE APPROVAL', val: '100% PASS', trend: 'positive', color: '#00C5C8' },
+      ],
+      codeSnippet: `// Qadmas Cross-Platform Flutter / React Native App
+import { QadmasMobileSDK } from '@qadmas/mobile';
+
+QadmasMobileSDK.initialize({
+  pushNotifications: true,
+  offlineSync: true,
+  biometrics: true
+});`,
+    },
+    {
+      id: 'digital-marketing',
+      label: 'Digital Marketing',
+      title: 'Data-Driven Digital Marketing & SEO Growth',
+      quoteService: 'Digital Marketing & SEO Growth',
+      desc: 'Boost your brand visibility, reach qualified leads, and dominate search engines with our targeted SEO, PPC, and social media campaigns.',
+      icon: BarChart3,
+      metrics: [
+        { name: 'ORGANIC TRAFFIC', val: '+240%', trend: 'positive', color: '#00C5C8' },
+        { name: 'LEAD GENERATION', val: '5,000+ / mo', trend: 'positive', color: '#00C5C8' },
+        { name: 'ROAS', val: '4.8X', trend: 'positive', color: '#00C5C8' },
+      ],
+      codeSnippet: `$ qadmas campaign audit --market="UAE & Qatar"
+[ANALYTICS] Impression volume: 1.2M impressions
+[CONVERSION] High-intent business inquiries increased by 240%`,
+    },
+    {
+      id: 'it-support',
+      label: 'IT Support & Maintenance',
+      title: '24/7 Managed IT Support & Infrastructure',
+      quoteService: 'IT Support & Maintenance',
+      desc: 'Ensure smooth business operations with 24/7 technical support, server monitoring, cloud backups, and proactive threat mitigation.',
+      icon: Settings,
+      metrics: [
+        { name: 'SUPPORT SLA', val: '< 15 MINS', trend: 'positive', color: '#00C5C8' },
+        { name: 'SYSTEM UPTIME', val: '99.99%', trend: 'neutral', color: '#8292b4' },
+        { name: 'MONITORING', val: '24 / 7 / 365', trend: 'positive', color: '#00C5C8' },
+      ],
+      codeSnippet: `$ qadmas status --cluster=qatar-datacenter
+● qadmas-monitoring.service - Active (Running)
+✓ Zero server downtime recorded in last 365 days.`,
+    },
+  ];
+
+  const current = features[selectedFeature];
+
+  const handleRequestQuote = (serviceName: string) => {
+    setActiveQuoteService(serviceName);
+    setIsModalOpen(true);
+  };
 
   return (
-    <section
-      id="services"
-      className="py-24 relative overflow-hidden"
-      style={{
-        background: `
-          radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0,197,200,0.06) 0%, transparent 60%),
-          #05091a
-        `,
-      }}
-    >
-      {/* Section header */}
-      <div ref={headerRef} className="max-w-[1280px] mx-auto px-6 xl:px-12 mb-16 text-center">
-        <motion.span
-          initial={{ opacity: 0, y: -10 }}
-          animate={headerVisible ? { opacity: 1, y: 0 } : {}}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
-          style={{ background: 'rgba(0,197,200,0.08)', border: '1px solid rgba(0,197,200,0.2)', color: '#00C5C8' }}
-        >
-          Our Provided Services
-        </motion.span>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={headerVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.1 }}
-          className="text-white font-bold mb-4"
-          style={{ fontSize: 'clamp(28px, 4vw, 48px)', letterSpacing: '-1px', lineHeight: 1.1 }}
-        >
-          Comprehensive Solutions<br />
-          <span style={{ color: '#00C5C8' }}>for Your Digital Needs</span>
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={headerVisible ? { opacity: 1 } : {}}
-          transition={{ delay: 0.15 }}
-          className="max-w-[540px] mx-auto text-base"
-          style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7 }}
-        >
-          End-to-end digital solutions that help your business build, scale, and optimise — from idea to launch and beyond.
-        </motion.p>
-      </div>
-
-      <div className="max-w-[1280px] mx-auto px-6 xl:px-12">
-        {/* Row 1 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          <ServiceCard service={services[0]} index={0} />
-          <ServiceCard service={services[1]} index={1} />
+    <>
+      <section className="py-[96px] bg-[#050a1a] max-w-[1200px] mx-auto px-6">
+        {/* Header */}
+        <div className="mb-16">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
+            <span className="font-mono-geist text-[12px] uppercase text-[#00C5C8] tracking-wider">
+              COMPREHENSIVE SOLUTIONS FOR YOUR DIGITAL NEEDS
+            </span>
+          </div>
+          <h2 className="font-geist text-heading-lg text-[#eeeeee] tracking-tight mb-4 max-w-[750px]">
+            Comprehensive Solutions for Your Digital Needs
+          </h2>
+          <p className="font-geist text-[16px] text-[#8292b4] max-w-[620px]">
+            We combine technical engineering with strategic execution to build software, websites, and enterprise systems that scale.
+          </p>
         </div>
 
-        {/* Connector between row 1 and row 2 */}
-        <div ref={connectorRef1} className="flex items-center gap-4 py-4 px-4">
-          <motion.div
-            className="flex-1 h-px"
-            style={{ background: 'linear-gradient(to right, transparent, rgba(0,197,200,0.25), transparent)' }}
-            initial={{ scaleX: 0 }}
-            animate={conn1Visible ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          />
-          <motion.div
-            className="flex items-center gap-2"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={conn1Visible ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.4, delay: 0.5 }}
-          >
-            <div className="w-2 h-2 rounded-full" style={{ background: '#00C5C8', boxShadow: '0 0 8px rgba(0,197,200,0.6)' }} />
-            <div className="w-1 h-1 rounded-full" style={{ background: 'rgba(0,197,200,0.4)' }} />
-            <div className="w-1 h-1 rounded-full" style={{ background: 'rgba(0,197,200,0.2)' }} />
-          </motion.div>
-          <motion.div
-            className="flex-1 h-px"
-            style={{ background: 'linear-gradient(to right, transparent, rgba(0,197,200,0.25), transparent)' }}
-            initial={{ scaleX: 0 }}
-            animate={conn1Visible ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          />
-        </div>
+        {/* 2-Column Split: Selector List & Terminal Preview */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Column Navigation List */}
+          <div className="lg:col-span-4 space-y-1">
+            {features.map((item, idx) => {
+              const isSelected = selectedFeature === idx;
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setSelectedFeature(idx)}
+                  className={`w-full text-left px-4 py-3 rounded-[3px] border transition-colors flex items-center justify-between font-mono-geist text-[12px] uppercase tracking-wider ${
+                    isSelected
+                      ? 'bg-[#0c1228] border-[#1b294b] text-[#00C5C8]'
+                      : 'bg-transparent border-transparent text-[#8292b4] hover:text-[#eeeeee] hover:bg-[#0c1228]/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <Icon size={14} className={isSelected ? 'text-[#00C5C8]' : 'text-[#8292b4]'} />
+                    <span>{item.label}</span>
+                  </div>
+                  {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-[#00C5C8]" />}
+                </button>
+              );
+            })}
+          </div>
 
-        {/* Row 2 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          <ServiceCard service={services[2]} index={2} />
-          <ServiceCard service={services[3]} index={3} />
-        </div>
+          {/* Right Column Interactive Console */}
+          <div className="lg:col-span-8 border border-[#1b294b] rounded-[10px] bg-[#080d1f] p-6 space-y-6">
+            {/* Card Header */}
+            <div className="border-b border-[#1b294b] pb-4 flex items-start justify-between">
+              <div>
+                <div className="font-mono-geist text-[12px] uppercase text-[#00C5C8] tracking-wider mb-1 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
+                  SERVICE // {current.label}
+                </div>
+                <h3 className="font-geist text-[24px] text-[#eeeeee] font-normal leading-tight">
+                  {current.title}
+                </h3>
+              </div>
+              <Server size={20} className="text-[#00C5C8] mt-1" />
+            </div>
 
-        {/* Connector between row 2 and row 3 */}
-        <div ref={connectorRef2} className="flex items-center gap-4 py-4 px-4">
-          <motion.div
-            className="flex-1 h-px"
-            style={{ background: 'linear-gradient(to right, transparent, rgba(0,197,200,0.25), transparent)' }}
-            initial={{ scaleX: 0 }}
-            animate={conn2Visible ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          />
-          <motion.div
-            className="flex items-center gap-2"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={conn2Visible ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.4, delay: 0.5 }}
-          >
-            <div className="w-1 h-1 rounded-full" style={{ background: 'rgba(0,197,200,0.2)' }} />
-            <div className="w-1 h-1 rounded-full" style={{ background: 'rgba(0,197,200,0.4)' }} />
-            <div className="w-2 h-2 rounded-full" style={{ background: '#00C5C8', boxShadow: '0 0 8px rgba(0,197,200,0.6)' }} />
-          </motion.div>
-          <motion.div
-            className="flex-1 h-px"
-            style={{ background: 'linear-gradient(to right, transparent, rgba(0,197,200,0.25), transparent)' }}
-            initial={{ scaleX: 0 }}
-            animate={conn2Visible ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          />
-        </div>
+            <p className="font-geist text-[15px] text-[#8292b4] leading-relaxed">
+              {current.desc}
+            </p>
 
-        {/* Row 3 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          <ServiceCard service={services[4]} index={4} />
-          <ServiceCard service={services[5]} index={5} />
-        </div>
+            {/* Metric Tiles Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              {current.metrics.map((m, idx) => (
+                <div key={idx} className="border border-[#1b294b] rounded-[3px] p-3 bg-[#050a1a]">
+                  <div className="font-mono-geist text-[11px] uppercase text-[#b0c0e0] tracking-tight mb-1">
+                    {m.name}
+                  </div>
+                  <div className="font-geist text-[24px] text-[#eeeeee] font-normal tracking-tight" style={{ color: m.color }}>
+                    {m.val}
+                  </div>
+                </div>
+              ))}
+            </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-12 text-center"
-        >
-          <a
-            href="#contact"
-            id="services-cta"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-[15px] transition-all duration-200"
-            style={{ background: 'linear-gradient(135deg, #00C5C8, #00a8ab)', color: '#001a4d' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 0 35px rgba(0,197,200,0.5)'; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = 'none'; }}
-          >
-            Get Started with Our Services <ArrowRight size={16} />
-          </a>
-        </motion.div>
-      </div>
-    </section>
+            {/* Code / Console Output Window */}
+            <div className="border border-[#1b294b] rounded-[3px] bg-[#040814] p-4 font-mono-geist text-[12px] text-[#eeeeee] space-y-2">
+              <div className="text-[#8292b4] text-[11px] border-b border-[#1b294b] pb-2 flex justify-between">
+                <span>SYSTEM DISPATCH</span>
+                <span className="text-[#00C5C8]">QADMAS CORE ENGINE</span>
+              </div>
+              <pre className="text-[#eeeeee] overflow-x-auto whitespace-pre-wrap font-mono-geist leading-relaxed">
+                {current.codeSnippet}
+              </pre>
+            </div>
+
+            {/* CTA Button Pre-selecting Service in Contact Form */}
+            <div className="pt-2">
+              <button
+                onClick={() => handleRequestQuote(current.quoteService)}
+                className="bg-[#00C5C8] text-[#050a1a] hover:bg-[#24dcdb] font-geist text-[14px] font-medium px-6 py-3 rounded-[3px] transition-colors inline-flex items-center gap-2"
+              >
+                <span>Get a Quote for {current.label}</span>
+                <ArrowRight size={14} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ContactModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        defaultService={activeQuoteService}
+      />
+    </>
   );
 }

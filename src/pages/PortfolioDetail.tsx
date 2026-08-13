@@ -1,15 +1,11 @@
 import { useParams, Link } from 'react-router-dom';
-import { motion, type Transition } from 'framer-motion';
-import { 
-  Check, 
-  ArrowRight
-} from 'lucide-react';
+import { Check, ArrowRight, Terminal } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-// Portfolio Data
 const portfolioDetails: Record<string, {
   title: string;
+  categoryDesc: string;
   projects: Array<{
     id: number;
     title: string;
@@ -18,70 +14,134 @@ const portfolioDetails: Record<string, {
     details: {
       client: string;
       category: string;
-      country: string;
-      phone: string;
+      region: string;
     };
+    link?: string;
   }>;
   highlights: string[];
 }> = {
   "website-development": {
-    title: "Website Development",
+    title: "Website Development & Web Applications",
+    categoryDesc: "High-performing, responsive websites and web applications built using React, Next.js, and modern cloud infrastructure.",
     projects: [
       {
         id: 1,
-        title: "Website Development & Management",
-        desc: "Crafting digital excellence, Qadmas Technologies proudly developed and manages the cutting-edge website for UAE-based Miozoti Technology. Our seamless design and robust functionality empower their online presence, driving growth and innovation in the tech landscape.",
-        image: "/portfolio/miozoti.png", 
+        title: "Platform Development for Miozoti Technology",
+        desc: "Crafting digital excellence, Qadmas Technologies developed and manages the web platform for UAE-based Miozoti Technology, driving online engagement up by 60%.",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop", 
         details: {
-          client: "MIOZOTI",
+          client: "MIOZOTI TECHNOLOGY",
           category: "Website Development",
-          country: "UAE",
-          phone: "+971 58 520 0424"
+          region: "UAE",
         }
       },
       {
         id: 2,
-        title: "Website Development",
-        desc: "Crafting digital excellence, Qadmas Technologies proudly developed and manages the cutting-edge website for UAE-based Verkiezen Yachts. Our seamless design and robust functionality empower their online presence, driving growth and innovation in the tech landscape.",
-        image: "/portfolio/verkiezen.png",
+        title: "Fleet Booking & Operations for Verkiezen Yachts",
+        desc: "Developed a luxury yacht rental & fleet management web application in Dubai with real-time availability and automated reservation workflows.",
+        image: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=2670&auto=format&fit=crop", 
         details: {
-          client: "Verkiezen Yachts",
-          category: "Website Development",
-          country: "UAE",
-          phone: "+971 52 467 8745"
+          client: "VERKIEZEN YACHTS",
+          category: "Website & Booking System",
+          region: "UAE",
+        }
+      },
+      {
+        id: 3,
+        title: "Corporate Portal & Commerce Web App for Redchilly",
+        desc: "High-converting corporate website and trading portal with real-time product catalogs and multi-currency inquiry routing.",
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop",
+        details: {
+          client: "REDCHILLY TRADING",
+          category: "Corporate Web App",
+          region: "QATAR & INDIA",
+        }
+      },
+      {
+        id: 4,
+        title: "Gulf Regional Enterprise Portal",
+        desc: "Enterprise web portal connecting multi-region operations across Qatar, UAE, and India with zero-latency cloud edge distribution.",
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2670&auto=format&fit=crop",
+        details: {
+          client: "GULF ENTERPRISE GROUP",
+          category: "Enterprise Web Portal",
+          region: "QATAR",
+        }
+      },
+      {
+        id: 5,
+        title: "Elite Global Trading Web Application",
+        desc: "Modern responsive web application featuring custom UI/UX design, interactive search tools, and automated lead capture.",
+        image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2671&auto=format&fit=crop",
+        details: {
+          client: "ELITE TRADING",
+          category: "Web Application",
+          region: "GLOBAL",
         }
       }
     ],
     highlights: [
-      "Innovative Technology",
-      "On-Time Support & Delivery",
-      "Monthly/Quarterly strategy sessions",
-      "Customized strategies to fit your unique business needs.",
-      "24/7 Technical Assistance – Always available when you need us.",
-      "Scalable Solutions – Built to grow with your business seamlessly."
+      "Custom responsive React & Next.js architecture",
+      "Sub-second page speeds with Core Web Vitals optimization",
+      "Mobile-first responsive design across all viewports",
+      "SEO-optimized search engine indexing & analytics"
     ]
   },
   "software-development": {
-    title: "Software Development",
+    title: "Custom Software Development & Wantik-X CRM",
+    categoryDesc: "Bespoke software systems, customer relationship management platforms, and enterprise backend engineering.",
     projects: [
       {
-        id: 3,
-        title: "Enterprise Software Solution",
-        desc: "At Qadmas Technologies, we lead with purpose and develop with precision, delivering solutions that drive business growth.",
+        id: 6,
+        title: "Wantik-X Enterprise CRM Platform",
+        desc: "Wantik-X CRM is a custom-engineered software platform built by Qadmas Technologies to automate customer dispatches, lead scoring, multi-tier sales pipelines, and executive reporting for high-volume enterprises.",
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
         details: {
-          client: "Global Tech",
-          category: "Software Development",
-          country: "Qatar",
-          phone: "+974 7132 8520"
+          client: "WANTIK-X ENTERPRISE",
+          category: "Custom CRM Software",
+          region: "QATAR & UAE",
+        }
+      },
+      {
+        id: 7,
+        title: "Automated Workflow Engine & Microservices API",
+        desc: "Zero-trust microservices architecture with automated billing dispatches, client tracking APIs, and encrypted data backup pipelines.",
+        image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2670&auto=format&fit=crop",
+        details: {
+          client: "QADMAS CORE PLATFORM",
+          category: "Software Architecture",
+          region: "GLOBAL",
         }
       }
     ],
     highlights: [
-      "Custom Architecture",
-      "Database Optimization",
-      "Seamless API Integrations",
-      "Enterprise-Grade Security"
+      "Wantik-X CRM custom lead management & sales pipeline",
+      "High-speed API optimization with sub-millisecond queries",
+      "Zero-trust security compliance & data encryption",
+      "Automated executive reports & analytics dispatches"
+    ]
+  },
+  "erp-solutions": {
+    title: "Enterprise ERP & Inventory Automation",
+    categoryDesc: "Multi-warehouse stock tracking, client billing, supply chain automation, and enterprise resource planning.",
+    projects: [
+      {
+        id: 8,
+        title: "Redchilly Trading Multi-Warehouse ERP",
+        desc: "Comprehensive ERP system featuring multi-warehouse stock sync, automated purchase orders, commercial invoice generation, and real-time inventory telemetry.",
+        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2670&auto=format&fit=crop",
+        details: {
+          client: "REDCHILLY TRADING",
+          category: "Enterprise ERP",
+          region: "QATAR & INDIA",
+        }
+      }
+    ],
+    highlights: [
+      "Multi-warehouse inventory synchronization",
+      "Automated commercial invoice & billing engine",
+      "Role-based access control (RBAC) security",
+      "Real-time operational dashboards"
     ]
   }
 };
@@ -89,196 +149,99 @@ const portfolioDetails: Record<string, {
 export default function PortfolioDetail() {
   const { id } = useParams<{ id: string }>();
   const data = portfolioDetails[id || ""] || portfolioDetails["website-development"];
-  
-  const transition: Transition = { duration: 1.2, ease: [0.16, 1, 0.3, 1] } as any;
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition
-  };
 
   return (
-    <div className="bg-canvas min-h-screen text-white relative overflow-hidden">
-      {/* Background Decor - Consistent with Portfolio/About */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 grid-bg opacity-30" />
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 rounded-full blur-[150px]" />
-      </div>
-
+    <div className="bg-[#050a1a] min-h-screen text-[#eeeeee] font-geist selection:bg-[#00C5C8] selection:text-[#050a1a]">
       <Navbar />
 
-      {/* Hero Header - Same style as Contact/About */}
-      <section className="relative pt-40 pb-24 overflow-hidden z-10">
-        <div 
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `
-              radial-gradient(ellipse 80% 50% at 50% -5%, rgba(0, 197, 200, 0.2) 0%, transparent 60%),
-              radial-gradient(ellipse 40% 30% at 20% 40%, rgba(0, 197, 200, 0.1) 0%, transparent 50%),
-              transparent
-            `,
-          }}
-        />
-        <div className="max-w-[1280px] mx-auto px-6 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={transition}
-            className="flex flex-col items-center text-center"
-          >
-            <Link 
-              to="/portfolio" 
-              className="group flex items-center gap-2 text-white/40 hover:text-primary transition-colors mb-8 text-sm font-bold uppercase tracking-widest"
-            >
-              <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary/30 group-hover:bg-primary/5 transition-all">
-                <ArrowRight size={16} className="rotate-180 group-hover:-translate-x-1 transition-transform" />
-              </div>
-              Back to Portfolio
-            </Link>
+      {/* Hero Header */}
+      <section className="relative pt-32 pb-20 px-6 max-w-[1200px] mx-auto text-center">
+        <Link 
+          to="/portfolio" 
+          className="inline-flex items-center gap-2 text-[#8292b4] hover:text-[#00C5C8] transition-colors mb-6 font-mono-geist text-[12px] uppercase"
+        >
+          <ArrowRight size={14} className="rotate-180" />
+          <span>Back to All Work</span>
+        </Link>
 
-             <span 
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-6"
-              style={{ background: 'rgba(0,197,200,0.08)', border: '1px solid rgba(0,197,200,0.2)', color: '#00C5C8' }}
-            >
-              Case Study
-            </span>
-            <h1 className="text-white font-black text-6xl lg:text-8xl leading-tight">
-              {data.title}
-            </h1>
-          </motion.div>
-        </div>
+        <h1 className="font-geist text-display font-normal text-[#eeeeee] tracking-tight leading-none mb-4">
+          {data.title}
+        </h1>
+
+        <p className="font-geist text-[16px] text-[#8292b4] max-w-[620px] mx-auto leading-relaxed">
+          {data.categoryDesc}
+        </p>
       </section>
 
       {/* Projects List */}
-      <section className="py-24 relative z-10">
-        <div className="max-w-[1280px] mx-auto px-6 space-y-40">
+      <section className="py-[96px] bg-[#050a1a] max-w-[1200px] mx-auto px-6 border-t border-[#1b294b]">
+        <div className="space-y-20">
           {data.projects.map((project) => (
-            <div key={project.id} className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
-              {/* Left Side: Content & Image */}
-              <motion.div 
-                {...fadeInUp}
-                className="lg:col-span-8 space-y-12"
-              >
-                <div className="space-y-6">
-                  <h2 className="text-white font-black text-4xl lg:text-5xl">{project.title}</h2>
-                  <p className="text-white/60 leading-relaxed text-lg max-w-2xl">
-                    {project.desc}
-                  </p>
+            <div key={project.id} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div className="lg:col-span-8 space-y-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0c1228] border border-[#1b294b] rounded-[3px]">
+                  <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
+                  <span className="font-mono-geist text-[11px] uppercase text-[#00C5C8] tracking-wider">
+                    {project.details.category}
+                  </span>
                 </div>
                 
-                <div className="relative rounded-[40px] overflow-hidden border border-white/10 group shadow-2xl bg-white/5 p-1">
+                <h2 className="font-geist text-[28px] md:text-[34px] text-[#eeeeee] leading-tight font-normal">
+                  {project.title}
+                </h2>
+
+                <p className="font-geist text-[16px] text-[#8292b4] leading-relaxed">
+                  {project.desc}
+                </p>
+
+                <div className="border border-[#1b294b] rounded-[10px] bg-[#080d1f] p-4 shadow-2xl">
                   <img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-auto rounded-[38px] transition-transform duration-700 group-hover:scale-[1.02]" 
+                    className="w-full h-auto rounded-[6px] opacity-90"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop";
                     }}
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-canvas/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                 </div>
-              </motion.div>
+              </div>
 
               {/* Right Side: Details Card */}
-              <motion.div 
-                {...fadeInUp}
-                transition={{ ...transition, delay: 0.3 }}
-                className="lg:col-span-4 bg-white/5 border border-white/10 rounded-[40px] p-10 lg:p-12 backdrop-blur-xl sticky top-32 group"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                
-                <h3 className="text-white font-black text-3xl mb-12 relative z-10">Project Details</h3>
-                <div className="space-y-8 relative z-10">
+              <div className="lg:col-span-4 border border-[#1b294b] rounded-[10px] p-8 bg-[#080d1f] text-[#eeeeee] space-y-6 shadow-2xl">
+                <div className="flex items-center gap-2 border-b border-[#1b294b] pb-3">
+                  <Terminal size={16} className="text-[#00C5C8]" />
+                  <span className="font-mono-geist text-[12px] uppercase font-medium text-[#00C5C8]">PROJECT DETAILS</span>
+                </div>
+
+                <div className="space-y-4 font-mono-geist text-[12px]">
                   {[
-                    { label: "Client Name", val: project.details.client },
-                    { label: "Category", val: project.details.category },
-                    { label: "Country", val: project.details.country },
-                    { label: "Phone Number", val: project.details.phone }
+                    { label: "CLIENT", val: project.details.client },
+                    { label: "CATEGORY", val: project.details.category },
+                    { label: "OPERATING REGION", val: project.details.region },
                   ].map((detail, j) => (
-                    <div key={j} className="border-b border-white/10 pb-6 last:border-0">
-                      <p className="text-primary font-bold text-xl mb-1">{detail.val}</p>
-                      <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">{detail.label}</p>
+                    <div key={j} className="border-b border-[#1b294b] pb-2">
+                      <div className="text-[#eeeeee] font-medium">{detail.val}</div>
+                      <div className="text-[#8292b4] text-[10px] uppercase">{detail.label}</div>
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Leadership & Points Section - Consistent with About Us */}
-      <section className="py-32 relative bg-canvas-2/30 z-10">
-        <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          <motion.div {...fadeInUp}>
-             <span 
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-6"
-              style={{ background: 'rgba(0,197,200,0.08)', border: '1px solid rgba(0,197,200,0.2)', color: '#00C5C8' }}
-            >
-              Excellence in Action
-            </span>
-            <h2 className="text-white font-black text-4xl lg:text-6xl leading-tight mb-8">
-              Leadership & Development: Powering <span className="text-primary">Innovation with Excellence</span>
-            </h2>
-            <p className="text-white/60 text-lg mb-12 leading-relaxed">
-              At <strong>Qadmas Technologies</strong>, we lead with purpose and develop with precision, 
-              delivering solutions that drive business growth. Our commitment to excellence is 
-              reflected in these unique points of service:
-            </p>
-            
-            <div className="space-y-6">
-              {data.highlights.map((text: string, i: number) => (
-                <div key={i} className="flex items-center gap-4 text-white/80 group">
-                  <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 group-hover:bg-primary group-hover:text-canvas transition-all">
-                    <Check size={16} />
-                  </div>
-                  <span className="font-medium text-lg tracking-tight">{text}</span>
-                </div>
-              ))}
+      {/* Highlights */}
+      <section className="py-[96px] bg-[#050a1a] max-w-[1200px] mx-auto px-6 border-t border-[#1b294b]">
+        <h3 className="font-geist text-heading text-[#eeeeee] mb-8">Category Technical Benchmarks</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono-geist text-[13px]">
+          {data.highlights.map((h, i) => (
+            <div key={i} className="flex items-center gap-3 border border-[#1b294b] bg-[#080d1f] p-4 rounded-[3px] text-[#eeeeee]">
+              <Check size={14} className="text-[#00C5C8]" />
+              <span>{h}</span>
             </div>
-            
-            <p className="text-primary font-bold mt-12 text-xl italic">
-              Let's lead the way to digital transformation together.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={transition}
-            className="relative"
-          >
-            <div className="bg-white/5 rounded-[50px] p-1 border border-white/10 overflow-hidden group">
-               <img 
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop" 
-                alt="Innovation" 
-                className="w-full h-auto rounded-[48px] opacity-70 group-hover:scale-105 transition-transform duration-1000" 
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-canvas to-transparent opacity-40" />
-            </div>
-            <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-          </motion.div>
+          ))}
         </div>
-      </section>
-
-      {/* Bottom CTA - High Converting */}
-      <section className="py-32 relative overflow-hidden z-10 border-t border-white/5">
-        <div className="max-w-[1280px] mx-auto px-6 text-center relative z-10">
-          <motion.div {...fadeInUp}>
-            <h2 className="text-white font-black text-5xl lg:text-7xl leading-tight mb-12 max-w-5xl mx-auto">
-              Empowering Your Business with Cutting-Edge Software Solutions for a <span className="text-primary">Digital Future</span>
-            </h2>
-            <button 
-              className="bg-[#ff3b5c] hover:bg-white hover:text-[#ff3b5c] text-white font-black px-16 py-6 rounded-full text-xl transition-all duration-300 shadow-2xl hover:shadow-[#ff3b5c]/40 group flex items-center gap-4 mx-auto"
-            >
-              Contact Us Now <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-            </button>
-          </motion.div>
-        </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
       </section>
 
       <Footer />

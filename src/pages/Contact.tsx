@@ -1,259 +1,172 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  ShieldCheck, 
-  Zap,
-  Send
-} from 'lucide-react';
+import { Phone, Mail, MapPin, Send, Terminal, ShieldCheck } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export default function Contact() {
-  const transition: any = { duration: 1.2, ease: [0.16, 1, 0.3, 1] };
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition
-  };
-
   return (
-    <div className="bg-canvas min-h-screen font-sans selection:bg-primary/30 selection:text-primary relative overflow-hidden">
+    <div className="bg-[#050a1a] min-h-screen font-geist text-[#eeeeee] selection:bg-[#00C5C8] selection:text-[#050a1a]">
       <Navbar />
-      
-      {/* Global Ambient Glows */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 rounded-full blur-[150px]" />
-      </div>
 
-      {/* Hero Section - Contact Us */}
-      <section className="relative pt-32 pb-24 overflow-hidden min-h-[70vh] flex items-center z-10">
-        <div 
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `
-              radial-gradient(ellipse 80% 50% at 50% -5%, rgba(0, 197, 200, 0.15) 0%, transparent 55%),
-              radial-gradient(ellipse 50% 40% at 80% 50%, rgba(0, 48, 135, 0.25) 0%, transparent 55%),
-              radial-gradient(ellipse 40% 30% at 20% 60%, rgba(0, 48, 135, 0.15) 0%, transparent 50%),
-              transparent
-            `,
-          }}
-        />
-        {/* Grid overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(0,197,200,0.04) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0,197,200,0.04) 1px, transparent 1px)
-            `,
-            backgroundSize: '48px 48px',
-            maskImage: 'radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 80%)',
-          }}
-        />
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-6 max-w-[1200px] mx-auto text-center">
+        <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-[#0c1228] border border-[#1b294b] rounded-[3px]">
+          <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
+          <span className="font-mono-geist text-[12px] uppercase text-[#00C5C8] tracking-wider">
+            GET IN TOUCH WITH QADMAS
+          </span>
+        </div>
 
-        <div className="relative z-10 max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={transition}
-            className="w-full"
-          >
-            <span 
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-6"
-              style={{ background: 'rgba(0,197,200,0.08)', border: '1px solid rgba(0,197,200,0.2)', color: '#00C5C8' }}
-            >
-              Get In Touch
-            </span>
-            <h1 className="text-white font-bold text-5xl lg:text-7xl leading-tight mb-8">
-              Let's Start Your <br />
-              <span className="text-[#00C5C8]">Digital Journey</span>
-            </h1>
-            <p className="text-white/60 text-lg mb-10 leading-relaxed">
-              Have a vision? We have the expertise to build it. Reach out to us today 
-              and let's discuss how we can transform your business with cutting-edge 
-              technology and digital strategies.
+        <h1 className="font-geist text-display font-normal text-[#eeeeee] tracking-tight leading-none mb-6">
+          Connect with our engineering team
+        </h1>
+
+        <p className="font-geist text-[16px] text-[#8292b4] leading-relaxed max-w-[640px] mx-auto">
+          Have a vision for your software, website, or enterprise ERP? Reach out to our team Operating in (Qatar, UAE, India).
+        </p>
+      </section>
+
+      {/* Trust & Guarantee Showcase Banner with Left Section Image */}
+      <section className="py-[64px] bg-[#050a1a] max-w-[1200px] mx-auto px-6 border-t border-[#1b294b]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border border-[#1b294b] rounded-[10px] bg-[#080d1f] p-6 md:p-8 shadow-2xl">
+          {/* Left Guarantee Showcase Image */}
+          <div className="lg:col-span-5">
+            <img 
+              src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2669&auto=format&fit=crop" 
+              alt="Qadmas Quality Guarantee & Trust" 
+              className="w-full h-auto rounded-[6px] opacity-90 border border-[#1b294b]"
+            />
+          </div>
+
+          {/* Right Copy */}
+          <div className="lg:col-span-7 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0c1228] border border-[#1b294b] rounded-[3px]">
+              <ShieldCheck size={14} className="text-[#00C5C8]" />
+              <span className="font-mono-geist text-[11px] uppercase text-[#00C5C8] tracking-wider">
+                100% SERVICE GUARANTEE
+              </span>
+            </div>
+
+            <h3 className="font-geist text-[26px] md:text-[32px] text-[#eeeeee] leading-tight font-normal">
+              Engineering Guarantee & SLA Commitment
+            </h3>
+
+            <p className="font-geist text-[15px] text-[#8292b4] leading-relaxed">
+              We guarantee 24-hour initial response times, strict zero-downtime deployments, transparent pricing in Qatari Riyal (QR), and dedicated post-launch maintenance for every client across Qatar, UAE, and India.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Form & Direct Details Grid */}
+      <section className="py-[96px] bg-[#050a1a] max-w-[1200px] mx-auto px-6 border-t border-[#1b294b]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Form Side */}
+          <div className="lg:col-span-8 border border-[#1b294b] rounded-[10px] bg-[#080d1f] p-8 md:p-12 space-y-6">
+            <h2 className="font-geist text-[28px] text-[#eeeeee] font-normal tracking-tight">
+              Submit an Inquiry
+            </h2>
+            <p className="font-geist text-[14px] text-[#8292b4]">
+              Fill out the form below and we will get back to you within 24 hours.
             </p>
 
-            <div className="flex flex-wrap gap-12">
-              {[
-                { label: 'Qatar Office', val: '+974 7132 8520' },
-                { label: 'India Office', val: '+91 913 7886 399' },
-                { label: 'Support Email', val: 'qadmas@tech.com' },
-              ].map((item, i) => (
-                <div key={i}>
-                  <div className="text-primary font-black text-xl mb-1">{item.val}</div>
-                  <div className="text-white/40 text-[10px] uppercase tracking-[0.2em]">{item.label}</div>
+            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block font-mono-geist text-[11px] uppercase text-[#8292b4] mb-1.5">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Your Full Name"
+                    className="w-full bg-[#050a1a] border border-[#1b294b] rounded-[3px] px-4 py-3 font-geist text-[14px] text-[#eeeeee] placeholder-[#2b3d68] focus:border-[#00C5C8] focus:outline-none"
+                  />
                 </div>
-              ))}
-            </div>
-          </motion.div>
+                <div>
+                  <label className="block font-mono-geist text-[11px] uppercase text-[#8292b4] mb-1.5">
+                    Work Email
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="info@qadmastechnologies.com"
+                    className="w-full bg-[#050a1a] border border-[#1b294b] rounded-[3px] px-4 py-3 font-geist text-[14px] text-[#eeeeee] placeholder-[#2b3d68] focus:border-[#00C5C8] focus:outline-none"
+                  />
+                </div>
+              </div>
 
-          {/* Contact Info Card - Styled like About cards */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative"
-          >
-            <div 
-              className="relative rounded-[40px] p-8 lg:p-12 overflow-hidden"
-              style={{ background: 'rgba(13,21,53,0.75)', border: '1px solid rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)' }}
-            >
-              <h3 className="text-white font-black text-3xl mb-8">Contact Details</h3>
-              <div className="space-y-8">
-                {[
-                  { icon: <Phone size={24} />, label: "Call Us Anytime", val: ["+974 7132 8520", "+91 913 7886 399"] },
-                  { icon: <Mail size={24} />, label: "Email Support", val: ["info@qadmastechnologies.com"] },
-                  { icon: <MapPin size={24} />, label: "Global Offices", val: ["UAE | Qatar | India"] }
-                ].map((item, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 + (i * 0.1) }}
-                    className="flex items-start gap-6 group"
-                  >
-                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                      {React.cloneElement(item.icon as React.ReactElement<any>, { className: 'group-hover:text-canvas' })}
-                    </div>
-                    <div>
-                      <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest mb-1">{item.label}</p>
-                      <div className="text-sm">
-                        <p className="text-white font-bold">info@qadmastechnologies.com</p>
-                        <p className="text-white/40">Inquiries</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+              <div>
+                <label className="block font-mono-geist text-[11px] uppercase text-[#8292b4] mb-1.5">
+                  Project Overview & Requirements
+                </label>
+                <textarea
+                  rows={6}
+                  placeholder="Tell us about your project goals, desired features, or estimated timeline..."
+                  className="w-full bg-[#050a1a] border border-[#1b294b] rounded-[3px] px-4 py-3 font-geist text-[14px] text-[#eeeeee] placeholder-[#2b3d68] focus:border-[#00C5C8] focus:outline-none resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn-dark w-full py-3.5 rounded-[3px] flex items-center justify-center gap-2 mt-2"
+              >
+                <span>Send Inquiry</span>
+                <Send size={15} />
+              </button>
+            </form>
+          </div>
+
+          {/* Details Sidebar */}
+          <div className="lg:col-span-4 border border-[#1b294b] rounded-[10px] p-8 bg-[#080d1f] text-[#eeeeee] space-y-8 shadow-2xl">
+            <div className="space-y-6">
+              <div className="flex items-center gap-2 border-b border-[#1b294b] pb-3">
+                <Terminal size={18} className="text-[#00C5C8]" />
+                <span className="font-mono-geist text-[12px] uppercase tracking-wider text-[#00C5C8] font-medium">
+                  CALL US ANYTIME & DIRECT CONTACT
+                </span>
+              </div>
+
+              <div className="space-y-4 font-mono-geist text-[12px]">
+                <div className="flex items-start gap-3">
+                  <Phone size={16} className="text-[#00C5C8] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-[#eeeeee] font-medium">+974 7132 8520</div>
+                    <div className="text-[#8292b4] text-[11px]">QATAR OFFICE</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Phone size={16} className="text-[#00C5C8] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-[#eeeeee] font-medium">+91 913 7886 399</div>
+                    <div className="text-[#8292b4] text-[11px]">INDIA OFFICE</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Mail size={16} className="text-[#00C5C8] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-[#eeeeee] font-medium">info@qadmastechnologies.com</div>
+                    <div className="text-[#8292b4] text-[11px]">PRIMARY EMAIL</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <MapPin size={16} className="text-[#00C5C8] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-[#eeeeee] font-medium">Operating in (Qatar, UAE, India)</div>
+                    <div className="text-[#8292b4] text-[11px]">REGIONAL PRESENCE</div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-[#00C5C8]/10 rounded-full blur-[80px] pointer-events-none" />
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Form Section - Centered and High Impact */}
-      <section className="py-32 relative bg-canvas-2/30">
-        <div className="max-w-[800px] mx-auto px-6 text-center">
-          <motion.div {...fadeInUp} className="mb-16">
-            <span 
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-6"
-              style={{ background: 'rgba(0,197,200,0.08)', border: '1px solid rgba(0,197,200,0.2)', color: '#00C5C8' }}
-            >
-              Drop a Message
-            </span>
-            <h2 className="text-white font-bold text-4xl lg:text-6xl mb-6">
-              Do You <span className="text-primary">Need Help?</span>
-            </h2>
-            <p className="text-white/50 text-lg leading-relaxed">
-              Our experts deliver prompt, efficient solutions to meet your needs without delay.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 text-left">
-            {[
-              { label: "Your Name", placeholder: "John Doe" },
-              { label: "Your Email", placeholder: "john@example.com" }
-            ].map((field, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <label className="block text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2 ml-1">{field.label}</label>
-                <input 
-                  type="text" 
-                  placeholder={field.placeholder}
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-primary/50 focus:outline-none transition-colors"
-                />
-              </motion.div>
-            ))}
+            <div className="pt-6 border-t border-[#1b294b] font-mono-geist text-[11px] text-[#8292b4]">
+              <div className="text-[#00C5C8] font-medium mb-1 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00C5C8]" />
+                <span>24/7 SUPPORT SLA</span>
+              </div>
+              <span>Guaranteed response within 24 hours.</span>
+            </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="text-left"
-          >
-            <label className="block text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2 ml-1">Your Message</label>
-            <textarea 
-              rows={6}
-              placeholder="Tell us about your project..."
-              className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-primary/50 focus:outline-none transition-colors resize-none mb-10"
-            />
-            <button 
-              className="w-full py-5 rounded-2xl font-black text-brand-blue-deep transition-all duration-300 flex items-center justify-center gap-3 group"
-              style={{ background: 'linear-gradient(135deg, #00C5C8 0%, #00a8ab 100%)' }}
-            >
-              Send Your Inquiry <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Assurance Section - Similar to Customer Centric */}
-      <section className="py-32 relative overflow-hidden">
-        <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <div 
-              className="relative rounded-[40px] overflow-hidden p-1 bg-white/5 group"
-              style={{ background: 'rgba(13,21,53,0.8)', border: '1px solid rgba(255,255,255,0.08)' }}
-            >
-               <img 
-                 src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=2574&auto=format&fit=crop" 
-                 alt="Assurance" 
-                 className="w-full opacity-60 transition-transform duration-700 group-hover:scale-105" 
-               />
-               <div className="absolute inset-0 bg-linear-to-t from-canvas/80 to-transparent" />
-            </div>
-          </motion.div>
-
-          <motion.div {...fadeInUp}>
-            <span 
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-6"
-              style={{ background: 'rgba(0,197,200,0.08)', border: '1px solid rgba(0,197,200,0.2)', color: '#00C5C8' }}
-            >
-              Trust & Security
-            </span>
-            <h2 className="text-white font-bold text-4xl lg:text-6xl leading-tight mb-8">
-              30 Days Money <br />
-              <span className="text-primary">Back Guarantee</span>
-            </h2>
-            <p className="text-white/60 text-lg mb-10 leading-relaxed">
-              We prioritize your success and peace of mind. Every partnership is built on trust, 
-              transparency, and a commitment to delivering world-class digital results.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { icon: <Clock size={20} />, title: "No Time Lost" },
-                { icon: <Zap size={20} />, title: "High Value" },
-                { icon: <ShieldCheck size={20} />, title: "Secure Data" }
-              ].map((item, i) => (
-                <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-2xl group hover:border-primary/30 transition-all">
-                  <div className="text-primary mb-3 group-hover:scale-110 transition-transform">{item.icon}</div>
-                  <div className="text-white font-bold text-sm tracking-tight">{item.title}</div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 

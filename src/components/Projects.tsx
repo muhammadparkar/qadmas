@@ -1,184 +1,116 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Smartphone, Settings, Cloud, Server } from 'lucide-react';
-
-const projects = [
-  {
-    id: 'app-development',
-    tag: 'Application Development',
-    icon: Smartphone,
-    color: '#10b981',
-    title: 'Mobile & Desktop App Solutions',
-    desc: 'We specialise in application development, crafting powerful, intuitive, and high-performance apps tailored to your business needs. From seamless user experiences to robust backend integrations, our solutions are built to scale — delivering measurable impact across every platform.',
-  },
-  {
-    id: 'management-support',
-    tag: 'Management & Support',
-    icon: Settings,
-    color: '#00C5C8',
-    title: 'End-to-End IT Management',
-    desc: 'Our management and support services ensure your operations never skip a beat. We provide proactive monitoring, rapid incident response, and comprehensive system maintenance — so your team can focus on what matters most while we keep your technology running flawlessly.',
-  },
-  {
-    id: 'serverless-computing',
-    tag: 'Serverless Computing',
-    icon: Cloud,
-    color: '#7c3aed',
-    title: 'Scalable Cloud-Native Architecture',
-    desc: 'Harness the power of serverless computing to build agile, cost-efficient, and infinitely scalable applications. We architect cloud-native solutions that auto-scale with your demand — eliminating infrastructure overhead and accelerating your time-to-market.',
-  },
-  {
-    id: 'web-hosting',
-    tag: 'Web Hosting',
-    icon: Server,
-    color: '#f59e0b',
-    title: 'Reliable, High-Performance Hosting',
-    desc: 'We deliver enterprise-grade web hosting with 99.9% uptime guarantees, lightning-fast load times, and bulletproof security. Whether you\'re running a startup site or a high-traffic platform, our hosting solutions are engineered for reliability, speed, and peace of mind.',
-  },
-];
+import { ArrowRight, Globe, Code2, Building2, Smartphone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Projects() {
+  const posts = [
+    {
+      id: 'website-development',
+      category: 'WEBSITE DEVELOPMENT',
+      title: 'High-Converting Website Development & Web Applications',
+      snippet: 'Custom responsive web architecture, modern UX design, and SEO-optimized platforms for enterprises across UAE, Qatar, and global markets.',
+      icon: Globe,
+      client: 'WEBSITE PORTFOLIO',
+    },
+    {
+      id: 'software-development',
+      category: 'CUSTOM CRM PLATFORM',
+      title: 'Wantik-X Enterprise CRM Software System',
+      snippet: 'Bespoke customer relationship management platform with automated lead dispatches, client tracking, and analytics dashboards.',
+      icon: Code2,
+      client: 'WANTIK-X CRM',
+    },
+    {
+      id: 'website-development',
+      category: 'YACHTING PLATFORM',
+      title: 'Fleet Booking & Operations for Verkiezen Yachts UAE',
+      snippet: 'Bespoke yacht rental & fleet management web application in Dubai with real-time fleet availability and booking workflows.',
+      icon: Smartphone,
+      client: 'VERKIEZEN YACHTS',
+    },
+    {
+      id: 'software-development',
+      category: 'ENTERPRISE ERP',
+      title: 'Trading & Inventory ERP for Redchilly Trading',
+      snippet: 'Multi-warehouse inventory management, automated client invoicing, and supply chain tracking system for international trading.',
+      icon: Building2,
+      client: 'REDCHILLY TRADING',
+    },
+  ];
+
   return (
-    <section
-      id="portfolio"
-      className="py-24 relative overflow-hidden"
-      style={{
-        background: `
-          radial-gradient(ellipse 50% 40% at 30% 50%, rgba(0,48,135,0.15) 0%, transparent 60%),
-          #05091a
-        `,
-        borderTop: '1px solid rgba(255,255,255,0.05)',
-      }}
-    >
-      {/* Header */}
-      <div className="max-w-[1280px] mx-auto px-6 xl:px-12 mb-16">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <motion.span
-              initial={{ opacity: 0, y: -10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
-              style={{ background: 'rgba(0,197,200,0.08)', border: '1px solid rgba(0,197,200,0.2)', color: '#00C5C8' }}
-            >
-              Our Latest Projects
-            </motion.span>
-            <motion.h2
+    <section className="py-[96px] bg-[#050a1a] max-w-[1200px] mx-auto px-6 border-t border-[#1b294b]">
+      {/* Section Header */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
+      >
+        <div>
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
+            <span className="font-mono-geist text-[12px] uppercase text-[#8292b4] tracking-[0.15em]">
+              PORTFOLIO HIGHLIGHTS
+            </span>
+          </div>
+          <h2 className="font-geist text-heading-lg text-[#eeeeee] tracking-tight">
+            What We Have Built
+          </h2>
+        </div>
+
+        <Link to="/portfolio/website-development" className="btn-ghost text-[14px] px-4 py-2.5 rounded-none flex items-center gap-2 self-start md:self-auto">
+          <span>View All Work</span>
+          <ArrowRight size={14} />
+        </Link>
+      </motion.div>
+
+      {/* 4 Cards Grid with Framer Motion Entrance & Hover Physics */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {posts.map((post, idx) => {
+          const Icon = post.icon;
+          return (
+            <motion.div
+              key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-white font-bold"
-              style={{ fontSize: 'clamp(28px, 4vw, 48px)', letterSpacing: '-1px', lineHeight: 1.1 }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
             >
-              What We've Built
-            </motion.h2>
-          </div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-            className="max-w-[400px] text-sm pb-1"
-            style={{ color: 'rgba(255,255,255,0.45)', lineHeight: 1.7 }}
-          >
-            Across industries, we've delivered cutting-edge solutions that drive real results for our clients.
-          </motion.p>
-        </div>
-      </div>
-
-      {/* Project cards */}
-      <div className="max-w-[1280px] mx-auto px-6 xl:px-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project, idx) => {
-          const Icon = project.icon;
-          return (
-            <motion.div
-              key={project.id}
-              id={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.55, delay: (idx % 2) * 0.1 }}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer"
-              style={{
-                background: 'rgba(13,21,53,0.75)',
-                border: '1px solid rgba(255,255,255,0.07)',
-                backdropFilter: 'blur(12px)',
-                transition: 'border-color 0.3s, box-shadow 0.3s, transform 0.3s',
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.borderColor = `${project.color}40`;
-                (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 48px ${project.color}12`;
-                (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)';
-                (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-                (e.currentTarget as HTMLElement).style.transform = 'none';
-              }}
-            >
-              {/* Top accent bar */}
-              <div className="h-0.5 w-full" style={{ background: `linear-gradient(to right, ${project.color}, transparent)` }} />
-
-              <div className="p-8">
-                {/* Tag row */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="w-9 h-9 rounded-xl flex items-center justify-center"
-                      style={{ background: `${project.color}15`, border: `1px solid ${project.color}30` }}
-                    >
-                      <Icon size={17} style={{ color: project.color }} strokeWidth={1.8} />
+              <Link
+                to={`/portfolio/${post.id}`}
+                className="card-dark group flex flex-col justify-between hover:border-[#00C5C8] transition-colors cursor-pointer h-full"
+              >
+                <div>
+                  {/* Visual Thumbnail Header */}
+                  <div className="h-[130px] bg-[#040814] border border-[#1b294b] rounded-[6px] mb-4 p-4 flex flex-col justify-between group-hover:border-[#00C5C8]/50 transition-colors">
+                    <div className="flex justify-between items-center text-[#8292b4]">
+                      <span className="font-mono-geist text-[11px] uppercase text-[#00C5C8]">
+                        {post.category}
+                      </span>
+                      <Icon size={14} className="text-[#00C5C8] group-hover:scale-110 transition-transform" />
                     </div>
-                    <span
-                      className="text-xs font-semibold tracking-widest uppercase"
-                      style={{ color: project.color }}
-                    >
-                      {project.tag}
-                    </span>
+                    <div className="font-mono-geist text-[11px] text-[#8292b4]">
+                      {post.client}
+                    </div>
                   </div>
-                  <div
-                    className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300"
-                    style={{
-                      border: '1px solid rgba(255,255,255,0.1)',
-                      background: 'rgba(255,255,255,0.03)',
-                    }}
-                  >
-                    <ArrowUpRight size={16} style={{ color: 'rgba(255,255,255,0.4)' }} />
-                  </div>
+
+                  <h3 className="font-geist text-[18px] text-[#eeeeee] font-normal leading-snug mb-3 group-hover:text-[#00C5C8] transition-colors">
+                    {post.title}
+                  </h3>
+
+                  <p className="font-geist text-[14px] text-[#8292b4] leading-relaxed mb-6">
+                    {post.snippet}
+                  </p>
                 </div>
 
-                {/* Title */}
-                <h3 className="text-white font-bold mb-3" style={{ fontSize: '20px', letterSpacing: '-0.4px', lineHeight: 1.3 }}>
-                  {project.title}
-                </h3>
-
-                {/* Description */}
-                <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', lineHeight: 1.75 }}>
-                  {project.desc}
-                </p>
-
-                {/* Mock UI preview */}
-                <div
-                  className="mt-8 rounded-xl p-4 overflow-hidden"
-                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-2 h-2 rounded-full" style={{ background: project.color, opacity: 0.7 }} />
-                    <div className="h-2 rounded" style={{ background: 'rgba(255,255,255,0.08)', width: '40%' }} />
-                  </div>
-                  <div className="space-y-2">
-                    <div className="h-2.5 rounded" style={{ background: 'rgba(255,255,255,0.05)', width: '90%' }} />
-                    <div className="h-2.5 rounded" style={{ background: 'rgba(255,255,255,0.05)', width: '70%' }} />
-                    <div className="h-2.5 rounded" style={{ background: 'rgba(255,255,255,0.05)', width: '80%' }} />
-                  </div>
+                <div className="pt-3 border-t border-[#1b294b] flex items-center justify-between text-[#8292b4] group-hover:text-[#00C5C8] transition-colors font-geist text-[14px]">
+                  <span>Inspect Work</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
-              </div>
-
-              {/* Hover glow */}
-              <div
-                className="absolute -bottom-12 -right-12 w-40 h-40 rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: `radial-gradient(circle, ${project.color}18 0%, transparent 70%)` }}
-              />
+              </Link>
             </motion.div>
           );
         })}

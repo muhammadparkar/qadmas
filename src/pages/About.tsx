@@ -1,385 +1,200 @@
-import { motion, useInView, animate } from 'framer-motion';
-import { Check, Star, ArrowRight } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { Check, Star, Cpu } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-function AnimatedCounter({ to, suffix = '' }: { to: number, suffix?: string }) {
-  const nodeRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(nodeRef, { once: true });
-
-  useEffect(() => {
-    if (inView && nodeRef.current) {
-      const controls = animate(0, to, {
-        duration: 2,
-        ease: "easeOut",
-        onUpdate(value) {
-          if (nodeRef.current) {
-            nodeRef.current.textContent = Math.round(value) + suffix;
-          }
-        },
-      });
-      return () => controls.stop();
-    }
-  }, [inView, to, suffix]);
-
-  return <span ref={nodeRef}>0{suffix}</span>;
-}
-
 const stats = [
-  { label: 'Static Projects', value: 100, suffix: '+' },
-  { label: 'Global Client Base', value: 15, suffix: '+' },
-  { label: 'Years Experience', value: 3, suffix: '+' },
-];
-
-const timeline = [
-  { 
-    year: '2022', 
-    title: 'The Vision Ignites', 
-    desc: 'Our journey began with a passion for innovation — launching to redefine IT and digital marketing solutions for modern businesses.',
-    image: '/Roadmap-1.webp'
-  },
-  { 
-    year: '2023', 
-    title: 'Building Breakthrough Solutions', 
-    desc: 'From empowering startups to scaling enterprises, we delivered custom web, IT, and digital strategies that drove exponential growth and brand success.',
-    image: '/Roadmap-2.webp'
-  },
-  { 
-    year: '2024', 
-    title: 'Growth & Transformation', 
-    desc: 'Pioneering innovative solutions, we partnered with businesses across industries, delivering results-driven IT and marketing strategies.',
-    image: '/Roadmap-3.webp'
-  },
-  { 
-    year: '2025', 
-    title: 'Expanding Horizons', 
-    desc: 'Going global with impactful projects across the UAE, Qatar, and India. We’re continuously evolving, staying ahead of tech trends to keep your business future-ready.',
-    image: '/Roadmap-4.webp'
-  },
+  { label: 'DELIVERED PROJECTS', value: '100+' },
+  { label: 'GLOBAL CLIENT COUNTRIES', value: '15+' },
+  { label: 'YEARS EXCELLENCE', value: '3+' },
 ];
 
 const testimonials = [
   {
     name: 'Karim Larkamiz',
-    role: 'Verkiezen Yacht',
-    text: 'QadmasTech delivered a bespoke software solution that elevated our yacht rental operations. From booking automation to real-time fleet management, the system is sleek, user-friendly, and highly efficient. We couldn’t be happier with the results!',
+    role: 'Verkiezen Yacht (UAE)',
+    text: 'QadmasTech delivered a bespoke software solution that elevated our yacht rental operations. From booking automation to real-time fleet management, the system is sleek, user-friendly, and highly efficient.',
   },
   {
     name: 'Mhd. Arshad',
-    role: 'Miozoti Technologies',
-    text: 'QadmasTech transformed our digital presence with a comprehensive platform that seamlessly integrates our operations. From website development to tailored digital marketing strategies, their expertise drove a 60% increase in user engagement. A true game-changer!',
+    role: 'Miozoti Technologies (UAE)',
+    text: 'QadmasTech transformed our digital presence with a comprehensive platform that seamlessly integrates our operations. Their expertise drove a 60% increase in user engagement.',
   },
   {
     name: 'Abdul Hafiz',
-    role: 'Founder - Redchilly',
-    text: 'Partnering with QadmasTech was the best decision for our trading business. They developed a custom solution that streamlined our operations, improved inventory tracking, and boosted client satisfaction. Their support has been exceptional every step of the way!',
-  }
+    role: 'Founder, Redchilly Trading',
+    text: 'Partnering with QadmasTech was the best decision for our trading business. They developed a custom solution that streamlined our operations, improved inventory tracking, and boosted client satisfaction.',
+  },
 ];
 
-interface Testimonial {
-  name: string;
-  role: string;
-  text: string;
-}
-
-const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
-  <div className="bg-canvas-3/80 backdrop-blur-xl p-8 rounded-3xl border border-hairline shadow-2xl w-[350px] lg:w-[450px] shrink-0 flex flex-col gap-6 mx-3">
-    <div className="flex gap-1">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <Star key={i} size={16} fill="white" className="text-white" />
-      ))}
-    </div>
-    <p className="text-white/80 text-sm leading-relaxed flex-1">
-      "{testimonial.text}"
-    </p>
-    <div className="flex items-center gap-4 mt-2">
-      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm shrink-0">
-        {testimonial.name.split(' ').map((n: string) => n[0]).join('').substring(0, 2)}
-      </div>
-      <div>
-        <div className="text-white font-medium text-sm">{testimonial.name}</div>
-        <div className="text-white/50 text-xs">{testimonial.role}</div>
-      </div>
-    </div>
-  </div>
-);
-
 export default function About() {
-  const transition: any = { duration: 1.2, ease: [0.16, 1, 0.3, 1] };
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition
-  };
-
   return (
-    <div className="bg-canvas min-h-screen font-sans selection:bg-primary/30 selection:text-primary">
+    <div className="bg-[#050a1a] min-h-screen font-geist text-[#eeeeee] selection:bg-[#00C5C8] selection:text-[#050a1a]">
       <Navbar />
-      
-      {/* Global Ambient Glows */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-brand-blue/10 rounded-full blur-[150px]" />
-      </div>
 
-      {/* Hero Section - Why QadmasTech */}
-      <section className="relative pt-40 pb-24 overflow-hidden min-h-[80vh] flex items-center z-10">
-        <div 
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `
-              radial-gradient(ellipse 80% 50% at 50% -5%, rgba(0, 197, 200, 0.15) 0%, transparent 55%),
-              radial-gradient(ellipse 50% 40% at 80% 50%, rgba(0, 48, 135, 0.25) 0%, transparent 55%),
-              radial-gradient(ellipse 40% 30% at 20% 60%, rgba(0, 48, 135, 0.15) 0%, transparent 50%),
-              transparent
-            `,
-          }}
-        />
-        {/* Grid overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(0,197,200,0.04) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0,197,200,0.04) 1px, transparent 1px)
-            `,
-            backgroundSize: '48px 48px',
-            maskImage: 'radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 80%)',
-          }}
-        />
-        
-        {/* Floating orbs */}
-        <motion.div
-          className="absolute rounded-full pointer-events-none"
-          style={{ width: 500, height: 500, top: '10%', left: '60%', background: 'radial-gradient(circle, rgba(0,197,200,0.08) 0%, transparent 70%)' }}
-          animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        />
-
-        <div className="relative z-10 max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <span 
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-6"
-              style={{ background: 'rgba(0,197,200,0.08)', border: '1px solid rgba(0,197,200,0.2)', color: '#00C5C8' }}
-            >
-              Why QadmasTech?
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-24 px-6 max-w-[1200px] mx-auto">
+        <div className="flex flex-col items-center text-center max-w-[800px] mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-[#0c1228] border border-[#1b294b] rounded-[3px]">
+            <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
+            <span className="font-mono-geist text-[12px] uppercase text-[#00C5C8] tracking-wider">
+              ABOUT QADMAS TECHNOLOGIES
             </span>
-            <h1 className="text-white font-bold text-5xl lg:text-6xl leading-tight mb-8">
-              Why You Should <br />
-              <span className="text-[#00C5C8]">Choose Our Expertise</span>
-            </h1>
-            <p className="text-white/60 text-lg mb-10 leading-relaxed">
-              We provide high-end custom software development, digital marketing, and IT consulting. 
-              Our team combines technical expertise with a business-first mindset to deliver 
-              solutions that drive real, measurable results for our partners.
-            </p>
-            
-            <div className="grid grid-cols-3 gap-8 mb-12">
-              {stats.map((stat, i) => (
-                <div key={i}>
-                  <div className="text-primary font-black text-3xl mb-1">
-                    <AnimatedCounter to={stat.value} suffix={stat.suffix} />
-                  </div>
-                  <div className="text-white/40 text-[10px] uppercase tracking-[0.2em]">{stat.label}</div>
+          </div>
+
+          <h1 className="font-geist text-display text-[#eeeeee] tracking-tight leading-none mb-6">
+            Building digital solutions for the modern world
+          </h1>
+
+          <p className="font-geist text-[16px] text-[#8292b4] leading-relaxed max-w-[640px] mb-8">
+            We provide high-end custom software development, enterprise ERP systems, mobile applications, digital marketing, and IT consulting.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-[700px]">
+            {stats.map((stat, i) => (
+              <div key={i} className="border border-[#1b294b] rounded-[6px] p-4 bg-[#080d1f] text-center">
+                <div className="font-geist text-[36px] text-[#00C5C8] font-normal leading-none mb-2">
+                  {stat.value}
                 </div>
-              ))}
-            </div>
-
-            <button 
-              className="px-8 py-4 rounded-full font-bold text-brand-blue-deep transition-all duration-300 shadow-lg"
-              style={{ background: 'linear-gradient(135deg, #00C5C8 0%, #00a8ab 100%)' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 0 30px rgba(0,197,200,0.4)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = 'none'; }}
-            >
-              Learn More About Us
-            </button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative"
-          >
-            <div 
-              className="relative rounded-3xl p-1 bg-linear-to-br from-white/10 to-transparent"
-              style={{ background: 'rgba(13,21,53,0.75)', border: '1px solid rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)' }}
-            >
-              <img src="/full-logo.png" alt="Qadmas Team" className="w-full rounded-2xl opacity-90 p-8 lg:p-16" />
-            </div>
-            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-[#00C5C8]/10 rounded-full blur-[80px] pointer-events-none" />
-          </motion.div>
+                <div className="font-mono-geist text-[11px] uppercase text-[#8292b4] tracking-wider">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Timeline Section - Redesigned with Images */}
-      <section 
-        className="py-32 relative bg-canvas-2/30"
-        style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}
-      >
-        <div className="max-w-[1280px] mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "easeOut" }} className="text-center mb-24">
-            <h2 className="text-white font-bold text-4xl lg:text-5xl mb-6">
-              Our Company <span className="text-primary">Timeline</span>
-            </h2>
-            <p className="text-white/50 max-w-3xl mx-auto text-lg leading-relaxed">
-              At distant inhabit amongst by. Appetite welcomed interest not. Estimable education for disposing pronounce her.
-              John size good plan sent old roof own. Inquietude saw understood his friendship frequently yet.
-            </p>
-          </motion.div>
+      {/* A Message from Our Founder Section (Replaces Why choose our expertise) */}
+      <section className="py-[96px] bg-[#050a1a] border-t border-[#1b294b] max-w-[1200px] mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0c1228] border border-[#1b294b] rounded-[3px]">
+              <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
+              <span className="font-mono-geist text-[12px] uppercase text-[#00C5C8] tracking-wider">
+                LEADERSHIP MESSAGE
+              </span>
+            </div>
 
-          <div className="relative">
-            {/* Connecting Line */}
-            <div 
-              className="absolute top-sm left-[10%] right-[10%] h-[1px] hidden lg:block"
-              style={{ background: 'linear-gradient(90deg, transparent, rgba(0,197,200,0.3) 10%, rgba(0,197,200,0.3) 90%, transparent)' }}
+            <h2 className="font-geist text-heading-lg text-[#eeeeee] tracking-tight">
+              A Message from Our Founder
+            </h2>
+
+            <div className="space-y-4 font-geist text-[16px] text-[#8292b4] leading-relaxed">
+              <p className="text-[#eeeeee] font-medium text-[18px]">
+                Welcome to Qadmas Technologies.
+              </p>
+              <p>
+                When we started this journey, our goal was clear: to build software and digital solutions that do more than just function — they drive meaningful growth for your business. In an era where technology evolves daily, having a reliable digital partner isn&apos;t just an advantage; it&apos;s essential.
+              </p>
+              <p>
+                We don&apos;t just deliver projects; we invest in long-term partnerships built on trust, quality, and measurable impact.
+              </p>
+              <p>
+                Thank you for trusting us to be a part of your journey. We look forward to helping you shape the future of your business.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-[#1b294b] font-mono-geist">
+              <div className="text-[#00C5C8] text-[16px] font-medium">- Tauqeer Dadarkar</div>
+              <div className="text-[#8292b4] text-[12px] uppercase">Founder &amp; CEO, Qadmas Technologies</div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 border border-[#1b294b] rounded-[10px] p-6 bg-[#080d1f] text-[#eeeeee] shadow-2xl space-y-4">
+            <div className="font-mono-geist text-[12px] uppercase text-[#00C5C8] font-medium tracking-wider flex items-center gap-2 border-b border-[#1b294b] pb-3">
+              <Cpu size={16} />
+              EXECUTIVE STATEMENT
+            </div>
+            <img 
+              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2664&auto=format&fit=crop" 
+              alt="Qadmas Technologies Leadership Team" 
+              className="w-full h-auto rounded-[6px] opacity-90 border border-[#1b294b]"
             />
-            
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-              {timeline.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative group"
-                >
-                  {/* Year Marker */}
-                  <div className="hidden lg:flex justify-center mb-16 relative">
-                    <div className="w-6 h-6 rounded-full bg-canvas border-2 border-primary relative z-10 flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-primary group-hover:scale-150 transition-transform" />
-                    </div>
-                    <div className="absolute top-10 text-primary font-black text-lg">{item.year}</div>
-                  </div>
-
-                  {/* Card */}
-                  <div 
-                    className="bg-surface/50 rounded-3xl overflow-hidden border border-hairline group-hover:border-primary/30 transition-all duration-500 shadow-xl"
-                  >
-                    <div className="h-40 overflow-hidden relative">
-                      <img 
-                        src={item.image} 
-                        alt={item.title} 
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70" 
-                      />
-                      <div className="absolute inset-0 bg-linear-to-t from-surface to-transparent" />
-                      <div className="lg:hidden absolute top-4 left-4 bg-primary text-canvas px-3 py-1 rounded-full text-sm font-bold">
-                        {item.year}
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-white font-bold text-lg mb-3 group-hover:text-[#00C5C8] transition-colors leading-tight">
-                        {item.title}
-                      </h3>
-                      <p className="text-white/50 leading-relaxed text-xs">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <blockquote className="font-geist text-[15px] italic leading-relaxed text-[#8292b4] pt-2">
+              &quot;Building long-term partnerships built on trust, engineering quality, and measurable business impact.&quot;
+            </blockquote>
           </div>
         </div>
       </section>
 
-      {/* Customer Centric Section */}
-      <section className="py-32 relative overflow-hidden">
-        <div 
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(circle at 80% 50%, rgba(0,48,135,0.1) 0%, transparent 50%)' }}
-        />
-        
-        <div className="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="order-2 lg:order-1"
-          >
-            <div 
-              className="relative rounded-3xl overflow-hidden p-1 bg-white/5"
-              style={{ background: 'rgba(13,21,53,0.8)', border: '1px solid rgba(255,255,255,0.08)' }}
-            >
-               <img src="/full-logo.png" alt="Approach" className="w-full opacity-60 p-12 lg:p-20" />
-               <div className="absolute inset-0 bg-linear-to-t from-canvas/80 to-transparent" />
-            </div>
-          </motion.div>
+      {/* Customer Centric Approach Section (With Left Photo of Smiling Customers/Team) */}
+      <section className="py-[96px] bg-[#050a1a] border-t border-[#1b294b] max-w-[1200px] mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left Photo Showing Happy Customers / Smiling Team */}
+          <div className="lg:col-span-6 border border-[#1b294b] rounded-[10px] p-4 bg-[#080d1f] shadow-2xl">
+            <img 
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2576&auto=format&fit=crop" 
+              alt="Happy Smiling Customers and Team" 
+              className="w-full h-auto rounded-[6px] opacity-90"
+            />
+          </div>
 
-          <motion.div {...fadeInUp} className="order-1 lg:order-2">
-            <span 
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-6"
-              style={{ background: 'rgba(0,197,200,0.08)', border: '1px solid rgba(0,197,200,0.2)', color: '#00C5C8' }}
-            >
-              Quality & Analytics
-            </span>
-            <h2 className="text-white font-bold text-4xl lg:text-5xl leading-tight mb-8">
-              Customer-Centric <span className="text-primary">Approach</span>
+          {/* Right Copy */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="inline-flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
+              <span className="font-mono-geist text-[12px] uppercase text-[#00C5C8] tracking-wider">
+                CUSTOMER CENTRIC APPROACH
+              </span>
+            </div>
+            <h2 className="font-geist text-heading-lg text-[#eeeeee] tracking-tight">
+              Customer-centric software engineering
             </h2>
-            <p className="text-white/60 text-lg mb-10 leading-relaxed">
-              We prioritize understanding your specific business challenges. Every solution we build is tailored 
-              to your audience, ensuring maximum engagement and return on investment.
+            <p className="font-geist text-[16px] text-[#8292b4] leading-relaxed">
+              We prioritize understanding your specific business challenges. Every solution we build is tailored to your audience, ensuring maximum engagement and return on investment.
             </p>
-            
-            <div className="space-y-5">
-              {['Quality Assurance', 'Timely Delivery', 'Expert Support', 'Scalable Solutions', 'Innovative Designs'].map((text, i) => (
-                <div key={i} className="flex items-center gap-4 text-white/80 group">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-hairline-cyan group-hover:bg-primary group-hover:text-canvas transition-all">
-                    <Check size={14} />
-                  </div>
-                  <span className="font-medium tracking-tight">{text}</span>
+
+            <div className="space-y-3 font-mono-geist text-[13px] text-[#eeeeee]">
+              {[
+                'Quality Assurance & Rigorous Testing',
+                'On-Time Delivery & Clear Milestones',
+                '24/7 Expert Support & Maintenance',
+                'Scalable Infrastructure Built for Growth',
+                'Customized UI/UX & Modern Web Standards',
+              ].map((text, i) => (
+                <div key={i} className="flex items-center gap-3 border border-[#1b294b] bg-[#080d1f] p-3 rounded-[3px]">
+                  <Check size={14} className="text-[#00C5C8] shrink-0" />
+                  <span>{text}</span>
                 </div>
               ))}
             </div>
-
-            <button className="mt-12 group flex items-center gap-3 text-white font-bold hover:text-primary transition-all duration-300">
-              Explore Our Process <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
-            </button>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Testimonial Section - Dual Marquee Layout */}
-      <section className="py-32 relative overflow-hidden bg-linear-to-b from-canvas via-surface/30 to-canvas">
-        <div className="flex flex-col gap-6 relative z-10">
-          
-          {/* Row 1 (Scrolling Left) */}
-          <div className="flex overflow-hidden">
-            <motion.div
-              className="flex min-w-max"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            >
-              {/* Duplicating the array multiple times to ensure smooth infinite scroll */}
-              {[...testimonials, ...testimonials, ...testimonials, ...testimonials].map((t, i) => (
-                <TestimonialCard key={`row1-${i}`} testimonial={t} />
-              ))}
-            </motion.div>
+      {/* Testimonials */}
+      <section className="py-[96px] bg-[#050a1a] border-t border-[#1b294b] max-w-[1200px] mx-auto px-6">
+        <div className="text-center max-w-[700px] mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
+            <span className="font-mono-geist text-[12px] uppercase text-[#8292b4] tracking-[0.15em]">
+              VERIFIED CLIENT REVIEWS
+            </span>
           </div>
+          <h2 className="font-geist text-heading-lg text-[#eeeeee] tracking-tight">
+            What business leaders say
+          </h2>
+        </div>
 
-          {/* Row 2 (Scrolling Right) */}
-          <div className="flex overflow-hidden mt-2">
-            <motion.div
-              className="flex min-w-max"
-              animate={{ x: ["-50%", "0%"] }}
-              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            >
-              {[...testimonials, ...testimonials, ...testimonials, ...testimonials].map((t, i) => (
-                <TestimonialCard key={`row2-${i}`} testimonial={t} />
-              ))}
-            </motion.div>
-          </div>
-
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((t, idx) => (
+            <div key={idx} className="border border-[#1b294b] rounded-[10px] p-6 bg-[#080d1f] text-[#eeeeee] flex flex-col justify-between shadow-2xl">
+              <div className="space-y-4">
+                <div className="flex gap-1 text-[#00C5C8]">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star key={s} size={14} fill="#00C5C8" />
+                  ))}
+                </div>
+                <blockquote className="font-geist text-[15px] leading-relaxed text-[#eeeeee]">
+                  &quot;{t.text}&quot;
+                </blockquote>
+              </div>
+              <div className="pt-4 border-t border-[#1b294b] mt-6">
+                <div className="font-geist text-[14px] font-medium text-[#eeeeee]">{t.name}</div>
+                <div className="font-mono-geist text-[11px] text-[#8292b4] uppercase">{t.role}</div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
