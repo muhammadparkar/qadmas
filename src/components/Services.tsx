@@ -1,121 +1,41 @@
 import { useState } from 'react';
-import { Code2, Building2, Globe, Smartphone, BarChart3, Settings, Server, ArrowRight } from 'lucide-react';
+import { BarChart3, Globe, Building2, Settings, ArrowRight } from 'lucide-react';
 import ContactModal from './ContactModal';
 
 export default function Services() {
-  const [selectedFeature, setSelectedFeature] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeQuoteService, setActiveQuoteService] = useState('');
 
   const features = [
     {
-      id: 'software-dev',
-      label: 'Software Development',
-      title: 'Custom Software Tailored to Your Business',
-      quoteService: 'Custom Software Development',
-      desc: 'Transform your business processes with custom software engineering. Built for scalability, performance, security, and long-term reliability.',
-      icon: Code2,
-      metrics: [
-        { name: 'DELIVERY RATE', val: '100%', trend: 'positive', color: '#0066cc' },
-        { name: 'CODE TEST COVERAGE', val: '99.4%', trend: 'positive', color: '#0066cc' },
-        { name: 'TECH STACK', val: 'REACT · NODE · RUST', trend: 'neutral', color: '#707070' },
-      ],
-      codeSnippet: `// Qadmas Custom Software Architecture Module
-const qadmasEngine = new QadmasCore({
-  cluster: "production-uae",
-  microservices: ["auth", "billing", "fleet-tracker"],
-  securityLevel: "zero-trust"
-});
-await qadmasEngine.deploy(); // Deployed in 412ms`,
-    },
-    {
-      id: 'enterprise-erp',
-      label: 'Enterprise Solutions',
-      title: 'Enterprise CRM, ERP & Workflow Automation',
-      quoteService: 'Enterprise CRM / ERP Solutions',
-      desc: 'Streamline operations using custom CRM and ERP tools. Manage inventory, automate client billing, and gain actionable business intelligence.',
-      icon: Building2,
-      metrics: [
-        { name: 'WORKFLOW SPEED', val: '+300%', trend: 'positive', color: '#0066cc' },
-        { name: 'INVENTORY PRECISION', val: '99.9%', trend: 'neutral', color: '#707070' },
-        { name: 'ERROR REDUCTION', val: '-95%', trend: 'positive', color: '#0066cc' },
-      ],
-      codeSnippet: `$ qadmas erp sync --module=inventory --location="Dubai Warehouse"
-✓ 14,200 Stock SKUs synchronized with real-time trading portal
-[AUTOMATION] Monthly financial report generated for executive review`,
-    },
-    {
-      id: 'website-dev',
-      label: 'Website Development',
-      title: 'High-Performing Custom Websites & Platforms',
-      quoteService: 'Custom Website Development',
-      desc: 'Crafting modern, mobile-first, responsive websites using React, Next.js, WordPress, and Shopify that convert visitors into loyal clients.',
-      icon: Globe,
-      metrics: [
-        { name: 'PAGE SPEED SCORE', val: '99 / 100', trend: 'positive', color: '#0066cc' },
-        { name: 'SEO PERFORMANCE', val: 'TOP 3 RANK', trend: 'positive', color: '#0066cc' },
-        { name: 'CONVERSION INCREASE', val: '+60%', trend: 'neutral', color: '#0066cc' },
-      ],
-      codeSnippet: `$ qadmas web build --target=production --seo-optimized
-✓ SSR rendered across 42 global edge regions in 12ms
-[PERFORMANCE] Core Web Vitals: LCP 0.8s, FID 4ms, CLS 0.00`,
-    },
-    {
-      id: 'mobile-app',
-      label: 'Application Development',
-      title: 'Cross-Platform Mobile Apps (iOS & Android)',
-      quoteService: 'Mobile Application Development (iOS/Android)',
-      desc: 'Deliver seamless mobile experiences using Flutter, React Native, and Kotlin with intuitive UI/UX and real-time backend sync.',
-      icon: Smartphone,
-      metrics: [
-        { name: 'PLATFORMS', val: 'iOS + ANDROID', trend: 'neutral', color: '#707070' },
-        { name: 'APP CRASH RATE', val: '0.001%', trend: 'positive', color: '#0066cc' },
-        { name: 'STORE APPROVAL', val: '100% PASS', trend: 'positive', color: '#0066cc' },
-      ],
-      codeSnippet: `// Qadmas Cross-Platform Flutter / React Native App
-import { QadmasMobileSDK } from '@qadmas/mobile';
-
-QadmasMobileSDK.initialize({
-  pushNotifications: true,
-  offlineSync: true,
-  biometrics: true
-});`,
-    },
-    {
       id: 'digital-marketing',
       label: 'Digital Marketing',
-      title: 'Data-Driven Digital Marketing & SEO Growth',
       quoteService: 'Digital Marketing & SEO Growth',
-      desc: 'Boost your brand visibility, reach qualified leads, and dominate search engines with our targeted SEO, PPC, and social media campaigns.',
+      desc: 'Boost your brand visibility, reach qualified leads, and dominate search engines with targeted SEO, PPC, and social media campaigns.',
       icon: BarChart3,
-      metrics: [
-        { name: 'ORGANIC TRAFFIC', val: '+240%', trend: 'positive', color: '#0066cc' },
-        { name: 'LEAD GENERATION', val: '5,000+ / mo', trend: 'positive', color: '#0066cc' },
-        { name: 'ROAS', val: '4.8X', trend: 'positive', color: '#0066cc' },
-      ],
-      codeSnippet: `$ qadmas campaign audit --market="UAE & Qatar"
-[ANALYTICS] Impression volume: 1.2M impressions
-[CONVERSION] High-intent business inquiries increased by 240%`,
     },
     {
-      id: 'it-support',
-      label: 'IT Support & Maintenance',
-      title: '24/7 Managed IT Support & Infrastructure',
-      quoteService: 'IT Support & Maintenance',
-      desc: 'Ensure smooth business operations with 24/7 technical support, server monitoring, cloud backups, and proactive threat mitigation.',
+      id: 'web-apps-dev',
+      label: 'Web/Apps Development',
+      quoteService: 'Web & App Development',
+      desc: 'Modern, mobile-first websites and cross-platform apps built with React, Next.js, Flutter, and React Native that convert and scale.',
+      icon: Globe,
+    },
+    {
+      id: 'ai-crm',
+      label: 'AI Automated CRM',
+      quoteService: 'AI Automated CRM',
+      desc: 'Intelligent, self-updating CRM workflows that qualify leads, automate follow-ups, and surface insights in real time.',
+      icon: Building2,
+    },
+    {
+      id: 'erp',
+      label: 'Pre Built / Custom Built ERP',
+      quoteService: 'Pre Built / Custom Built ERP',
+      desc: 'Launch fast with a pre-built ERP or go fully custom — inventory, billing, and operations unified in one platform.',
       icon: Settings,
-      metrics: [
-        { name: 'SUPPORT SLA', val: '< 15 MINS', trend: 'positive', color: '#0066cc' },
-        { name: 'SYSTEM UPTIME', val: '99.99%', trend: 'neutral', color: '#707070' },
-        { name: 'MONITORING', val: '24 / 7 / 365', trend: 'positive', color: '#0066cc' },
-      ],
-      codeSnippet: `$ qadmas status --cluster=qatar-datacenter
-● qadmas-monitoring.service - Active (Running)
-✓ Zero server downtime recorded in last 365 days.`,
     },
   ];
-
-  const current = features[selectedFeature];
 
   const handleRequestQuote = (serviceName: string) => {
     setActiveQuoteService(serviceName);
@@ -128,101 +48,46 @@ QadmasMobileSDK.initialize({
         {/* Header */}
         <div className="mb-16">
           <h2 className="font-geist text-heading-lg text-ink tracking-tight mb-4 max-w-[750px]">
-            Comprehensive Solutions for Your Digital Needs
+            Comprehensive Solutions for<br /><span className="text-apple-blue">Your Digital Needs</span>
           </h2>
           <p className="font-geist text-[16px] text-slate max-w-[620px]">
             We combine technical engineering with strategic execution to build software, websites, and enterprise systems that scale.
           </p>
         </div>
 
-        {/* 2-Column Split: Selector List & Terminal Preview */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column Navigation List */}
-          <div className="lg:col-span-4 space-y-1">
-            {features.map((item, idx) => {
-              const isSelected = selectedFeature === idx;
-              const Icon = item.icon;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => setSelectedFeature(idx)}
-                  className={`w-full text-left px-4 py-3 rounded-[3px] border transition-colors flex items-center justify-between font-mono-geist text-[12px] uppercase tracking-wider ${
-                    isSelected
-                      ? 'bg-studio-mist border-hairline-silver text-apple-blue'
-                      : 'bg-transparent border-transparent text-slate hover:text-ink hover:bg-studio-mist/50'
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <Icon size={14} className={isSelected ? 'text-apple-blue' : 'text-slate'} />
-                    <span>{item.label}</span>
-                  </div>
-                  {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-apple-blue" />}
-                </button>
-              );
-            })}
-          </div>
+        {/* Grid with shared hairline dividers */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-hairline-silver">
+          {features.map((item) => {
+            const Icon = item.icon;
 
-          {/* Right Column Interactive Console */}
-          <div className="lg:col-span-8 border border-hairline-silver rounded-[10px] bg-gallery-white p-6 space-y-6">
-            {/* Card Header */}
-            <div className="border-b border-hairline-silver pb-4 flex items-start justify-between">
-              <div>
-                <div className="font-mono-geist text-[12px] uppercase text-apple-blue tracking-wider mb-1">
-                  SERVICE // {current.label}
-                </div>
-                <h3 className="font-geist text-[24px] text-ink font-normal leading-tight">
-                  {current.title}
+            return (
+              <div key={item.id} className="group border-r border-b border-hairline-silver p-8">
+                <Icon size={22} className="text-apple-blue mb-4" />
+
+                <h3 className="font-geist text-[18px] text-ink font-medium leading-tight mb-2">
+                  {item.label}
                 </h3>
+
+                <p className="font-geist text-[13px] text-slate leading-relaxed mb-4">
+                  {item.desc}
+                </p>
+
+                <button
+                  onClick={() => handleRequestQuote(item.quoteService)}
+                  className="inline-flex items-center gap-1.5 font-geist text-[14px] font-medium text-apple-blue"
+                >
+                  <span>Get a Quote</span>
+                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                </button>
               </div>
-              <Server size={20} className="text-apple-blue mt-1" />
-            </div>
-
-            <p className="font-geist text-[15px] text-slate leading-relaxed">
-              {current.desc}
-            </p>
-
-            {/* Metric Tiles Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-              {current.metrics.map((m, idx) => (
-                <div key={idx} className="border border-hairline-silver rounded-[3px] p-3 bg-gallery-white">
-                  <div className="font-mono-geist text-[11px] uppercase text-slate tracking-tight mb-1">
-                    {m.name}
-                  </div>
-                  <div className="font-geist text-[24px] text-ink font-normal tracking-tight" style={{ color: m.color }}>
-                    {m.val}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Code / Console Output Window */}
-            <div className="border border-hairline-silver rounded-[3px] bg-studio-mist p-4 font-mono-geist text-[12px] text-ink space-y-2">
-              <div className="text-slate text-[11px] border-b border-hairline-silver pb-2 flex justify-between">
-                <span>SYSTEM DISPATCH</span>
-                <span className="text-apple-blue">QADMAS CORE ENGINE</span>
-              </div>
-              <pre className="text-ink overflow-x-auto whitespace-pre-wrap font-mono-geist leading-relaxed">
-                {current.codeSnippet}
-              </pre>
-            </div>
-
-            {/* CTA Button Pre-selecting Service in Contact Form */}
-            <div className="pt-2">
-              <button
-                onClick={() => handleRequestQuote(current.quoteService)}
-                className="bg-pricing-blue text-white hover:bg-[#0077ed] font-geist text-[14px] font-medium px-6 py-3 rounded-[3px] transition-colors inline-flex items-center gap-2"
-              >
-                <span>Get a Quote for {current.label}</span>
-                <ArrowRight size={14} />
-              </button>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </section>
 
-      <ContactModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         defaultService={activeQuoteService}
       />
     </>

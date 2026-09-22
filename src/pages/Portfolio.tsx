@@ -144,7 +144,7 @@ export default function Portfolio() {
       <section className="relative pt-32 pb-20 px-6 max-w-[1200px] mx-auto text-center">
 
         <h1 className="font-geist text-display font-normal text-ink tracking-tight leading-none mb-6">
-          Our work speaks for itself
+          Our work <span className="text-apple-blue">speaks for itself</span>
         </h1>
 
         <p className="font-geist text-[16px] text-slate leading-relaxed max-w-[640px] mx-auto">

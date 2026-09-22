@@ -13,7 +13,7 @@ export default function Process() {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-hairline-silver pb-8">
           <div>
             <h3 className="font-geist text-[32px] md:text-[36px] text-ink font-normal leading-tight">
-              Measurable results for modern businesses
+              Measurable results for <span className="text-apple-blue">modern businesses</span>
             </h3>
           </div>
           <div className="font-mono-geist text-[12px] text-slate uppercase tracking-wider">

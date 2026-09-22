@@ -11,7 +11,7 @@ export default function Contact() {
       <section className="relative pt-32 pb-20 px-6 max-w-[1200px] mx-auto text-center">
 
         <h1 className="font-geist text-display font-normal text-ink tracking-tight leading-none mb-6">
-          Connect with our engineering team
+          Connect with our <span className="text-apple-blue">engineering team</span>
         </h1>
 
         <p className="font-geist text-[16px] text-slate leading-relaxed max-w-[640px] mx-auto">

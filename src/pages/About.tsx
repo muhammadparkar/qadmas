@@ -36,7 +36,7 @@ export default function About() {
         <div className="flex flex-col items-center text-center max-w-[800px] mx-auto mb-16">
 
           <h1 className="font-geist text-display text-ink tracking-tight leading-none mb-6">
-            Building digital solutions for the modern world
+            Building <span className="text-apple-blue">digital solutions</span> for the modern world
           </h1>
 
           <p className="font-geist text-[16px] text-slate leading-relaxed max-w-[640px] mb-8">
@@ -64,7 +64,7 @@ export default function About() {
           <div className="lg:col-span-7 space-y-6">
 
             <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-              A Message from Our Founder
+              A Message from <span className="text-apple-blue">Our Founder</span>
             </h2>
 
             <div className="space-y-4 font-geist text-[16px] text-slate leading-relaxed">
@@ -120,7 +120,7 @@ export default function About() {
           {/* Right Copy */}
           <div className="lg:col-span-6 space-y-6">
             <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-              Customer-centric software engineering
+              Customer-centric <span className="text-apple-blue">software engineering</span>
             </h2>
             <p className="font-geist text-[16px] text-slate leading-relaxed">
               We prioritize understanding your specific business challenges. Every solution we build is tailored to your audience, ensuring maximum engagement and return on investment.
@@ -148,7 +148,7 @@ export default function About() {
       <section className="py-[96px] bg-gallery-white border-t border-hairline-silver max-w-[1200px] mx-auto px-6">
         <div className="text-center max-w-[700px] mx-auto mb-16">
           <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-            What business leaders say
+            What <span className="text-apple-blue">business leaders</span> say
           </h2>
         </div>
 

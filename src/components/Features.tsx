@@ -1,70 +1,31 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Code2, Database, Smartphone, BarChart3, Building2, Settings, ShieldCheck, Globe } from 'lucide-react';
+import { Award, Zap, ShieldCheck, Headset } from 'lucide-react';
 
 export default function Features() {
-  const capabilities = [
+  const stat = { value: '100+', label: 'Projects delivered' };
+
+  const reasons = [
     {
-      icon: Code2,
-      label: 'CUSTOM ARCHITECTURE',
-      title: 'Scalable software engineering',
-      desc: 'Bespoke web and software systems engineered for high concurrency, security, and long-term reliability.',
-      codeSnippet: 'qadmas build --target=production',
-    },
-    {
-      icon: Database,
-      label: 'DATABASE & API OPTIMIZATION',
-      title: 'High-speed data pipelines',
-      desc: 'Optimized PostgreSQL, MongoDB, and gRPC backend endpoints with sub-millisecond query latency.',
-      codeSnippet: 'qadmas db optimize --cluster=uae',
-    },
-    {
-      icon: Smartphone,
-      label: 'MOBILE APP DEVELOPMENT',
-      title: 'Native iOS & Android apps',
-      desc: 'Cross-platform mobile applications built using Flutter, React Native, and Kotlin with offline sync.',
-      codeSnippet: 'qadmas mobile release --store=all',
-    },
-    {
-      icon: BarChart3,
-      label: 'SEO & ANALYTICS',
-      title: 'Data-driven digital marketing',
-      desc: 'Dominate search engines and attract high-converting leads with targeted SEO and PPC campaigns.',
-      codeSnippet: 'qadmas seo audit --domain=client.com',
-    },
-    {
-      icon: Building2,
-      label: 'ENTERPRISE ERP & CRM',
-      title: 'Workflow & inventory automation',
-      desc: 'Streamline business operations, automate invoicing, and connect multi-warehouse inventory seamlessly.',
-      codeSnippet: 'qadmas erp sync --warehouse=main',
-    },
-    {
-      icon: Settings,
-      label: '24/7 IT MAINTENANCE',
-      title: 'Managed cloud & server support',
-      desc: 'Round-the-clock technical monitoring, automated backups, and instant incident response SLAs.',
-      codeSnippet: 'qadmas monitor status --sla=24/7',
+      icon: Zap,
+      title: 'Speed without shortcuts',
+      desc: 'Agile delivery cycles and zero-downtime deployments mean you see working software in weeks, not quarters.',
     },
     {
       icon: ShieldCheck,
-      label: 'CYBERSECURITY & AUDITING',
-      title: 'Zero-trust security protection',
-      desc: 'Enterprise-grade encryption, SSL auditing, and hardware credential protection for your systems.',
-      codeSnippet: 'qadmas security audit --strict',
+      title: 'Built to enterprise standards',
+      desc: 'Zero-trust security, rigorous QA, and infrastructure engineered for high concurrency and long-term reliability.',
     },
     {
-      icon: Globe,
-      label: 'REGIONAL INFRASTRUCTURE',
-      title: 'Qatar, UAE & India operations',
-      desc: 'Turnkey cloud deployment, multi-region database setup, and IT integration across Qatar, UAE & India.',
-      codeSnippet: 'qadmas setup verify --region=gulf',
+      icon: Headset,
+      title: 'Support that stays local',
+      desc: '24/7 monitoring and a team on the ground across Qatar, UAE, and India — not a support ticket into the void.',
     },
   ];
 
   return (
     <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6">
       {/* Section Header */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -72,65 +33,58 @@ export default function Features() {
         className="mb-16 text-center max-w-[700px] mx-auto"
       >
         <h2 className="font-geist text-heading-lg text-ink tracking-tight mb-4">
-          Why businesses choose Qadmas Technologies
+          Why Businesses Choose<br /><span className="text-apple-blue">Qadmas Technologies</span>
         </h2>
         <p className="font-geist text-[16px] text-slate">
           We bring technical precision, speed, and clean modern design to every project.
         </p>
       </motion.div>
 
-      {/* 4x2 Card Grid with Gapless Dense Flow & Hover Physics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {capabilities.map((item, idx) => {
-          const Icon = item.icon;
-          return (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="card-dark group flex flex-col justify-between hover:border-apple-blue transition-colors cursor-pointer"
-            >
-              <div>
-                {/* Header Icon & Monospaced Eyebrow */}
-                <div className="flex items-center justify-between mb-4 border-b border-hairline-silver pb-3">
-                  <div className="w-8 h-8 rounded-[3px] bg-studio-mist border border-hairline-silver flex items-center justify-center text-apple-blue group-hover:scale-110 transition-transform">
-                    <Icon size={16} />
-                  </div>
-                  <span className="font-mono-geist text-[10px] uppercase text-slate tracking-wider truncate max-w-[120px]">
-                    {item.label}
-                  </span>
+      {/* Bento: filled stat tile + open cards */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="lg:col-span-2 rounded-[24px] bg-apple-blue text-white p-10 flex flex-col justify-between"
+        >
+          <Award size={28} className="text-white/80 mb-8" />
+          <div>
+            <div className="font-geist text-[56px] font-semibold tracking-tight leading-none mb-2">
+              {stat.value}
+            </div>
+            <div className="font-geist text-[16px] text-white/80">
+              {stat.label} for 50+ clients across the UAE, Qatar, and India — 99.8% satisfaction.
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {reasons.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.1 + idx * 0.05 }}
+                className="rounded-[24px] border border-hairline-silver p-6 flex flex-col justify-between"
+              >
+                <Icon size={20} className="text-apple-blue mb-4" />
+                <div>
+                  <h3 className="font-geist text-[16px] text-ink font-medium leading-snug mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="font-geist text-[13px] text-slate leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-
-                {/* Card Title */}
-                <h3 className="font-geist text-[18px] text-ink font-normal leading-snug mb-2 group-hover:text-apple-blue transition-colors">
-                  {item.title}
-                </h3>
-
-                {/* Card Description */}
-                <p className="font-geist text-[14px] text-slate leading-relaxed mb-6">
-                  {item.desc}
-                </p>
-              </div>
-
-              <div>
-                {/* Mini Code Terminal */}
-                <div className="bg-studio-mist border border-hairline-silver rounded-[3px] p-2.5 mb-4 font-mono-geist text-[11px] text-slate truncate">
-                  <span className="text-apple-blue">$ </span>
-                  {item.codeSnippet}
-                </div>
-
-                {/* Ghost Link Footer */}
-                <div className="pt-2 border-t border-hairline-silver flex items-center justify-between text-slate group-hover:text-apple-blue transition-colors font-geist text-[14px]">
-                  <span>Learn More</span>
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

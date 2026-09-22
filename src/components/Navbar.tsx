@@ -1,15 +1,29 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import ContactModal from './ContactModal';
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Pricing', href: '#pricing', isPricing: true },
   { label: 'About Us', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  {
+    label: 'Services',
+    href: '/services',
+    children: [
+      { label: 'Digital Marketing', href: '/services' },
+      { label: 'Web/Apps Development', href: '/services' },
+      { label: 'AI Automated CRM', href: '/services' },
+      { label: 'Pre Built / Custom Built ERP', href: '/services' },
+    ],
+  },
+  {
+    label: 'Products',
+    href: '/contact',
+    children: [
+      { label: 'Wantik-X (AI Automated CRM)', href: '/contact' },
+      { label: 'Sila — Vendor Management System', href: '/contact' },
+    ],
+  },
+  { label: 'Contact Us', href: '/contact' },
 ];
 
 export default function Navbar() {
@@ -17,7 +31,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     let ticking = false;
@@ -41,41 +54,7 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
-  // Smooth scroll to #pricing if hash matches or navigation targets pricing
-  useEffect(() => {
-    if (location.hash === '#pricing' || location.pathname === '/#pricing') {
-      setTimeout(() => {
-        const pricingEl = document.getElementById('pricing');
-        if (pricingEl) {
-          pricingEl.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 150);
-    }
-  }, [location]);
-
-  const handlePricingClick = (e: React.MouseEvent) => {
-    if (location.pathname === '/') {
-      e.preventDefault();
-      const pricingEl = document.getElementById('pricing');
-      if (pricingEl) {
-        pricingEl.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        window.location.hash = '#pricing';
-      }
-    } else {
-      e.preventDefault();
-      navigate('/');
-      setTimeout(() => {
-        const pricingEl = document.getElementById('pricing');
-        if (pricingEl) {
-          pricingEl.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 200);
-    }
-  };
-
   const isActive = (link: typeof navLinks[0]) => {
-    if (link.isPricing) return location.hash === '#pricing';
     return location.pathname === link.href;
   };
 
@@ -102,17 +81,34 @@ export default function Navbar() {
           <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
             {navLinks.map((link) => {
               const active = isActive(link);
-              const className = `ease-spring whitespace-nowrap rounded-full px-3.5 py-2 text-[13px] font-medium tracking-wide transition-all duration-300 ${
+              const className = `ease-spring whitespace-nowrap rounded-full px-3.5 py-2 text-[13px] font-medium tracking-wide transition-all duration-300 flex items-center gap-1 ${
                 active
                   ? 'bg-ink/[0.06] text-ink'
                   : 'text-slate hover:bg-ink/[0.04] hover:text-ink'
               }`;
 
-              if (link.isPricing) {
+              if (link.children) {
                 return (
-                  <a key={link.label} href="#pricing" onClick={handlePricingClick} className={className}>
-                    {link.label}
-                  </a>
+                  <div key={link.label} className="group relative">
+                    <Link to={link.href} className={className}>
+                      {link.label}
+                      <ChevronDown size={13} className="transition-transform duration-300 group-hover:rotate-180" />
+                    </Link>
+
+                    <div className="ease-spring invisible absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                      <div className="w-64 rounded-[14px] border border-hairline-silver bg-gallery-white p-1.5 ambient-lift">
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.label}
+                            to={child.href}
+                            className="block rounded-[10px] px-3.5 py-2.5 text-[13px] font-medium text-slate transition-colors hover:bg-ink/[0.04] hover:text-ink"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 );
               }
 
@@ -163,7 +159,7 @@ export default function Navbar() {
           menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
       >
-        <div className="flex flex-1 flex-col items-center justify-center gap-2">
+        <div className="flex flex-1 flex-col items-center justify-center gap-2 overflow-y-auto py-10">
           {navLinks.map((link, i) => {
             const className = `ease-spring block font-geist text-3xl font-semibold tracking-tight text-ink transition-all duration-300 hover:text-apple-blue ${
               menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
@@ -171,23 +167,29 @@ export default function Navbar() {
             const style = { transitionDelay: menuOpen ? `${100 + i * 60}ms` : '0ms' };
 
             return (
-              <div key={link.label} className="overflow-hidden">
-                {link.isPricing ? (
-                  <a
-                    href="#pricing"
-                    onClick={(e) => {
-                      setMenuOpen(false);
-                      handlePricingClick(e);
-                    }}
-                    className={className}
+              <div key={link.label} className="flex flex-col items-center overflow-hidden">
+                <Link to={link.href} onClick={() => setMenuOpen(false)} className={className} style={style}>
+                  {link.label}
+                </Link>
+
+                {link.children && (
+                  <div
+                    className={`ease-spring mt-1 flex flex-col items-center gap-1 transition-all duration-300 ${
+                      menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+                    }`}
                     style={style}
                   >
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link to={link.href} onClick={() => setMenuOpen(false)} className={className} style={style}>
-                    {link.label}
-                  </Link>
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.label}
+                        to={child.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="font-geist text-[15px] text-slate transition-colors hover:text-apple-blue"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
                 )}
               </div>
             );

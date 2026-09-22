@@ -95,7 +95,7 @@ export default function Integrations() {
     <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
       <div className="text-center max-w-[700px] mx-auto mb-16">
         <h2 className="font-geist text-heading-lg text-ink tracking-tight mb-4">
-          Powered by modern, battle-tested technologies
+          Powered by modern, <span className="text-apple-blue">battle-tested technologies</span>
         </h2>
         <p className="font-geist text-[16px] text-slate">
           We use industry-leading tools, frameworks, and vector-engineered technologies to ensure your software is fast, secure, and scalable.

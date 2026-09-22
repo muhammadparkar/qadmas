@@ -44,7 +44,7 @@ export default function Pricing() {
         {/* Section Header */}
         <div className="text-center max-w-[700px] mx-auto mb-16">
           <h2 className="font-geist text-heading-lg text-ink tracking-tight mb-4">
-            Transparent Pre-Built Packages (QR)
+            Transparent <span className="text-apple-blue">Pre-Built Packages</span> (QR)
           </h2>
           <p className="font-geist text-[16px] text-slate">
             Scale your digital capabilities with clear deliverables, zero hidden fees, and guaranteed SLAs in Qatari Riyal (QR).

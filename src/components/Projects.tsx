@@ -50,7 +50,7 @@ export default function Projects() {
       >
         <div>
           <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-            What We Have Built
+            What <span className="text-apple-blue">We Have Built</span>
           </h2>
         </div>
 

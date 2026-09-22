@@ -14,7 +14,7 @@ export default function FeaturedSystem({ onExploreClick }: FeaturedSystemProps) 
           {/* Left Text Copy */}
           <div className="lg:col-span-7 space-y-6">
             <h3 className="font-geist text-[36px] md:text-[44px] leading-[1.1] font-normal tracking-tight text-ink">
-              Empowering Your Business with Cutting-Edge Software Solutions
+              Empowering Your Business with <span className="text-apple-blue">Cutting-Edge Software Solutions</span>
             </h3>
 
             <p className="font-geist text-[16px] text-slate leading-[1.5] max-w-[560px]">

@@ -90,7 +90,7 @@ export default function Services() {
       <section className="relative pt-32 pb-20 px-6 max-w-[1200px] mx-auto text-center">
 
         <h1 className="font-geist text-display font-normal text-ink tracking-tight leading-none mb-6">
-          Our Provided Services
+          Our <span className="text-apple-blue">Provided Services</span>
         </h1>
 
         <p className="font-geist text-[16px] text-slate leading-relaxed max-w-[640px] mx-auto">
@@ -144,7 +144,7 @@ export default function Services() {
           <div className="lg:col-span-6 space-y-6">
 
             <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-              Delivering Excellence in Our Services
+              Delivering <span className="text-apple-blue">Excellence</span> in Our Services
             </h2>
 
             <p className="font-geist text-[16px] text-slate leading-relaxed">
@@ -172,7 +172,7 @@ export default function Services() {
           <div className="lg:col-span-6 space-y-6">
 
             <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-              Our Experienced Software Services & Wantik-X CRM
+              Our Experienced Software Services & <span className="text-apple-blue">Wantik-X CRM</span>
             </h2>
 
             <p className="font-geist text-[16px] text-slate leading-relaxed">
@@ -207,7 +207,7 @@ export default function Services() {
       <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
         <div className="text-center max-w-[700px] mx-auto mb-16">
           <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-            Answers to your software service questions
+            Answers to your <span className="text-apple-blue">software service</span> questions
           </h2>
         </div>
 

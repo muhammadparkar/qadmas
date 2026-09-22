@@ -13,7 +13,7 @@ export default function CTA() {
           <div className="relative z-10 space-y-6 flex flex-col items-center">
             {/* Headline */}
             <h2 className="font-geist text-[36px] md:text-[44px] leading-[1.1] font-normal tracking-tight text-ink max-w-[700px]">
-              Empowering your business with cutting-edge digital solutions.
+              Empowering your business with <span className="text-apple-blue">cutting-edge digital solutions</span>.
             </h2>
 
             {/* Subtitle */}

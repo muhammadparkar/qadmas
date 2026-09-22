@@ -31,17 +31,18 @@
   --radius-buttons: 3px;
   --radius-largepanels: 20px;
 
-  /* Dark tokens (Anvin-style) — names kept from the light pass, values flipped dark */
-  --color-gallery-white: #0a0d14;
-  --color-studio-mist: #11151d;
-  --color-paper-frost: #161a23;
-  --color-hairline-silver: #262b35;
-  --color-control-gray: #1c212b;
+  /* Dark tokens — names kept from the light pass, values from the warm-charcoal token set */
+  --color-gallery-white: #14161a;
+  --color-studio-mist: #191c21;
+  --color-paper-frost: #21252b;
+  --color-hairline-silver: #333941;
+  --color-control-gray: #2a2f36;
   --color-ink: #ececE2;
   --color-slate: #a9b0ba;
-  --color-steel: #6b7280;
+  --color-steel: #7c8590;
   --color-apple-blue: #5b9be8;
   --color-pricing-blue: #5b9be8;
+  --color-cyan: #2cc4d6;
 
   --font-sf-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-sf-text: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', ui-sans-serif, system-ui, sans-serif;
@@ -84,14 +85,14 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 68px;
-    background-color: #0a0d14;
+    background-color: #14161a;
     color: #ececE2;
   }
 
   body {
     font-family: var(--font-geist);
     font-weight: 400;
-    background-color: #0a0d14;
+    background-color: #14161a;
     color: #ececE2;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -137,7 +138,7 @@
   font-size: 36px;
   line-height: 1.1;
   letter-spacing: -0.0310em;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .text-heading-lg {
@@ -145,7 +146,7 @@
   font-size: 44px;
   line-height: 1.12;
   letter-spacing: -0.0250em;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .text-display {
@@ -153,7 +154,7 @@
   font-size: clamp(40px, 6vw, 72px);
   line-height: 1;
   letter-spacing: -0.0400em;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 /* ---- Buttons & Surface Utilities matching Qadmas Cyan Logo ---- */
@@ -164,7 +165,7 @@
   justify-content: center;
   gap: 8px;
   background-color: #5b9be8;
-  color: #0a0d14;
+  color: #14161a;
   border-radius: 9999px;
   padding: 8px 16px;
   font-family: var(--font-geist);
@@ -177,7 +178,7 @@
 }
 .btn-dark:hover {
   background-color: #79aeee;
-  color: #0a0d14;
+  color: #14161a;
 }
 
 /* Light / High-Emphasis Button */
@@ -186,7 +187,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: #11151d;
+  background-color: #191c21;
   color: #ececE2;
   border-radius: 9999px;
   padding: 8px 14px;
@@ -199,7 +200,7 @@
   white-space: nowrap;
 }
 .btn-light:hover {
-  background-color: #1c212b;
+  background-color: #2a2f36;
 }
 
 /* Ghost Text Link */
@@ -210,7 +211,7 @@
   gap: 8px;
   background-color: transparent;
   color: #ececE2;
-  border: 1px solid #6b7280;
+  border: 1px solid #7c8590;
   border-radius: 9999px;
   padding: 8px 14px;
   font-family: var(--font-geist);
@@ -227,7 +228,7 @@
 
 /* Light Card Surface */
 .card-light {
-  background-color: #11151d;
+  background-color: #191c21;
   color: #ececE2;
   border-radius: 28px;
   padding: 24px;
@@ -246,22 +247,22 @@
 
 /* Feature Card Surface */
 .card-dark {
-  background-color: #0a0d14;
-  border: 1px solid #262b35;
+  background-color: #14161a;
+  border: 1px solid #333941;
   border-radius: 28px;
   padding: 20px;
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 .card-dark:hover {
   border-color: #5b9be8;
-  background-color: #11151d;
+  background-color: #191c21;
 }
 
 /* Dashboard macOS Frame */
 .dashboard-frame {
-  background-color: #0a0d14;
+  background-color: #14161a;
   border-radius: 28px;
-  border: 1px solid #262b35;
+  border: 1px solid #333941;
   overflow: hidden;
 }
 
@@ -294,10 +295,10 @@
   height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #11151d;
+  background: #191c21;
 }
 ::-webkit-scrollbar-thumb {
-  background: #262b35;
+  background: #333941;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
