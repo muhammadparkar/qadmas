@@ -40,19 +40,13 @@ export default function Pricing() {
 
   return (
     <>
-      <section id="pricing" className="py-[96px] bg-[#050a1a] max-w-[1200px] mx-auto px-6 border-t border-[#1b294b]">
+      <section id="pricing" className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
         {/* Section Header */}
         <div className="text-center max-w-[700px] mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
-            <span className="font-mono-geist text-[12px] uppercase text-[#8292b4] tracking-[0.15em]">
-              OUR PRE-BUILT ERP/CRM SOLUTIONS
-            </span>
-          </div>
-          <h2 className="font-geist text-heading-lg text-[#eeeeee] tracking-tight mb-4">
+          <h2 className="font-geist text-heading-lg text-ink tracking-tight mb-4">
             Transparent Pre-Built Packages (QR)
           </h2>
-          <p className="font-geist text-[16px] text-[#8292b4]">
+          <p className="font-geist text-[16px] text-slate">
             Scale your digital capabilities with clear deliverables, zero hidden fees, and guaranteed SLAs in Qatari Riyal (QR).
           </p>
         </div>
@@ -62,17 +56,17 @@ export default function Pricing() {
           {plans.map((plan, idx) => (
             <div
               key={idx}
-              className={`border border-[#1b294b] rounded-[10px] p-8 bg-[#080d1f] text-[#eeeeee] flex flex-col justify-between relative overflow-hidden transition-all duration-150 hover:border-[#00C5C8] ${
-                plan.popular ? 'border-2 border-[#00C5C8] bg-[#0c1228]' : ''
+              className={`border border-hairline-silver rounded-[10px] p-8 bg-gallery-white text-ink flex flex-col justify-between relative overflow-hidden transition-all duration-150 hover:border-apple-blue ${
+                plan.popular ? 'border-2 border-apple-blue bg-studio-mist' : ''
               }`}
             >
               <div className="relative z-10 space-y-6">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono-geist text-[12px] uppercase tracking-wider text-[#00C5C8] font-medium">
+                  <span className="font-mono-geist text-[12px] uppercase tracking-wider text-apple-blue font-medium">
                     {plan.name}
                   </span>
                   {plan.popular && (
-                    <span className="font-mono-geist text-[11px] uppercase bg-[#00C5C8] text-[#050a1a] font-medium px-2 py-0.5 rounded-[3px]">
+                    <span className="font-mono-geist text-[11px] uppercase bg-pricing-blue text-white font-medium px-2 py-0.5 rounded-[3px]">
                       RECOMMENDED
                     </span>
                   )}
@@ -80,23 +74,23 @@ export default function Pricing() {
 
                 <div>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-geist text-[38px] font-normal tracking-tight text-[#eeeeee]">
+                    <span className="font-geist text-[38px] font-normal tracking-tight text-ink">
                       {plan.price}
                     </span>
-                    <span className="font-geist text-[15px] text-[#8292b4]">
+                    <span className="font-geist text-[15px] text-slate">
                       {plan.period}
                     </span>
                   </div>
-                  <p className="font-geist text-[14px] text-[#8292b4] mt-2 leading-relaxed">
+                  <p className="font-geist text-[14px] text-slate mt-2 leading-relaxed">
                     {plan.desc}
                   </p>
                 </div>
               </div>
 
-              <div className="relative z-10 pt-8 mt-6 border-t border-[#1b294b]">
+              <div className="relative z-10 pt-8 mt-6 border-t border-hairline-silver">
                 <button
                   onClick={() => handleGetPricing(plan.packageName)}
-                  className="w-full bg-[#00C5C8] text-[#050a1a] hover:bg-[#24dcdb] font-geist text-[14px] font-medium py-3 rounded-[3px] transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-pricing-blue text-white hover:bg-[#0077ed] font-geist text-[14px] font-medium py-3 rounded-[3px] transition-colors flex items-center justify-center gap-2"
                 >
                   <span>Get Pricing</span>
                   <ArrowRight size={14} />

@@ -151,50 +151,43 @@ export default function PortfolioDetail() {
   const data = portfolioDetails[id || ""] || portfolioDetails["website-development"];
 
   return (
-    <div className="bg-[#050a1a] min-h-screen text-[#eeeeee] font-geist selection:bg-[#00C5C8] selection:text-[#050a1a]">
+    <div className="bg-gallery-white min-h-screen text-ink font-geist selection:bg-apple-blue selection:text-white">
       <Navbar />
 
       {/* Hero Header */}
       <section className="relative pt-32 pb-20 px-6 max-w-[1200px] mx-auto text-center">
         <Link 
           to="/portfolio" 
-          className="inline-flex items-center gap-2 text-[#8292b4] hover:text-[#00C5C8] transition-colors mb-6 font-mono-geist text-[12px] uppercase"
+          className="inline-flex items-center gap-2 text-slate hover:text-apple-blue transition-colors mb-6 font-mono-geist text-[12px] uppercase"
         >
           <ArrowRight size={14} className="rotate-180" />
           <span>Back to All Work</span>
         </Link>
 
-        <h1 className="font-geist text-display font-normal text-[#eeeeee] tracking-tight leading-none mb-4">
+        <h1 className="font-geist text-display font-normal text-ink tracking-tight leading-none mb-4">
           {data.title}
         </h1>
 
-        <p className="font-geist text-[16px] text-[#8292b4] max-w-[620px] mx-auto leading-relaxed">
+        <p className="font-geist text-[16px] text-slate max-w-[620px] mx-auto leading-relaxed">
           {data.categoryDesc}
         </p>
       </section>
 
       {/* Projects List */}
-      <section className="py-[96px] bg-[#050a1a] max-w-[1200px] mx-auto px-6 border-t border-[#1b294b]">
+      <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
         <div className="space-y-20">
           {data.projects.map((project) => (
             <div key={project.id} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <div className="lg:col-span-8 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0c1228] border border-[#1b294b] rounded-[3px]">
-                  <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
-                  <span className="font-mono-geist text-[11px] uppercase text-[#00C5C8] tracking-wider">
-                    {project.details.category}
-                  </span>
-                </div>
-                
-                <h2 className="font-geist text-[28px] md:text-[34px] text-[#eeeeee] leading-tight font-normal">
+                <h2 className="font-geist text-[28px] md:text-[34px] text-ink leading-tight font-normal">
                   {project.title}
                 </h2>
 
-                <p className="font-geist text-[16px] text-[#8292b4] leading-relaxed">
+                <p className="font-geist text-[16px] text-slate leading-relaxed">
                   {project.desc}
                 </p>
 
-                <div className="border border-[#1b294b] rounded-[10px] bg-[#080d1f] p-4 shadow-2xl">
+                <div className="border border-hairline-silver rounded-[10px] bg-gallery-white p-4 shadow-2xl">
                   <img 
                     src={project.image} 
                     alt={project.title} 
@@ -207,10 +200,10 @@ export default function PortfolioDetail() {
               </div>
 
               {/* Right Side: Details Card */}
-              <div className="lg:col-span-4 border border-[#1b294b] rounded-[10px] p-8 bg-[#080d1f] text-[#eeeeee] space-y-6 shadow-2xl">
-                <div className="flex items-center gap-2 border-b border-[#1b294b] pb-3">
-                  <Terminal size={16} className="text-[#00C5C8]" />
-                  <span className="font-mono-geist text-[12px] uppercase font-medium text-[#00C5C8]">PROJECT DETAILS</span>
+              <div className="lg:col-span-4 border border-hairline-silver rounded-[10px] p-8 bg-gallery-white text-ink space-y-6 shadow-2xl">
+                <div className="flex items-center gap-2 border-b border-hairline-silver pb-3">
+                  <Terminal size={16} className="text-apple-blue" />
+                  <span className="font-mono-geist text-[12px] uppercase font-medium text-apple-blue">PROJECT DETAILS</span>
                 </div>
 
                 <div className="space-y-4 font-mono-geist text-[12px]">
@@ -219,9 +212,9 @@ export default function PortfolioDetail() {
                     { label: "CATEGORY", val: project.details.category },
                     { label: "OPERATING REGION", val: project.details.region },
                   ].map((detail, j) => (
-                    <div key={j} className="border-b border-[#1b294b] pb-2">
-                      <div className="text-[#eeeeee] font-medium">{detail.val}</div>
-                      <div className="text-[#8292b4] text-[10px] uppercase">{detail.label}</div>
+                    <div key={j} className="border-b border-hairline-silver pb-2">
+                      <div className="text-ink font-medium">{detail.val}</div>
+                      <div className="text-slate text-[10px] uppercase">{detail.label}</div>
                     </div>
                   ))}
                 </div>
@@ -232,12 +225,12 @@ export default function PortfolioDetail() {
       </section>
 
       {/* Highlights */}
-      <section className="py-[96px] bg-[#050a1a] max-w-[1200px] mx-auto px-6 border-t border-[#1b294b]">
-        <h3 className="font-geist text-heading text-[#eeeeee] mb-8">Category Technical Benchmarks</h3>
+      <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
+        <h3 className="font-geist text-heading text-ink mb-8">Category Technical Benchmarks</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono-geist text-[13px]">
           {data.highlights.map((h, i) => (
-            <div key={i} className="flex items-center gap-3 border border-[#1b294b] bg-[#080d1f] p-4 rounded-[3px] text-[#eeeeee]">
-              <Check size={14} className="text-[#00C5C8]" />
+            <div key={i} className="flex items-center gap-3 border border-hairline-silver bg-gallery-white p-4 rounded-[3px] text-ink">
+              <Check size={14} className="text-apple-blue" />
               <span>{h}</span>
             </div>
           ))}

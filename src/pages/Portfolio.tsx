@@ -137,44 +137,38 @@ const bottomCategories = [
 
 export default function Portfolio() {
   return (
-    <div className="bg-[#050a1a] min-h-screen font-geist text-[#eeeeee] selection:bg-[#00C5C8] selection:text-[#050a1a]">
+    <div className="bg-gallery-white min-h-screen font-geist text-ink selection:bg-apple-blue selection:text-white">
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6 max-w-[1200px] mx-auto text-center">
-        <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-[#0c1228] border border-[#1b294b] rounded-[3px]">
-          <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
-          <span className="font-mono-geist text-[12px] uppercase text-[#00C5C8] tracking-wider">
-            PORTFOLIO & CASE STUDIES
-          </span>
-        </div>
 
-        <h1 className="font-geist text-display font-normal text-[#eeeeee] tracking-tight leading-none mb-6">
+        <h1 className="font-geist text-display font-normal text-ink tracking-tight leading-none mb-6">
           Our work speaks for itself
         </h1>
 
-        <p className="font-geist text-[16px] text-[#8292b4] leading-relaxed max-w-[640px] mx-auto">
+        <p className="font-geist text-[16px] text-slate leading-relaxed max-w-[640px] mx-auto">
           Explore production deployments, system benchmarks, and enterprise software built for leading companies across UAE, Qatar, India, and globally.
         </p>
       </section>
 
       {/* Portfolio Grid */}
-      <section className="py-[96px] bg-[#050a1a] max-w-[1200px] mx-auto px-6 border-t border-[#1b294b] space-y-6">
+      <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver space-y-6">
         {/* Top 3 Cards Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {topCategories.map((cat, i) => {
             const Icon = cat.icon;
             return (
               <Link key={i} to={`/portfolio/${cat.id}`}>
-                <div className="card-dark group flex flex-col justify-between hover:border-[#00C5C8] transition-colors h-[350px]">
+                <div className="card-dark group flex flex-col justify-between hover:border-apple-blue transition-colors h-[350px]">
                   <div>
-                    <div className="w-10 h-10 rounded-[3px] bg-[#0c1228] border border-[#1b294b] flex items-center justify-center text-[#00C5C8] mb-6 group-hover:scale-105 transition-transform">
+                    <div className="w-10 h-10 rounded-[3px] bg-studio-mist border border-hairline-silver flex items-center justify-center text-apple-blue mb-6 group-hover:scale-105 transition-transform">
                       <Icon />
                     </div>
-                    <h3 className="font-geist text-[20px] text-[#eeeeee] font-normal mb-3 group-hover:text-[#00C5C8] transition-colors">
+                    <h3 className="font-geist text-[20px] text-ink font-normal mb-3 group-hover:text-apple-blue transition-colors">
                       {cat.title}
                     </h3>
-                    <p className="font-geist text-[14px] text-[#8292b4] leading-relaxed mb-4">
+                    <p className="font-geist text-[14px] text-slate leading-relaxed mb-4">
                       {cat.desc}
                     </p>
 
@@ -183,7 +177,7 @@ export default function Portfolio() {
                       {cat.techStack.map((tech, tIdx) => (
                         <span 
                           key={tIdx} 
-                          className="font-mono-geist text-[10px] uppercase bg-[#0c1228] text-[#00C5C8] border border-[#1b294b] px-2.5 py-1 rounded-[3px] flex items-center gap-1.5"
+                          className="font-mono-geist text-[10px] uppercase bg-studio-mist text-apple-blue border border-hairline-silver px-2.5 py-1 rounded-[3px] flex items-center gap-1.5"
                         >
                           {renderTechBadgeIcon(tech)}
                           <span>{tech}</span>
@@ -192,7 +186,7 @@ export default function Portfolio() {
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-[#1b294b] flex items-center justify-between text-[#8292b4] group-hover:text-[#00C5C8] transition-colors font-geist text-[14px]">
+                  <div className="pt-3 border-t border-hairline-silver flex items-center justify-between text-slate group-hover:text-apple-blue transition-colors font-geist text-[14px]">
                     <span className="flex items-center gap-2">
                       Inspect Projects <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </span>
@@ -210,15 +204,15 @@ export default function Portfolio() {
             const Icon = cat.icon;
             return (
               <Link key={i} to={`/portfolio/${cat.id}`}>
-                <div className="card-dark group flex flex-col justify-between hover:border-[#00C5C8] transition-colors h-[350px]">
+                <div className="card-dark group flex flex-col justify-between hover:border-apple-blue transition-colors h-[350px]">
                   <div>
-                    <div className="w-10 h-10 rounded-[3px] bg-[#0c1228] border border-[#1b294b] flex items-center justify-center text-[#00C5C8] mb-6 group-hover:scale-105 transition-transform">
+                    <div className="w-10 h-10 rounded-[3px] bg-studio-mist border border-hairline-silver flex items-center justify-center text-apple-blue mb-6 group-hover:scale-105 transition-transform">
                       <Icon />
                     </div>
-                    <h3 className="font-geist text-[20px] text-[#eeeeee] font-normal mb-3 group-hover:text-[#00C5C8] transition-colors">
+                    <h3 className="font-geist text-[20px] text-ink font-normal mb-3 group-hover:text-apple-blue transition-colors">
                       {cat.title}
                     </h3>
-                    <p className="font-geist text-[14px] text-[#8292b4] leading-relaxed mb-4">
+                    <p className="font-geist text-[14px] text-slate leading-relaxed mb-4">
                       {cat.desc}
                     </p>
 
@@ -227,7 +221,7 @@ export default function Portfolio() {
                       {cat.techStack.map((tech, tIdx) => (
                         <span 
                           key={tIdx} 
-                          className="font-mono-geist text-[10px] uppercase bg-[#0c1228] text-[#00C5C8] border border-[#1b294b] px-2.5 py-1 rounded-[3px] flex items-center gap-1.5"
+                          className="font-mono-geist text-[10px] uppercase bg-studio-mist text-apple-blue border border-hairline-silver px-2.5 py-1 rounded-[3px] flex items-center gap-1.5"
                         >
                           {renderTechBadgeIcon(tech)}
                           <span>{tech}</span>
@@ -236,7 +230,7 @@ export default function Portfolio() {
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-[#1b294b] flex items-center justify-between text-[#8292b4] group-hover:text-[#00C5C8] transition-colors font-geist text-[14px]">
+                  <div className="pt-3 border-t border-hairline-silver flex items-center justify-between text-slate group-hover:text-apple-blue transition-colors font-geist text-[14px]">
                     <span className="flex items-center gap-2">
                       Inspect Projects <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </span>

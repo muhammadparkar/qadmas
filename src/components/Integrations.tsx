@@ -92,18 +92,12 @@ export default function Integrations() {
   ];
 
   return (
-    <section className="py-[96px] bg-[#050a1a] max-w-[1200px] mx-auto px-6 border-t border-[#1b294b]">
+    <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
       <div className="text-center max-w-[700px] mx-auto mb-16">
-        <div className="inline-flex items-center gap-2 mb-3">
-          <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
-          <span className="font-mono-geist text-[12px] uppercase text-[#8292b4] tracking-[0.15em]">
-            OUR TECH STACK
-          </span>
-        </div>
-        <h2 className="font-geist text-heading-lg text-[#eeeeee] tracking-tight mb-4">
+        <h2 className="font-geist text-heading-lg text-ink tracking-tight mb-4">
           Powered by modern, battle-tested technologies
         </h2>
-        <p className="font-geist text-[16px] text-[#8292b4]">
+        <p className="font-geist text-[16px] text-slate">
           We use industry-leading tools, frameworks, and vector-engineered technologies to ensure your software is fast, secure, and scalable.
         </p>
       </div>
@@ -114,15 +108,15 @@ export default function Integrations() {
           return (
             <div
               key={idx}
-              className="border border-[#1b294b] rounded-[6px] p-4 bg-[#080d1f] hover:border-[#00C5C8] transition-colors flex flex-col items-center text-center group cursor-pointer"
+              className="border border-hairline-silver rounded-[6px] p-4 bg-gallery-white hover:border-apple-blue transition-colors flex flex-col items-center text-center group cursor-pointer"
             >
-              <div className="w-10 h-10 rounded-[3px] bg-[#0c1228] border border-[#1b294b] flex items-center justify-center text-[#8292b4] group-hover:text-[#00C5C8] transition-colors mb-3">
+              <div className="w-10 h-10 rounded-[3px] bg-studio-mist border border-hairline-silver flex items-center justify-center text-slate group-hover:text-apple-blue transition-colors mb-3">
                 <Icon />
               </div>
-              <div className="font-mono-geist text-[12px] uppercase text-[#eeeeee] tracking-tight mb-1 group-hover:text-[#00C5C8] transition-colors">
+              <div className="font-mono-geist text-[12px] uppercase text-ink tracking-tight mb-1 group-hover:text-apple-blue transition-colors">
                 {t.name}
               </div>
-              <div className="font-geist text-[12px] text-[#8292b4]">
+              <div className="font-geist text-[12px] text-slate">
                 {t.desc}
               </div>
             </div>

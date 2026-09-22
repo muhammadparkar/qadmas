@@ -39,7 +39,7 @@ export default function Projects() {
   ];
 
   return (
-    <section className="py-[96px] bg-[#050a1a] max-w-[1200px] mx-auto px-6 border-t border-[#1b294b]">
+    <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
       {/* Section Header */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -49,13 +49,7 @@ export default function Projects() {
         className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
       >
         <div>
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#00C5C8]" />
-            <span className="font-mono-geist text-[12px] uppercase text-[#8292b4] tracking-[0.15em]">
-              PORTFOLIO HIGHLIGHTS
-            </span>
-          </div>
-          <h2 className="font-geist text-heading-lg text-[#eeeeee] tracking-tight">
+          <h2 className="font-geist text-heading-lg text-ink tracking-tight">
             What We Have Built
           </h2>
         </div>
@@ -81,32 +75,32 @@ export default function Projects() {
             >
               <Link
                 to={`/portfolio/${post.id}`}
-                className="card-dark group flex flex-col justify-between hover:border-[#00C5C8] transition-colors cursor-pointer h-full"
+                className="card-dark group flex flex-col justify-between hover:border-apple-blue transition-colors cursor-pointer h-full"
               >
                 <div>
                   {/* Visual Thumbnail Header */}
-                  <div className="h-[130px] bg-[#040814] border border-[#1b294b] rounded-[6px] mb-4 p-4 flex flex-col justify-between group-hover:border-[#00C5C8]/50 transition-colors">
-                    <div className="flex justify-between items-center text-[#8292b4]">
-                      <span className="font-mono-geist text-[11px] uppercase text-[#00C5C8]">
+                  <div className="h-[130px] bg-studio-mist border border-hairline-silver rounded-[6px] mb-4 p-4 flex flex-col justify-between group-hover:border-apple-blue/50 transition-colors">
+                    <div className="flex justify-between items-center text-slate">
+                      <span className="font-mono-geist text-[11px] uppercase text-apple-blue">
                         {post.category}
                       </span>
-                      <Icon size={14} className="text-[#00C5C8] group-hover:scale-110 transition-transform" />
+                      <Icon size={14} className="text-apple-blue group-hover:scale-110 transition-transform" />
                     </div>
-                    <div className="font-mono-geist text-[11px] text-[#8292b4]">
+                    <div className="font-mono-geist text-[11px] text-slate">
                       {post.client}
                     </div>
                   </div>
 
-                  <h3 className="font-geist text-[18px] text-[#eeeeee] font-normal leading-snug mb-3 group-hover:text-[#00C5C8] transition-colors">
+                  <h3 className="font-geist text-[18px] text-ink font-normal leading-snug mb-3 group-hover:text-apple-blue transition-colors">
                     {post.title}
                   </h3>
 
-                  <p className="font-geist text-[14px] text-[#8292b4] leading-relaxed mb-6">
+                  <p className="font-geist text-[14px] text-slate leading-relaxed mb-6">
                     {post.snippet}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-[#1b294b] flex items-center justify-between text-[#8292b4] group-hover:text-[#00C5C8] transition-colors font-geist text-[14px]">
+                <div className="pt-3 border-t border-hairline-silver flex items-center justify-between text-slate group-hover:text-apple-blue transition-colors font-geist text-[14px]">
                   <span>Inspect Work</span>
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>

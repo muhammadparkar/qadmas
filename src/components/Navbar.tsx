@@ -1,7 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ContactModal from './ContactModal';
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Pricing', href: '#pricing', isPricing: true },
+  { label: 'About Us', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -11,10 +20,26 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    let ticking = false;
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        setScrolled(window.scrollY > 60);
+      });
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
 
   // Smooth scroll to #pricing if hash matches or navigation targets pricing
   useEffect(() => {
@@ -49,15 +74,6 @@ export default function Navbar() {
     }
   };
 
-  const navLinks = [
-    { label: 'HOME', href: '/' },
-    { label: 'SERVICES', href: '/services' },
-    { label: 'PORTFOLIO', href: '/portfolio' },
-    { label: 'PRICING', href: '#pricing', isPricing: true },
-    { label: 'ABOUT US', href: '/about' },
-    { label: 'CONTACT', href: '/contact' },
-  ];
-
   const isActive = (link: typeof navLinks[0]) => {
     if (link.isPricing) return location.hash === '#pricing';
     return location.pathname === link.href;
@@ -65,162 +81,146 @@ export default function Navbar() {
 
   return (
     <>
-      <nav
-        className="fixed top-0 left-0 right-0 z-50 transition-colors duration-200"
-        style={{
-          backgroundColor: scrolled ? 'rgba(5, 10, 26, 0.94)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(12px)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
-          borderBottom: scrolled ? '1px solid #1b294b' : '1px solid transparent',
-        }}
-      >
-        <div className="w-full px-6 lg:px-10 h-[68px] flex items-center justify-between">
-          {/* Left Qadmas Brand Logo */}
-          <Link to="/" className="flex items-center shrink-0 h-[68px]">
-            <img 
-              src="/full-logo.png" 
-              alt="Qadmas Technologies" 
-              className="h-[95px] sm:h-[115px] md:h-[140px] max-h-[95px] sm:max-h-[115px] md:max-h-[140px] w-auto object-contain -my-4 md:-my-8 translate-y-[2px]"
+      <nav className="fixed inset-x-0 top-0 z-50 flex justify-center px-4">
+        <div
+          className={`ease-spring relative mt-3 flex w-full items-center justify-between rounded-full py-2 transition-all duration-500 ${
+            scrolled
+              ? 'max-w-4xl border border-ink/10 bg-gallery-white/80 px-3 backdrop-blur-xl ambient-lift'
+              : 'max-w-6xl border border-transparent bg-transparent px-4'
+          }`}
+        >
+          {/* Logo */}
+          <Link to="/" className="flex items-center pl-3 shrink-0">
+            <img
+              src="/full-logo.png"
+              alt="Qadmas Technologies"
+              className="h-7 w-auto object-contain"
             />
           </Link>
 
-          {/* Right Nav Elements Container (Nav Links & CTA Buttons hugged together to the right) */}
-          <div className="hidden md:flex items-center gap-8 ml-auto">
-            {/* Navigation Links */}
-            <div className="flex items-center gap-6">
-              {navLinks.map((link) => {
-                const active = isActive(link);
-                if (link.isPricing) {
-                  return (
-                    <a
-                      key={link.label}
-                      href="#pricing"
-                      onClick={handlePricingClick}
-                      className="font-geist text-[13px] font-normal uppercase tracking-tight transition-colors duration-150 relative py-1 cursor-pointer"
-                      style={{
-                        color: active ? '#00C5C8' : '#8292b4',
-                      }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = '#00C5C8')}
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = active ? '#00C5C8' : '#8292b4')
-                      }
-                    >
-                      {link.label}
-                      {active && (
-                        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#00C5C8]" />
-                      )}
-                    </a>
-                  );
-                }
-
-                return (
-                  <Link
-                    key={link.label}
-                    to={link.href}
-                    className="font-geist text-[13px] font-normal uppercase tracking-tight transition-colors duration-150 relative py-1"
-                    style={{
-                      color: active ? '#00C5C8' : '#8292b4',
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#00C5C8')}
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = active ? '#00C5C8' : '#8292b4')
-                    }
-                  >
-                    {link.label}
-                    {active && (
-                      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#00C5C8]" />
-                    )}
-                  </Link>
-                );
-              })}
-            </div>
-
-            {/* Right Button Actions */}
-            <div className="flex items-center gap-3 shrink-0">
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="btn-dark text-[13px] px-[16px] py-[8px] rounded-[3px]"
-              >
-                Get a Quote
-              </button>
-
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="btn-ghost text-[13px] px-[14px] py-[8px] rounded-none flex items-center gap-1.5"
-              >
-                <span>Contact Sales</span>
-                <ArrowRight size={14} />
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile menu toggle */}
-          <button
-            className="md:hidden text-[#eeeeee] p-1 ml-auto"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle Menu"
-          >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu Dropdown */}
-        {menuOpen && (
-          <div
-            className="md:hidden py-6 px-6 flex flex-col gap-4 border-b border-[#1b294b]"
-            style={{ backgroundColor: '#050a1a' }}
-          >
+          {/* Centered Links */}
+          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
             {navLinks.map((link) => {
+              const active = isActive(link);
+              const className = `ease-spring whitespace-nowrap rounded-full px-3.5 py-2 text-[13px] font-medium tracking-wide transition-all duration-300 ${
+                active
+                  ? 'bg-ink/[0.06] text-ink'
+                  : 'text-slate hover:bg-ink/[0.04] hover:text-ink'
+              }`;
+
               if (link.isPricing) {
                 return (
-                  <a
-                    key={link.label}
-                    href="#pricing"
-                    onClick={(e) => {
-                      setMenuOpen(false);
-                      handlePricingClick(e);
-                    }}
-                    className="font-mono-geist text-[12px] uppercase text-[#eeeeee] py-1 border-b border-[#1b294b] cursor-pointer"
-                  >
+                  <a key={link.label} href="#pricing" onClick={handlePricingClick} className={className}>
                     {link.label}
                   </a>
                 );
               }
 
               return (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="font-mono-geist text-[12px] uppercase text-[#eeeeee] py-1 border-b border-[#1b294b]"
-                >
+                <Link key={link.label} to={link.href} className={className}>
                   {link.label}
                 </Link>
               );
             })}
-            <div className="flex flex-col gap-2 pt-2">
-              <button
-                onClick={() => {
-                  setMenuOpen(false);
-                  setIsModalOpen(true);
-                }}
-                className="btn-dark w-full justify-center"
-              >
-                Get a Quote
-              </button>
-              <button
-                onClick={() => {
-                  setMenuOpen(false);
-                  setIsModalOpen(true);
-                }}
-                className="btn-ghost w-full justify-center"
-              >
-                Contact Sales →
-              </button>
-            </div>
           </div>
-        )}
+
+          {/* Right CTAs */}
+          <div className="hidden items-center gap-2 md:flex">
+            <Link
+              to="/contact"
+              className={`ease-spring rounded-full px-4 py-2 text-[13px] font-medium text-slate transition-all duration-300 hover:text-ink ${
+                scrolled ? 'hidden' : 'inline-flex'
+              }`}
+            >
+              Contact Sales
+            </Link>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="group ease-spring flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-pricing-blue py-2 pl-5 pr-2 text-[13px] font-semibold text-white transition-all duration-300 active:scale-[0.98]"
+            >
+              {scrolled ? 'Get Started' : 'Get a Quote'}
+              <span className="ease-spring flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+                <ArrowUpRight size={14} />
+              </span>
+            </button>
+          </div>
+
+          {/* Mobile menu toggle */}
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            className="relative mr-1 flex h-9 w-9 items-center justify-center md:hidden"
+            aria-label="Toggle Menu"
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? <X size={20} className="text-ink" /> : <Menu size={20} className="text-ink" />}
+          </button>
+        </div>
       </nav>
+
+      {/* Fullscreen Mobile Menu */}
+      <div
+        className={`ease-spring fixed inset-0 z-40 flex flex-col bg-gallery-white/95 backdrop-blur-3xl transition-all duration-300 md:hidden ${
+          menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+      >
+        <div className="flex flex-1 flex-col items-center justify-center gap-2">
+          {navLinks.map((link, i) => {
+            const className = `ease-spring block font-geist text-3xl font-semibold tracking-tight text-ink transition-all duration-300 hover:text-apple-blue ${
+              menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+            }`;
+            const style = { transitionDelay: menuOpen ? `${100 + i * 60}ms` : '0ms' };
+
+            return (
+              <div key={link.label} className="overflow-hidden">
+                {link.isPricing ? (
+                  <a
+                    href="#pricing"
+                    onClick={(e) => {
+                      setMenuOpen(false);
+                      handlePricingClick(e);
+                    }}
+                    className={className}
+                    style={style}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link to={link.href} onClick={() => setMenuOpen(false)} className={className} style={style}>
+                    {link.label}
+                  </Link>
+                )}
+              </div>
+            );
+          })}
+
+          <div
+            className={`ease-spring mt-10 flex flex-col items-center gap-4 transition-all duration-300 ${
+              menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+            }`}
+            style={{ transitionDelay: menuOpen ? `${100 + navLinks.length * 60}ms` : '0ms' }}
+          >
+            <Link
+              to="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="text-base font-medium text-slate hover:text-ink"
+            >
+              Contact Sales
+            </Link>
+            <button
+              onClick={() => {
+                setMenuOpen(false);
+                setIsModalOpen(true);
+              }}
+              className="group ease-spring flex items-center gap-2 rounded-full bg-pricing-blue py-3 pl-7 pr-3 text-sm font-semibold text-white transition-all duration-300 active:scale-[0.98]"
+            >
+              Get a Quote
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
+                <ArrowUpRight size={14} />
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
 
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>

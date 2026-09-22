@@ -18,7 +18,7 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#050a1a] text-[#eeeeee] font-geist selection:bg-[#00C5C8] selection:text-[#050a1a]">
+    <div className="min-h-screen bg-gallery-white text-ink font-geist selection:bg-apple-blue selection:text-white">
       <Navbar />
       <main>
         <Hero onGetQuoteClick={() => setIsModalOpen(true)} />
