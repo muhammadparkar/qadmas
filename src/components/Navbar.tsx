@@ -167,30 +167,10 @@ export default function Navbar() {
             const style = { transitionDelay: menuOpen ? `${100 + i * 60}ms` : '0ms' };
 
             return (
-              <div key={link.label} className="flex flex-col items-center overflow-hidden">
+              <div key={link.label} className="overflow-hidden">
                 <Link to={link.href} onClick={() => setMenuOpen(false)} className={className} style={style}>
                   {link.label}
                 </Link>
-
-                {link.children && (
-                  <div
-                    className={`ease-spring mt-1 flex flex-col items-center gap-1 transition-all duration-300 ${
-                      menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-                    }`}
-                    style={style}
-                  >
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        to={child.href}
-                        onClick={() => setMenuOpen(false)}
-                        className="font-geist text-[15px] text-slate transition-colors hover:text-apple-blue"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
               </div>
             );
           })}
