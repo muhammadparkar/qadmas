@@ -158,7 +158,7 @@ export default function Footer() {
 
         {/* Bottom Bar: Copyright & Socials */}
         <div className="border-t border-slate-200/80 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-apple text-[12px] text-slate">
-          <div>
+          <div className="text-center sm:text-left">
             © {new Date().getFullYear()} Qadmas Technologies. All rights reserved. Engineering across Qatar, the UAE, and India.
           </div>
 

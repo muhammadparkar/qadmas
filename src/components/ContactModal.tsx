@@ -85,7 +85,7 @@ export default function ContactModal({ isOpen, onClose, defaultService }: Contac
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3.5 sm:p-4 py-6 overflow-y-auto">
           {/* Frosted Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -102,12 +102,12 @@ export default function ContactModal({ isOpen, onClose, defaultService }: Contac
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-[460px] bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-7 shadow-2xl text-ink font-apple my-auto"
+            className="relative w-full max-w-[460px] bg-white border border-slate-200/80 rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-2xl text-ink font-apple my-auto"
           >
             {/* Close Button */}
             <button
               onClick={handleClose}
-              className="absolute top-5 right-5 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-ink transition-colors flex items-center justify-center cursor-pointer focus:outline-none"
+              className="absolute top-4 right-4 sm:top-5 sm:right-5 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-ink transition-colors flex items-center justify-center cursor-pointer focus:outline-none"
               aria-label="Close dialog"
             >
               <X size={15} />
