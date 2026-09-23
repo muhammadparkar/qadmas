@@ -53,8 +53,8 @@ export default function Process() {
 
   return (
     <main className="bg-gallery-white text-ink">
-      {/* Lead-in so the pinned timeline has somewhere to scroll in from */}
-      <section className="flex h-screen flex-col items-center justify-center gap-4 px-6 text-center">
+      {/* Lead-in header with comfortable breathing room before sticky timeline */}
+      <section className="flex flex-col items-center justify-center gap-4 px-6 pt-24 pb-20 sm:pt-32 sm:pb-28 text-center">
         <h2 className="text-display font-medium text-ink tracking-tight leading-[1.04] max-w-[980px]">
           How we take projects from <br className="hidden sm:inline" />
           <span className="text-apple-blue font-serif-accent font-normal italic">
@@ -64,7 +64,7 @@ export default function Process() {
         <p className="text-base sm:text-lg font-normal max-w-2xl text-slate leading-relaxed">
           Predictable milestones with zero surprises. You always know what is being built, who is building it, and when it will ship.
         </p>
-        <span className="mt-2 animate-bounce text-slate">&darr;</span>
+        <span className="mt-3 animate-bounce text-slate text-xl select-none">&darr;</span>
       </section>
 
       <Timeline

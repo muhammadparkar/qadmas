@@ -167,7 +167,7 @@ export default function Timeline({
     const isMobile = window.innerWidth < 600;
     const slidePercent = isMobile ? -57 : -65;
     const lineWidth = isMobile ? "65%" : "98%";
-    const lineStart = isMobile ? "top 30%" : "top 25%";
+    const lineStart = "top top";
     const slideEnd = isMobile ? "82% 50%" : "92% bottom";
     const lineEnd = isMobile ? "80% 50%" : "92% bottom";
 
@@ -183,27 +183,35 @@ export default function Timeline({
       },
     });
 
-    tl.fromTo(
-      wholeSliderRef.current,
-      { xPercent: 0 },
-      { xPercent: slidePercent },
-    );
+    // Hold stationary & centered while the line crosses "Concept → Scale", then slide horizontally
+    tl.to(wholeSliderRef.current, {
+      xPercent: 0,
+      duration: 0.12,
+    }).to(wholeSliderRef.current, {
+      xPercent: slidePercent,
+      duration: 0.88,
+      ease: "none",
+    });
 
     if (reducedMotion) {
       gsap.set(".journey-line", { width: lineWidth });
       return;
     }
 
-    gsap.to(".journey-line", {
-      width: lineWidth,
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        start: lineStart,
-        end: lineEnd,
-        scrub: true,
-      },
-    });
+    gsap.fromTo(
+      ".journey-line",
+      { width: "0%" },
+      {
+        width: lineWidth,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: lineStart,
+          end: lineEnd,
+          scrub: true,
+        },
+      }
+    );
   }, { dependencies: [reducedMotion, isNarrow], scope: sectionRef });
 
   useGSAP(() => {
@@ -334,13 +342,13 @@ export default function Timeline({
             [46, 60],
           ]
         : [
-            [6, 26],
-            [16, 36],
-            [26, 46],
-            [35, 55],
-            [14, 34],
-            [22, 42],
-            [30, 50],
+            [12, 28],
+            [20, 36],
+            [28, 44],
+            [38, 54],
+            [18, 34],
+            [25, 41],
+            [32, 48],
           ];
 
     items.forEach((item, index) => {
@@ -399,7 +407,7 @@ export default function Timeline({
       className="h-[200vw] max-[600px]:h-[400vh] w-full relative"
       style={sectionStyle}
     >
-      <div className="h-screen w-screen sticky top-[0%] pt-[10%] overflow-hidden max-[600px]:top-[5%]">
+      <div className="h-screen w-screen sticky top-0 flex items-center overflow-hidden">
         <div
           ref={wholeSliderRef}
           className="mr-[2vw] flex h-[30vw] w-[240vw] items-center gap-[5vw] px-[5vw] max-[600px]:h-[80vh] max-[600px]:w-[800vw] max-[600px]:px-[7vw]"

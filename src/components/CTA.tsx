@@ -52,7 +52,7 @@ export default function CTA() {
             </div>
 
             {/* Trust footer line */}
-            <div className="pt-6 border-t border-hairline-silver flex items-center justify-center gap-4 text-[11px] font-mono-geist text-slate">
+            <div className="pt-6 border-t border-hairline-silver flex items-center justify-center gap-4 text-[12px] font-apple text-slate">
               <span className="flex items-center gap-1.5">
                 <ShieldCheck size={13} className="text-apple-blue" />
                 <span>NDA Protected Consultations</span>

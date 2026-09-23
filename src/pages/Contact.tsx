@@ -25,7 +25,7 @@ export default function Contact() {
         </h1>
 
         <p className="font-apple text-[17px] text-slate leading-relaxed max-w-[660px] mx-auto">
-          Speak directly with our systems architects in Doha, Dubai, or Mumbai. We will evaluate your technical requirements, outline delivery stages, and provide a fixed quote.
+          Speak directly with our systems architects across Qatar, the UAE, and India. We will evaluate your technical requirements, outline delivery stages, and provide a fixed quote.
         </p>
       </section>
 
@@ -44,7 +44,7 @@ export default function Contact() {
             </p>
             <a
               href="tel:+97471328520"
-              className="inline-flex items-center gap-2 text-[14px] font-mono text-ink hover:text-apple-blue transition-colors font-medium"
+              className="inline-flex items-center gap-2 text-[14px] font-apple text-ink hover:text-apple-blue transition-colors font-medium"
             >
               <Phone size={14} />
               <span>+974 7132 8520</span>
@@ -65,7 +65,7 @@ export default function Contact() {
               href="https://wa.me/97471328520"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[14px] font-mono text-apple-blue hover:text-sky-700 transition-colors font-medium"
+              className="inline-flex items-center gap-2 text-[14px] font-apple text-apple-blue hover:text-sky-700 transition-colors font-medium"
             >
               <MessageSquare size={14} />
               <span>WhatsApp Direct Line</span>
@@ -84,7 +84,7 @@ export default function Contact() {
             </p>
             <a
               href="tel:+919137886399"
-              className="inline-flex items-center gap-2 text-[14px] font-mono text-ink hover:text-apple-blue transition-colors font-medium"
+              className="inline-flex items-center gap-2 text-[14px] font-apple text-ink hover:text-apple-blue transition-colors font-medium"
             >
               <Phone size={14} />
               <span>+91 913 7886 399</span>
@@ -238,11 +238,11 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="pt-6 border-t border-slate-200/80 space-y-2 font-mono text-[12px]">
-              <div className="text-slate text-[11px]">Direct email inquiries</div>
+            <div className="pt-6 border-t border-slate-200/80 space-y-2 font-apple text-[13px]">
+              <div className="text-slate text-[12px]">Direct email inquiries</div>
               <a
                 href="mailto:info@qadmastechnologies.com"
-                className="text-ink hover:text-apple-blue transition-colors flex items-center gap-2"
+                className="text-ink hover:text-apple-blue transition-colors flex items-center gap-2 font-medium"
               >
                 <Mail size={14} className="text-apple-blue" />
                 <span>info@qadmastechnologies.com</span>

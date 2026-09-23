@@ -13,7 +13,7 @@ export function AiAssistantDemo() {
         <Sparkles className="size-3.5 text-apple-blue" />
         <span>Prompt: Optimize PostgreSQL index</span>
       </div>
-      <div className="rounded-lg bg-white p-3 border border-slate-200/80 font-apple-mono text-xs text-ink space-y-1">
+      <div className="rounded-lg bg-white p-3 border border-slate-200/80 font-apple text-xs text-ink space-y-1">
         <div className="text-slate-400">// Query executed in 1.4ms</div>
         <div className="text-apple-blue font-semibold">
           CREATE INDEX CONCURRENTLY idx_orders_created
@@ -92,7 +92,7 @@ export function NotificationsDemo() {
 
 export function TerminalDemo() {
   return (
-    <div className="rounded-lg bg-slate-900 p-3 text-slate-100 font-apple-mono text-xs space-y-1.5">
+    <div className="rounded-lg bg-slate-900 p-3 text-slate-100 font-apple text-xs space-y-1.5">
       <div className="flex items-center gap-1.5 pb-1 border-b border-slate-800">
         <span className="size-2 rounded-full bg-red-500"></span>
         <span className="size-2 rounded-full bg-amber-500"></span>
@@ -102,7 +102,7 @@ export function TerminalDemo() {
       <div className="text-slate-400">$ git push origin main --tags</div>
       <div className="flex items-center gap-1 text-emerald-400">
         <CheckCircle2 className="size-3" />
-        <span>Deploy v2.4.0 live across Doha &amp; Dubai</span>
+        <span>Deploy v2.4.0 live across Qatar, the UAE &amp; India</span>
       </div>
     </div>
   );
@@ -153,7 +153,7 @@ export function ProgressDemo() {
         <span className="font-medium text-ink">Edge Latency</span>
         <span className="font-semibold text-emerald-600">8ms</span>
       </div>
-      <div className="grid grid-cols-3 gap-1 text-center font-apple-mono text-[10px]">
+      <div className="grid grid-cols-3 gap-1 text-center font-apple font-medium text-[10px]">
         <div className="p-1 rounded bg-white border border-slate-200 text-slate">DOH: 6ms</div>
         <div className="p-1 rounded bg-white border border-slate-200 text-slate">DXB: 8ms</div>
         <div className="p-1 rounded bg-white border border-slate-200 text-slate">BOM: 14ms</div>

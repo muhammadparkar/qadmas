@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect, type FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, Phone, Mail, MessageSquare, ShieldCheck } from 'lucide-react';
+import { X, Send, MessageSquare, ShieldCheck, CheckCircle2, ChevronDown, Check } from 'lucide-react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -8,10 +8,54 @@ interface ContactModalProps {
   defaultService?: string;
 }
 
+interface ServiceOptionItem {
+  name: string;
+  badge: string;
+}
+
+const SERVICE_OPTIONS: ServiceOptionItem[] = [
+  { name: 'Ai - Powered CRM & ERP (Wantik-X)', badge: 'Core' },
+  { name: 'Website Development', badge: 'Engineering' },
+  { name: 'Mobile Application Development', badge: 'Engineering' },
+  { name: 'Digital Marketing', badge: 'Growth' },
+  { name: 'Standard ERP (680 QR / mo)', badge: 'SaaS' },
+  { name: 'Professional Suite (850 QR / mo)', badge: 'Popular' },
+  { name: 'Bespoke Enterprise (2,500 QR / mo)', badge: 'Enterprise' },
+];
+
 export default function ContactModal({ isOpen, onClose, defaultService }: ContactModalProps) {
-  const [selectedService, setSelectedService] = useState(defaultService || 'Web/Apps Development');
+  const [selectedService, setSelectedService] = useState(
+    defaultService || 'Ai - Powered CRM & ERP (Wantik-X)'
+  );
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [prevDefaultService, setPrevDefaultService] = useState(defaultService);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [details, setDetails] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setIsDropdownOpen(false);
+      }
+    }
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isDropdownOpen]);
 
   if (defaultService !== prevDefaultService) {
     setPrevDefaultService(defaultService);
@@ -20,200 +64,292 @@ export default function ContactModal({ isOpen, onClose, defaultService }: Contac
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
+      setName('');
+      setEmail('');
+      setPhone('');
+      setDetails('');
       onClose();
-    }, 2500);
+    }, 2800);
+  };
+
+  const handleClose = () => {
+    setSubmitted(false);
+    onClose();
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 sm:px-6">
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto">
+          {/* Frosted Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
+            transition={{ duration: 0.2 }}
+            onClick={handleClose}
+            className="fixed inset-0 bg-slate-950/40 backdrop-blur-sm"
           />
 
-          {/* Modal Container */}
+          {/* Compact Modal Box */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
-            className="relative w-full max-w-3xl max-h-[92vh] bg-white border border-slate-200/80 rounded-3xl overflow-y-auto flex flex-col md:flex-row text-ink shadow-2xl font-apple"
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-[460px] bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-7 shadow-2xl text-ink font-apple my-auto"
           >
-            {/* Left Form Panel */}
-            <div className="flex-1 p-8 md:p-10 space-y-6">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h2 className="font-apple text-[26px] sm:text-[30px] font-semibold text-ink tracking-tight">
-                    Start an Engineering Sprint
-                  </h2>
-                  <p className="font-apple text-[14px] text-slate mt-1">
-                    Share your requirements. A senior architect will review and reply with options and a fixed price estimate.
-                  </p>
-                </div>
-                <button
-                  onClick={onClose}
-                  className="p-1.5 rounded-full text-slate hover:text-ink transition-colors md:hidden"
-                  aria-label="Close modal"
-                >
-                  <X size={18} />
-                </button>
-              </div>
+            {/* Close Button */}
+            <button
+              onClick={handleClose}
+              className="absolute top-5 right-5 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-ink transition-colors flex items-center justify-center cursor-pointer focus:outline-none"
+              aria-label="Close dialog"
+            >
+              <X size={15} />
+            </button>
 
-              {submitted ? (
-                <div className="py-12 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-apple-blue/20 text-apple-blue mx-auto flex items-center justify-center">
-                    <ShieldCheck size={24} />
-                  </div>
-                  <h3 className="font-apple text-[20px] font-semibold text-ink">Inquiry Received</h3>
-                  <p className="font-apple text-[14px] text-slate max-w-sm mx-auto">
-                    Thank you. A senior software engineer from our Doha or Dubai hub will review your request and get back to you shortly.
+            {submitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="py-8 text-center space-y-3 font-apple"
+              >
+                <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200/80 mx-auto flex items-center justify-center shadow-xs">
+                  <CheckCircle2 size={24} />
+                </div>
+                <div>
+                  <h3 className="text-[20px] font-semibold text-ink tracking-tight">
+                    Inquiry Received
+                  </h3>
+                  <p className="text-[13px] text-slate max-w-xs mx-auto mt-1 leading-relaxed">
+                    Thank you{name ? `, ${name}` : ''}. A senior engineer will review your project and reply within 24 hours.
                   </p>
                 </div>
-              ) : (
-                <form className="space-y-4" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block font-apple text-[13px] text-ink font-medium mb-1">
+                <div className="pt-2">
+                  <a
+                    href="https://wa.me/97471328520"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[12.5px] text-apple-blue hover:text-sky-700 font-medium"
+                  >
+                    <MessageSquare size={13} />
+                    <span>Need immediate response? WhatsApp us</span>
+                  </a>
+                </div>
+              </motion.div>
+            ) : (
+              <div className="space-y-5">
+                {/* Header */}
+                <div className="pr-6 space-y-1">
+                  <h2 className="text-[21px] font-semibold text-ink tracking-tight font-apple">
+                    Start an{' '}
+                    <span className="text-apple-blue font-serif-accent font-normal italic">
+                      Engineering Sprint
+                    </span>
+                  </h2>
+                  <p className="text-[13px] text-slate leading-relaxed">
+                    Direct access to systems architects. Receive scoping and estimates within 24 hours.
+                  </p>
+                </div>
+
+                {/* Form */}
+                <form className="space-y-3.5" onSubmit={handleSubmit}>
+                  {/* Name and Email */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="space-y-1">
+                      <label className="block text-[12px] text-slate-700 font-medium">
                         Your Name *
                       </label>
                       <input
                         required
                         type="text"
-                        placeholder="e.g. Tariq Al-Mansoor"
-                        className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-3.5 py-2.5 font-apple text-[14px] text-ink placeholder-slate/50 focus:border-apple-blue focus:bg-white focus:outline-none transition-colors"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Tariq Al-Mansoor"
+                        className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2 text-[13.5px] text-ink placeholder:text-slate-400 focus:bg-white focus:border-apple-blue focus:outline-none transition-colors"
                       />
                     </div>
-                    <div>
-                      <label className="block font-apple text-[13px] text-ink font-medium mb-1">
+                    <div className="space-y-1">
+                      <label className="block text-[12px] text-slate-700 font-medium">
                         Work Email *
                       </label>
                       <input
                         required
                         type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="tariq@company.com"
-                        className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-3.5 py-2.5 font-apple text-[14px] text-ink placeholder-slate/50 focus:border-apple-blue focus:bg-white focus:outline-none transition-colors"
+                        className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2 text-[13.5px] text-ink placeholder:text-slate-400 focus:bg-white focus:border-apple-blue focus:outline-none transition-colors"
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block font-apple text-[13px] text-ink font-medium mb-1">
-                      Project Type or Package
+                  {/* Custom Apple-styled Dropdown */}
+                  <div className="space-y-1 relative" ref={dropdownRef}>
+                    <label className="block text-[12px] text-slate-700 font-medium">
+                      Project Type or Service
                     </label>
-                    <select
-                      value={selectedService}
-                      onChange={(e) => setSelectedService(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-3.5 py-2.5 font-apple text-[14px] text-ink focus:border-apple-blue focus:bg-white focus:outline-none transition-colors"
+
+                    {/* Trigger Button */}
+                    <button
+                      type="button"
+                      onClick={() => setIsDropdownOpen((prev) => !prev)}
+                      className={`w-full flex items-center justify-between gap-2.5 bg-slate-50 border rounded-xl px-3 py-2 text-[13.5px] text-ink transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-apple-blue/20 ${
+                        isDropdownOpen
+                          ? 'border-apple-blue bg-white shadow-xs'
+                          : 'border-slate-200/80 hover:border-slate-300'
+                      }`}
+                      aria-haspopup="listbox"
+                      aria-expanded={isDropdownOpen}
                     >
-                      <option value="Ai - Powered CRM & ERP (Wantik-X)">Ai - Powered CRM &amp; ERP (Wantik-X)</option>
-                      <option value="Digital Marketing">Digital Marketing</option>
-                      <option value="Website Development">Website Development</option>
-                      <option value="Mobile Application Development">Mobile Application Development</option>
-                      <option value="Standard Package (680 QR / mo)">Standard Pre-Built ERP (680 QR / mo)</option>
-                      <option value="Professional Package (850 QR / mo)">Professional Suite (850 QR / mo)</option>
-                      <option value="Enterprise Package (2,500 QR / mo)">Bespoke Enterprise (2,500 QR / mo)</option>
-                    </select>
+                      <div className="flex items-center gap-2 min-w-0">
+                        <span className="w-1.5 h-1.5 rounded-full bg-apple-blue shrink-0" />
+                        <span className="truncate text-ink font-normal">{selectedService}</span>
+                      </div>
+                      <div className="flex items-center gap-2 shrink-0">
+                        {SERVICE_OPTIONS.find((s) => s.name === selectedService)?.badge && (
+                          <span className="hidden sm:inline-block px-1.5 py-0.5 text-[10.5px] font-medium text-slate-600 bg-slate-200/70 rounded-md">
+                            {SERVICE_OPTIONS.find((s) => s.name === selectedService)?.badge}
+                          </span>
+                        )}
+                        <ChevronDown
+                          size={14}
+                          className={`text-slate-400 transition-transform duration-200 ${
+                            isDropdownOpen ? 'rotate-180 text-apple-blue' : ''
+                          }`}
+                        />
+                      </div>
+                    </button>
+
+                    {/* Floating Dropdown Menu Popover */}
+                    <AnimatePresence>
+                      {isDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -4, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -4, scale: 0.98 }}
+                          transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                          className="absolute left-0 right-0 z-50 mt-1 bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl shadow-xl p-1.5 max-h-[220px] overflow-y-auto space-y-0.5 focus:outline-none"
+                          role="listbox"
+                        >
+                          {SERVICE_OPTIONS.map((svc) => {
+                            const isSelected = selectedService === svc.name;
+                            return (
+                              <button
+                                key={svc.name}
+                                type="button"
+                                role="option"
+                                aria-selected={isSelected}
+                                onClick={() => {
+                                  setSelectedService(svc.name);
+                                  setIsDropdownOpen(false);
+                                }}
+                                className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-[13px] text-left transition-colors cursor-pointer group ${
+                                  isSelected
+                                    ? 'bg-slate-100 text-apple-blue font-medium'
+                                    : 'text-slate-700 hover:bg-slate-50 hover:text-ink'
+                                }`}
+                              >
+                                <div className="flex items-center gap-2 min-w-0">
+                                  <span
+                                    className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors ${
+                                      isSelected
+                                        ? 'bg-apple-blue'
+                                        : 'bg-transparent group-hover:bg-slate-300'
+                                    }`}
+                                  />
+                                  <span className="truncate">{svc.name}</span>
+                                </div>
+                                <div className="flex items-center gap-2 shrink-0">
+                                  <span
+                                    className={`text-[10px] px-1.5 py-0.5 rounded-md font-medium ${
+                                      isSelected
+                                        ? 'bg-apple-blue/15 text-apple-blue'
+                                        : 'bg-slate-100 text-slate-500'
+                                    }`}
+                                  >
+                                    {svc.badge}
+                                  </span>
+                                  {isSelected && (
+                                    <Check size={13} className="text-apple-blue shrink-0" />
+                                  )}
+                                </div>
+                              </button>
+                            );
+                          })}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
-                  <div>
-                    <label className="block font-apple text-[13px] text-ink font-medium mb-1">
-                      Project Goals &amp; Timeline
+                  {/* Phone / WhatsApp */}
+                  <div className="space-y-1">
+                    <label className="block text-[12px] text-slate-700 font-medium">
+                      Phone / WhatsApp <span className="text-slate-400 font-normal">(Optional)</span>
                     </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Briefly describe what you're looking to build, any current pain points, or target launch date..."
-                      className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-3.5 py-2.5 font-apple text-[14px] text-ink placeholder-slate/50 focus:border-apple-blue focus:bg-white focus:outline-none resize-none transition-colors"
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="+974 7132 8520"
+                      className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2 text-[13.5px] text-ink placeholder:text-slate-400 focus:bg-white focus:border-apple-blue focus:outline-none transition-colors"
                     />
                   </div>
 
-                  <button
-                    type="submit"
-                    className="w-full btn-slide-pill justify-center text-center mt-2 group"
-                  >
-                    <span className="relative z-10 transition-all duration-500">
-                      Submit Project Requirements
-                    </span>
-                    <span className="arrow-circle">
-                      <Send size={14} />
-                    </span>
-                  </button>
+                  {/* Project Details */}
+                  <div className="space-y-1">
+                    <label className="block text-[12px] text-slate-700 font-medium">
+                      Brief Requirements <span className="text-slate-400 font-normal">(Optional)</span>
+                    </label>
+                    <textarea
+                      rows={2}
+                      value={details}
+                      onChange={(e) => setDetails(e.target.value)}
+                      placeholder="What are you looking to build or optimize?"
+                      className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2 text-[13.5px] text-ink placeholder:text-slate-400 focus:bg-white focus:border-apple-blue focus:outline-none resize-none transition-colors"
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="pt-1">
+                    <button
+                      type="submit"
+                      className="w-full btn-slide-pill justify-center text-center cursor-pointer group py-2.5"
+                    >
+                      <span className="relative z-10 transition-all duration-500 font-medium text-[13.5px]">
+                        Submit Requirements
+                      </span>
+                      <span className="arrow-circle">
+                        <Send size={13} />
+                      </span>
+                    </button>
+                  </div>
                 </form>
-              )}
-            </div>
 
-            {/* Right Information Sidebar */}
-            <div className="w-full md:w-[280px] bg-slate-50/70 border-t md:border-t-0 md:border-l border-slate-200/80 p-8 flex flex-col justify-between relative font-apple">
-              <button
-                onClick={onClose}
-                className="absolute top-4 right-4 p-1.5 text-slate hover:text-ink transition-colors hidden md:block"
-                aria-label="Close modal"
-              >
-                <X size={18} />
-              </button>
+                {/* Compact Bottom Trust Line */}
+                <div className="pt-3 border-t border-slate-200/80 flex items-center justify-between text-[11.5px] text-slate">
+                  <div className="flex items-center gap-1.5">
+                    <ShieldCheck size={13} className="text-apple-blue" />
+                    <span>NDA &amp; IP Protected</span>
+                  </div>
 
-              <div className="space-y-6">
-                <div className="font-apple text-[14px] font-semibold text-ink">
-                  Direct Channels
-                </div>
-
-                <div className="space-y-4 font-apple text-[13px]">
                   <a
                     href="https://wa.me/97471328520"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-2xl bg-white border border-slate-200/80 hover:border-apple-blue flex items-start gap-2.5 text-ink transition-all shadow-2xs"
+                    className="inline-flex items-center gap-1 text-slate hover:text-apple-blue transition-colors font-medium"
                   >
-                    <MessageSquare size={15} className="text-apple-blue shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-medium text-apple-blue">WhatsApp Chat</div>
-                      <div className="text-slate text-[11px]">Instant text with engineers</div>
-                    </div>
+                    <MessageSquare size={12} className="text-apple-blue" />
+                    <span>WhatsApp Direct</span>
                   </a>
-
-                  <div className="flex items-start gap-2.5">
-                    <Phone size={14} className="text-apple-blue shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-ink">+974 7132 8520</div>
-                      <div className="text-slate text-[11px]">Qatar Office</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-2.5">
-                    <Phone size={14} className="text-apple-blue shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-ink">+91 913 7886 399</div>
-                      <div className="text-slate text-[11px]">India Hub</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-2.5">
-                    <Mail size={14} className="text-apple-blue shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-ink">info@qadmastechnologies.com</div>
-                      <div className="text-slate text-[11px]">Primary Inbox</div>
-                    </div>
-                  </div>
                 </div>
               </div>
-
-              <div className="pt-6 border-t border-slate-200/80 font-mono text-[11px] text-slate mt-6">
-                <div className="text-apple-blue font-medium mb-0.5 flex items-center gap-1 font-apple">
-                  <ShieldCheck size={12} />
-                  <span>100% Confidential</span>
-                </div>
-                <span>We sign bilateral NDAs before discussing proprietary business logic.</span>
-              </div>
-            </div>
+            )}
           </motion.div>
         </div>
       )}

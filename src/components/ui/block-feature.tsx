@@ -116,16 +116,16 @@ function StockTelemetryGrid() {
               {i === highlight ? (
                 <div className="size-11 rounded-xl bg-ink flex flex-col items-center justify-center text-white shadow-md">
                   <Database className="size-5 text-apple-blue" />
-                  <span className="text-[8px] font-mono tracking-tighter text-sky-200 mt-0.5">SYNC</span>
+                  <span className="text-[8px] font-apple font-bold tracking-tighter text-sky-200 mt-0.5">SYNC</span>
                 </div>
               ) : i === 6 ? (
-                <span className="text-[10px] font-mono text-slate-400 font-medium">DOHA</span>
+                <span className="text-[10px] font-apple text-slate-400 font-semibold">DOHA</span>
               ) : i === 8 ? (
-                <span className="text-[10px] font-mono text-slate-400 font-medium">DXB</span>
+                <span className="text-[10px] font-apple text-slate-400 font-semibold">DXB</span>
               ) : i === 11 ? (
-                <span className="text-[9px] font-mono text-emerald-600 font-semibold">99.9%</span>
+                <span className="text-[9px] font-apple text-emerald-600 font-bold">99.9%</span>
               ) : i === 13 ? (
-                <span className="text-[9px] font-mono text-slate-400">12ms</span>
+                <span className="text-[9px] font-apple text-slate-400 font-medium">12ms</span>
               ) : null}
             </div>
           ))}
@@ -306,13 +306,13 @@ function CodeEditor() {
               <span className="size-2 rounded-full bg-amber-400 inline-block" />
               <span className="size-2 rounded-full bg-green-400 inline-block" />
             </div>
-            <span className="text-[11px] text-slate-500 font-medium font-mono">
+            <span className="text-[11px] text-slate-500 font-medium font-apple">
               Workflow.ts
             </span>
           </div>
-          <span className="text-[10px] text-slate-400 font-mono font-medium">AI Agent</span>
+          <span className="text-[10px] text-slate-400 font-apple font-medium">AI Agent</span>
         </div>
-        <pre className="overflow-hidden px-4 py-2.5 font-mono text-[11px] leading-[1.35rem] text-ink">
+        <pre className="overflow-hidden px-4 py-2.5 font-apple text-[11px] leading-[1.35rem] text-ink">
           {lines.map((line, i) => (
             <div key={i} className="whitespace-pre">
               {line}
@@ -452,7 +452,7 @@ function TelemetryMotion() {
                 <span className="size-1.5 rounded-full bg-emerald-400 animate-ping"></span>
                 <span className="text-[11px] font-bold tracking-tight">LIVE</span>
               </div>
-              <span className="text-[8px] text-slate-400 font-mono">0.01s</span>
+              <span className="text-[8px] text-slate-400 font-apple">0.01s</span>
             </div>
           </foreignObject>
         </g>
