@@ -1,43 +1,85 @@
+"use client";
+
+import Timeline, { type JourneyItem } from "./ui/timeline";
+
 export default function Process() {
-  const specs = [
-    { label: 'PROJECTS DELIVERED', value: '100+', detail: 'Web, mobile & enterprise apps' },
-    { label: 'GLOBAL CLIENT COUNTRIES', value: '15+', detail: 'UAE, Qatar, India, USA & Europe' },
-    { label: 'YEARS EXCELLENCE', value: '3+', detail: 'Continuous digital innovation' },
-    { label: 'SYSTEM UPTIME SLA', value: '99.9%', detail: '24/7 Managed IT support' },
+  const topJourneyData: JourneyItem[] = [
+    {
+      id: "phase-01",
+      year: "Phase 01",
+      month: "Discovery",
+      content: "Database schemas, user flows, and a fixed-price roadmap before any code is written.",
+    },
+    {
+      id: "phase-02",
+      year: "Phase 02",
+      month: "Build",
+      content: "A private staging URL goes live in 14 days. You test real modules with real data.",
+    },
+    {
+      id: "phase-03",
+      year: "Phase 03",
+      month: "Audit",
+      content: "Load testing and security audits — stable under 10,000+ peak concurrent users.",
+    },
+    {
+      id: "phase-04",
+      year: "Phase 04",
+      month: "Launch",
+      content: "Zero-downtime cutover, automated backups, and 24/7 enterprise SLA monitoring.",
+    },
+  ];
+
+  const bottomJourneyData: JourneyItem[] = [
+    {
+      id: "phase-01b",
+      year: "Kickoff",
+      month: "Week 1",
+      content: "A dedicated architect and PM — no account managers relaying messages.",
+    },
+    {
+      id: "phase-02b",
+      year: "Mid-Sprint",
+      month: "Week 3",
+      content: "Live demo on staging. Feedback ships in the next sprint, not a backlog.",
+    },
+    {
+      id: "phase-03b",
+      year: "Handover",
+      month: "Post-Launch",
+      content: "Full source access and a 30-day hypercare window before standard SLA.",
+    },
   ];
 
   return (
-    <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6">
-      {/* Full Width War Room Spec Banner */}
-      <div className="bg-studio-mist border border-hairline-silver rounded-[20px] p-8 md:p-12 space-y-10">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-hairline-silver pb-8">
-          <div>
-            <h3 className="font-geist text-[32px] md:text-[36px] text-ink font-normal leading-tight">
-              Measurable results for <span className="text-apple-blue">modern businesses</span>
-            </h3>
-          </div>
-          <div className="font-mono-geist text-[12px] text-slate uppercase tracking-wider">
-            OFFICES // UAE · QATAR · INDIA
-          </div>
-        </div>
+    <main className="bg-gallery-white text-ink">
+      {/* Lead-in so the pinned timeline has somewhere to scroll in from */}
+      <section className="flex h-screen flex-col items-center justify-center gap-4 px-6 text-center">
+        <h2 className="text-display font-medium text-ink tracking-tight leading-[1.04] max-w-[980px]">
+          How we take projects from <br className="hidden sm:inline" />
+          <span className="text-apple-blue font-serif-accent font-normal italic">
+            concept to production
+          </span>
+        </h2>
+        <p className="text-base sm:text-lg font-normal max-w-2xl text-slate leading-relaxed">
+          Predictable milestones with zero surprises. You always know what is being built, who is building it, and when it will ship.
+        </p>
+        <span className="mt-2 animate-bounce text-slate">&darr;</span>
+      </section>
 
-        {/* 4 Metric Spec Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {specs.map((spec, idx) => (
-            <div key={idx} className="space-y-2 border-l border-hairline-silver pl-4">
-              <div className="font-mono-geist text-[11px] uppercase text-slate tracking-tight">
-                {spec.label}
-              </div>
-              <div className="font-geist text-[44px] text-apple-blue font-normal tracking-[-0.025em] leading-none">
-                {spec.value}
-              </div>
-              <div className="font-geist text-[13px] text-slate">
-                {spec.detail}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+      <Timeline
+        title="Production Storyline"
+        periodLabel="Concept → Scale"
+        backgroundColor="#f8fafc"
+        textColor="#0f172a"
+        mutedTextColor="#64748b"
+        activeColor="#0284c7"
+        imageUrl="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+        imageAlt="Qadmas engineering sprint and deployment review"
+        topData={topJourneyData}
+        bottomData={bottomJourneyData}
+        duration={1.4}
+      />
+    </main>
   );
 }

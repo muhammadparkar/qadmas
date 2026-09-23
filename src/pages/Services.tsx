@@ -1,79 +1,111 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { 
-  Code2, 
+  TrendingUp, 
   Building2, 
   Globe, 
-  Smartphone, 
-  BarChart3, 
-  ShieldCheck,
+  Bot, 
   Plus,
   ArrowRight,
-  Sparkles
+  ArrowUpRight,
+  Check
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ContactModal from '../components/ContactModal';
 
-const services = [
+const detailedServices = [
   {
-    title: "Custom Software Development",
-    quoteService: "Custom Software Development",
-    desc: "Bespoke software systems tailored to your business operations. Engineered for scalability, high concurrency, and long-term reliability.",
-    icon: <Code2 size={20} />
+    id: 'ai-crm-erp',
+    title: 'Ai - Powered CRM & ERP (Wantik-X)',
+    quoteService: 'Ai - Powered CRM & ERP (Wantik-X)',
+    category: 'INTELLIGENT PIPELINES & OPERATIONAL ERP',
+    externalLink: 'https://wantikx.com/',
+    desc: 'Autonomous lead intake, 24/7 WhatsApp AI qualification agents, and unified multi-warehouse inventory telemetry with automated GCC VAT compliance—powered by Wantik-X.',
+    deliverables: [
+      '24/7 WhatsApp AI qualification & smart pipeline dispatch',
+      'Multi-warehouse stock sync with real-time barcode telemetry',
+      'Automated GCC VAT & customs invoice PDF generator',
+      'Executive financial, stock-turn, and profit telemetry dashboards',
+    ],
+    tech: 'Wantik-X Engine · Python · WhatsApp API · PostgreSQL · Redis',
+    timeline: 'Ready-to-Deploy / 2 to 4 Weeks',
+    icon: Bot,
   },
   {
-    title: "Enterprise Solutions (CRM & ERP)",
-    quoteService: "Enterprise CRM / ERP Solutions",
-    desc: "Streamline operations using custom CRM & ERP systems, workflow automation, and real-time business intelligence dashboards.",
-    icon: <Building2 size={20} />
+    id: 'digital-marketing',
+    title: 'Digital Marketing',
+    quoteService: 'Digital Marketing',
+    category: 'PERFORMANCE & GROWTH MARKETING',
+    desc: 'Precision performance advertising campaigns, advanced search engine optimization (SEO), and conversion-engineered funnels structured to capture high-intent B2B and consumer clients across Qatar and the GCC.',
+    deliverables: [
+      'Meta & Google Ads performance campaigns with ROI attribution',
+      'Technical on-page & off-page Search Engine Optimization (SEO)',
+      'High-converting landing page funnels & A/B conversion testing',
+      'Multi-channel tracking, analytics dashboards & lead telemetry',
+    ],
+    tech: 'Google Ads · Meta Ads Manager · GA4 · SEMrush · Hotjar',
+    timeline: 'Ongoing / 2 to 4 Weeks Sprint',
+    icon: TrendingUp,
   },
   {
-    title: "Custom Website Development",
-    quoteService: "Custom Website Development",
-    desc: "Crafting modern, mobile-first, responsive websites using React, Next.js, WordPress, and Shopify that convert visitors into clients.",
-    icon: <Globe size={20} />
+    id: 'website-development',
+    title: 'Website Development',
+    quoteService: 'Website Development',
+    category: 'HIGH-CONVERTING WEB PLATFORMS',
+    desc: 'Custom web platforms built with React and Next.js 15 for businesses that demand sub-second load times, booking funnels, and high commercial conversion.',
+    deliverables: [
+      'Sub-0.5s Core Web Vitals performance benchmarks',
+      'Mobile-first responsive UX across all screen sizes',
+      'Custom booking engines, customer portals & checkout funnels',
+      'Full technical SEO architecture for search engine rankings',
+    ],
+    tech: 'Next.js 15 · React · Tailwind CSS · Cloudflare Edge',
+    timeline: '2 to 4 Weeks',
+    icon: Globe,
   },
   {
-    title: "Application Development",
-    quoteService: "Mobile Application Development (iOS/Android)",
-    desc: "Cross-platform mobile applications built using Flutter, React Native, and Kotlin with intuitive UI/UX and offline database sync.",
-    icon: <Smartphone size={20} />
+    id: 'mobile-app-development',
+    title: 'Mobile Application Development',
+    quoteService: 'Mobile Application Development',
+    category: 'CROSS-PLATFORM MOBILE ENGINEERING',
+    desc: 'Native-feel iOS and Android applications developed with Flutter and React Native. Built for smooth interactions, push notifications, and offline data sync in field operations.',
+    deliverables: [
+      'Single codebase for rapid iOS and Android deployment',
+      'Local database caching for offline operation in field work',
+      'Biometric authentication & secure payment integrations',
+      'App Store and Google Play compliance submission',
+    ],
+    tech: 'Flutter · Dart · React Native · SQLite',
+    timeline: '4 to 8 Weeks',
+    icon: Building2,
   },
-  {
-    title: "Digital Marketing & SEO Growth",
-    quoteService: "Digital Marketing & SEO Growth",
-    desc: "Boost your brand visibility, reach qualified leads, and dominate search engines with data-driven SEO, PPC, and content strategies.",
-    icon: <BarChart3 size={20} />
-  },
-  {
-    title: "IT Support & Maintenance",
-    quoteService: "IT Support & Maintenance",
-    desc: "Ensure seamless business operations with 24/7 technical monitoring, infrastructure troubleshooting, and continuous optimization.",
-    icon: <ShieldCheck size={20} />
-  }
 ];
 
 const faqs = [
   {
-    q: "Do you provide post-launch support for developed software?",
-    a: "Yes, we provide comprehensive post-launch support, 24/7 server monitoring, and maintenance packages to keep your systems secure and updated."
+    q: 'Do you build custom software or use pre-made templates?',
+    a: 'We build production software from the ground up using React, Next.js, and Node/Python so you have 100% control over the codebase and scalability. For operational platforms, we also offer pre-built ERP modules if you need to launch in under 2 weeks.'
   },
   {
-    q: "What information do you need to provide a custom quote?",
-    a: "We typically need your core business goals, key feature requirements, target platform (web/mobile), and estimated project timeline."
+    q: 'How do milestone payments work?',
+    a: 'We work on transparent fixed-price milestones. Typically: 30% upon architecture signoff, 40% after testing working staging builds, and 30% upon production deployment. You never pay for unseen work.'
   },
   {
-    q: "Can I scale or expand my services as my business grows?",
-    a: "Absolutely. All Qadmas software and web architectures are designed modularly to scale seamlessly as your user base and operations expand."
+    q: 'Who owns the code and intellectual property?',
+    a: 'You do. From Day 1, all Git repositories, infrastructure scripts, and databases belong entirely to your company. We never hold client code hostage or charge arbitrary licensing fees.'
   },
   {
-    q: "How do you ensure data security and compliance?",
-    a: "We implement zero-trust encryption, secure API gateways, regular security audits, and strict access controls to keep your business data protected."
+    q: 'What happens if a server crashes in the middle of the night?',
+    a: 'Our 24/7 SLA monitoring tracks uptime around the clock with automated alerts. If a critical incident occurs, our on-call engineers address it immediately within our guaranteed < 15 minute response window.'
+  },
+  {
+    q: 'Can we expand and add new features as our business grows?',
+    a: 'Yes. All our codebases are built modularly using strict architectural patterns and clear documentation. You can have our team continue sprint cycles or transition the project to your in-house team effortlessly.'
   }
 ];
 
 export default function Services() {
-  const [openIndex, setOpenIndex] = React.useState<number | null>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('');
 
@@ -83,148 +115,141 @@ export default function Services() {
   };
 
   return (
-    <div className="bg-gallery-white min-h-screen font-geist text-ink selection:bg-apple-blue selection:text-white">
+    <div className="bg-gallery-white min-h-screen font-apple text-ink selection:bg-apple-blue selection:text-white">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 max-w-[1200px] mx-auto text-center">
-
-        <h1 className="font-geist text-display font-normal text-ink tracking-tight leading-none mb-6">
-          Our <span className="text-apple-blue">Provided Services</span>
+      <section className="relative pt-36 pb-20 px-6 max-w-[1200px] mx-auto text-center before:absolute before:inset-0 before:bg-gradient-to-r before:from-sky-100/50 before:via-white before:to-sky-50/50 before:rounded-full before:top-20 before:blur-3xl before:-z-10">
+        <h1 className="text-display font-medium text-ink tracking-tight leading-[1.05] mb-6 max-w-[900px] mx-auto">
+          Engineering capabilities built for <br />
+          <span className="text-apple-blue font-serif-accent font-normal italic">
+            production reliability
+          </span>
         </h1>
 
-        <p className="font-geist text-[16px] text-slate leading-relaxed max-w-[640px] mx-auto">
-          Elevate your business with enterprise software, custom mobile apps, high-converting websites, and 24/7 IT consulting.
+        <p className="font-apple text-[17px] text-slate leading-relaxed max-w-[660px] mx-auto">
+          We don&apos;t bill by the hour or sell vague consulting slide decks. We architect, build, and deploy production-ready software systems with clear milestone deliverables.
         </p>
       </section>
 
-      {/* Services Grid (Our Provided Services Section) */}
-      <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, i) => (
-            <div
-              key={i}
-              onClick={() => handleOpenQuote(service.quoteService)}
-              className="card-dark group flex flex-col justify-between hover:border-apple-blue transition-colors cursor-pointer"
-            >
-              <div>
-                <div className="w-10 h-10 rounded-[3px] bg-studio-mist border border-hairline-silver flex items-center justify-center text-apple-blue mb-6">
-                  {service.icon}
+      {/* Services Breakdown List */}
+      <section className="py-20 max-w-[1200px] mx-auto px-6 border-t border-slate-200/80">
+        <div className="space-y-8">
+          {detailedServices.map((service) => {
+            const Icon = service.icon;
+
+            return (
+              <div
+                key={service.id}
+                className="rounded-3xl border border-slate-200/80 bg-white p-8 md:p-10 hover:border-apple-blue/50 hover:shadow-xl transition-all duration-300 shadow-sm"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                  <div className="lg:col-span-7 space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-apple-blue">
+                        <Icon size={20} />
+                      </div>
+                      <h2 className="font-apple text-[26px] sm:text-[30px] font-semibold text-ink tracking-tight flex flex-wrap items-center gap-3">
+                        <span>{service.title}</span>
+                        {'externalLink' in service && service.externalLink && (
+                          <a
+                            href={service.externalLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-apple-blue/10 hover:bg-apple-blue text-apple-blue hover:text-white text-[12px] font-medium transition-all border border-apple-blue/20"
+                            title="Visit Wantik-X Platform"
+                          >
+                            <span>wantikx.com</span>
+                            <ArrowUpRight size={13} />
+                          </a>
+                        )}
+                      </h2>
+                    </div>
+
+                    <p className="font-apple text-[15px] text-slate leading-relaxed">
+                      {service.desc}
+                    </p>
+
+                    <div className="pt-2 space-y-2.5 font-apple text-[14px] text-ink/90">
+                      <div className="text-slate text-[13px] font-medium mb-1">
+                        Key deliverables included:
+                      </div>
+                      {service.deliverables.map((d, dIdx) => (
+                        <div key={dIdx} className="flex items-center gap-2.5 text-[13px]">
+                          <div className="w-4 h-4 rounded-full bg-apple-blue/10 flex items-center justify-center shrink-0">
+                            <Check size={11} className="text-apple-blue" />
+                          </div>
+                          <span>{d}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right Scope Card */}
+                  <div className="lg:col-span-5 rounded-2xl border border-slate-200/80 bg-slate-50/80 p-6 space-y-5 font-apple text-[13px]">
+                    <div className="space-y-3">
+                      <div className="flex justify-between border-b border-slate-200/80 pb-2">
+                        <span className="text-slate">Tech stack</span>
+                        <span className="text-ink text-right font-medium max-w-[200px]">{service.tech}</span>
+                      </div>
+                      <div className="flex justify-between border-b border-slate-200/80 pb-2">
+                        <span className="text-slate">Sprint duration</span>
+                        <span className="text-apple-blue font-medium">{service.timeline}</span>
+                      </div>
+                      <div className="flex justify-between border-b border-slate-200/80 pb-2">
+                        <span className="text-slate">Code ownership</span>
+                        <span className="text-ink font-medium">100% Client IP</span>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => handleOpenQuote(service.quoteService)}
+                      className="btn-slide-pill w-full justify-center group"
+                    >
+                      <span className="relative z-10 transition-all duration-500">
+                        Discuss Project Scope
+                      </span>
+                      <span className="arrow-circle">
+                        <ArrowRight size={14} />
+                      </span>
+                    </button>
+                  </div>
                 </div>
-                <h3 className="font-geist text-[20px] text-ink font-normal mb-3 group-hover:text-apple-blue transition-colors">
-                  {service.title}
-                </h3>
-                <p className="font-geist text-[14px] text-slate leading-relaxed mb-6">
-                  {service.desc}
-                </p>
               </div>
-
-              <div className="pt-3 border-t border-hairline-silver flex items-center justify-between text-slate group-hover:text-apple-blue transition-colors font-geist text-[14px]">
-                <span>Get a Quote</span>
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
-      {/* Delivering Excellence in Our Services Section */}
-      <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Section Picture Navigating to Excellence */}
-          <div className="lg:col-span-6 border border-hairline-silver rounded-[10px] bg-gallery-white p-4 shadow-2xl">
-            <img 
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop" 
-              alt="Delivering Excellence in Our Services" 
-              className="w-full h-auto rounded-[6px] opacity-90"
-            />
-          </div>
-
-          {/* Right Copy */}
-          <div className="lg:col-span-6 space-y-6">
-
-            <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-              Delivering <span className="text-apple-blue">Excellence</span> in Our Services
-            </h2>
-
-            <p className="font-geist text-[16px] text-slate leading-relaxed">
-              We hold ourselves to the highest standards of code quality, performance optimization, and rigorous QA testing. Every project we engineer is delivered on-time, within budget, and built for long-term scalability.
-            </p>
-
-            <div className="space-y-3 font-mono-geist text-[13px] text-ink">
-              <div className="flex items-center gap-3 border border-hairline-silver bg-gallery-white p-3.5 rounded-[3px]">
-                <Sparkles size={16} className="text-apple-blue shrink-0" />
-                <span>Zero-Downtime Migration & Continuous Deployment</span>
-              </div>
-              <div className="flex items-center gap-3 border border-hairline-silver bg-gallery-white p-3.5 rounded-[3px]">
-                <Sparkles size={16} className="text-apple-blue shrink-0" />
-                <span>24/7 SLA Engineering Support Across Qatar, UAE & India</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Experienced Software Services Section (Featuring Wantik-X CRM) */}
-      <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Copy */}
-          <div className="lg:col-span-6 space-y-6">
-
-            <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-              Our Experienced Software Services & <span className="text-apple-blue">Wantik-X CRM</span>
-            </h2>
-
-            <p className="font-geist text-[16px] text-slate leading-relaxed">
-              From enterprise CRM platforms like Wantik-X to multi-warehouse trading ERPs, our engineering team brings years of specialized experience in building mission-critical business software.
-            </p>
-
-            <button
-              onClick={() => handleOpenQuote("Enterprise CRM / ERP Solutions")}
-              className="bg-pricing-blue text-white hover:bg-[#0077ed] font-geist text-[14px] font-medium px-6 py-3 rounded-[3px] transition-colors inline-flex items-center gap-2"
-            >
-              <span>Get Wantik-X CRM Quote</span>
-              <ArrowRight size={15} />
-            </button>
-          </div>
-
-          {/* Right Section Wantik-X Showcase Image */}
-          <div className="lg:col-span-6 border border-hairline-silver rounded-[10px] bg-gallery-white p-4 shadow-2xl">
-            <div className="font-mono-geist text-[12px] text-apple-blue uppercase tracking-wider mb-3 flex items-center justify-between">
-              <span>WANTIK-X CRM ENTERPRISE PLATFORM</span>
-              <span className="px-2 py-0.5 bg-studio-mist border border-hairline-silver rounded-[3px] text-[10px]">100% OPERATIONAL</span>
-            </div>
-            <img 
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop" 
-              alt="Wantik-X CRM Platform Showcase" 
-              className="w-full h-auto rounded-[6px] opacity-90"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
-        <div className="text-center max-w-[700px] mx-auto mb-16">
-          <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-            Answers to your <span className="text-apple-blue">software service</span> questions
+      {/* Transparent FAQ Section */}
+      <section className="py-24 max-w-[960px] mx-auto px-6 border-t border-slate-200/80">
+        <div className="text-center mb-16">
+          <h2 className="text-display font-medium text-ink tracking-tight leading-[1.04]">
+            Straight answers about <br className="hidden sm:inline" />
+            <span className="text-apple-blue font-serif-accent font-normal italic">how we build</span>
           </h2>
         </div>
 
-        <div className="max-w-[800px] mx-auto space-y-4">
+        <div className="space-y-4">
           {faqs.map((faq, i) => {
-            const isOpen = openIndex === i;
+            const isOpen = openFaq === i;
             return (
-              <div key={i} className="border border-hairline-silver rounded-[6px] bg-gallery-white overflow-hidden">
+              <div
+                key={i}
+                className="rounded-2xl border border-slate-200/80 bg-white overflow-hidden transition-colors shadow-sm"
+              >
                 <button
-                  onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between p-5 text-left font-geist text-[16px] text-ink"
+                  onClick={() => setOpenFaq(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between p-6 text-left font-apple text-[17px] font-medium text-ink hover:text-apple-blue transition-colors"
                 >
                   <span>{faq.q}</span>
-                  <Plus size={18} className={`text-slate transition-transform ${isOpen ? 'rotate-45 text-apple-blue' : ''}`} />
+                  <Plus
+                    size={18}
+                    className={`text-slate shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-45 text-apple-blue' : ''}`}
+                  />
                 </button>
                 {isOpen && (
-                  <div className="px-5 pb-5 font-geist text-[14px] text-slate leading-relaxed border-t border-hairline-silver pt-4">
+                  <div className="px-6 pb-6 font-apple text-[14px] text-slate leading-relaxed border-t border-slate-200/80 pt-4">
                     {faq.a}
                   </div>
                 )}

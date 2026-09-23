@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { ArrowRight, Globe, Code2, Building2, Smartphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -6,106 +5,103 @@ export default function Projects() {
   const posts = [
     {
       id: 'website-development',
-      category: 'WEBSITE DEVELOPMENT',
-      title: 'High-Converting Website Development & Web Applications',
-      snippet: 'Custom responsive web architecture, modern UX design, and SEO-optimized platforms for enterprises across UAE, Qatar, and global markets.',
-      icon: Globe,
-      client: 'WEBSITE PORTFOLIO',
+      category: 'YACHT FLEET AUTOMATION',
+      title: 'Verkiezen Yachts UAE — Real-Time Fleet & Booking Engine',
+      snippet: 'Automated luxury yacht reservations in Dubai, eliminating double-bookings and boosting direct online bookings by 60%.',
+      metric: '+60% Online Bookings',
+      tech: 'Next.js 15 · Node.js · Stripe',
+      icon: Smartphone,
+      client: 'Dubai, UAE',
     },
     {
       id: 'software-development',
-      category: 'CUSTOM CRM PLATFORM',
-      title: 'Wantik-X Enterprise CRM Software System',
-      snippet: 'Bespoke customer relationship management platform with automated lead dispatches, client tracking, and analytics dashboards.',
+      category: 'CUSTOM CRM ENGINE',
+      title: 'Wantik-X Enterprise CRM & WhatsApp Lead Dispatch',
+      snippet: 'Custom customer relationship management with sub-30-second automated WhatsApp lead qualification and executive pipeline tracking.',
+      metric: '< 30s Lead Routing',
+      tech: 'React · Python · Redis',
       icon: Code2,
-      client: 'WANTIK-X CRM',
+      client: 'Doha & Dubai',
+    },
+    {
+      id: 'erp-solutions',
+      category: 'SUPPLY CHAIN ERP',
+      title: 'Redchilly Trading — Multi-Warehouse Inventory & Invoicing',
+      snippet: 'Unified 4 warehouses across Qatar, UAE, and India with real-time barcode telemetry and automated GCC VAT commercial invoicing.',
+      metric: '99.99% Stock Precision',
+      tech: 'TypeScript · PostgreSQL · Docker',
+      icon: Building2,
+      client: 'Qatar & India',
     },
     {
       id: 'website-development',
-      category: 'YACHTING PLATFORM',
-      title: 'Fleet Booking & Operations for Verkiezen Yachts UAE',
-      snippet: 'Bespoke yacht rental & fleet management web application in Dubai with real-time fleet availability and booking workflows.',
-      icon: Smartphone,
-      client: 'VERKIEZEN YACHTS',
-    },
-    {
-      id: 'software-development',
-      category: 'ENTERPRISE ERP',
-      title: 'Trading & Inventory ERP for Redchilly Trading',
-      snippet: 'Multi-warehouse inventory management, automated client invoicing, and supply chain tracking system for international trading.',
-      icon: Building2,
-      client: 'REDCHILLY TRADING',
+      category: 'CORPORATE PLATFORM',
+      title: 'Miozoti Technologies — High-Converting Infrastructure Portal',
+      snippet: 'Complete technical overhaul and cloud migration delivering 0.38s load speeds and modern brand positioning for IT procurement.',
+      metric: '0.38s Core Web Vitals',
+      tech: 'Next.js · Tailwind · Cloudflare',
+      icon: Globe,
+      client: 'Sharjah, UAE',
     },
   ];
 
   return (
-    <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
+    <section className="py-24 max-w-[1200px] mx-auto px-6 border-t border-slate-200/80 relative">
       {/* Section Header */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
-      >
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
         <div>
-          <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-            What <span className="text-apple-blue">We Have Built</span>
+          <h2 className="text-display font-medium text-ink tracking-tight leading-[1.04]">
+            Real software running <br className="hidden sm:inline" />
+            <span className="text-apple-blue font-serif-accent font-normal italic">real businesses</span>
           </h2>
         </div>
 
-        <Link to="/portfolio/website-development" className="btn-ghost text-[14px] px-4 py-2.5 rounded-none flex items-center gap-2 self-start md:self-auto">
-          <span>View All Work</span>
-          <ArrowRight size={14} />
+        <Link
+          to="/portfolio"
+          className="btn-slide-ghost group self-start md:self-auto"
+        >
+          <span className="relative z-10 transition-all duration-500">
+            View All Case Studies
+          </span>
+          <span className="arrow-circle">
+            <ArrowRight size={14} />
+          </span>
         </Link>
-      </motion.div>
+      </div>
 
-      {/* 4 Cards Grid with Framer Motion Entrance & Hover Physics */}
+      {/* 4 Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {posts.map((post, idx) => {
           const Icon = post.icon;
           return (
-            <motion.div
+            <Link
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              to={`/portfolio/${post.id}`}
+              className="rounded-2xl border border-slate-200/80 bg-white p-6 flex flex-col justify-between hover:border-apple-blue/50 hover:shadow-md transition-all duration-300 group shadow-sm"
             >
-              <Link
-                to={`/portfolio/${post.id}`}
-                className="card-dark group flex flex-col justify-between hover:border-apple-blue transition-colors cursor-pointer h-full"
-              >
-                <div>
-                  {/* Visual Thumbnail Header */}
-                  <div className="h-[130px] bg-studio-mist border border-hairline-silver rounded-[6px] mb-4 p-4 flex flex-col justify-between group-hover:border-apple-blue/50 transition-colors">
-                    <div className="flex justify-between items-center text-slate">
-                      <span className="font-mono-geist text-[11px] uppercase text-apple-blue">
-                        {post.category}
-                      </span>
-                      <Icon size={14} className="text-apple-blue group-hover:scale-110 transition-transform" />
-                    </div>
-                    <div className="font-mono-geist text-[11px] text-slate">
-                      {post.client}
-                    </div>
-                  </div>
-
-                  <h3 className="font-geist text-[18px] text-ink font-normal leading-snug mb-3 group-hover:text-apple-blue transition-colors">
+              <div>
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <h3 className="font-apple text-[17px] font-semibold text-ink leading-snug group-hover:text-apple-blue transition-colors">
                     {post.title}
                   </h3>
-
-                  <p className="font-geist text-[14px] text-slate leading-relaxed mb-6">
-                    {post.snippet}
-                  </p>
+                  <div className="w-8 h-8 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-slate group-hover:text-apple-blue group-hover:scale-105 transition-all shrink-0 mt-0.5">
+                    <Icon size={14} />
+                  </div>
                 </div>
 
-                <div className="pt-3 border-t border-hairline-silver flex items-center justify-between text-slate group-hover:text-apple-blue transition-colors font-geist text-[14px]">
-                  <span>Inspect Work</span>
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                <p className="font-apple text-[13px] text-slate leading-relaxed mb-6">
+                  {post.snippet}
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-200/80 flex items-center justify-between text-slate text-[12px] group-hover:text-apple-blue transition-colors font-medium font-apple">
+                <span>{post.client}</span>
+                <div className="flex items-center gap-1">
+                  <span>View Case</span>
+                  <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
                 </div>
-              </Link>
-            </motion.div>
+              </div>
+            </Link>
           );
         })}
       </div>

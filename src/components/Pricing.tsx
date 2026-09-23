@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Check, Sparkles } from 'lucide-react';
 import ContactModal from './ContactModal';
 
 export default function Pricing() {
@@ -13,26 +13,49 @@ export default function Pricing() {
 
   const plans = [
     {
-      name: 'STANDARD',
+      name: 'Standard ERP',
       price: '680 QR',
       period: '/ month',
-      desc: 'Standard pre-built ERP & CRM system for growing operational workflows.',
+      desc: 'Pre-built operational ERP & CRM for growing businesses needing to centralize sales and inventory.',
+      features: [
+        'Single warehouse stock tracking',
+        'Sales pipeline & quote generation',
+        'Automated PDF invoice dispatch',
+        'Up to 5 team members',
+        'Standard business-hours support',
+      ],
       packageName: 'Standard Package (680 QR / mo)',
       popular: false,
     },
     {
-      name: 'PROFESSIONAL',
+      name: 'Professional Suite',
       price: '850 QR',
       period: '/ month',
-      desc: 'Advanced ERP & CRM platform with multi-warehouse tracking & analytics.',
+      desc: 'Full-featured operational engine for multi-branch trading, fleet, or service businesses.',
+      features: [
+        'Multi-warehouse real-time sync',
+        'Automated WhatsApp lead dispatch',
+        'Customs & VAT compliant reports',
+        'Up to 15 team user accounts',
+        '24/7 server monitoring & backups',
+        'Sub-second database indexing',
+      ],
       packageName: 'Professional Package (850 QR / mo)',
       popular: true,
     },
     {
-      name: 'ENTERPRISE',
+      name: 'Bespoke Enterprise',
       price: '2,500 QR',
       period: '/ month',
-      desc: 'Full-scale dedicated enterprise software, multi-region ERP & 24/7 SLA.',
+      desc: 'Fully tailored software architecture built around your exact company processes.',
+      features: [
+        '100% custom software engineering',
+        'Unlimited seats & branch licenses',
+        'Custom ERP / CRM / Mobile apps',
+        'Complete Git source code ownership',
+        'Dedicated lead engineer & 15m SLA',
+        'On-premise or custom cloud setup',
+      ],
       packageName: 'Enterprise Package (2,500 QR / mo)',
       popular: false,
     },
@@ -40,60 +63,84 @@ export default function Pricing() {
 
   return (
     <>
-      <section id="pricing" className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
-        {/* Section Header */}
+      <section id="pricing" className="py-24 max-w-[1200px] mx-auto px-6 border-t border-slate-200/80 relative">
+        {/* Header */}
         <div className="text-center max-w-[700px] mx-auto mb-16">
-          <h2 className="font-geist text-heading-lg text-ink tracking-tight mb-4">
-            Transparent <span className="text-apple-blue">Pre-Built Packages</span> (QR)
+          <h2 className="text-display font-medium text-ink tracking-tight leading-[1.04] mb-4">
+            Predictable pricing in <br className="hidden sm:inline" />
+            <span className="text-apple-blue font-serif-accent font-normal italic">Qatari Riyal (QR)</span>
           </h2>
-          <p className="font-geist text-[16px] text-slate">
-            Scale your digital capabilities with clear deliverables, zero hidden fees, and guaranteed SLAs in Qatari Riyal (QR).
+          <p className="font-apple text-[16px] text-slate leading-relaxed">
+            No surprise billing or hidden upgrade gates. Choose a tested pre-built operational system or commission a dedicated engineering team.
           </p>
         </div>
 
-        {/* 3 Dark Surface Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        {/* 3 Pricing Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {plans.map((plan, idx) => (
             <div
               key={idx}
-              className={`border border-hairline-silver rounded-[10px] p-8 bg-gallery-white text-ink flex flex-col justify-between relative overflow-hidden transition-all duration-150 hover:border-apple-blue ${
-                plan.popular ? 'border-2 border-apple-blue bg-studio-mist' : ''
+              className={`rounded-3xl p-8 flex flex-col justify-between relative transition-all duration-300 bg-white ${
+                plan.popular
+                  ? 'border-2 border-apple-blue shadow-xl -translate-y-1'
+                  : 'border border-slate-200/80 shadow-sm hover:shadow-md'
               }`}
             >
-              <div className="relative z-10 space-y-6">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono-geist text-[12px] uppercase tracking-wider text-apple-blue font-medium">
-                    {plan.name}
-                  </span>
-                  {plan.popular && (
-                    <span className="font-mono-geist text-[11px] uppercase bg-pricing-blue text-white font-medium px-2 py-0.5 rounded-[3px]">
-                      RECOMMENDED
-                    </span>
-                  )}
+              {plan.popular && (
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-apple-blue text-white font-apple text-[11px] font-semibold flex items-center gap-1.5 shadow-md">
+                  <Sparkles size={12} />
+                  <span>Most popular in GCC</span>
                 </div>
+              )}
 
+              <div className="space-y-6">
                 <div>
+                  <h3 className="font-apple text-[20px] font-semibold text-ink mb-2">
+                    {plan.name}
+                  </h3>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-geist text-[38px] font-normal tracking-tight text-ink">
+                    <span className="font-apple text-[40px] font-bold text-ink tracking-tight">
                       {plan.price}
                     </span>
-                    <span className="font-geist text-[15px] text-slate">
+                    <span className="font-apple text-[14px] text-slate">
                       {plan.period}
                     </span>
                   </div>
-                  <p className="font-geist text-[14px] text-slate mt-2 leading-relaxed">
+                  <p className="font-apple text-[14px] text-slate mt-3 leading-relaxed">
                     {plan.desc}
                   </p>
                 </div>
+
+                <div className="space-y-3 pt-4 border-t border-slate-200/80">
+                  <div className="font-apple text-[12px] text-slate font-medium">
+                    Included capabilities:
+                  </div>
+                  {plan.features.map((feat, fIdx) => (
+                    <div key={fIdx} className="flex items-start gap-2.5 text-[13px] text-ink font-apple">
+                      <div className="w-4 h-4 rounded-full bg-apple-blue/10 flex items-center justify-center shrink-0 mt-0.5">
+                        <Check size={11} className="text-apple-blue" />
+                      </div>
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="relative z-10 pt-8 mt-6 border-t border-hairline-silver">
+              <div className="pt-8 mt-6 border-t border-slate-200/80">
                 <button
                   onClick={() => handleGetPricing(plan.packageName)}
-                  className="w-full bg-pricing-blue text-white hover:bg-[#0077ed] font-geist text-[14px] font-medium py-3 rounded-[3px] transition-colors flex items-center justify-center gap-2"
+                  className={`w-full ${
+                    plan.popular
+                      ? 'btn-slide-pill justify-center text-center'
+                      : 'btn-slide-ghost justify-center text-center'
+                  } group`}
                 >
-                  <span>Get Pricing</span>
-                  <ArrowRight size={14} />
+                  <span className="relative z-10 transition-all duration-500">
+                    Select Plan
+                  </span>
+                  <span className="arrow-circle">
+                    <ArrowRight size={14} />
+                  </span>
                 </button>
               </div>
             </div>

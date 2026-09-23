@@ -1,164 +1,252 @@
-import { Phone, Mail, MapPin, Send, Terminal, ShieldCheck } from 'lucide-react';
+import { useState } from 'react';
+import { Phone, Mail, MapPin, Send, MessageSquare, ShieldCheck, Check } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export default function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
-    <div className="bg-gallery-white min-h-screen font-geist text-ink selection:bg-apple-blue selection:text-white">
+    <div className="bg-gallery-white min-h-screen font-apple text-ink selection:bg-apple-blue selection:text-white">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 max-w-[1200px] mx-auto text-center">
-
-        <h1 className="font-geist text-display font-normal text-ink tracking-tight leading-none mb-6">
-          Connect with our <span className="text-apple-blue">engineering team</span>
+      <section className="relative pt-36 pb-20 px-6 max-w-[1200px] mx-auto text-center before:absolute before:inset-0 before:bg-gradient-to-r before:from-sky-100/50 before:via-white before:to-sky-50/50 before:rounded-full before:top-20 before:blur-3xl before:-z-10">
+        <h1 className="text-display font-semibold text-ink tracking-tight leading-[1.05] mb-6 max-w-[900px] mx-auto">
+          Direct engineering access. <br />
+          <span className="text-apple-blue font-serif-accent font-normal italic">
+            No sales gatekeepers.
+          </span>
         </h1>
 
-        <p className="font-geist text-[16px] text-slate leading-relaxed max-w-[640px] mx-auto">
-          Have a vision for your software, website, or enterprise ERP? Reach out to our team Operating in (Qatar, UAE, India).
+        <p className="font-apple text-[17px] text-slate leading-relaxed max-w-[660px] mx-auto">
+          Speak directly with our systems architects in Doha, Dubai, or Mumbai. We will evaluate your technical requirements, outline delivery stages, and provide a fixed quote.
         </p>
       </section>
 
-      {/* Trust & Guarantee Showcase Banner with Left Section Image */}
-      <section className="py-[64px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border border-hairline-silver rounded-[10px] bg-gallery-white p-6 md:p-8 shadow-2xl">
-          {/* Left Guarantee Showcase Image */}
-          <div className="lg:col-span-5">
-            <img 
-              src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2669&auto=format&fit=crop" 
-              alt="Qadmas Quality Guarantee & Trust" 
-              className="w-full h-auto rounded-[6px] opacity-90 border border-hairline-silver"
-            />
+      {/* 3 Regional Office Cards */}
+      <section className="pb-16 max-w-[1200px] mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm hover:shadow-md hover:border-apple-blue/50 transition-all duration-300">
+            <div className="flex items-center justify-between mb-3">
+              <div className="font-apple text-[20px] font-semibold text-ink">
+                Doha Hub, Qatar
+              </div>
+              <MapPin size={16} className="text-apple-blue" />
+            </div>
+            <p className="text-[13px] text-slate mb-4 font-apple">
+              Executive consulting, enterprise proposals &amp; GCC commercial agreements.
+            </p>
+            <a
+              href="tel:+97471328520"
+              className="inline-flex items-center gap-2 text-[14px] font-mono text-ink hover:text-apple-blue transition-colors font-medium"
+            >
+              <Phone size={14} />
+              <span>+974 7132 8520</span>
+            </a>
           </div>
 
-          {/* Right Copy */}
-          <div className="lg:col-span-7 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-studio-mist border border-hairline-silver rounded-[3px]">
-              <ShieldCheck size={14} className="text-apple-blue" />
-              <span className="font-mono-geist text-[11px] uppercase text-apple-blue tracking-wider">
-                100% SERVICE GUARANTEE
-              </span>
+          <div className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm hover:shadow-md hover:border-apple-blue/50 transition-all duration-300">
+            <div className="flex items-center justify-between mb-3">
+              <div className="font-apple text-[20px] font-semibold text-ink">
+                Dubai &amp; Sharjah, UAE
+              </div>
+              <MapPin size={16} className="text-apple-blue" />
             </div>
-
-            <h3 className="font-geist text-[26px] md:text-[32px] text-ink leading-tight font-normal">
-              Engineering Guarantee & SLA Commitment
-            </h3>
-
-            <p className="font-geist text-[15px] text-slate leading-relaxed">
-              We guarantee 24-hour initial response times, strict zero-downtime deployments, transparent pricing in Qatari Riyal (QR), and dedicated post-launch maintenance for every client across Qatar, UAE, and India.
+            <p className="text-[13px] text-slate mb-4 font-apple">
+              On-ground client alignment, logistics automation &amp; fleet systems.
             </p>
+            <a
+              href="https://wa.me/97471328520"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[14px] font-mono text-apple-blue hover:text-sky-700 transition-colors font-medium"
+            >
+              <MessageSquare size={14} />
+              <span>WhatsApp Direct Line</span>
+            </a>
+          </div>
+
+          <div className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm hover:shadow-md hover:border-apple-blue/50 transition-all duration-300">
+            <div className="flex items-center justify-between mb-3">
+              <div className="font-apple text-[20px] font-semibold text-ink">
+                Mumbai &amp; Bangalore, India
+              </div>
+              <MapPin size={16} className="text-apple-blue" />
+            </div>
+            <p className="text-[13px] text-slate mb-4 font-apple">
+              Full-stack sprint execution, database telemetry &amp; 24/7 technical monitoring.
+            </p>
+            <a
+              href="tel:+919137886399"
+              className="inline-flex items-center gap-2 text-[14px] font-mono text-ink hover:text-apple-blue transition-colors font-medium"
+            >
+              <Phone size={14} />
+              <span>+91 913 7886 399</span>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Form & Direct Details Grid */}
-      <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      {/* Main Form & Guarantee Grid */}
+      <section className="py-20 max-w-[1200px] mx-auto px-6 border-t border-slate-200/80">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Form Side */}
-          <div className="lg:col-span-8 border border-hairline-silver rounded-[10px] bg-gallery-white p-8 md:p-12 space-y-6">
-            <h2 className="font-geist text-[28px] text-ink font-normal tracking-tight">
-              Submit an Inquiry
-            </h2>
-            <p className="font-geist text-[14px] text-slate">
-              Fill out the form below and we will get back to you within 24 hours.
-            </p>
+          <div className="lg:col-span-8 rounded-3xl border border-slate-200/80 bg-white p-8 md:p-12 shadow-xl">
+            <div className="mb-8">
+              <h2 className="font-apple text-[26px] sm:text-[32px] font-semibold text-ink tracking-tight">
+                Submit an Engineering Scope
+              </h2>
+              <p className="font-apple text-[14px] text-slate mt-1">
+                Tell us about your systems, desired outcomes, or launch targets. We reply within 24 hours.
+              </p>
+            </div>
 
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {submitted ? (
+              <div className="py-14 text-center space-y-4">
+                <div className="w-14 h-14 rounded-full bg-apple-blue/20 text-apple-blue mx-auto flex items-center justify-center">
+                  <ShieldCheck size={28} />
+                </div>
+                <h3 className="font-apple text-[22px] font-semibold text-ink">
+                  Requirements Received
+                </h3>
+                <p className="font-apple text-[15px] text-slate max-w-md mx-auto leading-relaxed">
+                  Thank you. One of our lead solutions architects will review your technical specs and reach out via email or phone within 24 hours.
+                </p>
+              </div>
+            ) : (
+              <form className="space-y-5" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block font-apple text-[13px] text-ink font-medium mb-1.5">
+                      Your Name *
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      placeholder="e.g. Tariq Al-Mansoor"
+                      className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-4 py-3 font-apple text-[14px] text-ink placeholder-slate/50 focus:border-apple-blue focus:bg-white focus:outline-none transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-apple text-[13px] text-ink font-medium mb-1.5">
+                      Work Email *
+                    </label>
+                    <input
+                      required
+                      type="email"
+                      placeholder="tariq@company.com"
+                      className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-4 py-3 font-apple text-[14px] text-ink placeholder-slate/50 focus:border-apple-blue focus:bg-white focus:outline-none transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block font-apple text-[13px] text-ink font-medium mb-1.5">
+                      Phone / WhatsApp Number
+                    </label>
+                    <input
+                      type="tel"
+                      placeholder="+974 ... or +971 ..."
+                      className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-4 py-3 font-apple text-[14px] text-ink placeholder-slate/50 focus:border-apple-blue focus:bg-white focus:outline-none transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-apple text-[13px] text-ink font-medium mb-1.5">
+                      System Category
+                    </label>
+                    <select
+                      className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-4 py-3 font-apple text-[14px] text-ink focus:border-apple-blue focus:bg-white focus:outline-none transition-colors"
+                    >
+                      <option>Ai - Powered CRM &amp; ERP (Wantik-X)</option>
+                      <option>Digital Marketing</option>
+                      <option>Website Development</option>
+                      <option>Mobile Application Development</option>
+                    </select>
+                  </div>
+                </div>
+
                 <div>
-                  <label className="block font-mono-geist text-[11px] uppercase text-slate mb-1.5">
-                    Your Name
+                  <label className="block font-apple text-[13px] text-ink font-medium mb-1.5">
+                    Project Overview &amp; Key Requirements
                   </label>
-                  <input
-                    type="text"
-                    placeholder="Your Full Name"
-                    className="w-full bg-gallery-white border border-hairline-silver rounded-[3px] px-4 py-3 font-geist text-[14px] text-ink placeholder-steel focus:border-apple-blue focus:outline-none"
+                  <textarea
+                    rows={5}
+                    placeholder="Describe what your business needs: e.g. integrating 3 warehouses, automating customer bookings, replacing an existing slow platform, target launch timeframe..."
+                    className="w-full bg-slate-50 border border-slate-200/80 rounded-xl px-4 py-3 font-apple text-[14px] text-ink placeholder-slate/50 focus:border-apple-blue focus:bg-white focus:outline-none resize-none transition-colors"
                   />
                 </div>
-                <div>
-                  <label className="block font-mono-geist text-[11px] uppercase text-slate mb-1.5">
-                    Work Email
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="info@qadmastechnologies.com"
-                    className="w-full bg-gallery-white border border-hairline-silver rounded-[3px] px-4 py-3 font-geist text-[14px] text-ink placeholder-steel focus:border-apple-blue focus:outline-none"
-                  />
-                </div>
-              </div>
 
-              <div>
-                <label className="block font-mono-geist text-[11px] uppercase text-slate mb-1.5">
-                  Project Overview & Requirements
-                </label>
-                <textarea
-                  rows={6}
-                  placeholder="Tell us about your project goals, desired features, or estimated timeline..."
-                  className="w-full bg-gallery-white border border-hairline-silver rounded-[3px] px-4 py-3 font-geist text-[14px] text-ink placeholder-steel focus:border-apple-blue focus:outline-none resize-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="btn-dark w-full py-3.5 rounded-[3px] flex items-center justify-center gap-2 mt-2"
-              >
-                <span>Send Inquiry</span>
-                <Send size={15} />
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="btn-slide-pill w-full justify-center group"
+                >
+                  <span className="relative z-10 transition-all duration-500">
+                    Submit Technical Requirements
+                  </span>
+                  <span className="arrow-circle">
+                    <Send size={15} />
+                  </span>
+                </button>
+              </form>
+            )}
           </div>
 
-          {/* Details Sidebar */}
-          <div className="lg:col-span-4 border border-hairline-silver rounded-[10px] p-8 bg-gallery-white text-ink space-y-8 shadow-2xl">
-            <div className="space-y-6">
-              <div className="flex items-center gap-2 border-b border-hairline-silver pb-3">
-                <Terminal size={18} className="text-apple-blue" />
-                <span className="font-mono-geist text-[12px] uppercase tracking-wider text-apple-blue font-medium">
-                  CALL US ANYTIME & DIRECT CONTACT
-                </span>
+          {/* Guarantee & Direct Info Sidebar */}
+          <div className="lg:col-span-4 rounded-3xl border border-slate-200/80 p-8 bg-white space-y-6 shadow-xl">
+            <div className="font-apple text-[16px] font-semibold text-ink flex items-center gap-2 border-b border-slate-200/80 pb-3.5">
+              <ShieldCheck size={16} className="text-apple-blue" />
+              <span>The Qadmas SLA Promise</span>
+            </div>
+
+            <div className="space-y-4 font-apple text-[14px] text-slate">
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 rounded-full bg-apple-blue/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <Check size={12} className="text-apple-blue" />
+                </div>
+                <div>
+                  <div className="text-ink font-medium">Bilateral NDA Protection</div>
+                  <div className="text-[12px] text-slate mt-0.5">We sign mutual non-disclosure agreements before discussing private workflows.</div>
+                </div>
               </div>
 
-              <div className="space-y-4 font-mono-geist text-[12px]">
-                <div className="flex items-start gap-3">
-                  <Phone size={16} className="text-apple-blue shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-ink font-medium">+974 7132 8520</div>
-                    <div className="text-slate text-[11px]">QATAR OFFICE</div>
-                  </div>
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 rounded-full bg-apple-blue/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <Check size={12} className="text-apple-blue" />
                 </div>
-
-                <div className="flex items-start gap-3">
-                  <Phone size={16} className="text-apple-blue shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-ink font-medium">+91 913 7886 399</div>
-                    <div className="text-slate text-[11px]">INDIA OFFICE</div>
-                  </div>
+                <div>
+                  <div className="text-ink font-medium">Fixed-Price Proposals</div>
+                  <div className="text-[12px] text-slate mt-0.5">Clear scope boundaries with zero surprise hourly overages.</div>
                 </div>
+              </div>
 
-                <div className="flex items-start gap-3">
-                  <Mail size={16} className="text-apple-blue shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-ink font-medium">info@qadmastechnologies.com</div>
-                    <div className="text-slate text-[11px]">PRIMARY EMAIL</div>
-                  </div>
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 rounded-full bg-apple-blue/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <Check size={12} className="text-apple-blue" />
                 </div>
-
-                <div className="flex items-start gap-3">
-                  <MapPin size={16} className="text-apple-blue shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-ink font-medium">Operating in (Qatar, UAE, India)</div>
-                    <div className="text-slate text-[11px]">REGIONAL PRESENCE</div>
-                  </div>
+                <div>
+                  <div className="text-ink font-medium">100% Code Ownership</div>
+                  <div className="text-[12px] text-slate mt-0.5">All Git repositories and cloud configurations are delivered directly to your accounts.</div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-hairline-silver font-mono-geist text-[11px] text-slate">
-              <div className="text-apple-blue font-medium mb-1 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-apple-blue" />
-                <span>24/7 SUPPORT SLA</span>
-              </div>
-              <span>Guaranteed response within 24 hours.</span>
+            <div className="pt-6 border-t border-slate-200/80 space-y-2 font-mono text-[12px]">
+              <div className="text-slate text-[11px]">Direct email inquiries</div>
+              <a
+                href="mailto:info@qadmastechnologies.com"
+                className="text-ink hover:text-apple-blue transition-colors flex items-center gap-2"
+              >
+                <Mail size={14} className="text-apple-blue" />
+                <span>info@qadmastechnologies.com</span>
+              </a>
             </div>
           </div>
         </div>

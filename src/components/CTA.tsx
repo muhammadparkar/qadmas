@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, Phone } from 'lucide-react';
+import { ArrowUpRight, MessageSquare, ShieldCheck } from 'lucide-react';
 import ContactModal from './ContactModal';
 
 export default function CTA() {
@@ -7,37 +7,58 @@ export default function CTA() {
 
   return (
     <>
-      <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6">
-        {/* Dark Surface CTA Card */}
-        <div className="border border-hairline-silver rounded-[10px] p-8 md:p-14 bg-gallery-white text-ink relative overflow-hidden text-center max-w-[900px] mx-auto shadow-2xl">
+      <section className="py-24 max-w-[1200px] mx-auto px-6 relative">
+        <div className="rounded-3xl border border-hairline-silver bg-studio-mist/80 p-8 md:p-16 relative overflow-hidden text-center max-w-[1020px] mx-auto shadow-2xl before:absolute before:w-full before:h-full before:bg-gradient-to-r before:from-sky-100/70 before:via-white before:to-sky-50/70 before:rounded-full before:top-10 before:blur-3xl before:-z-10">
           <div className="relative z-10 space-y-6 flex flex-col items-center">
-            {/* Headline */}
-            <h2 className="font-geist text-[36px] md:text-[44px] leading-[1.1] font-normal tracking-tight text-ink max-w-[700px]">
-              Empowering your business with <span className="text-apple-blue">cutting-edge digital solutions</span>.
+            {/* Headline with Serif Accent */}
+            <h2 className="text-display font-medium text-ink tracking-tight leading-[1.04] max-w-[800px]">
+              Have a software project or operational bottleneck <br className="hidden sm:inline" />
+              <span className="text-apple-blue font-serif-accent font-normal italic">ready to solve?</span>
             </h2>
 
             {/* Subtitle */}
-            <p className="font-geist text-[16px] text-slate max-w-[560px] leading-relaxed">
-              Reach out to our engineering team today to discuss custom software development, website design, enterprise ERP systems, or IT consulting.
+            <p className="font-geist text-[15px] sm:text-[17px] text-slate max-w-[620px] leading-relaxed">
+              Skip the sales pitch. Speak directly with our software architects in Doha or Dubai. We’ll review your requirements, outline clear technical options, and provide a fixed quote.
             </p>
 
-            {/* Action Row */}
+            {/* Action Row with hero-01 style buttons */}
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="bg-pricing-blue text-white hover:bg-[#0077ed] font-geist text-[14px] font-medium px-6 py-3 rounded-[3px] transition-colors inline-flex items-center gap-2"
+                className="btn-slide-pill group"
               >
-                <span>Get a Free Consultation</span>
-                <ArrowRight size={15} />
+                <span className="relative z-10 transition-all duration-500">
+                  Request a Technical Proposal
+                </span>
+                <span className="arrow-circle">
+                  <ArrowUpRight size={16} />
+                </span>
               </button>
 
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="bg-transparent border border-hairline-silver text-ink hover:border-apple-blue hover:text-apple-blue font-geist text-[14px] px-6 py-3 rounded-[3px] transition-colors inline-flex items-center gap-2"
+              <a
+                href="https://wa.me/97471328520"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-slide-ghost group"
               >
-                <Phone size={15} />
-                <span>Call +974 7132 8520</span>
-              </button>
+                <span className="relative z-10 transition-all duration-500 flex items-center gap-2">
+                  <MessageSquare size={15} className="text-apple-blue" />
+                  <span>Chat on WhatsApp</span>
+                </span>
+                <span className="arrow-circle">
+                  <ArrowUpRight size={16} />
+                </span>
+              </a>
+            </div>
+
+            {/* Trust footer line */}
+            <div className="pt-6 border-t border-hairline-silver flex items-center justify-center gap-4 text-[11px] font-mono-geist text-slate">
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck size={13} className="text-apple-blue" />
+                <span>NDA Protected Consultations</span>
+              </span>
+              <span>·</span>
+              <span>Offices: Qatar · UAE · India</span>
             </div>
           </div>
         </div>

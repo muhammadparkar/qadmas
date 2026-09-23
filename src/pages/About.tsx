@@ -1,174 +1,161 @@
-import { Check, Star, Cpu } from 'lucide-react';
+import { Check, Cpu, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const stats = [
-  { label: 'DELIVERED PROJECTS', value: '100+' },
-  { label: 'GLOBAL CLIENT COUNTRIES', value: '15+' },
-  { label: 'YEARS EXCELLENCE', value: '3+' },
+  { label: 'Delivered production systems', value: '100+' },
+  { label: 'Active regional hubs', value: '3 (QA · UAE · IN)' },
+  { label: 'Years in continuous production', value: '4+' },
 ];
 
-const testimonials = [
+const principles = [
   {
-    name: 'Karim Larkamiz',
-    role: 'Verkiezen Yacht (UAE)',
-    text: 'QadmasTech delivered a bespoke software solution that elevated our yacht rental operations. From booking automation to real-time fleet management, the system is sleek, user-friendly, and highly efficient.',
+    title: 'Direct Senior Engineering Access',
+    desc: 'You work with the actual engineers architecting your database and writing your frontend. No non-technical account managers playing telephone with your requirements.',
   },
   {
-    name: 'Mhd. Arshad',
-    role: 'Miozoti Technologies (UAE)',
-    text: 'QadmasTech transformed our digital presence with a comprehensive platform that seamlessly integrates our operations. Their expertise drove a 60% increase in user engagement.',
+    title: 'Milestone-Based Fixed Pricing',
+    desc: 'Every project begins with a clear technical roadmap and fixed scope. You review working staging builds before milestone signoffs — zero hidden retainer traps.',
   },
   {
-    name: 'Abdul Hafiz',
-    role: 'Founder, Redchilly Trading',
-    text: 'Partnering with QadmasTech was the best decision for our trading business. They developed a custom solution that streamlined our operations, improved inventory tracking, and boosted client satisfaction.',
+    title: 'Total Code & Asset Ownership',
+    desc: 'From the initial Git commit, all source code, Docker configs, and database schemas belong 100% to you. We never lock you into proprietary black boxes.',
+  },
+  {
+    title: 'Real Ground Support in the GCC',
+    desc: 'Whenever you need in-person planning, requirement sessions, or critical deployment support, our leadership is physically present in Doha and Dubai.',
   },
 ];
 
 export default function About() {
   return (
-    <div className="bg-gallery-white min-h-screen font-geist text-ink selection:bg-apple-blue selection:text-white">
+    <div className="bg-gallery-white min-h-screen font-apple text-ink selection:bg-apple-blue selection:text-white">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 px-6 max-w-[1200px] mx-auto">
-        <div className="flex flex-col items-center text-center max-w-[800px] mx-auto mb-16">
+      <section className="relative pt-36 pb-20 px-6 max-w-[1200px] mx-auto text-center before:absolute before:inset-0 before:bg-gradient-to-r before:from-sky-100/50 before:via-white before:to-sky-50/50 before:rounded-full before:top-20 before:blur-3xl before:-z-10">
+        <h1 className="text-display font-medium text-ink tracking-tight leading-[1.05] mb-6 max-w-[900px] mx-auto">
+          Built in the Gulf. <br />
+          <span className="text-apple-blue font-serif-accent font-normal italic">
+            Engineered for real-world reliability.
+          </span>
+        </h1>
 
-          <h1 className="font-geist text-display text-ink tracking-tight leading-none mb-6">
-            Building <span className="text-apple-blue">digital solutions</span> for the modern world
-          </h1>
+        <p className="font-apple text-[17px] text-slate leading-relaxed max-w-[680px] mx-auto mb-12">
+          We founded Qadmas Technologies after watching too many businesses across Qatar and the UAE get burned by agencies that overpromise, outsource to invisible subcontractors, and vanish after receiving their deposit.
+        </p>
 
-          <p className="font-geist text-[16px] text-slate leading-relaxed max-w-[640px] mb-8">
-            We provide high-end custom software development, enterprise ERP systems, mobile applications, digital marketing, and IT consulting.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-[700px]">
-            {stats.map((stat, i) => (
-              <div key={i} className="border border-hairline-silver rounded-[6px] p-4 bg-gallery-white text-center">
-                <div className="font-geist text-[36px] text-apple-blue font-normal leading-none mb-2">
-                  {stat.value}
-                </div>
-                <div className="font-mono-geist text-[11px] uppercase text-slate tracking-wider">
-                  {stat.label}
-                </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-[840px] mx-auto">
+          {stats.map((stat, i) => (
+            <div key={i} className="rounded-3xl border border-slate-200/80 p-6 bg-white text-center shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="font-apple text-[36px] font-bold text-apple-blue leading-none mb-2">
+                {stat.value}
               </div>
-            ))}
-          </div>
+              <div className="font-apple text-[13px] text-slate">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* A Message from Our Founder Section (Replaces Why choose our expertise) */}
-      <section className="py-[96px] bg-gallery-white border-t border-hairline-silver max-w-[1200px] mx-auto px-6">
+      {/* Founder Statement Section */}
+      <section className="py-24 max-w-[1200px] mx-auto px-6 border-t border-slate-200/80">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6">
-
-            <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-              A Message from <span className="text-apple-blue">Our Founder</span>
+            <h2 className="text-display font-medium text-ink tracking-tight leading-[1.04]">
+              &ldquo;Software shouldn’t be a <span className="text-apple-blue font-serif-accent font-normal italic">black box</span>&rdquo;
             </h2>
 
-            <div className="space-y-4 font-geist text-[16px] text-slate leading-relaxed">
+            <div className="space-y-4 font-apple text-[16px] text-slate leading-relaxed">
               <p className="text-ink font-medium text-[18px]">
-                Welcome to Qadmas Technologies.
+                A note from our founder:
               </p>
               <p>
-                When we started this journey, our goal was clear: to build software and digital solutions that do more than just function — they drive meaningful growth for your business. In an era where technology evolves daily, having a reliable digital partner isn&apos;t just an advantage; it&apos;s essential.
+                When a business owner commissions custom software, they aren&apos;t buying code — they are investing in the backbone of their operations. Whether it&apos;s managing a multi-warehouse inventory across three countries or booking luxury yacht charters in Dubai Marina, downtime or bad architecture costs real money.
               </p>
               <p>
-                We don&apos;t just deliver projects; we invest in long-term partnerships built on trust, quality, and measurable impact.
+                At Qadmas, we established two strict rules from day one: First, no junior outsourcing games. Second, total transparency on delivery dates, system architecture, and code ownership.
               </p>
               <p>
-                Thank you for trusting us to be a part of your journey. We look forward to helping you shape the future of your business.
+                We treat every system we build as if our own business depended on it. That is why over 90% of our clients stay on long-term support agreements with us year after year.
               </p>
             </div>
 
-            <div className="pt-4 border-t border-hairline-silver font-mono-geist">
-              <div className="text-apple-blue text-[16px] font-medium">- Tauqeer Dadarkar</div>
-              <div className="text-slate text-[12px] uppercase">Founder &amp; CEO, Qadmas Technologies</div>
+            <div className="pt-4 border-t border-slate-200/80 font-apple">
+              <div className="text-ink text-[16px] font-semibold">Tauqeer Dadarkar</div>
+              <div className="text-slate text-[13px]">Founder &amp; Lead Systems Architect, Qadmas Technologies</div>
             </div>
           </div>
 
-          <div className="lg:col-span-5 border border-hairline-silver rounded-[10px] p-6 bg-gallery-white text-ink shadow-2xl space-y-4">
-            <div className="font-mono-geist text-[12px] uppercase text-apple-blue font-medium tracking-wider flex items-center gap-2 border-b border-hairline-silver pb-3">
-              <Cpu size={16} />
-              EXECUTIVE STATEMENT
+          <div className="lg:col-span-5 rounded-3xl border border-slate-200/80 p-8 bg-white space-y-6 shadow-xl">
+            <div className="font-apple text-[15px] font-semibold text-ink flex items-center gap-2 border-b border-slate-200/80 pb-3.5">
+              <Cpu size={16} className="text-apple-blue" />
+              <span>The Gulf-India Engineering Corridor</span>
             </div>
-            <img 
-              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2664&auto=format&fit=crop" 
-              alt="Qadmas Technologies Leadership Team" 
-              className="w-full h-auto rounded-[6px] opacity-90 border border-hairline-silver"
-            />
-            <blockquote className="font-geist text-[15px] italic leading-relaxed text-slate pt-2">
-              &quot;Building long-term partnerships built on trust, engineering quality, and measurable business impact.&quot;
-            </blockquote>
-          </div>
-        </div>
-      </section>
 
-      {/* Customer Centric Approach Section (With Left Photo of Smiling Customers/Team) */}
-      <section className="py-[96px] bg-gallery-white border-t border-hairline-silver max-w-[1200px] mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Photo Showing Happy Customers / Smiling Team */}
-          <div className="lg:col-span-6 border border-hairline-silver rounded-[10px] p-4 bg-gallery-white shadow-2xl">
-            <img 
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2576&auto=format&fit=crop" 
-              alt="Happy Smiling Customers and Team" 
-              className="w-full h-auto rounded-[6px] opacity-90"
-            />
-          </div>
-
-          {/* Right Copy */}
-          <div className="lg:col-span-6 space-y-6">
-            <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-              Customer-centric <span className="text-apple-blue">software engineering</span>
-            </h2>
-            <p className="font-geist text-[16px] text-slate leading-relaxed">
-              We prioritize understanding your specific business challenges. Every solution we build is tailored to your audience, ensuring maximum engagement and return on investment.
+            <p className="font-apple text-[14px] text-slate leading-relaxed">
+              Our unique operating model combines on-the-ground project architects in Doha and Dubai with high-velocity engineering hubs in India. You get GCC commercial understanding paired with deep engineering talent and rapid development cycles.
             </p>
 
-            <div className="space-y-3 font-mono-geist text-[13px] text-ink">
-              {[
-                'Quality Assurance & Rigorous Testing',
-                'On-Time Delivery & Clear Milestones',
-                '24/7 Expert Support & Maintenance',
-                'Scalable Infrastructure Built for Growth',
-                'Customized UI/UX & Modern Web Standards',
-              ].map((text, i) => (
-                <div key={i} className="flex items-center gap-3 border border-hairline-silver bg-gallery-white p-3 rounded-[3px]">
-                  <Check size={14} className="text-apple-blue shrink-0" />
-                  <span>{text}</span>
-                </div>
-              ))}
+            <div className="space-y-3 font-apple text-[14px] pt-2">
+              <div className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-apple-blue shrink-0 mt-2" />
+                <span className="text-slate"><strong className="text-ink font-medium">Doha &amp; Dubai:</strong> Project management, technical scoping, and GCC client alignment.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-apple-blue shrink-0 mt-2" />
+                <span className="text-slate"><strong className="text-ink font-medium">India Engineering Labs:</strong> Full-stack development, database optimization, and automated testing.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-apple-blue shrink-0 mt-2" />
+                <span className="text-slate"><strong className="text-ink font-medium">24/7 SLA Support:</strong> Direct engineer access and rapid incident resolution.</span>
+              </div>
+            </div>
+
+            <div className="pt-2">
+              <Link
+                to="/contact"
+                className="btn-slide-pill w-full justify-center group"
+              >
+                <span className="relative z-10 transition-all duration-500">
+                  Speak With Tauqeer &amp; The Team
+                </span>
+                <span className="arrow-circle">
+                  <ArrowRight size={14} />
+                </span>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-[96px] bg-gallery-white border-t border-hairline-silver max-w-[1200px] mx-auto px-6">
+      {/* Engineering Principles */}
+      <section className="py-24 max-w-[1200px] mx-auto px-6 border-t border-slate-200/80">
         <div className="text-center max-w-[700px] mx-auto mb-16">
-          <h2 className="font-geist text-heading-lg text-ink tracking-tight">
-            What <span className="text-apple-blue">business leaders</span> say
+          <h2 className="text-display font-medium text-ink tracking-tight leading-[1.04]">
+            How we protect <span className="text-apple-blue font-serif-accent font-normal italic">your investment</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, idx) => (
-            <div key={idx} className="border border-hairline-silver rounded-[10px] p-6 bg-gallery-white text-ink flex flex-col justify-between shadow-2xl">
-              <div className="space-y-4">
-                <div className="flex gap-1 text-apple-blue">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} size={14} fill="#0066cc" />
-                  ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {principles.map((p, i) => (
+            <div
+              key={i}
+              className="rounded-3xl border border-slate-200/80 bg-white p-8 hover:border-apple-blue/50 hover:shadow-lg transition-all shadow-sm"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 rounded-xl bg-apple-blue/10 border border-apple-blue/20 flex items-center justify-center text-apple-blue shrink-0">
+                  <Check size={16} />
                 </div>
-                <blockquote className="font-geist text-[15px] leading-relaxed text-ink">
-                  &quot;{t.text}&quot;
-                </blockquote>
+                <h3 className="font-apple text-[18px] font-semibold text-ink">
+                  {p.title}
+                </h3>
               </div>
-              <div className="pt-4 border-t border-hairline-silver mt-6">
-                <div className="font-geist text-[14px] font-medium text-ink">{t.name}</div>
-                <div className="font-mono-geist text-[11px] text-slate uppercase">{t.role}</div>
-              </div>
+              <p className="font-apple text-[14px] text-slate leading-relaxed">
+                {p.desc}
+              </p>
             </div>
           ))}
         </div>

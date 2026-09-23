@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { Check, ArrowRight, Terminal } from 'lucide-react';
+import { ArrowRight, Terminal, Check } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -10,138 +10,129 @@ const portfolioDetails: Record<string, {
     id: number;
     title: string;
     desc: string;
+    outcome: string;
     image: string;
     details: {
       client: string;
       category: string;
       region: string;
+      stack: string;
     };
-    link?: string;
   }>;
   highlights: string[];
 }> = {
   "website-development": {
-    title: "Website Development & Web Applications",
-    categoryDesc: "High-performing, responsive websites and web applications built using React, Next.js, and modern cloud infrastructure.",
+    title: "Web Platforms & High-Speed Portals",
+    categoryDesc: "Production web applications engineered with Next.js 15, sub-second Core Web Vitals, and conversion-optimized booking funnels.",
     projects: [
       {
         id: 1,
-        title: "Platform Development for Miozoti Technology",
-        desc: "Crafting digital excellence, Qadmas Technologies developed and manages the web platform for UAE-based Miozoti Technology, driving online engagement up by 60%.",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop", 
+        title: "Verkiezen Yachts UAE — Real-Time Fleet & Booking Platform",
+        desc: "Dubai's luxury yacht rental market moves fast during peak winter seasons. We replaced manual phone bookings and spreadsheet schedules with an automated booking engine featuring real-time fleet calendar holds, skipper assignment, and multi-currency Stripe checkout.",
+        outcome: "+60% increase in direct online bookings and zero double-bookings in the first 90 days of operation.",
+        image: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=2670&auto=format&fit=crop", 
         details: {
-          client: "MIOZOTI TECHNOLOGY",
-          category: "Website Development",
-          region: "UAE",
+          client: "VERKIEZEN YACHTS",
+          category: "Booking Engine & Fleet System",
+          region: "Dubai, UAE",
+          stack: "Next.js 15 · Node.js · Stripe · PostgreSQL",
         }
       },
       {
         id: 2,
-        title: "Fleet Booking & Operations for Verkiezen Yachts",
-        desc: "Developed a luxury yacht rental & fleet management web application in Dubai with real-time availability and automated reservation workflows.",
-        image: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=2670&auto=format&fit=crop", 
+        title: "Miozoti Technologies — High-Performance Corporate Infrastructure Portal",
+        desc: "Engineered a modernized web platform and IT procurement catalog for UAE-based Miozoti Technology. Cut initial page load times down to 0.38 seconds and increased client inbound RFQ inquiries.",
+        outcome: "Sub-0.4s load speed, 100% Core Web Vitals score, and +40% surge in monthly qualified enterprise leads.",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop", 
         details: {
-          client: "VERKIEZEN YACHTS",
-          category: "Website & Booking System",
-          region: "UAE",
+          client: "MIOZOTI TECHNOLOGIES",
+          category: "Corporate Web Platform",
+          region: "Sharjah, UAE",
+          stack: "React · TypeScript · Tailwind · Cloudflare Edge",
         }
       },
       {
         id: 3,
-        title: "Corporate Portal & Commerce Web App for Redchilly",
-        desc: "High-converting corporate website and trading portal with real-time product catalogs and multi-currency inquiry routing.",
+        title: "Redchilly Global Trading Portal & Catalog",
+        desc: "Created a responsive international trade portal with real-time product catalogs, multi-currency inquiry routing, and automated PDF spec-sheet generation for buyers across the GCC and Asia.",
+        outcome: "Streamlined wholesale buyer inquiries with instant automated quotation routing.",
         image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop",
         details: {
           client: "REDCHILLY TRADING",
-          category: "Corporate Web App",
-          region: "QATAR & INDIA",
+          category: "Global Trade Portal",
+          region: "Qatar & India",
+          stack: "Next.js · Node.js · Redis",
         }
-      },
+      }
+    ],
+    highlights: [
+      "Custom responsive Next.js 15 & React architecture",
+      "Sub-0.5s Core Web Vitals optimization on mobile viewports",
+      "Integrated regional payment gateways (Stripe, Tabby, Apple Pay)",
+      "Automated WhatsApp status notifications for end customers"
+    ]
+  },
+  "software-development": {
+    title: "Custom Backend Software & APIs",
+    categoryDesc: "High-concurrency microservices, automated customer relationship engines, and secure database architectures.",
+    projects: [
       {
         id: 4,
-        title: "Gulf Regional Enterprise Portal",
-        desc: "Enterprise web portal connecting multi-region operations across Qatar, UAE, and India with zero-latency cloud edge distribution.",
-        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2670&auto=format&fit=crop",
+        title: "Wantik-X Enterprise CRM & Automated Lead Dispatch Engine",
+        desc: "A custom software platform built by Qadmas Technologies to automate high-volume sales pipelines. It listens to incoming web forms, Instagram DMs, and WhatsApp inquiries, qualifies leads through an automated bot within 30 seconds, and dispatches them directly to on-duty sales agents.",
+        outcome: "Average lead response time dropped from 4 hours to under 30 seconds with 100% pipeline visibility.",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
         details: {
-          client: "GULF ENTERPRISE GROUP",
-          category: "Enterprise Web Portal",
-          region: "QATAR",
+          client: "WANTIK-X ENTERPRISE",
+          category: "Custom CRM & Lead Automation",
+          region: "Qatar & UAE",
+          stack: "React · Python · Redis · WhatsApp API",
         }
       },
       {
         id: 5,
-        title: "Elite Global Trading Web Application",
-        desc: "Modern responsive web application featuring custom UI/UX design, interactive search tools, and automated lead capture.",
-        image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2671&auto=format&fit=crop",
-        details: {
-          client: "ELITE TRADING",
-          category: "Web Application",
-          region: "GLOBAL",
-        }
-      }
-    ],
-    highlights: [
-      "Custom responsive React & Next.js architecture",
-      "Sub-second page speeds with Core Web Vitals optimization",
-      "Mobile-first responsive design across all viewports",
-      "SEO-optimized search engine indexing & analytics"
-    ]
-  },
-  "software-development": {
-    title: "Custom Software Development & Wantik-X CRM",
-    categoryDesc: "Bespoke software systems, customer relationship management platforms, and enterprise backend engineering.",
-    projects: [
-      {
-        id: 6,
-        title: "Wantik-X Enterprise CRM Platform",
-        desc: "Wantik-X CRM is a custom-engineered software platform built by Qadmas Technologies to automate customer dispatches, lead scoring, multi-tier sales pipelines, and executive reporting for high-volume enterprises.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
-        details: {
-          client: "WANTIK-X ENTERPRISE",
-          category: "Custom CRM Software",
-          region: "QATAR & UAE",
-        }
-      },
-      {
-        id: 7,
-        title: "Automated Workflow Engine & Microservices API",
-        desc: "Zero-trust microservices architecture with automated billing dispatches, client tracking APIs, and encrypted data backup pipelines.",
+        title: "High-Throughput Microservice API & Billing Engine",
+        desc: "Designed and deployed a fault-tolerant microservices cluster with automated billing dispatches, client tracking APIs, and encrypted daily cloud backup pipelines.",
+        outcome: "Zero downtime during quarterly billing spikes with sub-millisecond API response times.",
         image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2670&auto=format&fit=crop",
         details: {
           client: "QADMAS CORE PLATFORM",
-          category: "Software Architecture",
-          region: "GLOBAL",
+          category: "Microservices Architecture",
+          region: "Global Deployment",
+          stack: "Node.js · Docker · AWS · PostgreSQL",
         }
       }
     ],
     highlights: [
-      "Wantik-X CRM custom lead management & sales pipeline",
-      "High-speed API optimization with sub-millisecond queries",
-      "Zero-trust security compliance & data encryption",
-      "Automated executive reports & analytics dispatches"
+      "Sub-30-second automated WhatsApp lead qualification",
+      "Zero-trust API security with encrypted data storage",
+      "Custom role-based dashboard for managers and field reps",
+      "Full source code ownership with zero monthly seat licensing"
     ]
   },
   "erp-solutions": {
-    title: "Enterprise ERP & Inventory Automation",
-    categoryDesc: "Multi-warehouse stock tracking, client billing, supply chain automation, and enterprise resource planning.",
+    title: "Enterprise ERP & Inventory Telemetry",
+    categoryDesc: "Multi-warehouse stock tracking, commercial invoice automation, and supply chain synchronization across the GCC.",
     projects: [
       {
-        id: 8,
-        title: "Redchilly Trading Multi-Warehouse ERP",
-        desc: "Comprehensive ERP system featuring multi-warehouse stock sync, automated purchase orders, commercial invoice generation, and real-time inventory telemetry.",
+        id: 6,
+        title: "Redchilly Trading Multi-Warehouse Inventory & Invoicing ERP",
+        desc: "A bespoke ERP platform built for an international trading company managing 4 warehouses across Qatar, UAE, and India. Features real-time barcode telemetry, automated purchase orders, commercial customs invoicing, and GCC VAT compliant accounting.",
+        outcome: "Reduced warehouse discrepancies to under 0.01% and cut invoice fulfillment time by 45%.",
         image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2670&auto=format&fit=crop",
         details: {
           client: "REDCHILLY TRADING",
-          category: "Enterprise ERP",
-          region: "QATAR & INDIA",
+          category: "Supply Chain & Invoicing ERP",
+          region: "Qatar & India",
+          stack: "TypeScript · PostgreSQL · Redis · Docker",
         }
       }
     ],
     highlights: [
-      "Multi-warehouse inventory synchronization",
-      "Automated commercial invoice & billing engine",
-      "Role-based access control (RBAC) security",
-      "Real-time operational dashboards"
+      "Multi-warehouse real-time inventory telemetry",
+      "Automated GCC VAT & customs invoice PDF dispatch",
+      "Role-based access control (RBAC) across regional warehouses",
+      "Complete offline barcode scanning capability"
     ]
   }
 };
@@ -151,47 +142,51 @@ export default function PortfolioDetail() {
   const data = portfolioDetails[id || ""] || portfolioDetails["website-development"];
 
   return (
-    <div className="bg-gallery-white min-h-screen text-ink font-geist selection:bg-apple-blue selection:text-white">
+    <div className="bg-gallery-white min-h-screen text-ink font-apple selection:bg-apple-blue selection:text-white">
       <Navbar />
 
       {/* Hero Header */}
-      <section className="relative pt-32 pb-20 px-6 max-w-[1200px] mx-auto text-center">
+      <section className="relative pt-36 pb-20 px-6 max-w-[1200px] mx-auto text-center before:absolute before:inset-0 before:bg-gradient-to-r before:from-sky-100/50 before:via-white before:to-sky-50/50 before:rounded-full before:top-20 before:blur-3xl before:-z-10">
         <Link 
           to="/portfolio" 
-          className="inline-flex items-center gap-2 text-slate hover:text-apple-blue transition-colors mb-6 font-mono-geist text-[12px] uppercase"
+          className="inline-flex items-center gap-2 text-slate hover:text-apple-blue transition-colors mb-6 font-apple text-[13px] px-4 py-1.5 rounded-full bg-slate-100/80 border border-slate-200/60"
         >
           <ArrowRight size={14} className="rotate-180" />
-          <span>Back to All Work</span>
+          <span>Back to All Case Studies</span>
         </Link>
 
-        <h1 className="font-geist text-display font-normal text-ink tracking-tight leading-none mb-4">
+        <h1 className="text-display font-semibold text-ink tracking-tight leading-[1.05] mb-4 max-w-[900px] mx-auto">
           {data.title}
         </h1>
 
-        <p className="font-geist text-[16px] text-slate max-w-[620px] mx-auto leading-relaxed">
+        <p className="font-apple text-[16px] text-slate max-w-[640px] mx-auto leading-relaxed">
           {data.categoryDesc}
         </p>
       </section>
 
       {/* Projects List */}
-      <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
+      <section className="py-20 max-w-[1200px] mx-auto px-6 border-t border-slate-200/80">
         <div className="space-y-20">
           {data.projects.map((project) => (
-            <div key={project.id} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div key={project.id} className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
               <div className="lg:col-span-8 space-y-6">
-                <h2 className="font-geist text-[28px] md:text-[34px] text-ink leading-tight font-normal">
+                <h2 className="font-apple text-[26px] sm:text-[32px] font-semibold text-ink tracking-tight">
                   {project.title}
                 </h2>
 
-                <p className="font-geist text-[16px] text-slate leading-relaxed">
+                <p className="font-apple text-[15px] sm:text-[16px] text-slate leading-relaxed">
                   {project.desc}
                 </p>
 
-                <div className="border border-hairline-silver rounded-[10px] bg-gallery-white p-4 shadow-2xl">
+                <p className="font-apple text-[14px] text-ink font-medium">
+                  <span className="text-apple-blue font-semibold">Business Outcome:</span> {project.outcome}
+                </p>
+
+                <div className="rounded-3xl border border-slate-200/80 bg-white p-3 shadow-xl overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-auto rounded-[6px] opacity-90"
+                    className="w-full h-auto rounded-2xl"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop";
                     }}
@@ -200,23 +195,45 @@ export default function PortfolioDetail() {
               </div>
 
               {/* Right Side: Details Card */}
-              <div className="lg:col-span-4 border border-hairline-silver rounded-[10px] p-8 bg-gallery-white text-ink space-y-6 shadow-2xl">
-                <div className="flex items-center gap-2 border-b border-hairline-silver pb-3">
-                  <Terminal size={16} className="text-apple-blue" />
-                  <span className="font-mono-geist text-[12px] uppercase font-medium text-apple-blue">PROJECT DETAILS</span>
+              <div className="lg:col-span-4 rounded-3xl border border-slate-200/80 p-8 bg-white space-y-6 shadow-xl">
+                <div className="flex items-center gap-2 border-b border-slate-200/80 pb-3.5">
+                  <Terminal size={15} className="text-apple-blue" />
+                  <span className="font-apple text-[15px] font-semibold text-ink">
+                    Technical Specifications
+                  </span>
                 </div>
 
-                <div className="space-y-4 font-mono-geist text-[12px]">
-                  {[
-                    { label: "CLIENT", val: project.details.client },
-                    { label: "CATEGORY", val: project.details.category },
-                    { label: "OPERATING REGION", val: project.details.region },
-                  ].map((detail, j) => (
-                    <div key={j} className="border-b border-hairline-silver pb-2">
-                      <div className="text-ink font-medium">{detail.val}</div>
-                      <div className="text-slate text-[10px] uppercase">{detail.label}</div>
-                    </div>
-                  ))}
+                <div className="space-y-4 font-apple text-[13px]">
+                  <div>
+                    <div className="text-slate text-[12px]">Client</div>
+                    <div className="text-ink font-medium mt-0.5">{project.details.client}</div>
+                  </div>
+                  <div>
+                    <div className="text-slate text-[12px]">Project type</div>
+                    <div className="text-ink font-medium mt-0.5">{project.details.category}</div>
+                  </div>
+                  <div>
+                    <div className="text-slate text-[12px]">Region</div>
+                    <div className="text-ink font-medium mt-0.5">{project.details.region}</div>
+                  </div>
+                  <div>
+                    <div className="text-slate text-[12px]">Technology stack</div>
+                    <div className="text-apple-blue font-medium mt-0.5">{project.details.stack}</div>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-slate-200/80">
+                  <Link
+                    to="/contact"
+                    className="btn-slide-pill w-full justify-center group"
+                  >
+                    <span className="relative z-10 transition-all duration-500">
+                      Discuss Similar System
+                    </span>
+                    <span className="arrow-circle">
+                      <ArrowRight size={14} />
+                    </span>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -225,12 +242,14 @@ export default function PortfolioDetail() {
       </section>
 
       {/* Highlights */}
-      <section className="py-[96px] bg-gallery-white max-w-[1200px] mx-auto px-6 border-t border-hairline-silver">
-        <h3 className="font-geist text-heading text-ink mb-8">Category Technical Benchmarks</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono-geist text-[13px]">
+      <section className="py-20 max-w-[1200px] mx-auto px-6 border-t border-slate-200/80">
+        <h3 className="font-apple text-heading text-ink mb-8">Architectural Benchmarks</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-apple text-[14px]">
           {data.highlights.map((h, i) => (
-            <div key={i} className="flex items-center gap-3 border border-hairline-silver bg-gallery-white p-4 rounded-[3px] text-ink">
-              <Check size={14} className="text-apple-blue" />
+            <div key={i} className="flex items-center gap-3 border border-slate-200/80 bg-white p-4 rounded-2xl text-ink shadow-sm">
+              <div className="w-5 h-5 rounded-full bg-apple-blue/10 flex items-center justify-center shrink-0">
+                <Check size={12} className="text-apple-blue" />
+              </div>
               <span>{h}</span>
             </div>
           ))}

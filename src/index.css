@@ -1,80 +1,129 @@
 @import "tailwindcss";
 
 @theme {
-  /* Qadmas x Factory Tokens — Matching Qadmas Brand Logo (#00C5C8 Cyan + Deep Obsidian Navy) */
-  --color-obsidian-canvas: #050a1a;
-  --color-carbon-lift: #0c1228;
-  --color-ash-stroke: #1b294b;
-  --color-graphite-mid: #2b3d68;
-  --color-warm-granite: #8292b4;
-  --color-pale-stone: #b0c0e0;
-  --color-bone: #eeeeee;
-  --color-chalk: #fafafa;
-  --color-signal-orange: #00C5C8; /* Electric Qadmas Cyan accent */
-  --color-signal-cyan: #00C5C8;
-  --color-metric-green: #38ef7d;
+  /* Qadmas Light Design System — Apple/Vercel/Linear crisp editorial light theme */
+  --color-obsidian-canvas: #f8fafc;
+  --color-carbon-lift: #ffffff;
+  --color-ash-stroke: #e2e8f0;
+  --color-graphite-mid: #f1f5f9;
+  --color-warm-granite: #64748b;
+  --color-pale-stone: #475569;
+  --color-bone: #0f172a;
+  --color-chalk: #ffffff;
+  --color-signal-orange: #0284c7;
+  --color-signal-cyan: #00a8ab;
+  --color-metric-green: #10b981;
 
-  /* Typography — Font Families */
-  --font-geist: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
-  --font-geist-mono: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* Apple San Francisco Typography Stack */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-apple-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-apple-text: "SF Pro Text", -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-apple-mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
+  --font-geist: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-geist-mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
 
   /* Typography — Weights */
   --font-weight-regular: 400;
   --font-weight-medium: 500;
 
   /* Border Radius */
-  --radius-sm: 3px;
-  --radius-lg: 10px;
-  --radius-2xl: 20px;
-  --radius-nav: 3px;
-  --radius-cards: 10px;
-  --radius-buttons: 3px;
-  --radius-largepanels: 20px;
+  --radius-sm: 4px;
+  --radius-lg: 12px;
+  --radius-2xl: 24px;
+  --radius-nav: 9999px;
+  --radius-cards: 16px;
+  --radius-buttons: 9999px;
+  --radius-largepanels: 24px;
 
-  /* Dark tokens — names kept from the light pass, values from the warm-charcoal token set */
-  --color-gallery-white: #14161a;
-  --color-studio-mist: #191c21;
-  --color-paper-frost: #21252b;
-  --color-hairline-silver: #333941;
-  --color-control-gray: #2a2f36;
-  --color-ink: #ececE2;
-  --color-slate: #a9b0ba;
-  --color-steel: #7c8590;
-  --color-apple-blue: #5b9be8;
-  --color-pricing-blue: #5b9be8;
-  --color-cyan: #2cc4d6;
+  /* Semantic light tokens */
+  --color-gallery-white: #f8fafc;
+  --color-studio-mist: #ffffff;
+  --color-paper-frost: #f1f5f9;
+  --color-hairline-silver: #e2e8f0;
+  --color-control-gray: #f8fafc;
+  --color-ink: #0f172a;
+  --color-slate: #64748b;
+  --color-steel: #94a3b8;
+  --color-apple-blue: #0284c7;
+  --color-pricing-blue: #0284c7;
+  --color-cyan: #0284c7;
+
+  /* shadcn UI theme colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
   --font-sf-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-sf-text: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', ui-sans-serif, system-ui, sans-serif;
 
-  --radius-apple-card: 28px;
+  --radius-apple-card: 20px;
   --radius-apple-pill: 9999px;
 }
 
 :root {
-  /* Qadmas Custom Properties */
-  --color-obsidian-canvas: #050a1a;
-  --color-carbon-lift: #0c1228;
-  --color-ash-stroke: #1b294b;
-  --color-graphite-mid: #2b3d68;
-  --color-warm-granite: #8292b4;
-  --color-pale-stone: #b0c0e0;
-  --color-bone: #eeeeee;
-  --color-chalk: #fafafa;
-  --color-signal-cyan: #00C5C8;
-  --color-signal-orange: #00C5C8;
-  --color-metric-green: #38ef7d;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #0f172a;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #0284c7;
+  --radius: 0.75rem;
 
-  --font-geist: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
-  --font-geist-mono: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --color-obsidian-canvas: #f8fafc;
+  --color-carbon-lift: #ffffff;
+  --color-ash-stroke: #e2e8f0;
+  --color-graphite-mid: #f1f5f9;
+  --color-warm-granite: #64748b;
+  --color-pale-stone: #475569;
+  --color-bone: #0f172a;
+  --color-chalk: #ffffff;
+  --color-signal-cyan: #0284c7;
+  --color-signal-orange: #0284c7;
+  --color-metric-green: #10b981;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-geist: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-geist-mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
 
   --page-max-width: 1200px;
   --section-gap: 96px;
   --card-padding: 24px;
 
-  --radius-sm: 3px;
-  --radius-lg: 10px;
-  --radius-2xl: 20px;
+  --radius-sm: 4px;
+  --radius-lg: 12px;
+  --radius-2xl: 24px;
 }
 
 @layer base {
@@ -84,39 +133,52 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 68px;
-    background-color: #14161a;
-    color: #ececE2;
+    scroll-padding-top: 80px;
+    background-color: #f8fafc;
+    color: #0f172a;
   }
 
   body {
-    font-family: var(--font-geist);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
-    background-color: #14161a;
-    color: #ececE2;
+    letter-spacing: -0.011em;
+    background-color: #f8fafc;
+    color: #0f172a;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     overflow-x: hidden;
     margin: 0;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 }
 
 /* ---- Factory Typography Scale ---- */
-.font-geist {
-  font-family: var(--font-geist);
+.font-apple,
+.font-apple-text,
+.font-geist,
+.font-sans {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.font-apple-display {
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.font-apple-mono,
 .font-mono-geist {
-  font-family: var(--font-geist-mono);
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
 }
 
-/* Monospaced instrument voice: uppercase, 12px, tight tracking */
-.text-caption-mono {
-  font-family: var(--font-geist-mono);
-  font-size: 12px;
-  line-height: 1;
-  letter-spacing: -0.0200em;
-  text-transform: uppercase;
+.font-serif-accent {
+  font-family: 'Instrument Serif', Georgia, serif;
 }
 
 .text-body-sm {
@@ -143,130 +205,276 @@
 
 .text-heading-lg {
   font-family: var(--font-geist);
-  font-size: 44px;
+  font-size: clamp(28px, 4vw, 44px);
   line-height: 1.12;
   letter-spacing: -0.0250em;
   font-weight: 600;
 }
 
 .text-display {
-  font-family: var(--font-geist);
-  font-size: clamp(40px, 6vw, 72px);
-  line-height: 1;
-  letter-spacing: -0.0400em;
-  font-weight: 600;
+  font-family: var(--font-apple);
+  font-size: clamp(34px, 4.5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 500;
 }
 
-/* ---- Buttons & Surface Utilities matching Qadmas Cyan Logo ---- */
-/* Primary Action Button (Qadmas Cyan Fill) */
+/* ---- Signature 21st.dev / ShadcnSpace Sliding Pill Button ---- */
+.btn-slide-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-geist);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 9999px;
+  height: 48px;
+  padding: 4px 56px 4px 22px;
+  background-color: #0f172a;
+  color: #ffffff;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.btn-slide-pill:hover {
+  padding-left: 56px;
+  padding-right: 22px;
+  background-color: #1e293b;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.18);
+}
+
+.btn-slide-pill .arrow-circle {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  color: #0f172a;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-slide-pill:hover .arrow-circle {
+  right: calc(100% - 44px);
+  transform: rotate(45deg);
+}
+
+/* Compact sliding pill variant for navbar */
+.btn-slide-pill-sm {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-geist);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 9999px;
+  height: 40px;
+  padding: 2px 46px 2px 18px;
+  background-color: #0f172a;
+  color: #ffffff;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.btn-slide-pill-sm:hover {
+  padding-left: 46px;
+  padding-right: 18px;
+  background-color: #1e293b;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.14);
+}
+
+.btn-slide-pill-sm .arrow-circle {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 32px;
+  height: 32px;
+  background-color: #ffffff;
+  color: #0f172a;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-slide-pill-sm:hover .arrow-circle {
+  right: calc(100% - 36px);
+  transform: rotate(45deg);
+}
+
+/* Secondary ghost pill with sliding circular icon */
+.btn-slide-ghost {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-geist);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 9999px;
+  height: 48px;
+  padding: 4px 52px 4px 22px;
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.btn-slide-ghost:hover {
+  padding-left: 52px;
+  padding-right: 22px;
+  border-color: #cbd5e1;
+  background-color: #f8fafc;
+}
+
+.btn-slide-ghost .arrow-circle {
+  position: absolute;
+  right: 4px;
+  top: 3px;
+  width: 40px;
+  height: 40px;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-slide-ghost:hover .arrow-circle {
+  right: calc(100% - 44px);
+  transform: rotate(45deg);
+}
+
+/* ---- Buttons & Surface Utilities ---- */
 .btn-dark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: #5b9be8;
-  color: #14161a;
+  background-color: #0f172a;
+  color: #ffffff;
   border-radius: 9999px;
-  padding: 8px 16px;
+  padding: 9px 20px;
   font-family: var(--font-geist);
   font-size: 14px;
   font-weight: 500;
   border: none;
   cursor: pointer;
-  transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.15s ease;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
 }
+
 .btn-dark:hover {
-  background-color: #79aeee;
-  color: #14161a;
+  background-color: #1e293b;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.18);
 }
 
-/* Light / High-Emphasis Button */
+.btn-dark:active {
+  transform: translateY(0);
+}
+
 .btn-light {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: #191c21;
-  color: #ececE2;
+  background-color: #ffffff;
+  color: #0f172a;
   border-radius: 9999px;
-  padding: 8px 14px;
+  padding: 8px 16px;
   font-family: var(--font-geist);
   font-size: 14px;
-  font-weight: 400;
-  border: none;
+  font-weight: 500;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   cursor: pointer;
-  transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
 }
+
 .btn-light:hover {
-  background-color: #2a2f36;
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
 }
 
-/* Ghost Text Link */
 .btn-ghost {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: transparent;
-  color: #ececE2;
-  border: 1px solid #7c8590;
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
   border-radius: 9999px;
-  padding: 8px 14px;
+  padding: 8px 18px;
   font-family: var(--font-geist);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   cursor: pointer;
-  transition: border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
 }
+
 .btn-ghost:hover {
-  border-color: #5b9be8;
-  color: #5b9be8;
+  border-color: #0284c7;
+  color: #0284c7;
+  background-color: rgba(2, 132, 199, 0.04);
 }
 
-/* Light Card Surface */
 .card-light {
-  background-color: #191c21;
-  color: #ececE2;
-  border-radius: 28px;
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
   padding: 24px;
   position: relative;
-  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
 }
 
-/* Grain overlay */
-.grain-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Feature Card Surface */
 .card-dark {
-  background-color: #14161a;
-  border: 1px solid #333941;
-  border-radius: 28px;
-  padding: 20px;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
-}
-.card-dark:hover {
-  border-color: #5b9be8;
-  background-color: #191c21;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-/* Dashboard macOS Frame */
+.card-dark:hover {
+  border-color: #0284c7;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
 .dashboard-frame {
-  background-color: #14161a;
-  border-radius: 28px;
-  border: 1px solid #333941;
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
   overflow: hidden;
 }
 
-/* Keyframe Marquee */
 @keyframes marquee {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
@@ -277,7 +485,35 @@
   width: max-content;
   animation: marquee 30s linear infinite;
 }
+
 .animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-scroll-left {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 35s linear infinite;
+}
+
+.animate-scroll-right {
+  display: flex;
+  width: max-content;
+  animation: scroll-right 35s linear infinite;
+}
+
+.animate-scroll-left:hover,
+.animate-scroll-right:hover {
   animation-play-state: paused;
 }
 
@@ -286,21 +522,23 @@
 }
 
 .ambient-lift {
-  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.12), 0 8px 20px -12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 48px -12px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #191c21;
+  background: #f1f5f9;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #333941;
-  border-radius: 3px;
+  background: #cbd5e1;
+  border-radius: 9999px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #5b9be8;
+  background: #0284c7;
 }
