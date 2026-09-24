@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,6 +21,7 @@ export interface CardItem {
   badge?: {
     name: string;
     href: string;
+    isInternal?: boolean;
   };
 }
 
@@ -217,17 +219,29 @@ const AppleCardCarousel = ({
                 {/* Card Bottom: Optional Badge (Wantik-X) & Interactive Action Button */}
                 <div className="relative z-10 flex items-center justify-between gap-3">
                   {card.badge ? (
-                    <a
-                      href={card.badge.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 hover:bg-white text-white hover:text-ink text-[12px] font-semibold backdrop-blur-md transition-all border border-white/30"
-                      title={`Visit ${card.badge.name}`}
-                    >
-                      <span>{card.badge.name}</span>
-                      <ArrowUpRight size={13} />
-                    </a>
+                    card.badge.isInternal ? (
+                      <Link
+                        to={card.badge.href}
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 hover:bg-white text-white hover:text-ink text-[12px] font-semibold backdrop-blur-md transition-all border border-white/30"
+                        title={`Visit ${card.badge.name}`}
+                      >
+                        <span>{card.badge.name}</span>
+                        <ArrowRight size={13} />
+                      </Link>
+                    ) : (
+                      <a
+                        href={card.badge.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 hover:bg-white text-white hover:text-ink text-[12px] font-semibold backdrop-blur-md transition-all border border-white/30"
+                        title={`Visit ${card.badge.name}`}
+                      >
+                        <span>{card.badge.name}</span>
+                        <ArrowUpRight size={13} />
+                      </a>
+                    )
                   ) : (
                     <div />
                   )}

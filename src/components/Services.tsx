@@ -24,6 +24,11 @@ export default function Services() {
       title: <>Performance Ads &amp; SEO</>,
       src: '/services/digital-marketing.jpg',
       quoteService: 'Digital Marketing',
+      badge: {
+        name: 'Explore Page',
+        href: '/services/digital-marketing',
+        isInternal: true,
+      },
     },
     {
       id: 'website-development',

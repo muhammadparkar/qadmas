@@ -7,7 +7,7 @@ export default function Footer() {
       title: 'Solutions',
       links: [
         { label: 'Ai - Powered CRM & ERP (Wantik-X)', href: 'https://wantikx.com/' },
-        { label: 'Digital Marketing', href: '/services' },
+        { label: 'Digital Marketing', href: '/services/digital-marketing' },
         { label: 'Website Development', href: '/services' },
         { label: 'Mobile Application Development', href: '/services' },
       ],
@@ -33,10 +33,11 @@ export default function Footer() {
     {
       title: 'Assurance & Legal',
       links: [
+        { label: 'Privacy Policy', href: '/privacy-policy' },
+        { label: 'Terms & Conditions', href: '/terms-and-conditions' },
         { label: 'Client Confidentiality & NDA', href: '/contact' },
-        { label: 'Service Level Agreements (SLA)', href: '/contact' },
-        { label: 'Code Ownership Guarantee', href: '/about' },
-        { label: 'Privacy Policy', href: '/contact' },
+        { label: 'Service Level Agreements (SLA)', href: '/terms-and-conditions#sla' },
+        { label: 'Code Ownership Guarantee', href: '/terms-and-conditions#code-ownership' },
       ],
     },
   ];
@@ -157,9 +158,17 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright & Socials */}
-        <div className="border-t border-slate-200/80 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-apple text-[12px] text-slate">
-          <div className="text-center sm:text-left">
-            © {new Date().getFullYear()} Qadmas Technologies. All rights reserved. Engineering across Qatar, the UAE, and India.
+        <div className="border-t border-slate-200/80 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 font-apple text-[12px] text-slate">
+          <div className="text-center md:text-left flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1">
+            <span>© {new Date().getFullYear()} Qadmas Technologies. All rights reserved. Engineering across Qatar, the UAE, and India.</span>
+            <span className="hidden md:inline text-slate-300">·</span>
+            <Link to="/privacy-policy" className="hover:text-apple-blue transition-colors underline-offset-4 hover:underline">
+              Privacy Policy
+            </Link>
+            <span className="text-slate-300">·</span>
+            <Link to="/terms-and-conditions" className="hover:text-apple-blue transition-colors underline-offset-4 hover:underline">
+              Terms &amp; Conditions
+            </Link>
           </div>
 
           <div className="flex items-center gap-3">

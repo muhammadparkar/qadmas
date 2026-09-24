@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   TrendingUp, 
   Building2, 
@@ -13,7 +14,21 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ContactModal from '../components/ContactModal';
 
-const detailedServices = [
+interface ServiceItem {
+  id: string;
+  title: string;
+  quoteService: string;
+  category: string;
+  desc: string;
+  deliverables: string[];
+  tech: string;
+  timeline: string;
+  icon: typeof Bot;
+  externalLink?: string;
+  pageUrl?: string;
+}
+
+const detailedServices: ServiceItem[] = [
   {
     id: 'ai-crm-erp',
     title: 'Ai - Powered CRM & ERP (Wantik-X)',
@@ -34,6 +49,7 @@ const detailedServices = [
   {
     id: 'digital-marketing',
     title: 'Digital Marketing',
+    pageUrl: '/services/digital-marketing',
     quoteService: 'Digital Marketing',
     category: 'PERFORMANCE & GROWTH MARKETING',
     desc: 'Precision performance advertising campaigns, advanced search engine optimization (SEO), and conversion-engineered funnels structured to capture high-intent B2B and consumer clients across Qatar and the GCC.',
@@ -146,11 +162,30 @@ export default function Services() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                   <div className="lg:col-span-7 space-y-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-apple-blue">
-                        <Icon size={20} />
-                      </div>
+                      {service.pageUrl ? (
+                        <Link
+                          to={service.pageUrl}
+                          className="w-10 h-10 rounded-xl bg-slate-50 hover:bg-apple-blue/10 border border-slate-200/80 hover:border-apple-blue/30 flex items-center justify-center text-apple-blue transition-colors"
+                          title="Explore dedicated page"
+                        >
+                          <Icon size={20} />
+                        </Link>
+                      ) : (
+                        <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center text-apple-blue">
+                          <Icon size={20} />
+                        </div>
+                      )}
                       <h2 className="font-apple text-[26px] sm:text-[30px] font-semibold text-ink tracking-tight flex flex-wrap items-center gap-3">
-                        <span>{service.title}</span>
+                        {service.pageUrl ? (
+                          <Link
+                            to={service.pageUrl}
+                            className="hover:text-apple-blue transition-colors inline-flex items-center gap-2 group/title"
+                          >
+                            <span>{service.title}</span>
+                          </Link>
+                        ) : (
+                          <span>{service.title}</span>
+                        )}
                         {'externalLink' in service && service.externalLink && (
                           <a
                             href={service.externalLink}
@@ -162,6 +197,16 @@ export default function Services() {
                             <span>wantikx.com</span>
                             <ArrowUpRight size={13} />
                           </a>
+                        )}
+                        {service.pageUrl && (
+                          <Link
+                            to={service.pageUrl}
+                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-apple-blue/10 hover:bg-apple-blue text-apple-blue hover:text-white text-[12px] font-medium transition-all border border-apple-blue/20"
+                            title="Explore Dedicated Page"
+                          >
+                            <span>Explore Page</span>
+                            <ArrowRight size={13} />
+                          </Link>
                         )}
                       </h2>
                     </div>
@@ -202,17 +247,39 @@ export default function Services() {
                       </div>
                     </div>
 
-                    <button
-                      onClick={() => handleOpenQuote(service.quoteService)}
-                      className="btn-slide-pill w-full justify-center group"
-                    >
-                      <span className="relative z-10 transition-all duration-500">
-                        Discuss Project Scope
-                      </span>
-                      <span className="arrow-circle">
-                        <ArrowRight size={14} />
-                      </span>
-                    </button>
+                    {service.pageUrl ? (
+                      <div className="space-y-2.5">
+                        <Link
+                          to={service.pageUrl}
+                          className="btn-slide-pill w-full justify-center group"
+                        >
+                          <span className="relative z-10 transition-all duration-500">
+                            Explore {service.title}
+                          </span>
+                          <span className="arrow-circle">
+                            <ArrowRight size={14} />
+                          </span>
+                        </Link>
+                        <button
+                          onClick={() => handleOpenQuote(service.quoteService)}
+                          className="w-full py-2.5 rounded-full border border-slate-200/80 hover:border-slate-400 bg-white hover:bg-slate-50 text-slate-700 hover:text-ink text-[13px] font-medium transition-colors cursor-pointer flex items-center justify-center gap-2"
+                        >
+                          <span>Discuss Project Scope</span>
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => handleOpenQuote(service.quoteService)}
+                        className="btn-slide-pill w-full justify-center group"
+                      >
+                        <span className="relative z-10 transition-all duration-500">
+                          Discuss Project Scope
+                        </span>
+                        <span className="arrow-circle">
+                          <ArrowRight size={14} />
+                        </span>
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

@@ -7,7 +7,7 @@ const navLinks = [
   { label: 'Services', href: '/services',
     children: [
       { label: 'Ai - Powered CRM & ERP (Wantik-X)', href: 'https://wantikx.com/', desc: 'Automated billing, inventory & WhatsApp AI agents' },
-      { label: 'Digital Marketing', href: '/services', desc: 'Targeted campaigns, SEO, paid ads & growth analytics' },
+      { label: 'Digital Marketing', href: '/services/digital-marketing', desc: 'Targeted campaigns, SEO, paid ads & growth analytics' },
       { label: 'Website Development', href: '/services', desc: 'React, Next.js & sub-second corporate web platforms' },
       { label: 'Mobile Application Development', href: '/services', desc: 'Native-feel iOS & Android apps with offline sync' },
     ]
