@@ -11,7 +11,7 @@ export default function Hero({ onGetQuoteClick }: HeroProps) {
     <section className="relative overflow-hidden">
       <div className="w-full relative">
         {/* Soft Ambient Radial Glow from 21st.dev hero-01 */}
-        <div className="relative w-full pt-36 md:pt-44 pb-16 md:pb-24 before:absolute before:w-full before:h-full before:bg-gradient-to-r before:from-sky-100/70 before:via-white before:to-sky-50/70 before:rounded-full before:top-24 before:blur-3xl before:-z-10">
+        <div className="relative w-full pt-36 md:pt-44 pb-24 md:pb-36 before:absolute before:w-full before:h-full before:bg-gradient-to-r before:from-sky-100/70 before:via-white before:to-sky-50/70 before:rounded-full before:top-24 before:blur-3xl before:-z-10">
           <div className="max-w-[1200px] mx-auto px-6 relative z-10">
             <div className="flex flex-col max-w-5xl mx-auto gap-8 text-center items-center">
               
