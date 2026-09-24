@@ -6,7 +6,6 @@ import Services from '../components/Services';
 import FeaturedSystem from '../components/FeaturedSystem';
 import Integrations from '../components/Integrations';
 import Testimonial from '../components/Testimonial';
-import Pricing from '../components/Pricing';
 import Process from '../components/Process';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
@@ -25,7 +24,6 @@ export default function Home() {
         <FeaturedSystem onExploreClick={() => setIsModalOpen(true)} />
         <Integrations />
         <Testimonial onCaseStudyClick={() => setIsModalOpen(true)} />
-        <Pricing />
         <Process />
         <CTA />
       </main>

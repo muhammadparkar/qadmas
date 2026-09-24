@@ -28,13 +28,13 @@ const portfolioDetails: Record<string, {
       {
         id: 1,
         title: "Verkiezen Yachts UAE — Real-Time Fleet & Booking Platform",
-        desc: "Dubai's luxury yacht rental market moves fast during peak winter seasons. We replaced manual phone bookings and spreadsheet schedules with an automated booking engine featuring real-time fleet calendar holds, skipper assignment, and multi-currency Stripe checkout.",
+        desc: "The UAE's luxury yacht rental market moves fast during peak winter seasons. We replaced manual phone bookings and spreadsheet schedules with an automated booking engine featuring real-time fleet calendar holds, skipper assignment, and multi-currency Stripe checkout.",
         outcome: "+60% increase in direct online bookings and zero double-bookings in the first 90 days of operation.",
         image: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?q=80&w=2670&auto=format&fit=crop", 
         details: {
           client: "VERKIEZEN YACHTS",
           category: "Booking Engine & Fleet System",
-          region: "Dubai, UAE",
+          region: "The UAE",
           stack: "Next.js 15 · Node.js · Stripe · PostgreSQL",
         }
       },
@@ -47,7 +47,7 @@ const portfolioDetails: Record<string, {
         details: {
           client: "MIOZOTI TECHNOLOGIES",
           category: "Corporate Web Platform",
-          region: "Sharjah, UAE",
+          region: "The UAE",
           stack: "React · TypeScript · Tailwind · Cloudflare Edge",
         }
       },

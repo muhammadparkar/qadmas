@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode } from "react";
-import { Sparkle, Boxes, Receipt, Database } from "lucide-react";
+import { Users, Mic, Share2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // ------------------------------ | ICONS & SVGS | ------------------------------ //
@@ -87,55 +87,7 @@ function CardTitle({ children }: { children: ReactNode }) {
   );
 }
 
-// ------------------------------ | CARD 1 — MULTI-BRANCH STOCK TELEMETRY | ------------------------------ //
-
-function StockTelemetryGrid() {
-  const cols = 5;
-  const rows = 3;
-  const highlight = 1 * cols + 2; // centre cell
-
-  return (
-    <div className="relative flex-1 min-h-[170px] flex items-center justify-center my-2">
-      <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-        <div
-          className="grid [mask-image:radial-gradient(ellipse_75%_75%_at_50%_50%,#000_35%,transparent_88%)]"
-          style={{
-            gridTemplateColumns: `repeat(${cols}, 68px)`,
-            gridTemplateRows: `repeat(${rows}, 68px)`,
-          }}
-        >
-          {Array.from({ length: cols * rows }).map((_, i) => (
-            <div
-              key={i}
-              className={`flex size-[68px] flex-col items-center justify-center border border-slate-200/90 transition-all duration-300 ${
-                i === highlight
-                  ? "bg-sky-50/90 shadow-inner border-apple-blue/40"
-                  : "bg-transparent"
-              }`}
-            >
-              {i === highlight ? (
-                <div className="size-11 rounded-xl bg-ink flex flex-col items-center justify-center text-white shadow-md">
-                  <Database className="size-5 text-apple-blue" />
-                  <span className="text-[8px] font-apple font-bold tracking-tighter text-sky-200 mt-0.5">SYNC</span>
-                </div>
-              ) : i === 6 ? (
-                <span className="text-[10px] font-apple text-slate-400 font-semibold">DOHA</span>
-              ) : i === 8 ? (
-                <span className="text-[10px] font-apple text-slate-400 font-semibold">DXB</span>
-              ) : i === 11 ? (
-                <span className="text-[9px] font-apple text-emerald-600 font-bold">99.9%</span>
-              ) : i === 13 ? (
-                <span className="text-[9px] font-apple text-slate-400 font-medium">12ms</span>
-              ) : null}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ------------------------------ | CARD 2 — ARCHITECTURE WORKFLOW | ------------------------------ //
+// ------------------------------ | CARD 1 — ARCHITECTURE WORKFLOW | ------------------------------ //
 
 function WorkflowBranches() {
   return (
@@ -149,104 +101,55 @@ function WorkflowBranches() {
       </div>
 
       {/* SVG Connecting Branches */}
-      <div className="relative w-full max-w-[280px] h-[86px] -my-1">
+      <div className="relative w-full max-w-[320px] h-[86px] -my-1">
         <svg
-          viewBox="0 0 280 86"
+          viewBox="0 0 320 86"
           fill="none"
           className="w-full h-full stroke-slate-300"
         >
-          <path d="M140 0 V86" strokeWidth="1.6" />
-          <path d="M140 0 C140 45, 48 45, 48 86" strokeWidth="1.6" />
-          <path d="M140 0 C140 45, 232 45, 232 86" strokeWidth="1.6" />
+          <path d="M160 0 V86" strokeWidth="1.6" />
+          <path d="M160 0 C160 45, 52 45, 52 86" strokeWidth="1.6" />
+          <path d="M160 0 C160 45, 268 45, 268 86" strokeWidth="1.6" />
         </svg>
       </div>
 
       {/* 3 Circular Workflow Nodes */}
-      <div className="relative z-10 flex items-center justify-between w-full max-w-[280px] px-1 mb-3">
-        {/* Node 1: WhatsApp API */}
-        <div className="flex flex-col items-center gap-1 group">
+      <div className="relative z-10 flex items-start justify-between w-full max-w-[330px] px-1 mb-3">
+        {/* Node 1: Leads Management */}
+        <div className="flex flex-col items-center gap-1.5 group text-center w-24">
           <div className="w-12 h-12 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center text-emerald-400 shadow-md group-hover:scale-105 transition-transform">
-            <WhatsAppSvg className="size-6" color="#25D366" />
+            <Users className="size-5" />
           </div>
-          <span className="text-[10px] font-medium text-slate-500 font-apple">WhatsApp</span>
+          <span className="text-[11px] font-medium text-slate-600 font-apple leading-tight">
+            Leads management
+          </span>
         </div>
 
-        {/* Node 2: Warehouse Telemetry */}
-        <div className="flex flex-col items-center gap-1 group">
-          <div className="w-12 h-12 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center text-apple-blue shadow-md group-hover:scale-105 transition-transform">
-            <Boxes className="size-5" />
+        {/* Node 2: AI Voice */}
+        <div className="flex flex-col items-center gap-1.5 group text-center w-20">
+          <div className="w-12 h-12 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center text-sky-400 shadow-md group-hover:scale-105 transition-transform">
+            <Mic className="size-5" />
           </div>
-          <span className="text-[10px] font-medium text-slate-500 font-apple">Inventory</span>
+          <span className="text-[11px] font-medium text-slate-600 font-apple leading-tight">
+            Ai voice
+          </span>
         </div>
 
-        {/* Node 3: GCC Customs & VAT */}
-        <div className="flex flex-col items-center gap-1 group">
+        {/* Node 3: Seamless Social Media Integration */}
+        <div className="flex flex-col items-center gap-1.5 group text-center w-28">
           <div className="w-12 h-12 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center text-amber-400 shadow-md group-hover:scale-105 transition-transform">
-            <Receipt className="size-5" />
+            <Share2 className="size-5" />
           </div>
-          <span className="text-[10px] font-medium text-slate-500 font-apple">GCC VAT</span>
+          <span className="text-[11px] font-medium text-slate-600 font-apple leading-tight">
+            Seamless Social media integration
+          </span>
         </div>
       </div>
     </div>
   );
 }
 
-// ------------------------------ | CARD 3 — AUTOMATED INQUIRIES ORBIT | ------------------------------ //
-
-function InquiriesOrbit() {
-  return (
-    <div className="relative flex-1 flex items-center justify-center min-h-[170px]">
-      <div className="relative h-[130px] w-[240px] flex items-center justify-center">
-        {/* Glowing 3D Orbit Ring */}
-        <svg
-          viewBox="0 0 240 130"
-          fill="none"
-          className="absolute inset-0 w-full h-full pointer-events-none"
-        >
-          <ellipse
-            cx="120"
-            cy="70"
-            rx="96"
-            ry="36"
-            stroke="url(#orbitGradient)"
-            strokeWidth="1.8"
-            strokeDasharray="5 3"
-            transform="rotate(-8 120 70)"
-          />
-          <defs>
-            <linearGradient
-              id="orbitGradient"
-              x1="0"
-              y1="0"
-              x2="240"
-              y2="130"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#25D366" stopOpacity="0.8" />
-              <stop offset="0.5" stopColor="#38BDF8" stopOpacity="0.3" />
-              <stop offset="1" stopColor="#0284c7" stopOpacity="0.9" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        {/* Sparkles on the orbit */}
-        <div className="absolute top-[36px] right-[24px] text-emerald-500 animate-pulse">
-          <Sparkle size={13} fill="currentColor" />
-        </div>
-        <div className="absolute bottom-[36px] left-[26px] text-sky-500 animate-pulse delay-300">
-          <Sparkle size={11} fill="currentColor" />
-        </div>
-
-        {/* Central Automated WhatsApp & Leads Badge */}
-        <div className="relative z-10 size-14 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center text-emerald-400 shadow-xl hover:scale-110 transition-transform duration-300">
-          <WhatsAppSvg className="size-7" color="#25D366" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ------------------------------ | CARD 4 — AI AUTOMATED WORKFLOWS | ------------------------------ //
+// ------------------------------ | CARD 2 — AI AUTOMATED WORKFLOWS | ------------------------------ //
 
 function CodeEditor() {
   const lines: ReactNode[] = [
@@ -410,102 +313,29 @@ function TechBelt() {
   );
 }
 
-// ------------------------------ | CARD 6 — EVENT ROUTING & TELEMETRY | ------------------------------ //
-
-function TelemetryMotion() {
-  const MOTION_PATH =
-    "M20,120 C70,120 80,40 160,40 C240,40 270,140 330,140 C370,140 390,80 340,60 C290,40 250,110 180,110 C120,110 80,70 20,120";
-
-  return (
-    <div className="relative flex-1 min-h-[170px] overflow-hidden flex items-center justify-center">
-      <svg
-        viewBox="0 0 360 170"
-        fill="none"
-        preserveAspectRatio="xMidYMid meet"
-        className="w-full h-full"
-      >
-        {/* Curving Dotted Telemetry Route */}
-        <path
-          d={MOTION_PATH}
-          stroke="#cbd5e1"
-          strokeWidth="1.8"
-          strokeDasharray="4 4"
-        />
-
-        {/* Traveling Real-Time Telemetry Node */}
-        <g>
-          <animateMotion
-            dur="8s"
-            repeatCount="indefinite"
-            calcMode="linear"
-            path={MOTION_PATH}
-          />
-          <foreignObject
-            x="-26"
-            y="-26"
-            width="52"
-            height="52"
-            className="overflow-visible"
-          >
-            <div className="size-13 rounded-full bg-neutral-900 border border-neutral-700 shadow-xl flex flex-col items-center justify-center text-white font-apple hover:scale-110 transition-transform">
-              <div className="flex items-center gap-1">
-                <span className="size-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                <span className="text-[11px] font-bold tracking-tight">LIVE</span>
-              </div>
-              <span className="text-[8px] text-slate-400 font-apple">0.01s</span>
-            </div>
-          </foreignObject>
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-// ------------------------------ | MAIN 6-CARD GRID | ------------------------------ //
+// ------------------------------ | MAIN 3-CARD FEATURE GRID | ------------------------------ //
 
 export default function BlockFeature() {
   return (
-    <div className="w-full flex flex-col gap-5">
-      {/* Row 1 — 3 Cards */}
-      <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1.25fr_1fr]">
-        {/* Card 1: Multi-Branch Stock Telemetry */}
-        <FeatureCard className="pt-7">
-          <CardTitle>Multi-branch warehouse telemetry from day one</CardTitle>
-          <StockTelemetryGrid />
-        </FeatureCard>
+    <div className="grid gap-6 grid-cols-1 lg:grid-cols-3 items-stretch">
+      {/* Card 1: Custom Architecture Workflow */}
+      <FeatureCard className="pt-6 pb-6 flex flex-col justify-between">
+        <WorkflowBranches />
+        <CardTitle>Built around your  business workflow</CardTitle>
+      </FeatureCard>
+      
+     {/* Card 2: Enterprise Tech Belt */}
+      <FeatureCard className="p-0 overflow-hidden relative min-h-[320px] flex items-center justify-center">
+        <TechBelt />
+      </FeatureCard>
 
-        {/* Card 2: Custom Architecture Workflow */}
-        <FeatureCard className="pt-6 pb-6">
-          <WorkflowBranches />
-          <CardTitle>Built around your actual business workflow</CardTitle>
-        </FeatureCard>
+      {/* Card 3: Autonomous AI Workflows */}
+      <FeatureCard className="pt-7 pb-6 flex flex-col justify-between">
+        <CardTitle>Autonomous AI workflows. Zero manual entry.</CardTitle>
+        <CodeEditor />
+      </FeatureCard>
 
-        {/* Card 3: Automated Inquiries & WhatsApp */}
-        <FeatureCard className="pb-7 pt-4">
-          <InquiriesOrbit />
-          <CardTitle>Automated customer inquiries &amp; WhatsApp</CardTitle>
-        </FeatureCard>
-      </div>
-
-      {/* Row 2 — 3 Cards */}
-      <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {/* Card 4: Autonomous AI Workflows */}
-        <FeatureCard className="pt-7">
-          <CardTitle>Autonomous AI workflows. Zero manual entry.</CardTitle>
-          <CodeEditor />
-        </FeatureCard>
-
-        {/* Card 5: Enterprise Tech Belt */}
-        <FeatureCard className="p-0 overflow-hidden relative min-h-[300px] flex items-center justify-center">
-          <TechBelt />
-        </FeatureCard>
-
-        {/* Card 6: Sub-Second Telemetry & Audit Trails */}
-        <FeatureCard className="pt-7 pb-4">
-          <CardTitle>Regional tax, customs &amp; live audit telemetry</CardTitle>
-          <TelemetryMotion />
-        </FeatureCard>
-      </div>
+     
     </div>
   );
 }

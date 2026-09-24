@@ -7,11 +7,11 @@ export default function Projects() {
       id: 'website-development',
       category: 'YACHT FLEET AUTOMATION',
       title: 'Verkiezen Yachts UAE — Real-Time Fleet & Booking Engine',
-      snippet: 'Automated luxury yacht reservations in Dubai, eliminating double-bookings and boosting direct online bookings by 60%.',
+      snippet: 'Automated luxury yacht reservations in the UAE, eliminating double-bookings and boosting direct online bookings by 60%.',
       metric: '+60% Online Bookings',
       tech: 'Next.js 15 · Node.js · Stripe',
       icon: Smartphone,
-      client: 'Dubai, UAE',
+      client: 'The UAE',
     },
     {
       id: 'software-development',
@@ -21,13 +21,13 @@ export default function Projects() {
       metric: '< 30s Lead Routing',
       tech: 'React · Python · Redis',
       icon: Code2,
-      client: 'Doha & Dubai',
+      client: 'Qatar & the UAE',
     },
     {
       id: 'erp-solutions',
       category: 'SUPPLY CHAIN ERP',
       title: 'Redchilly Trading — Multi-Warehouse Inventory & Invoicing',
-      snippet: 'Unified 4 warehouses across Qatar, UAE, and India with real-time barcode telemetry and automated GCC VAT commercial invoicing.',
+      snippet: 'Unified 4 warehouses across Qatar, the UAE, and India with real-time barcode telemetry and automated GCC VAT commercial invoicing.',
       metric: '99.99% Stock Precision',
       tech: 'TypeScript · PostgreSQL · Docker',
       icon: Building2,
@@ -41,7 +41,7 @@ export default function Projects() {
       metric: '0.38s Core Web Vitals',
       tech: 'Next.js · Tailwind · Cloudflare',
       icon: Globe,
-      client: 'Sharjah, UAE',
+      client: 'The UAE',
     },
   ];
 

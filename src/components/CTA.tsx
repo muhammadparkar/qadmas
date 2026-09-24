@@ -18,7 +18,7 @@ export default function CTA() {
 
             {/* Subtitle */}
             <p className="font-geist text-[15px] sm:text-[17px] text-slate max-w-[620px] leading-relaxed">
-              Skip the sales pitch. Speak directly with our software architects in Doha or Dubai. We’ll review your requirements, outline clear technical options, and provide a fixed quote.
+              Skip the sales pitch. Speak directly with our software architects across Qatar, the UAE, and India. We’ll review your requirements, outline clear technical options, and provide a fixed quote.
             </p>
 
             {/* Action Row with hero-01 style buttons */}

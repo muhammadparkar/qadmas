@@ -1,24 +1,10 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Star } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface HeroProps {
   onGetQuoteClick?: () => void;
 }
-
-const avatarList = [
-  {
-    image: "https://cdn.21st.dev/assets/localized/59a2b5a0dfc1531e2d1ea42d71ae8615f37582e1f8a17e4a1b1aff9afc7ef878.jpg",
-  },
-  {
-    image: "https://cdn.21st.dev/assets/localized/c7097eeb66ad097b6e5f9dbb95ae857cd6b55c0ad398c1ea84f3ab90a02c631e.jpg",
-  },
-  {
-    image: "https://cdn.21st.dev/assets/localized/c70d48e47d3a2d79ad07d16bff3aa3cff686580be031b6102cad73a15b47d8fd.jpg",
-  },
-  {
-    image: "https://cdn.21st.dev/assets/localized/51c9ed392f6e7fce7fd85a78648e3e06bfdcd91999ab5fa48485888231589abf.jpg",
-  },
-];
 
 export default function Hero({ onGetQuoteClick }: HeroProps) {
   return (
@@ -61,6 +47,37 @@ export default function Hero({ onGetQuoteClick }: HeroProps) {
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                 className="flex items-center flex-col sm:flex-row justify-center gap-8 pt-2"
               >
+                {/* Featured Proprietary Platforms: SILA | WANTIK-X */}
+                <div className="flex items-center gap-5 sm:gap-7">
+                  <Link
+                    to="/products/sila"
+                    className="inline-flex items-center group/sila transition-opacity hover:opacity-80"
+                    title="Explore Sila Vendor System"
+                  >
+                    <img
+                      src="/logos/sila-logo.webp"
+                      alt="Sila"
+                      className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover/sila:scale-105"
+                    />
+                  </Link>
+
+                  <span className="text-slate-300 font-light text-2xl select-none">|</span>
+
+                  <a
+                    href="https://wantikx.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center group/wantik transition-opacity hover:opacity-80"
+                    title="Explore Wantik-X Platform"
+                  >
+                    <img
+                      src="/logos/wantik-x-logo.png"
+                      alt="Wantik-X"
+                      className="h-7 sm:h-8.5 w-auto object-contain transition-transform group-hover/wantik:scale-105"
+                    />
+                  </a>
+                </div>
+
                 <button
                   onClick={onGetQuoteClick}
                   className="btn-slide-pill group"
@@ -72,30 +89,6 @@ export default function Hero({ onGetQuoteClick }: HeroProps) {
                     <ArrowUpRight size={16} />
                   </span>
                 </button>
-
-                <div className="flex items-center sm:gap-4 gap-3">
-                  <ul className="avatar flex flex-row items-center">
-                    {avatarList.map((avatar, index) => (
-                      <li key={index} className="-mr-2.5 z-1 hover:z-10 transition-transform hover:scale-105">
-                        <img
-                          src={avatar.image}
-                          alt="Client"
-                          className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-xs"
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="flex flex-col items-start gap-1">
-                    <div className="flex gap-1 text-amber-400">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <Star key={index} size={14} fill="currentColor" />
-                      ))}
-                    </div>
-                    <p className="sm:text-sm text-xs font-normal text-slate">
-                      Trusted by 100+ GCC businesses
-                    </p>
-                  </div>
-                </div>
               </motion.div>
             </div>
           </div>

@@ -51,7 +51,7 @@ export default function Portfolio() {
         </h1>
 
         <p className="font-apple text-[17px] text-slate leading-relaxed max-w-[660px] mx-auto">
-          Explore custom software, automated trading ERPs, and fast web platforms we have built and currently support for operating companies in Dubai, Doha, and across Asia.
+          Explore custom software, automated trading ERPs, and fast web platforms we have built and currently support for operating companies across Qatar, the UAE, and India.
         </p>
       </section>
 

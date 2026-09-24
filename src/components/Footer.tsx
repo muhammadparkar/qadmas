@@ -17,7 +17,7 @@ export default function Footer() {
       links: [
         { label: 'About Our Studio', href: '/about' },
         { label: 'Client Case Studies', href: '/portfolio' },
-        { label: 'Pre-Built Packages', href: '/#pricing' },
+        { label: 'Pre-Built Packages', href: '/products#pricing' },
         { label: 'Engineering Culture', href: '/about' },
         { label: 'Direct Consultation', href: '/contact' },
       ],
@@ -25,9 +25,9 @@ export default function Footer() {
     {
       title: 'Regional Offices',
       links: [
-        { label: 'Doha, Qatar Hub', href: '/contact' },
-        { label: 'Dubai & Sharjah, UAE', href: '/contact' },
-        { label: 'Mumbai & Bangalore, India', href: '/contact' },
+        { label: 'Qatar Hub', href: '/contact' },
+        { label: 'The UAE Hub', href: '/contact' },
+        { label: 'India Hub', href: '/contact' },
       ],
     },
     {

@@ -35,7 +35,7 @@ export default function Contact() {
           <div className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm hover:shadow-md hover:border-apple-blue/50 transition-all duration-300">
             <div className="flex items-center justify-between mb-3">
               <div className="font-apple text-[20px] font-semibold text-ink">
-                Doha Hub, Qatar
+                Qatar Hub
               </div>
               <MapPin size={16} className="text-apple-blue" />
             </div>
@@ -54,7 +54,7 @@ export default function Contact() {
           <div className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm hover:shadow-md hover:border-apple-blue/50 transition-all duration-300">
             <div className="flex items-center justify-between mb-3">
               <div className="font-apple text-[20px] font-semibold text-ink">
-                Dubai &amp; Sharjah, UAE
+                The UAE Hub
               </div>
               <MapPin size={16} className="text-apple-blue" />
             </div>
@@ -75,7 +75,7 @@ export default function Contact() {
           <div className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm hover:shadow-md hover:border-apple-blue/50 transition-all duration-300">
             <div className="flex items-center justify-between mb-3">
               <div className="font-apple text-[20px] font-semibold text-ink">
-                Mumbai &amp; Bangalore, India
+                India Hub
               </div>
               <MapPin size={16} className="text-apple-blue" />
             </div>

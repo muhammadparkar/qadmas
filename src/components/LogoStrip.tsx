@@ -5,7 +5,7 @@ export default function LogoStrip() {
     { name: 'Redchilly Trading', market: 'Qatar · Global Trade' },
     { name: 'Gulf Enterprise Group', market: 'Qatar · Logistics' },
     { name: 'Elite Trading', market: 'GCC · Import/Export' },
-    { name: 'Miozoti Global', market: 'Dubai · Enterprise Systems' },
+    { name: 'Miozoti Global', market: 'UAE · Enterprise Systems' },
     { name: 'Verkiezen Fleet', market: 'UAE · Marine Tech' },
   ];
 

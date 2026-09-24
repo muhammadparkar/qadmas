@@ -5,6 +5,8 @@ import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import PortfolioDetail from './pages/PortfolioDetail';
+import Products from './pages/Products';
+import Sila from './pages/Sila';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/sila" element={<Sila />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/portfolio/:id" element={<PortfolioDetail />} />
         <Route path="/contact" element={<Contact />} />

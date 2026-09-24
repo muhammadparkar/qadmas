@@ -24,7 +24,7 @@ const principles = [
   },
   {
     title: 'Real Ground Support in the GCC',
-    desc: 'Whenever you need in-person planning, requirement sessions, or critical deployment support, our leadership is physically present in Doha and Dubai.',
+    desc: 'Whenever you need in-person planning, requirement sessions, or critical deployment support, our leadership is physically present in Qatar and the UAE.',
   },
 ];
 
@@ -73,7 +73,7 @@ export default function About() {
                 A note from our founder:
               </p>
               <p>
-                When a business owner commissions custom software, they aren&apos;t buying code — they are investing in the backbone of their operations. Whether it&apos;s managing a multi-warehouse inventory across three countries or booking luxury yacht charters in Dubai Marina, downtime or bad architecture costs real money.
+                When a business owner commissions custom software, they aren&apos;t buying code — they are investing in the backbone of their operations. Whether it&apos;s managing a multi-warehouse inventory across three countries or booking luxury yacht charters in the UAE, downtime or bad architecture costs real money.
               </p>
               <p>
                 At Qadmas, we established two strict rules from day one: First, no junior outsourcing games. Second, total transparency on delivery dates, system architecture, and code ownership.
@@ -96,13 +96,13 @@ export default function About() {
             </div>
 
             <p className="font-apple text-[14px] text-slate leading-relaxed">
-              Our unique operating model combines on-the-ground project architects in Doha and Dubai with high-velocity engineering hubs in India. You get GCC commercial understanding paired with deep engineering talent and rapid development cycles.
+              Our unique operating model combines on-the-ground project architects across Qatar and the UAE with high-velocity engineering hubs in India. You get GCC commercial understanding paired with deep engineering talent and rapid development cycles.
             </p>
 
             <div className="space-y-3 font-apple text-[14px] pt-2">
               <div className="flex items-start gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-apple-blue shrink-0 mt-2" />
-                <span className="text-slate"><strong className="text-ink font-medium">Doha &amp; Dubai:</strong> Project management, technical scoping, and GCC client alignment.</span>
+                <span className="text-slate"><strong className="text-ink font-medium">Qatar &amp; the UAE:</strong> Project management, technical scoping, and GCC client alignment.</span>
               </div>
               <div className="flex items-start gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-apple-blue shrink-0 mt-2" />

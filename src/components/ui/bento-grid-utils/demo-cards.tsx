@@ -154,9 +154,9 @@ export function ProgressDemo() {
         <span className="font-semibold text-emerald-600">8ms</span>
       </div>
       <div className="grid grid-cols-3 gap-1 text-center font-apple font-medium text-[10px]">
-        <div className="p-1 rounded bg-white border border-slate-200 text-slate">DOH: 6ms</div>
-        <div className="p-1 rounded bg-white border border-slate-200 text-slate">DXB: 8ms</div>
-        <div className="p-1 rounded bg-white border border-slate-200 text-slate">BOM: 14ms</div>
+        <div className="p-1 rounded bg-white border border-slate-200 text-slate">QAT: 6ms</div>
+        <div className="p-1 rounded bg-white border border-slate-200 text-slate">UAE: 8ms</div>
+        <div className="p-1 rounded bg-white border border-slate-200 text-slate">IND: 14ms</div>
       </div>
     </div>
   );

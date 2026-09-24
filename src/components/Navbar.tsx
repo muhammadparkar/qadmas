@@ -12,10 +12,10 @@ const navLinks = [
       { label: 'Mobile Application Development', href: '/services', desc: 'Native-feel iOS & Android apps with offline sync' },
     ]
   },
-  { label: 'Products', href: '/contact',
+  { label: 'Products', href: '/products',
     children: [
-      { label: 'Wantik-X CRM', href: 'https://wantikx.com/', desc: 'Automated customer pipelines & lead dispatch' },
-      { label: 'Sila Vendor System', href: '/contact', desc: 'Procurement, supplier invoices & inventory tracking' },
+      { label: 'Wantik-X CRM & ERP', href: 'https://wantikx.com/', desc: 'Automated customer pipelines & lead dispatch' },
+      { label: 'Sila Vendor System', href: '/products/sila', desc: 'Procurement, supplier invoices & inventory tracking' },
     ]
   },
   { label: 'Work', href: '/portfolio' },
