@@ -505,6 +505,19 @@
   animation-play-state: paused;
 }
 
+@keyframes marquee-hero-infinite {
+  0% { transform: translate3d(0%, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.animate-marquee-hero-infinite {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  animation: marquee-hero-infinite 42s linear infinite;
+}
+
 @keyframes scroll-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }

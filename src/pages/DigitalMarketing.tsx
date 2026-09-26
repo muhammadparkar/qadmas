@@ -27,14 +27,14 @@ import { AnimatedMarqueeHero } from '../components/ui/hero-3';
 import GalleryHoverCarousel from '../components/ui/gallery-hover-carousel';
 
 const MARKETING_SHOWCASE_IMAGES = [
-  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=75&w=480&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=75&w=480&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=75&w=480&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1542744094-3a31f272c490?q=75&w=480&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=75&w=480&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=75&w=480&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=75&w=480&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=75&w=480&auto=format&fit=crop",
+  "https://cdn.21st.dev/assets/mirror/9c/9c0892e59c262cc1da34c88d977221da3f36aaef35ede7924d66b80c219be979.jpg",
+  "https://cdn.21st.dev/assets/mirror/cb/cb5e5ebf2a894b2cd0e47b41b1fc76a3021ca1e2d2164e68aedca123cd33144f.jpg",
+  "https://cdn.21st.dev/assets/mirror/98/989f6e3fb1763ee781695ca8471c7b5c34ee8162b73cb966a692df7183434dd6.jpg",
+  "https://cdn.21st.dev/assets/mirror/d4/d42e2bf7d2616d0f8b7133f77efbc40bfbd042fbe5dd5e2ae3bb0b0cd5bf0b00.jpg",
+  "https://cdn.21st.dev/assets/mirror/34/34ec840fc286ece83ac48705cb38c8b7bfae31022d3869530edad1e1b1305933.jpg",
+  "https://cdn.21st.dev/assets/mirror/3a/3ad7469aaf0ee239cd4a79d5cbd089e88ee36def81eff12b76288139985a8bea.jpg",
+  "https://cdn.21st.dev/assets/mirror/82/82d335fc097e30d74dc1b664327e735c0c2c01f807575623c72e2379f3bb3ae6.jpg",
+  "https://cdn.21st.dev/assets/mirror/d5/d55bd9d62a8a40170fdb1bab434888bb28c9f11cf7d20bd6dcbe3befe8077abe.jpg",
 ];
 
 const CAROUSEL_FEATURE_ITEMS = [
@@ -99,6 +99,7 @@ export default function DigitalMarketing() {
           title={
             <>
               High-Impact Digital Marketing &amp;{' '}
+              <br className="hidden sm:inline" />
               <span className="text-apple-blue font-serif-accent font-normal italic">
                 Acquisition Systems.
               </span>
@@ -126,8 +127,8 @@ export default function DigitalMarketing() {
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
 
             <h2 className="text-[26px] sm:text-4xl lg:text-5xl font-medium text-ink tracking-tight leading-[1.15] mb-3 sm:mb-4">
-              Two core disciplines.{' '}
-              <span className="text-apple-blue font-serif-accent font-normal italic block sm:inline">
+              Two core disciplines. <br />
+              <span className="text-apple-blue font-serif-accent font-normal italic">
                 One integrated growth engine.
               </span>
             </h2>
