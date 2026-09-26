@@ -83,23 +83,23 @@ export default function Sila() {
           </div>
         </div>
 
-        {/* Key Metrics Ribbon */}
-        <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200/80 shadow-xs">
-          <div className="p-4 text-center border-r border-slate-100 last:border-none">
-            <div className="text-[28px] sm:text-[34px] font-semibold text-ink tracking-tight">72%</div>
-            <div className="text-[12px] text-slate font-medium mt-0.5">Average Profile Completion Speed</div>
+        {/* Key Metrics Row - Rendered seamlessly without card block container */}
+        <div className="mt-14 sm:mt-18 pt-10 sm:pt-12 border-t border-slate-200/70 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto">
+          <div className="text-center px-3 sm:px-4 lg:border-r border-slate-200/70">
+            <div className="text-[32px] sm:text-[38px] font-semibold text-ink tracking-tight leading-none">72%</div>
+            <div className="text-[12px] sm:text-[13px] text-slate font-medium mt-2">Average Profile Completion Speed</div>
           </div>
-          <div className="p-4 text-center border-r border-slate-100 last:border-none">
-            <div className="text-[28px] sm:text-[34px] font-semibold text-emerald-700 tracking-tight">3-Way</div>
-            <div className="text-[12px] text-slate font-medium mt-0.5">Automated PO &amp; Invoice Matching</div>
+          <div className="text-center px-3 sm:px-4 lg:border-r border-slate-200/70">
+            <div className="text-[32px] sm:text-[38px] font-semibold text-emerald-700 tracking-tight leading-none">3-Way</div>
+            <div className="text-[12px] sm:text-[13px] text-slate font-medium mt-2">Automated PO &amp; Invoice Matching</div>
           </div>
-          <div className="p-4 text-center border-r border-slate-100 last:border-none">
-            <div className="text-[28px] sm:text-[34px] font-semibold text-ink tracking-tight">0%</div>
-            <div className="text-[12px] text-slate font-medium mt-0.5">Ghost or Unverified Vendors</div>
+          <div className="text-center px-3 sm:px-4 lg:border-r border-slate-200/70">
+            <div className="text-[32px] sm:text-[38px] font-semibold text-ink tracking-tight leading-none">0%</div>
+            <div className="text-[12px] sm:text-[13px] text-slate font-medium mt-2">Ghost or Unverified Vendors</div>
           </div>
-          <div className="p-4 text-center">
-            <div className="text-[28px] sm:text-[34px] font-semibold text-ink tracking-tight">&lt; 15ms</div>
-            <div className="text-[12px] text-slate font-medium mt-0.5">Regional Edge Telemetry Latency</div>
+          <div className="text-center px-3 sm:px-4">
+            <div className="text-[32px] sm:text-[38px] font-semibold text-ink tracking-tight leading-none">&lt; 15ms</div>
+            <div className="text-[12px] sm:text-[13px] text-slate font-medium mt-2">Regional Edge Telemetry Latency</div>
           </div>
         </div>
       </section>

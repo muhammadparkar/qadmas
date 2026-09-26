@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -87,9 +87,16 @@ export default function GalleryHoverCarousel({
     let wheelTimeout: ReturnType<typeof setTimeout>;
 
     const handleWheel = (e: WheelEvent) => {
-      // Prioritize horizontal trackpad swipe; if purely vertical over the carousel, map to horizontal
-      const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-      const delta = isHorizontal ? e.deltaX : (e.shiftKey ? e.deltaY : e.deltaY * 0.8);
+      // ONLY trigger on intentional horizontal trackpad gestures or Shift+Wheel
+      // Do NOT hijack normal vertical page scrolling!
+      const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.5;
+      const isShiftVertical = e.shiftKey && Math.abs(e.deltaY) > 2;
+
+      if (!isHorizontal && !isShiftVertical) {
+        return;
+      }
+
+      const delta = isHorizontal ? e.deltaX : e.deltaY;
 
       if (Math.abs(delta) > 4) {
         if (!isWheeling) {
@@ -115,10 +122,15 @@ export default function GalleryHoverCarousel({
     };
   }, [carouselApi]);
 
-  // Ensure plenty of items (at least 15 items) so Embla infinite loop operates symmetrically in both directions
-  const displayItems = items.length > 0
-    ? [...items, ...items, ...items].map((it, i) => ({ ...it, id: `${it.id}-loop-${i}` }))
-    : items;
+  // Memoize duplicated items so React doesn't recreate new array references on every render
+  const displayItems = useMemo(() => {
+    if (!items || items.length === 0) return [];
+    return [...items, ...items].map((it, i) => ({
+      ...it,
+      loopId: `${it.id}-loop-${i}`,
+      isFirstSet: i < items.length,
+    }));
+  }, [items]);
 
   return (
     <section className="py-14 sm:py-24 bg-white border-t border-slate-200/80 font-apple overflow-hidden w-full max-w-full">
@@ -160,13 +172,13 @@ export default function GalleryHoverCarousel({
             opts={{ 
               align: "start",
               loop: true,
-              dragFree: true,
+              dragFree: false,
             }}
             className="relative w-full max-w-full cursor-grab active:cursor-grabbing select-none"
           >
             <CarouselContent className="hide-scrollbar w-full max-w-full -ml-3 sm:-ml-4">
               {displayItems.map((item) => (
-                <CarouselItem key={item.id} className="pl-3 sm:pl-4 basis-[84%] sm:basis-1/2 lg:basis-1/3 xl:basis-[360px]">
+                <CarouselItem key={item.loopId} className="pl-3 sm:pl-4 basis-[84%] sm:basis-1/2 lg:basis-1/3 xl:basis-[360px]">
                   <Link 
                     to={item.url.startsWith("http") ? item.url : "#"} 
                     draggable={false}
@@ -181,7 +193,8 @@ export default function GalleryHoverCarousel({
                           alt={item.title}
                           draggable={false}
                           className="h-full w-full object-cover object-center pointer-events-none select-none"
-                          loading="lazy"
+                          loading={item.isFirstSet ? "eager" : "lazy"}
+                          decoding="async"
                         />
                         {/* Visible bottom info overlay on mobile touch screens */}
                         <div className="sm:hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex flex-col justify-end p-4 text-white">
@@ -198,7 +211,7 @@ export default function GalleryHoverCarousel({
                       </div>
 
                       {/* Text Section (Reveals on hover on desktop) */}
-                      <div className="hidden sm:flex absolute bottom-0 left-0 w-full p-6 transition-all duration-500 group-hover:h-1/2 flex-col justify-center bg-white/98 backdrop-blur-md opacity-0 group-hover:opacity-100 border-t border-slate-100">
+                      <div className="hidden sm:flex absolute bottom-0 left-0 w-full p-6 transition-all duration-500 group-hover:h-1/2 flex-col justify-center bg-white/95 opacity-0 group-hover:opacity-100 border-t border-slate-100">
                         <h3 className="text-lg font-semibold md:text-xl text-ink font-apple tracking-tight">
                           {item.title}
                         </h3>

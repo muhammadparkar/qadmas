@@ -1,18 +1,9 @@
 import { useState } from 'react';
 import { 
-  Sparkles, 
   ArrowUpRight, 
   CheckCircle2, 
-  Video, 
   Palette, 
-  FileText, 
-  TrendingUp, 
-  Layers, 
-  Target, 
-  BarChart3, 
-  MessageSquare, 
   ShieldCheck, 
-  Zap, 
   ArrowRight,
   Play,
   Volume2,
@@ -25,6 +16,7 @@ import Footer from '../components/Footer';
 import ContactModal from '../components/ContactModal';
 import { AnimatedMarqueeHero } from '../components/ui/hero-3';
 import GalleryHoverCarousel from '../components/ui/gallery-hover-carousel';
+import TimelineBlock01 from '../components/ui/timeline-01';
 
 const MARKETING_SHOWCASE_IMAGES = [
   "https://cdn.21st.dev/assets/mirror/9c/9c0892e59c262cc1da34c88d977221da3f36aaef35ede7924d66b80c219be979.jpg",
@@ -120,8 +112,8 @@ export default function DigitalMarketing() {
 
         {/* Two Flagship Disciplines: Hero-Aligned Architecture */}
         <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 max-w-[1240px] mx-auto relative font-apple overflow-hidden">
-          {/* Ambient Lighting Glow echoing the Hero Section */}
-          <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[320px] sm:w-[680px] h-[220px] sm:h-[340px] bg-gradient-to-tr from-sky-100/40 via-blue-50/30 to-indigo-100/30 blur-2xl sm:blur-3xl rounded-full -z-10 pointer-events-none" />
+          {/* Ambient Lighting Glow echoing the Hero Section - optimized for mobile GPU */}
+          <div className="hidden sm:block absolute top-10 left-1/2 -translate-x-1/2 sm:w-[680px] sm:h-[340px] bg-gradient-to-tr from-sky-100/40 via-blue-50/30 to-indigo-100/30 blur-3xl rounded-full -z-10 pointer-events-none" />
 
           {/* Section Editorial Header */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
@@ -186,8 +178,8 @@ export default function DigitalMarketing() {
             <div className="space-y-6 sm:space-y-8">
                 {/* Main Hero Card for Social Management */}
                 <div className="rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-10 lg:p-14 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center relative overflow-hidden">
-                  {/* Subtle watermarked background logo / pattern */}
-                  <div className="absolute -top-16 -left-16 w-80 h-80 bg-sky-50/60 rounded-full blur-3xl pointer-events-none" />
+                  {/* Subtle watermarked background logo / pattern - optimized for mobile GPU */}
+                  <div className="hidden sm:block absolute -top-16 -left-16 w-80 h-80 bg-sky-50/60 rounded-full blur-3xl pointer-events-none" />
 
                   {/* Left Column: Narrative, Architecture & CTA */}
                   <div className="lg:col-span-7 space-y-4 sm:space-y-6 relative z-10">
@@ -282,13 +274,15 @@ export default function DigitalMarketing() {
                           src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=800&auto=format&fit=crop"
                           alt="Cinema-grade short-form video production"
                           className="w-full h-full object-cover opacity-85"
+                          loading="lazy"
+                          decoding="async"
                         />
                         {/* Gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/40" />
 
                         {/* Top Badges */}
                         <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                          <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-medium text-white flex items-center gap-1.5 border border-white/10">
+                          <span className="px-2.5 py-1 rounded-full bg-black/75 text-[11px] font-medium text-white flex items-center gap-1.5 border border-white/15">
                             <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping" />
                             Viral Sprint
                           </span>
@@ -299,14 +293,14 @@ export default function DigitalMarketing() {
 
                         {/* Center Play Beacon */}
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                          <div className="w-14 h-14 rounded-full bg-white/25 border border-white/40 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                             <Play size={22} className="text-white fill-white ml-1" />
                           </div>
                         </div>
 
                         {/* Bottom Live Metrics Over Video */}
                         <div className="absolute bottom-3 left-3 right-3 space-y-2">
-                          <div className="flex items-center justify-between text-[11.5px] text-white/90 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/10">
+                          <div className="flex items-center justify-between text-[11.5px] text-white/90 bg-black/60 px-3 py-1.5 rounded-xl border border-white/15">
                             <div className="flex items-center gap-1.5">
                               <Volume2 size={13} className="text-apple-blue" />
                               <span className="truncate max-w-[150px]">Original Audio · Qadmas Studio</span>
@@ -315,11 +309,11 @@ export default function DigitalMarketing() {
                           </div>
 
                           <div className="grid grid-cols-2 gap-2 text-center text-[11px]">
-                            <div className="bg-black/70 backdrop-blur-md py-1.5 px-2 rounded-lg border border-white/10">
+                            <div className="bg-black/80 py-1.5 px-2 rounded-lg border border-white/10">
                               <div className="text-white/60">Watch Retention</div>
                               <div className="text-white font-semibold">+24.8% Target</div>
                             </div>
-                            <div className="bg-black/70 backdrop-blur-md py-1.5 px-2 rounded-lg border border-white/10">
+                            <div className="bg-black/80 py-1.5 px-2 rounded-lg border border-white/10">
                               <div className="text-white/60">WhatsApp Leads</div>
                               <div className="text-emerald-400 font-semibold">94 Captured</div>
                             </div>
@@ -332,38 +326,6 @@ export default function DigitalMarketing() {
                   </div>
                 </div>
 
-                {/* 3 Editorial Feature Deep-Dive Modules */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6 pt-2">
-                  <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-2.5 sm:space-y-3 hover:border-slate-300 transition-colors">
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sky-50 text-apple-blue flex items-center justify-center">
-                      <Video size={17} />
-                    </div>
-                    <h4 className="text-[16px] sm:text-[17px] font-semibold text-ink tracking-tight">Cinema-Grade Vertical Production</h4>
-                    <p className="text-[13px] sm:text-[14px] text-slate leading-relaxed">
-                      We script, shoot, edit, and sound-design high-retention 4K vertical video tailored for sub-3-second hooks and viral algorithmic distribution.
-                    </p>
-                  </div>
-
-                  <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-2.5 sm:space-y-3 hover:border-slate-300 transition-colors">
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
-                      <MessageSquare size={17} />
-                    </div>
-                    <h4 className="text-[16px] sm:text-[17px] font-semibold text-ink tracking-tight">Zero-Latency WhatsApp Funnels</h4>
-                    <p className="text-[13px] sm:text-[14px] text-slate leading-relaxed">
-                      Direct audience signals into qualified revenue pipelines: active comment triage and automated DM routing directly to your sales directors.
-                    </p>
-                  </div>
-
-                  <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-2.5 sm:space-y-3 hover:border-slate-300 transition-colors">
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center">
-                      <BarChart3 size={17} />
-                    </div>
-                    <h4 className="text-[16px] sm:text-[17px] font-semibold text-ink tracking-tight">Attributed Telemetry &amp; ROAS</h4>
-                    <p className="text-[13px] sm:text-[14px] text-slate leading-relaxed">
-                      Weekly executive dashboards tracking follower velocity, profile engagement, cost-per-lead, and pipeline attribution across every network.
-                    </p>
-                  </div>
-                </div>
               </div>
             )}
 
@@ -374,7 +336,7 @@ export default function DigitalMarketing() {
               <div className="space-y-6 sm:space-y-8">
                 {/* Main Hero Card for Brand Identity */}
                 <div className="rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-10 lg:p-14 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center relative overflow-hidden">
-                  <div className="absolute -top-16 -left-16 w-80 h-80 bg-emerald-50/60 rounded-full blur-3xl pointer-events-none" />
+                  <div className="hidden sm:block absolute -top-16 -left-16 w-80 h-80 bg-emerald-50/60 rounded-full blur-3xl pointer-events-none" />
 
                   {/* Left Column: Narrative, Architecture & CTA */}
                   <div className="lg:col-span-7 space-y-4 sm:space-y-6 relative z-10">
@@ -463,8 +425,8 @@ export default function DigitalMarketing() {
                   <div className="lg:col-span-5 relative flex justify-center items-center py-2 lg:py-0">
                     {/* Dark Obsidian Surface (Straight, Clean, Mobile-Optimized) */}
                     <div className="relative w-full max-w-[310px] sm:max-w-[360px] mx-auto rounded-2xl sm:rounded-3xl bg-[#0b0f17] text-white p-4 sm:p-6 shadow-xl border border-slate-800 select-none overflow-hidden space-y-4 sm:space-y-5">
-                      {/* Ambient interior glow */}
-                      <div className="absolute -top-10 -right-10 w-44 h-44 bg-apple-blue/15 rounded-full blur-3xl pointer-events-none" />
+                      {/* Ambient interior glow - optimized for mobile GPU */}
+                      <div className="hidden sm:block absolute -top-10 -right-10 w-44 h-44 bg-apple-blue/15 rounded-full blur-3xl pointer-events-none" />
 
                       {/* Header */}
                       <div className="flex items-center justify-between pb-2.5 sm:pb-3 border-b border-slate-800/80 text-[11.5px] sm:text-[12px]">
@@ -522,106 +484,19 @@ export default function DigitalMarketing() {
                   </div>
                 </div>
 
-                {/* 3 Editorial Feature Deep-Dive Modules */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6 pt-2">
-                  <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-2.5 sm:space-y-3 hover:border-slate-300 transition-colors">
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center">
-                      <Sparkles size={17} />
-                    </div>
-                    <h4 className="text-[16px] sm:text-[17px] font-semibold text-ink tracking-tight">Bilingual Regional Authority</h4>
-                    <p className="text-[13px] sm:text-[14px] text-slate leading-relaxed">
-                      Custom Arabic calligraphy paired with modern Latin letterforms, tuned specifically to resonate with institutional decision-makers.
-                    </p>
-                  </div>
-
-                  <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-2.5 sm:space-y-3 hover:border-slate-300 transition-colors">
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center">
-                      <FileText size={17} />
-                    </div>
-                    <h4 className="text-[16px] sm:text-[17px] font-semibold text-ink tracking-tight">60+ Page Identity Manual</h4>
-                    <p className="text-[13px] sm:text-[14px] text-slate leading-relaxed">
-                      Rigorous design system documentation detailing spacing, typography scales, negative space rules, and clear digital token guidelines.
-                    </p>
-                  </div>
-
-                  <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-2.5 sm:space-y-3 hover:border-slate-300 transition-colors">
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center">
-                      <Layers size={17} />
-                    </div>
-                    <h4 className="text-[16px] sm:text-[17px] font-semibold text-ink tracking-tight">Executive Tender &amp; Pitch Kits</h4>
-                    <p className="text-[13px] sm:text-[14px] text-slate leading-relaxed">
-                      High-stakes investor pitch decks, corporate profiles, and presentation templates designed to win multi-million dollar institutional tenders.
-                    </p>
-                  </div>
-                </div>
               </div>
             )}
         </section>
 
-        {/* 4-Step Growth Process */}
-        <section className="py-20 px-6 max-w-[1240px] mx-auto border-t border-slate-200/80 overflow-hidden">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-semibold text-ink tracking-tight mb-3">
-              How we execute campaigns.
-            </h2>
-            <p className="text-[15px] sm:text-[16px] text-slate font-apple leading-relaxed">
-              A structured 4-stage sprint ensuring predictable brand expansion and qualified lead generation.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                step: '01',
-                title: 'Market & Audience Audit',
-                desc: 'We analyze your competitive landscape, ideal customer profiles, and regional market sentiment across Qatar, the UAE, and India.',
-                icon: Target,
-              },
-              {
-                step: '02',
-                title: 'Creative & Identity Engine',
-                desc: 'Our design studio architects custom templates, short-form video storyboards, and copy tailored for high engagement.',
-                icon: Palette,
-              },
-              {
-                step: '03',
-                title: 'Multi-Channel Dispatch',
-                desc: 'Content is scheduled, published, and amplified with targeted paid media campaigns for maximum reach velocity.',
-                icon: Zap,
-              },
-              {
-                step: '04',
-                title: 'Conversion & Lead Telemetry',
-                desc: 'Audience signals are tracked and hot inbound inquiries are instantly funneled to your sales and WhatsApp pipelines.',
-                icon: TrendingUp,
-              },
-            ].map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={index}
-                  className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[20px] font-bold text-slate-300 font-apple">{item.step}</span>
-                      <div className="w-8 h-8 rounded-lg bg-apple-blue/10 text-apple-blue flex items-center justify-center">
-                        <Icon size={16} />
-                      </div>
-                    </div>
-                    <h3 className="text-[17px] font-semibold text-ink">{item.title}</h3>
-                    <p className="text-[14px] text-slate leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
+        {/* How we execute campaigns timeline */}
+        <div className="py-8 sm:py-14 border-t border-slate-200/80">
+          <TimelineBlock01 />
+        </div>
 
         {/* Enterprise CTA Section */}
         <section className="py-20 px-6 max-w-[1240px] mx-auto overflow-hidden">
           <div className="rounded-3xl bg-[#0b0f17] text-white p-8 sm:p-14 relative overflow-hidden shadow-2xl border border-slate-800">
-            <div className="absolute -right-20 -bottom-20 w-[420px] h-[420px] bg-apple-blue/20 rounded-full blur-[100px] pointer-events-none" />
+            <div className="hidden sm:block absolute -right-20 -bottom-20 w-[420px] h-[420px] bg-apple-blue/20 rounded-full blur-[100px] pointer-events-none" />
 
             <div className="relative z-10 max-w-2xl space-y-6">
               <h2 className="text-[30px] sm:text-[42px] font-semibold tracking-tight leading-tight">

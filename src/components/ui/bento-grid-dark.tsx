@@ -1,0 +1,169 @@
+"use client";
+import React from "react";
+import { clsx } from "clsx";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
+
+export interface BentoCardProps {
+  className?: string;
+  eyebrow: React.ReactNode;
+  title: React.ReactNode;
+  description: React.ReactNode;
+  graphic?: React.ReactNode;
+  href?: string;
+  isExternal?: boolean;
+  onCardClick?: () => void;
+}
+
+export function BentoCard({
+  className = "",
+  eyebrow,
+  title,
+  description,
+  graphic,
+  href,
+  isExternal = false,
+  onCardClick,
+}: BentoCardProps) {
+  const sharedClassName = clsx(
+    className,
+    "group relative flex flex-col justify-end overflow-hidden rounded-2xl sm:rounded-3xl",
+    "bg-black transform-gpu shadow-sm ring-1 ring-white/10 transition-all duration-300 hover:ring-white/25",
+    "min-h-[440px] sm:min-h-[480px] w-full",
+    (href || onCardClick) && "cursor-pointer"
+  );
+
+  const innerContent = (
+    <>
+      {/* Background Graphic */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        {graphic}
+      </div>
+
+      {/* Clean text section with bottom gradient scrim */}
+      <div className="relative px-6 sm:px-8 pb-7 sm:pb-9 pt-24 z-20 bg-gradient-to-t from-black via-black/85 to-transparent text-white w-full">
+        <div className="flex items-center justify-between gap-4">
+          <span className="text-[12px] font-medium uppercase tracking-wider text-slate-400 font-apple">
+            {eyebrow}
+          </span>
+          {(href || onCardClick) && (
+            <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-apple-blue group-hover:text-white flex items-center justify-center text-white/70 transition-all duration-300 shrink-0">
+              {isExternal ? <ArrowUpRight size={15} /> : <ArrowRight size={15} />}
+            </div>
+          )}
+        </div>
+
+        <h3 className="mt-2 text-xl sm:text-2xl font-semibold tracking-tight text-white font-apple">
+          {title}
+        </h3>
+
+        <p className="mt-2 text-sm sm:text-base text-slate-300 max-w-[540px] font-apple leading-relaxed">
+          {description}
+        </p>
+      </div>
+    </>
+  );
+
+  if (href) {
+    if (isExternal) {
+      return (
+        <motion.a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial="idle"
+          whileHover="active"
+          variants={{ idle: {}, active: {} }}
+          className={sharedClassName}
+        >
+          {innerContent}
+        </motion.a>
+      );
+    }
+    return (
+      <motion.div
+        initial="idle"
+        whileHover="active"
+        variants={{ idle: {}, active: {} }}
+        className={sharedClassName}
+      >
+        <Link to={href} className="absolute inset-0 z-30" aria-label={typeof title === 'string' ? title : 'View service'} />
+        {innerContent}
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      initial="idle"
+      whileHover="active"
+      variants={{ idle: {}, active: {} }}
+      onClick={onCardClick}
+      className={sharedClassName}
+    >
+      {innerContent}
+    </motion.div>
+  );
+}
+
+export default function FUIBentoGridDark({
+  onSelectService,
+}: {
+  onSelectService?: (service: string) => void;
+}) {
+  return (
+    <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 pb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 w-full">
+        {/* 1. Ai - Powered CRM & ERP (Wantik-X) */}
+        <BentoCard
+          eyebrow="Autonomous Operations"
+          title="Ai - Powered CRM & ERP (Wantik-X)"
+          description="Automated billing, inventory & WhatsApp Al agents"
+          href="https://wantikx.com/"
+          isExternal={true}
+          graphic={
+            <div className="absolute inset-0 bg-[url(https://cdn.21st.dev/assets/mirror/82/8216d38fc7b6e661002e520eceae40f036741db2f2281729f62bc2885f168bff.png)] bg-cover bg-center transition-transform duration-500 group-hover:scale-105" />
+          }
+          className="lg:rounded-tl-4xl"
+        />
+
+        {/* 2. Digital Marketing */}
+        <BentoCard
+          eyebrow="Prestige Growth Systems"
+          title="Digital Marketing"
+          description="Targeted campaigns, SEO, paid ads & growth analytics"
+          href="/services/digital-marketing"
+          graphic={
+            <div className="absolute inset-0 bg-[url(https://cdn.21st.dev/assets/mirror/38/388b12fd04fd758f8af4db4ff90a362fdefabc172e3f532d6595f2ba4a86a76b.png)] bg-cover bg-center transition-transform duration-500 group-hover:scale-105" />
+          }
+          className="lg:rounded-tr-4xl"
+        />
+
+        {/* 3. Website Development */}
+        <BentoCard
+          eyebrow="High-Conversion Engineering"
+          title="Website Development"
+          description="React, Next.js & sub-second corporate web platforms"
+          onCardClick={() => onSelectService?.("Website Development")}
+          graphic={
+            <div className="absolute inset-0 bg-[url(https://cdn.21st.dev/assets/mirror/e1/e11e231bc3af40fd287e47edf1ae6caf40f5421f6fadee45b6e10a635ddea8c0.png)] bg-cover bg-center transition-transform duration-500 group-hover:scale-105" />
+          }
+          className="lg:rounded-bl-4xl"
+        />
+
+        {/* 4. Mobile Application Development */}
+        <BentoCard
+          eyebrow="Native Cross-Platform"
+          title="Mobile Application Development"
+          description="Native-feel iOS & Android apps with offline sync"
+          onCardClick={() => onSelectService?.("Mobile Application Development")}
+          graphic={
+            <div className="absolute inset-0 bg-[url(https://cdn.21st.dev/assets/mirror/05/05a9718924c99a9e5c6d5a61b9ea8d088c6f2ce2515716d60f69064dc178462f.png)] bg-cover bg-center transition-transform duration-500 group-hover:scale-105" />
+          }
+          className="lg:rounded-br-4xl"
+        />
+      </div>
+    </div>
+  );
+}

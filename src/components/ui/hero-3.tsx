@@ -47,8 +47,8 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
   images,
   className,
 }) => {
-  // Quadruple images to guarantee a completely infinite, gapless loop on any screen width
-  const duplicatedImages = [...images, ...images, ...images, ...images];
+  // Duplicate images for continuous seamless loop without exceeding Safari's 4096px GPU layer texture limit
+  const duplicatedImages = [...images, ...images];
 
   return (
     <section
@@ -57,8 +57,8 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
         className
       )}
     >
-      {/* Soft Ambient Radial Glow from landing page Hero */}
-      <div className="absolute top-16 md:top-24 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[360px] md:h-[460px] bg-gradient-to-r from-sky-100/70 via-white to-sky-50/70 rounded-full blur-3xl -z-10 pointer-events-none" />
+      {/* Soft Ambient Radial Glow from landing page Hero - optimized for mobile GPU */}
+      <div className="hidden sm:block absolute top-16 md:top-24 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[360px] md:h-[460px] bg-gradient-to-r from-sky-100/70 via-white to-sky-50/70 rounded-full blur-3xl -z-10 pointer-events-none" />
 
       {/* Hero text & CTA Container (Elevated and centered, matching landing page typography) */}
       <div className="z-20 relative flex flex-col items-center max-w-5xl mx-auto -mt-20 sm:-mt-28 md:-mt-36 px-4">
@@ -106,27 +106,35 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
       </div>
 
       {/* Animated Image Marquee: Positioned at bottom and blended vertically behind CTA */}
-      <div className="absolute bottom-0 left-0 w-full h-[36%] md:h-[44%] overflow-hidden pointer-events-none [mask-image:linear-gradient(to_bottom,transparent_0%,black_25%,black_80%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_25%,black_80%,transparent_100%)]">
-        {/* Soft edge gradient fades for seamless horizontal blending */}
-        <div className="absolute left-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-r from-gallery-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-l from-gallery-white to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-[36%] md:h-[44%] overflow-hidden pointer-events-none">
+        {/* Top vertical gradient blend directly behind the CTA button */}
+        <div className="absolute inset-x-0 top-0 h-28 md:h-36 bg-gradient-to-b from-gallery-white via-gallery-white/80 to-transparent z-10 pointer-events-none" />
+
+        {/* Bottom vertical gradient blend into the next section */}
+        <div className="absolute inset-x-0 bottom-0 h-16 md:h-20 bg-gradient-to-t from-gallery-white via-gallery-white/80 to-transparent z-10 pointer-events-none" />
+
+        {/* Soft edge horizontal gradient fades */}
+        <div className="absolute left-0 inset-y-0 w-10 md:w-28 bg-gradient-to-r from-gallery-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 inset-y-0 w-10 md:w-28 bg-gradient-to-l from-gallery-white to-transparent z-10 pointer-events-none" />
 
         <div
-          className="animate-marquee-hero-infinite flex gap-4 md:gap-5 w-max will-change-transform pt-2"
+          className="animate-marquee-hero-infinite flex gap-4 md:gap-5 w-max pt-2 will-change-transform"
         >
           {duplicatedImages.map((src, index) => (
             <div
               key={index}
-              className="relative aspect-[3/4] h-44 sm:h-56 md:h-64 flex-shrink-0"
-              style={{
-                rotate: `${index % 2 === 0 ? -2 : 5}deg`,
-              }}
+              className={cn(
+                "relative aspect-[3/4] h-44 sm:h-56 md:h-64 flex-shrink-0 transform-gpu",
+                index % 2 === 0 ? "sm:-rotate-2" : "sm:rotate-3"
+              )}
+              style={{ transform: "translateZ(0)" }}
             >
               <img
                 src={src}
                 alt={`Showcase image ${(index % images.length) + 1}`}
-                className="w-full h-full object-cover rounded-2xl shadow-md border border-slate-200/50 select-none pointer-events-none"
-                loading="lazy"
+                className="w-full h-full object-cover rounded-2xl shadow-xs border border-slate-200/60 select-none pointer-events-none"
+                loading={index < 5 ? "eager" : "lazy"}
+                decoding="async"
                 draggable={false}
               />
             </div>

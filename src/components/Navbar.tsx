@@ -18,9 +18,9 @@ const navLinks = [
       { label: 'Sila Vendor System', href: '/products/sila', desc: 'Procurement, supplier invoices & inventory tracking' },
     ]
   },
+  { label: 'Digital Marketing', href: '/services/digital-marketing' },
   { label: 'Work', href: '/portfolio' },
   { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
@@ -160,19 +160,18 @@ export default function Navbar() {
               Direct Support
             </Link>
 
-            <button
-              type="button"
-              onClick={() => setIsModalOpen(true)}
-              className="btn-slide-pill-sm group shrink-0"
-              aria-label="Let's Collaborate"
+            <Link
+              to="/contact"
+              className="btn-slide-pill-sm group shrink-0 inline-flex items-center cursor-pointer"
+              aria-label="Get in Touch"
             >
               <span className="relative z-10 transition-all duration-400">
-                Let&apos;s Collaborate
+                Get in Touch
               </span>
               <span className="arrow-circle">
                 <ArrowUpRight size={14} />
               </span>
-            </button>
+            </Link>
           </div>
 
           {/* Mobile menu hamburger */}
@@ -213,16 +212,14 @@ export default function Navbar() {
               <Sparkles size={13} className="text-apple-blue" />
               <span>Offices in Qatar · UAE · India</span>
             </div>
-            <button
-              onClick={() => {
-                setMenuOpen(false);
-                setIsModalOpen(true);
-              }}
-              className="btn-dark w-full py-3.5 text-center justify-center mt-2 flex items-center gap-2"
+            <Link
+              to="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="btn-dark w-full py-3.5 text-center justify-center mt-2 flex items-center gap-2 cursor-pointer"
             >
-              <span>Let&apos;s Collaborate</span>
+              <span>Get in Touch</span>
               <ArrowUpRight size={16} />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
