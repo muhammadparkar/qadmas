@@ -27,14 +27,14 @@ import { AnimatedMarqueeHero } from '../components/ui/hero-3';
 import GalleryHoverCarousel from '../components/ui/gallery-hover-carousel';
 
 const MARKETING_SHOWCASE_IMAGES = [
-  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=75&w=480&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=75&w=480&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=75&w=480&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1542744094-3a31f272c490?q=75&w=480&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=75&w=480&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=75&w=480&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=75&w=480&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=75&w=480&auto=format&fit=crop",
 ];
 
 const CAROUSEL_FEATURE_ITEMS = [
@@ -45,7 +45,7 @@ const CAROUSEL_FEATURE_ITEMS = [
       "Consistent, aesthetic editorial calendars across Instagram, LinkedIn, TikTok, and X that build audience trust.",
     url: "#",
     image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=75&w=600&auto=format&fit=crop",
   },
   {
     id: "item-2",
@@ -54,7 +54,7 @@ const CAROUSEL_FEATURE_ITEMS = [
       "High-retention vertical reels and motion graphics tailored for organic virality and paid social reach.",
     url: "#",
     image:
-      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=75&w=600&auto=format&fit=crop",
   },
   {
     id: "item-3",
@@ -63,7 +63,7 @@ const CAROUSEL_FEATURE_ITEMS = [
       "Bespoke typography, curated palettes, and bilingual Arabic/English brand guidelines built for regional authority.",
     url: "#",
     image:
-      "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=75&w=600&auto=format&fit=crop",
   },
   {
     id: "item-4",
@@ -72,7 +72,7 @@ const CAROUSEL_FEATURE_ITEMS = [
       "Executive company profiles, presentation decks, and collateral engineered to win high-value corporate deals.",
     url: "#",
     image:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=75&w=600&auto=format&fit=crop",
   },
   {
     id: "item-5",
@@ -81,7 +81,7 @@ const CAROUSEL_FEATURE_ITEMS = [
       "Targeted paid social advertising campaigns scaling customer acquisition across Qatar, the UAE, and India.",
     url: "#",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=75&w=600&auto=format&fit=crop",
   },
 ];
 
@@ -90,10 +90,10 @@ export default function DigitalMarketing() {
   const [activePillar, setActivePillar] = useState<'social' | 'branding'>('social');
 
   return (
-    <div className="bg-gallery-white min-h-screen font-apple text-ink selection:bg-apple-blue selection:text-white">
+    <div className="bg-gallery-white min-h-screen font-apple text-ink selection:bg-apple-blue selection:text-white w-full max-w-full overflow-x-clip">
       <Navbar />
 
-      <main>
+      <main className="w-full max-w-full overflow-x-clip">
         {/* Animated Marquee Hero Section */}
         <AnimatedMarqueeHero
           title={
@@ -118,9 +118,9 @@ export default function DigitalMarketing() {
         />
 
         {/* Two Flagship Disciplines: Hero-Aligned Architecture */}
-        <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 max-w-[1240px] mx-auto relative font-apple">
+        <section className="py-14 sm:py-20 lg:py-24 px-4 sm:px-6 max-w-[1240px] mx-auto relative font-apple overflow-hidden">
           {/* Ambient Lighting Glow echoing the Hero Section */}
-          <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[720px] h-[340px] bg-gradient-to-tr from-sky-100/40 via-blue-50/30 to-indigo-100/30 blur-3xl rounded-full -z-10 pointer-events-none" />
+          <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[320px] sm:w-[680px] h-[220px] sm:h-[340px] bg-gradient-to-tr from-sky-100/40 via-blue-50/30 to-indigo-100/30 blur-2xl sm:blur-3xl rounded-full -z-10 pointer-events-none" />
 
           {/* Section Editorial Header */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
@@ -558,7 +558,7 @@ export default function DigitalMarketing() {
         </section>
 
         {/* 4-Step Growth Process */}
-        <section className="py-20 px-6 max-w-[1240px] mx-auto border-t border-slate-200/80">
+        <section className="py-20 px-6 max-w-[1240px] mx-auto border-t border-slate-200/80 overflow-hidden">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-semibold text-ink tracking-tight mb-3">
               How we execute campaigns.
@@ -618,7 +618,7 @@ export default function DigitalMarketing() {
         </section>
 
         {/* Enterprise CTA Section */}
-        <section className="py-20 px-6 max-w-[1240px] mx-auto">
+        <section className="py-20 px-6 max-w-[1240px] mx-auto overflow-hidden">
           <div className="rounded-3xl bg-[#0b0f17] text-white p-8 sm:p-14 relative overflow-hidden shadow-2xl border border-slate-800">
             <div className="absolute -right-20 -bottom-20 w-[420px] h-[420px] bg-apple-blue/20 rounded-full blur-[100px] pointer-events-none" />
 

@@ -121,8 +121,8 @@ export default function GalleryHoverCarousel({
     : items;
 
   return (
-    <section className="py-14 sm:py-24 bg-white border-t border-slate-200/80 font-apple">
-      <div className="container mx-auto px-4 sm:px-6 max-w-[1240px]">
+    <section className="py-14 sm:py-24 bg-white border-t border-slate-200/80 font-apple overflow-hidden w-full max-w-full">
+      <div className="container mx-auto px-4 sm:px-6 max-w-[1240px] overflow-hidden w-full">
         <div className="mb-6 flex flex-col justify-between sm:mb-12 md:flex-row md:items-end lg:mb-14">
           <div className="max-w-2xl space-y-1.5 sm:space-y-2">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-ink tracking-tight">

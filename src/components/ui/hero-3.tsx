@@ -72,21 +72,21 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
   return (
     <section
       className={cn(
-        "relative w-full min-h-[92vh] overflow-hidden bg-gallery-white flex flex-col items-center justify-between text-center px-4 pt-36 pb-8",
+        "relative w-full max-w-full overflow-hidden bg-gallery-white flex flex-col items-center justify-between text-center px-4 pt-32 sm:pt-36 pb-8",
         className
       )}
     >
-      {/* Ambient background glow */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-gradient-to-tr from-sky-100/50 via-teal-50/40 to-indigo-100/40 blur-3xl rounded-full -z-10 pointer-events-none" />
+      {/* Ambient background glow - scaled for mobile */}
+      <div className="absolute top-16 sm:top-20 left-1/2 -translate-x-1/2 w-[320px] sm:w-[680px] h-[220px] sm:h-[340px] bg-gradient-to-tr from-sky-100/50 via-teal-50/40 to-indigo-100/40 blur-2xl sm:blur-3xl rounded-full -z-10 pointer-events-none" />
 
-      <div className="z-10 flex flex-col items-center max-w-4xl mx-auto my-auto">
+      <div className="z-10 flex flex-col items-center max-w-4xl mx-auto my-auto w-full px-2 sm:px-4">
         {/* Tagline (if provided) */}
         {tagline && (
           <motion.div
             initial="hidden"
             animate="show"
             variants={FADE_IN_ANIMATION_VARIANTS}
-            className="mb-4 text-[13px] font-medium text-slate tracking-wide"
+            className="mb-3 sm:mb-4 text-[12px] sm:text-[13px] font-medium text-slate tracking-wide"
           >
             {tagline}
           </motion.div>
@@ -104,7 +104,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
               },
             },
           }}
-          className="text-display font-medium text-ink tracking-tight leading-[1.04]"
+          className="text-[28px] sm:text-[42px] md:text-display font-medium text-ink tracking-tight leading-[1.1] sm:leading-[1.04] max-w-3xl"
         >
           {typeof title === 'string' ? (
             title.split(" ").map((word, i) => (
@@ -127,7 +127,7 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
           animate="show"
           variants={FADE_IN_ANIMATION_VARIANTS}
           transition={{ delay: 0.3 }}
-          className="mt-6 max-w-2xl text-[16px] sm:text-[18px] text-slate font-apple leading-relaxed"
+          className="mt-4 sm:mt-6 max-w-2xl text-[15px] sm:text-[17px] text-slate font-apple leading-relaxed"
         >
           {description}
         </motion.p>
@@ -138,42 +138,37 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
           animate="show"
           variants={FADE_IN_ANIMATION_VARIANTS}
           transition={{ delay: 0.45 }}
-          className="mt-8"
+          className="mt-6 sm:mt-8"
         >
           <ActionButton onClick={onCtaClick}>{ctaText}</ActionButton>
         </motion.div>
       </div>
 
-      {/* Animated Image Marquee */}
-      <div className="relative w-full h-56 sm:h-64 md:h-72 mt-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
-        <motion.div
-          className="flex gap-5 sm:gap-6 w-max py-4"
-          animate={{
-            x: ["0%", "-50%"],
-            transition: {
-              ease: "linear",
-              duration: 35,
-              repeat: Infinity,
-            },
-          }}
+      {/* Animated Image Marquee - Hardware Accelerated CSS & Edge Gradient Masks */}
+      <div className="relative w-full max-w-full min-w-0 h-44 sm:h-56 md:h-64 mt-8 sm:mt-12 overflow-hidden">
+        {/* Soft edge gradient fades - zero CSS mask-image bugs on WebKit / iOS Safari */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-gallery-white via-gallery-white/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-gallery-white via-gallery-white/80 to-transparent z-10 pointer-events-none" />
+
+        <div
+          className="animate-marquee flex items-center gap-4 sm:gap-6 py-2 w-max will-change-transform"
+          style={{ animationDuration: '32s' }}
         >
           {duplicatedImages.map((src, index) => (
             <div
               key={index}
-              className="relative aspect-[3/4] h-44 sm:h-52 md:h-60 flex-shrink-0 transition-transform hover:scale-105 duration-300"
-              style={{
-                rotate: `${index % 2 === 0 ? -2 : 3}deg`,
-              }}
+              className="relative aspect-[3/4] h-38 sm:h-50 md:h-56 flex-shrink-0 rounded-2xl overflow-hidden shadow-sm border border-slate-200/70"
             >
               <img
                 src={src}
                 alt={`Digital marketing showcase ${index + 1}`}
-                className="w-full h-full object-cover rounded-2xl shadow-md border border-slate-200/60"
+                className="w-full h-full object-cover select-none pointer-events-none"
                 loading="lazy"
+                draggable={false}
               />
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

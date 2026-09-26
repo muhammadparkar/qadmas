@@ -136,6 +136,9 @@
     scroll-padding-top: 80px;
     background-color: #f8fafc;
     color: #0f172a;
+    overflow-x: clip;
+    max-width: 100%;
+    width: 100%;
   }
 
   body {
@@ -147,8 +150,18 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    overflow-x: clip;
+    max-width: 100%;
+    width: 100%;
     margin: 0;
+    position: relative;
+  }
+
+  #root {
+    overflow-x: clip;
+    max-width: 100%;
+    width: 100%;
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4 {
@@ -476,13 +489,15 @@
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% { transform: translate3d(0%, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 .animate-marquee {
   display: flex;
   width: max-content;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
   animation: marquee 30s linear infinite;
 }
 
