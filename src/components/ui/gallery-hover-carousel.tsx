@@ -18,6 +18,13 @@ export interface GalleryHoverCarouselItem {
   summary: string;
   url: string;
   image: string;
+  badge?: string;
+}
+
+export interface GalleryHoverCarouselProps {
+  heading?: React.ReactNode;
+  subheading?: React.ReactNode;
+  items?: GalleryHoverCarouselItem[];
 }
 
 export default function GalleryHoverCarousel({
@@ -70,12 +77,7 @@ export default function GalleryHoverCarousel({
         "https://cdn.21st.dev/assets/mirror/58/58274556122ef7e984b226b075e8ab2c153e238896e21ad4b56d0ce447455c31.png",
     }
   ],
-}: {
-  heading?: string;
-  subheading?: string;
-  demoUrl?: string;
-  items?: GalleryHoverCarouselItem[];
-}) {
+}: GalleryHoverCarouselProps) {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
   // Horizontal wheel/trackpad & mouse wheel scrolling support
@@ -137,7 +139,7 @@ export default function GalleryHoverCarousel({
       <div className="container mx-auto px-4 sm:px-6 max-w-[1240px] overflow-hidden w-full">
         <div className="mb-6 flex flex-col justify-between sm:mb-12 md:flex-row md:items-end lg:mb-14">
           <div className="max-w-2xl space-y-1.5 sm:space-y-2">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-ink tracking-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-ink leading-[1.12]">
               {heading}
             </h2>
             <p className="text-slate text-sm sm:text-base leading-relaxed">
@@ -196,6 +198,15 @@ export default function GalleryHoverCarousel({
                           loading={item.isFirstSet ? "eager" : "lazy"}
                           decoding="async"
                         />
+                        {/* Pill Badge from Reference */}
+                        {item.badge && (
+                          <div className="absolute top-3.5 left-3.5 z-10 pointer-events-none">
+                            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-medium bg-black/60 backdrop-blur-md text-white border border-white/20 shadow-xs">
+                              {item.badge}
+                            </span>
+                          </div>
+                        )}
+
                         {/* Visible bottom info overlay on mobile touch screens */}
                         <div className="sm:hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex flex-col justify-end p-4 text-white">
                           <h3 className="text-[16px] font-semibold font-apple tracking-tight">
@@ -212,10 +223,15 @@ export default function GalleryHoverCarousel({
 
                       {/* Text Section (Reveals on hover on desktop) */}
                       <div className="hidden sm:flex absolute bottom-0 left-0 w-full p-6 transition-all duration-500 group-hover:h-1/2 flex-col justify-center bg-white/95 opacity-0 group-hover:opacity-100 border-t border-slate-100">
+                        {item.badge && (
+                          <span className="text-[11px] font-semibold text-apple-blue uppercase tracking-wider mb-1">
+                            {item.badge}
+                          </span>
+                        )}
                         <h3 className="text-lg font-semibold md:text-xl text-ink font-apple tracking-tight">
                           {item.title}
                         </h3>
-                        <p className="text-slate text-sm line-clamp-2 mt-1.5 font-apple leading-relaxed">
+                        <p className="text-slate text-sm line-clamp-2 mt-1.5 font-apple leading-relaxed pr-8">
                           {item.summary}
                         </p>
                         <div className="absolute bottom-4 right-4 w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-ink group-hover:bg-apple-blue group-hover:text-white group-hover:border-apple-blue transition-all duration-300 shadow-2xs">

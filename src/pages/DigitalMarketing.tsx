@@ -10,6 +10,7 @@ import ContactModal from '../components/ContactModal';
 import { AnimatedMarqueeHero } from '../components/ui/hero-3';
 import GalleryHoverCarousel from '../components/ui/gallery-hover-carousel';
 import TimelineBlock01 from '../components/ui/timeline-01';
+import LogoCloud2 from '../components/ui/logo-cloud-2';
 
 const MARKETING_SHOWCASE_IMAGES = [
   "https://cdn.21st.dev/assets/mirror/9c/9c0892e59c262cc1da34c88d977221da3f36aaef35ede7924d66b80c219be979.jpg",
@@ -24,49 +25,126 @@ const MARKETING_SHOWCASE_IMAGES = [
 
 const CAROUSEL_FEATURE_ITEMS = [
   {
-    id: "item-1",
-    title: "Multi-Platform Social Sprints",
+    id: "online-marketing",
+    title: "Online Marketing",
+    badge: "Search & Paid Media",
     summary:
-      "Consistent, aesthetic editorial calendars across Instagram, LinkedIn, TikTok, and X that build audience trust.",
+      "Targeted PPC advertising, multi-channel acquisition funnels, and programmatic campaign scaling tailored for commercial velocity.",
     url: "#",
     image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=75&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
   },
   {
-    id: "item-2",
-    title: "Cinema-Grade Short-Form Video",
+    id: "influencer-marketing",
+    title: "Influencer Marketing",
+    badge: "Creator Partnerships",
     summary:
-      "High-retention vertical reels and motion graphics tailored for organic virality and paid social reach.",
+      "Curated creator collaborations, regional GCC influencer activations, and branded endorsements driving authentic market resonance.",
     url: "#",
     image:
-      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=75&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop",
   },
   {
-    id: "item-3",
-    title: "Master Brand Identity Systems",
+    id: "branding",
+    title: "Branding",
+    badge: "Visual Identity",
     summary:
-      "Bespoke typography, curated palettes, and bilingual Arabic/English brand guidelines built for regional authority.",
+      "Bespoke brand architecture, bilingual Arabic/Latin typography pairing, optical logos, and 60+ page corporate identity manuals.",
     url: "#",
     image:
-      "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=75&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800&auto=format&fit=crop",
   },
   {
-    id: "item-4",
-    title: "Commercial Pitch & Tender Decks",
+    id: "business-setup",
+    title: "Business Setup",
+    badge: "Corporate Collateral",
     summary:
-      "Executive company profiles, presentation decks, and collateral engineered to win high-value corporate deals.",
+      "Executive launch collateral, trade presentation decks, investor kits, and corporate stationery built for high-stakes business expansion.",
     url: "#",
     image:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=75&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
   },
   {
-    id: "item-5",
-    title: "Performance Audience Scaling",
+    id: "social-media-creative",
+    title: "Social Media Creative",
+    badge: "Short-Form & Motion",
     summary:
-      "Targeted paid social advertising campaigns scaling customer acquisition across Qatar, the UAE, and India.",
+      "Cinema-grade 4K vertical reels, high-retention motion carousels, algorithmic hooks, and synchronized editorial feed calendars.",
     url: "#",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=75&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    id: "company-profile",
+    title: "Company Profile",
+    badge: "Graphic Design Studio",
+    summary:
+      "Magazines, publications, newsletters, brochures, sell sheets, emailers, postcards, booklets, catalogues, and menus crafted in Figma & Adobe.",
+    url: "#",
+    image:
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800&auto=format&fit=crop",
+  },
+];
+
+const CREATIVE_TOOLS_LOGOS = [
+  {
+    name: "Adobe Photoshop",
+    svg: (
+      <div className="flex items-center gap-3 sm:gap-3.5">
+        <img
+          src="/logos/tools/photoshop.svg"
+          alt="Adobe Photoshop"
+          className="h-11 sm:h-13 w-auto object-contain"
+        />
+        <span className="text-[19px] sm:text-[23px] font-semibold text-ink tracking-tight font-apple">
+          Photoshop
+        </span>
+      </div>
+    ),
+  },
+  {
+    name: "Canva",
+    svg: (
+      <div className="flex items-center gap-3 sm:gap-3.5">
+        <img
+          src="/logos/tools/canva-icon.svg"
+          alt="Canva Icon"
+          className="h-10 sm:h-12 w-auto object-contain"
+        />
+        <img
+          src="/logos/tools/canva-wordmark.svg"
+          alt="Canva"
+          className="h-7 sm:h-9 w-auto object-contain text-ink"
+        />
+      </div>
+    ),
+  },
+  {
+    name: "Adobe",
+    svg: (
+      <div className="flex items-center gap-3 sm:gap-3.5">
+        <img
+          src="/logos/tools/adobe.svg"
+          alt="Adobe"
+          className="h-10 sm:h-12 w-auto object-contain"
+        />
+        <span className="text-[20px] sm:text-[24px] font-bold text-ink tracking-tight font-apple">
+          Adobe
+        </span>
+      </div>
+    ),
+  },
+  {
+    name: "Figma",
+    svg: (
+      <div className="flex items-center">
+        <img
+          src="/logos/tools/figma.svg"
+          alt="Figma"
+          className="h-10 sm:h-12 w-auto object-contain"
+        />
+      </div>
+    ),
   },
 ];
 
@@ -95,13 +173,32 @@ export default function DigitalMarketing() {
           images={MARKETING_SHOWCASE_IMAGES}
         />
 
-        {/* Gallery Hover Carousel Section */}
+        {/* Digital Marketing & Creative Services Showcase */}
         <GalleryHoverCarousel
-          heading="Featured Growth &amp; Creative Showcase"
-          subheading="Explore our live creative executions, brand identity boards, and high-converting campaign systems."
+          heading={
+            <>
+              Digital Marketing &amp;{' '}
+              <span className="text-apple-blue font-serif-accent font-normal italic">
+                Creative Services
+              </span>
+            </>
+          }
+          subheading="At Qadmas, we understand the power of visual communication. Explore our full suite of digital marketing disciplines and dedicated graphic design studio solutions."
           items={CAROUSEL_FEATURE_ITEMS}
         />
 
+        {/* 21st.dev logo-cloud-2: Creative Studio Design Tools Grid */}
+        <LogoCloud2
+          title={
+            <>
+              Design tools we{" "}
+              <span className="text-apple-blue font-serif-accent font-normal italic">
+                build with.
+              </span>
+            </>
+          }
+          logos={CREATIVE_TOOLS_LOGOS}
+        />
 
         {/* How we execute campaigns timeline */}
         <div className="py-8 sm:py-14 border-t border-slate-200/80 w-full bg-gallery-white">
