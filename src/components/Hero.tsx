@@ -8,7 +8,7 @@ interface HeroProps {
 
 export default function Hero({ onGetQuoteClick }: HeroProps) {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden w-full bg-gallery-white">
       <div className="w-full relative">
         {/* Soft Ambient Radial Glow from 21st.dev hero-01 */}
         <div className="relative w-full pt-40 sm:pt-44 md:pt-48 pb-8 md:pb-12 before:absolute before:w-full before:h-full before:bg-gradient-to-r before:from-sky-100/70 before:via-white before:to-sky-50/70 before:rounded-full before:top-20 before:blur-3xl before:-z-10">

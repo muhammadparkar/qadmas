@@ -10,6 +10,7 @@ import Sila from './pages/Sila';
 import DigitalMarketing from './pages/DigitalMarketing';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Terms from './pages/Terms';
+import NotFound from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<Terms />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

@@ -49,7 +49,7 @@ export default function IntegrationHero({
   hideButton = false,
 }: IntegrationHeroProps) {
   return (
-    <section className={`relative py-14 sm:py-16 overflow-hidden bg-transparent ${className}`}>
+    <section className={`relative py-14 sm:py-16 overflow-hidden w-full bg-gallery-white ${className}`}>
       {/* Light subtle grid background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.03)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 

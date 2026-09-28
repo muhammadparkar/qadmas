@@ -8,7 +8,7 @@ export default function LogoStrip({
   label = "Loved by 1000+ big and small brands around the world",
 }: LogoStripProps) {
   return (
-    <section className="pt-8 pb-8 sm:pb-12 bg-transparent overflow-hidden font-apple select-none pointer-events-none">
+    <section className="pt-8 pb-8 sm:pb-12 w-full bg-gallery-white overflow-hidden font-apple select-none pointer-events-none">
       {/* Centered label with flanking divider lines matching reference */}
       {label && (
         <div className="flex items-center justify-center gap-3 sm:gap-5 max-w-4xl mx-auto px-4 mb-10 sm:mb-10 select-none">

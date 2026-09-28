@@ -54,7 +54,7 @@ export default function Process() {
   return (
     <div className="bg-gallery-white text-ink">
       {/* Lead-in header with responsive breathing room */}
-      <section className="flex flex-col items-center justify-center gap-3.5 px-6 pt-10 pb-6 sm:pt-16 sm:pb-12 text-center">
+      <section className="w-full bg-gallery-white flex flex-col items-center justify-center gap-3.5 px-6 pt-10 pb-6 sm:pt-16 sm:pb-12 text-center">
         <h2 className="text-display font-medium text-ink tracking-tight leading-[1.04] max-w-[980px]">
           How we take projects from <br className="hidden sm:inline" />
           <span className="text-apple-blue font-serif-accent font-normal italic">

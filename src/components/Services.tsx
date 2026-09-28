@@ -53,20 +53,22 @@ export default function Services() {
 
   return (
     <>
-      <section className="pt-6 pb-10 sm:pt-8 sm:pb-14 max-w-[1280px] mx-auto px-4 sm:px-6">
-        <AppleCardCarousel
-          cards={serviceCards}
-          title={
-            <>
-              Digital solutions built for{' '}
-              <span className="text-apple-blue font-serif-accent font-normal italic">
-                business growth
-              </span>
-            </>
-          }
-          subtitle="From AI-powered CRM & ERP platforms like Wantik-X to digital marketing, website development, and mobile applications, we build technology solutions that simplify operations, strengthen your digital presence, and accelerate growth."
-          onCardClick={handleCardClick}
-        />
+      <section className="w-full bg-gallery-white">
+        <div className="pt-6 pb-10 sm:pt-8 sm:pb-14 max-w-[1280px] mx-auto px-4 sm:px-6">
+          <AppleCardCarousel
+            cards={serviceCards}
+            title={
+              <>
+                Digital solutions built for{' '}
+                <span className="text-apple-blue font-serif-accent font-normal italic">
+                  business growth
+                </span>
+              </>
+            }
+            subtitle="From AI-powered CRM & ERP platforms like Wantik-X to digital marketing, website development, and mobile applications, we build technology solutions that simplify operations, strengthen your digital presence, and accelerate growth."
+            onCardClick={handleCardClick}
+          />
+        </div>
       </section>
 
       <ContactModal

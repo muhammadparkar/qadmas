@@ -182,7 +182,7 @@ export default function TestimonialsColumns({
   const thirdColumn = testimonials.slice(6, 9);
 
   return (
-    <section className={`py-14 sm:py-16 relative overflow-hidden bg-transparent ${className}`}>
+    <section className={`py-14 sm:py-16 relative overflow-hidden w-full bg-gallery-white ${className}`}>
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto">

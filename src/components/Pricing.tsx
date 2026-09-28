@@ -63,7 +63,8 @@ export default function Pricing() {
 
   return (
     <>
-      <section id="pricing" className="py-24 max-w-[1200px] mx-auto px-6 border-t border-slate-200/80 relative">
+      <section id="pricing" className="w-full bg-gallery-white border-t border-slate-200/80">
+        <div className="py-24 max-w-[1200px] mx-auto px-6 relative">
         {/* Header */}
         <div className="text-center max-w-[700px] mx-auto mb-16">
           <h2 className="text-display font-medium text-ink tracking-tight leading-[1.04] mb-4">
@@ -146,7 +147,8 @@ export default function Pricing() {
             </div>
           ))}
         </div>
-      </section>
+      </div>
+    </section>
 
       <ContactModal 
         isOpen={isModalOpen} 

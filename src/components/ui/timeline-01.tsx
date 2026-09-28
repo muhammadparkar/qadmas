@@ -57,7 +57,7 @@ export const TimelineBlock01: React.FC<TimelineBlock01Props> = ({
   items = campaignExecutionTimelineData,
 }) => {
   return (
-    <section className="overflow-hidden font-apple">
+    <section className="w-full bg-gallery-white overflow-hidden font-apple">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pb-10 md:pb-16 pt-2">
           <div className="max-w-2xl space-y-3">
