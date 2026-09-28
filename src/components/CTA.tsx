@@ -7,7 +7,7 @@ export default function CTA() {
 
   return (
     <>
-      <section className="py-24 max-w-[1200px] mx-auto px-6 relative">
+      <section className="py-14 sm:py-16 max-w-[1200px] mx-auto px-6 relative">
         <div className="rounded-3xl border border-hairline-silver bg-studio-mist/80 p-8 md:p-16 relative overflow-hidden text-center max-w-[1020px] mx-auto shadow-2xl before:absolute before:w-full before:h-full before:bg-gradient-to-r before:from-sky-100/70 before:via-white before:to-sky-50/70 before:rounded-full before:top-10 before:blur-3xl before:-z-10">
           <div className="relative z-10 space-y-6 flex flex-col items-center">
             {/* Headline with Serif Accent */}

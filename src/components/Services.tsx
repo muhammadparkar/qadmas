@@ -53,7 +53,7 @@ export default function Services() {
 
   return (
     <>
-      <section className="py-20 max-w-[1280px] mx-auto px-4 sm:px-6">
+      <section className="pt-6 pb-10 sm:pt-8 sm:pb-14 max-w-[1280px] mx-auto px-4 sm:px-6">
         <AppleCardCarousel
           cards={serviceCards}
           title={

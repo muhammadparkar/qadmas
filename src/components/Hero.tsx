@@ -11,12 +11,12 @@ export default function Hero({ onGetQuoteClick }: HeroProps) {
     <section className="relative overflow-hidden">
       <div className="w-full relative">
         {/* Soft Ambient Radial Glow from 21st.dev hero-01 */}
-        <div className="relative w-full pt-36 md:pt-44 pb-24 md:pb-36 before:absolute before:w-full before:h-full before:bg-gradient-to-r before:from-sky-100/70 before:via-white before:to-sky-50/70 before:rounded-full before:top-24 before:blur-3xl before:-z-10">
+        <div className="relative w-full pt-40 sm:pt-44 md:pt-48 pb-8 md:pb-12 before:absolute before:w-full before:h-full before:bg-gradient-to-r before:from-sky-100/70 before:via-white before:to-sky-50/70 before:rounded-full before:top-20 before:blur-3xl before:-z-10">
           <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-            <div className="flex flex-col max-w-5xl mx-auto gap-8 text-center items-center">
+            <div className="flex flex-col max-w-5xl mx-auto gap-6 sm:gap-7 text-center items-center">
               
               {/* Display Headline with Serif Accent */}
-              <div className="flex flex-col text-center items-center sm:gap-6 gap-4">
+              <div className="flex flex-col text-center items-center sm:gap-5 gap-3.5">
                 <motion.h1
                   initial={{ opacity: 0, y: 32 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -45,10 +45,10 @@ export default function Hero({ onGetQuoteClick }: HeroProps) {
                 initial={{ opacity: 0, y: 32 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="flex items-center flex-col sm:flex-row justify-center gap-8 pt-2"
+                className="flex items-center flex-col sm:flex-row justify-center gap-6 sm:gap-8 pt-1"
               >
                 {/* Featured Proprietary Platforms: SILA | WANTIK-X */}
-                <div className="flex items-center gap-5 sm:gap-7">
+                <div className="flex items-center gap-6 sm:gap-8">
                   <Link
                     to="/products/sila"
                     className="inline-flex items-center group/sila transition-opacity hover:opacity-80"
@@ -57,11 +57,11 @@ export default function Hero({ onGetQuoteClick }: HeroProps) {
                     <img
                       src="/logos/sila-logo.webp"
                       alt="Sila"
-                      className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover/sila:scale-105"
+                      className="h-12 sm:h-16 w-auto object-contain transition-transform group-hover/sila:scale-105"
                     />
                   </Link>
 
-                  <span className="text-slate-300 font-light text-2xl select-none">|</span>
+                  <div className="h-8 sm:h-10 w-px bg-slate-300/80 select-none shrink-0" aria-hidden="true" />
 
                   <a
                     href="https://wantikx.com/"
@@ -73,7 +73,7 @@ export default function Hero({ onGetQuoteClick }: HeroProps) {
                     <img
                       src="/logos/wantik-x-logo.png"
                       alt="Wantik-X"
-                      className="h-7 sm:h-8.5 w-auto object-contain transition-transform group-hover/wantik:scale-105"
+                      className="h-9 sm:h-12 w-auto object-contain transition-transform group-hover/wantik:scale-105"
                     />
                   </a>
                 </div>

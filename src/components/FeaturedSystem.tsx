@@ -7,9 +7,9 @@ interface FeaturedSystemProps {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function FeaturedSystem(_props: FeaturedSystemProps = {}) {
   return (
-    <section className="py-24 max-w-[1240px] mx-auto px-4 sm:px-6 relative border-t border-slate-200/80">
+    <section className="py-14 sm:py-16 max-w-[1240px] mx-auto px-4 sm:px-6 relative border-t border-slate-200/80">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14">
+      <div className="text-center max-w-3xl mx-auto mb-10">
         <h2 className="text-display font-medium text-ink tracking-tight leading-[1.04]">
           Software built to solve real <br className="hidden sm:inline" />
           <span className="text-apple-blue font-serif-accent font-normal italic">

@@ -148,10 +148,10 @@ const AppleCardCarousel = ({
   }, [api]);
 
   return (
-    <div className={`w-full py-5 sm:py-8 ${className}`}>
+    <div className={`w-full py-2 sm:py-3 ${className}`}>
       {/* Header */}
       {!hideHeader && (
-        <div className="px-4 sm:px-8 mb-8 sm:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="px-4 sm:px-8 mb-6 sm:mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <h2 className="text-display font-medium text-ink tracking-tight leading-[1.04]">
               {title || (

@@ -182,7 +182,7 @@ export default function TestimonialsColumns({
   const thirdColumn = testimonials.slice(6, 9);
 
   return (
-    <section className={`py-24 sm:py-28 relative overflow-hidden bg-transparent ${className}`}>
+    <section className={`py-14 sm:py-16 relative overflow-hidden bg-transparent ${className}`}>
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto">
@@ -210,7 +210,7 @@ export default function TestimonialsColumns({
         </div>
 
         {/* 3 Column Animated Marquee */}
-        <div className="relative mt-14 max-h-[738px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
+        <div className="relative mt-10 max-h-[738px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <TestimonialsColumn testimonials={firstColumn} duration={24} />
             <TestimonialsColumn
