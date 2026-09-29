@@ -25,6 +25,8 @@ export interface GalleryHoverCarouselProps {
   heading?: React.ReactNode;
   subheading?: React.ReactNode;
   items?: GalleryHoverCarouselItem[];
+  autoScroll?: boolean;
+  autoScrollInterval?: number;
 }
 
 export default function GalleryHoverCarousel({
@@ -77,8 +79,11 @@ export default function GalleryHoverCarousel({
         "https://cdn.21st.dev/assets/mirror/58/58274556122ef7e984b226b075e8ab2c153e238896e21ad4b56d0ce447455c31.png",
     }
   ],
+  autoScroll = true,
+  autoScrollInterval = 3200,
 }: GalleryHoverCarouselProps) {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [isHovered, setIsHovered] = useState(false);
 
   // Horizontal wheel/trackpad & mouse wheel scrolling support
   useEffect(() => {
@@ -124,6 +129,36 @@ export default function GalleryHoverCarousel({
     };
   }, [carouselApi]);
 
+  // Auto-scroll loop with intelligent pause on hover, touch, and background tab
+  useEffect(() => {
+    if (!carouselApi || !autoScroll) return;
+
+    let timer: ReturnType<typeof setInterval> | null = null;
+
+    const startTimer = () => {
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => {
+        if (!isHovered && typeof document !== "undefined" && document.visibilityState === "visible") {
+          carouselApi.scrollNext();
+        }
+      }, autoScrollInterval);
+    };
+
+    startTimer();
+
+    // Reset timer when user manually selects or clicks next/prev
+    const onSelect = () => {
+      startTimer();
+    };
+
+    carouselApi.on("select", onSelect);
+
+    return () => {
+      if (timer) clearInterval(timer);
+      carouselApi.off("select", onSelect);
+    };
+  }, [carouselApi, autoScroll, autoScrollInterval, isHovered]);
+
   // Memoize duplicated items so React doesn't recreate new array references on every render
   const displayItems = useMemo(() => {
     if (!items || items.length === 0) return [];
@@ -146,7 +181,11 @@ export default function GalleryHoverCarousel({
               {subheading}
             </p>
           </div>
-          <div className="flex gap-2.5 mt-4 sm:mt-6 md:mt-0 shrink-0">
+          <div 
+            className="flex gap-2.5 mt-4 sm:mt-6 md:mt-0 shrink-0"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             <Button
               variant="outline"
               size="icon"
@@ -175,8 +214,13 @@ export default function GalleryHoverCarousel({
               align: "start",
               loop: true,
               dragFree: false,
+              duration: 35,
             }}
             className="relative w-full max-w-full cursor-grab active:cursor-grabbing select-none"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onTouchStart={() => setIsHovered(true)}
+            onTouchEnd={() => setIsHovered(false)}
           >
             <CarouselContent className="hide-scrollbar w-full max-w-full -ml-3 sm:-ml-4">
               {displayItems.map((item) => (
@@ -198,14 +242,6 @@ export default function GalleryHoverCarousel({
                           loading={item.isFirstSet ? "eager" : "lazy"}
                           decoding="async"
                         />
-                        {/* Pill Badge from Reference */}
-                        {item.badge && (
-                          <div className="absolute top-3.5 left-3.5 z-10 pointer-events-none">
-                            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-medium bg-black/60 backdrop-blur-md text-white border border-white/20 shadow-xs">
-                              {item.badge}
-                            </span>
-                          </div>
-                        )}
 
                         {/* Visible bottom info overlay on mobile touch screens */}
                         <div className="sm:hidden absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex flex-col justify-end p-4 text-white">

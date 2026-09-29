@@ -27,7 +27,6 @@ const CAROUSEL_FEATURE_ITEMS = [
   {
     id: "online-marketing",
     title: "Online Marketing",
-    badge: "Search & Paid Media",
     summary:
       "Targeted PPC advertising, multi-channel acquisition funnels, and programmatic campaign scaling tailored for commercial velocity.",
     url: "#",
@@ -37,7 +36,6 @@ const CAROUSEL_FEATURE_ITEMS = [
   {
     id: "influencer-marketing",
     title: "Influencer Marketing",
-    badge: "Creator Partnerships",
     summary:
       "Curated creator collaborations, regional GCC influencer activations, and branded endorsements driving authentic market resonance.",
     url: "#",
@@ -47,7 +45,6 @@ const CAROUSEL_FEATURE_ITEMS = [
   {
     id: "branding",
     title: "Branding",
-    badge: "Visual Identity",
     summary:
       "Bespoke brand architecture, bilingual Arabic/Latin typography pairing, optical logos, and 60+ page corporate identity manuals.",
     url: "#",
@@ -55,19 +52,8 @@ const CAROUSEL_FEATURE_ITEMS = [
       "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800&auto=format&fit=crop",
   },
   {
-    id: "business-setup",
-    title: "Business Setup",
-    badge: "Corporate Collateral",
-    summary:
-      "Executive launch collateral, trade presentation decks, investor kits, and corporate stationery built for high-stakes business expansion.",
-    url: "#",
-    image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
-  },
-  {
     id: "social-media-creative",
     title: "Social Media Creative",
-    badge: "Short-Form & Motion",
     summary:
       "Cinema-grade 4K vertical reels, high-retention motion carousels, algorithmic hooks, and synchronized editorial feed calendars.",
     url: "#",
@@ -77,7 +63,6 @@ const CAROUSEL_FEATURE_ITEMS = [
   {
     id: "company-profile",
     title: "Company Profile",
-    badge: "Graphic Design Studio",
     summary:
       "Magazines, publications, newsletters, brochures, sell sheets, emailers, postcards, booklets, catalogues, and menus crafted in Figma & Adobe.",
     url: "#",
