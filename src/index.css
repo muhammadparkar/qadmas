@@ -526,12 +526,12 @@
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  animation: marquee-hero-infinite 42s linear infinite;
+  animation: marquee-hero-infinite 30s linear infinite;
 }
 
 @media (max-width: 640px) {
   .animate-marquee-hero-infinite {
-    animation-duration: 72s;
+    animation-duration: 45s;
   }
 }
 

@@ -80,7 +80,7 @@ export default function GalleryHoverCarousel({
     }
   ],
   autoScroll = true,
-  autoScrollInterval = 3200,
+  autoScrollInterval = 2100,
 }: GalleryHoverCarouselProps) {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [isHovered, setIsHovered] = useState(false);
@@ -214,7 +214,7 @@ export default function GalleryHoverCarousel({
               align: "start",
               loop: true,
               dragFree: false,
-              duration: 35,
+              duration: 22,
             }}
             className="relative w-full max-w-full cursor-grab active:cursor-grabbing select-none"
             onMouseEnter={() => setIsHovered(true)}

@@ -9,6 +9,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 export interface CardItem {
   id: string;
@@ -200,7 +201,10 @@ const AppleCardCarousel = ({
                       : card.category)
                   }
                   draggable={false}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none select-none"
+                  className={cn(
+                    "absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none select-none",
+                    card.id === "digital-marketing" ? "object-top origin-top" : "object-center"
+                  )}
                 />
 
                 {/* Dark gradient overlay for typography readability */}

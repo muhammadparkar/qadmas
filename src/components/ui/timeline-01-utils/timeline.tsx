@@ -9,6 +9,7 @@ export interface TimelineItemProps {
   description: string;
   date: string;
   image?: string;
+  imageClassName?: string;
   className?: string;
 }
 
@@ -22,6 +23,7 @@ const TimelineItem = ({
   description,
   date,
   image,
+  imageClassName,
   index,
 }: TimelineItemProps & { index: number }) => {
   const isEven = index % 2 === 0;
@@ -74,7 +76,7 @@ const TimelineItem = ({
             <img
               src={image}
               alt={title}
-              className="absolute inset-0 h-full w-full object-cover object-top"
+              className={cn("absolute inset-0 h-full w-full object-cover", imageClassName || "object-center")}
               loading="lazy"
               decoding="async"
             />

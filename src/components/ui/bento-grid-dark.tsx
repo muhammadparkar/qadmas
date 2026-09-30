@@ -123,7 +123,12 @@ export default function FUIBentoGridDark({
           href="https://wantikx.com/"
           isExternal={true}
           graphic={
-            <div className="absolute inset-0 bg-[url(https://cdn.21st.dev/assets/mirror/82/8216d38fc7b6e661002e520eceae40f036741db2f2281729f62bc2885f168bff.png)] bg-cover bg-center transition-transform duration-500 group-hover:scale-105" />
+            <img
+              src="/services/crm-erp.jpg"
+              alt="Ai - Powered CRM & ERP (Wantik-X)"
+              className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
           }
           className="lg:rounded-tl-4xl"
         />
@@ -135,7 +140,12 @@ export default function FUIBentoGridDark({
           description="Targeted campaigns, SEO, paid ads & growth analytics"
           href="/services/digital-marketing"
           graphic={
-            <div className="absolute inset-0 bg-[url(https://cdn.21st.dev/assets/mirror/38/388b12fd04fd758f8af4db4ff90a362fdefabc172e3f532d6595f2ba4a86a76b.png)] bg-cover bg-center transition-transform duration-500 group-hover:scale-105" />
+            <img
+              src="/services/digital-marketing.jpg"
+              alt="Digital Marketing"
+              className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
           }
           className="lg:rounded-tr-4xl"
         />
@@ -147,7 +157,12 @@ export default function FUIBentoGridDark({
           description="React, Next.js & sub-second corporate web platforms"
           onCardClick={() => onSelectService?.("Website Development")}
           graphic={
-            <div className="absolute inset-0 bg-[url(https://cdn.21st.dev/assets/mirror/e1/e11e231bc3af40fd287e47edf1ae6caf40f5421f6fadee45b6e10a635ddea8c0.png)] bg-cover bg-center transition-transform duration-500 group-hover:scale-105" />
+            <img
+              src="/services/website-dev.jpg"
+              alt="Website Development"
+              className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
           }
           className="lg:rounded-bl-4xl"
         />
@@ -159,7 +174,13 @@ export default function FUIBentoGridDark({
           description="Native-feel iOS & Android apps with offline sync"
           onCardClick={() => onSelectService?.("Mobile Application Development")}
           graphic={
-            <div className="absolute inset-0 bg-[url(https://cdn.21st.dev/assets/mirror/05/05a9718924c99a9e5c6d5a61b9ea8d088c6f2ce2515716d60f69064dc178462f.png)] bg-cover bg-center transition-transform duration-500 group-hover:scale-105" />
+            <img
+              src="/services/mobile-app.jpg"
+              alt="Mobile Application Development"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style={{ objectPosition: "center 26%" }}
+              loading="lazy"
+            />
           }
           className="lg:rounded-br-4xl"
         />

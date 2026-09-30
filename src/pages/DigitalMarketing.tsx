@@ -13,14 +13,12 @@ import TimelineBlock01 from '../components/ui/timeline-01';
 import LogoCloud2 from '../components/ui/logo-cloud-2';
 
 const MARKETING_SHOWCASE_IMAGES = [
-  "https://cdn.21st.dev/assets/mirror/9c/9c0892e59c262cc1da34c88d977221da3f36aaef35ede7924d66b80c219be979.jpg",
-  "https://cdn.21st.dev/assets/mirror/cb/cb5e5ebf2a894b2cd0e47b41b1fc76a3021ca1e2d2164e68aedca123cd33144f.jpg",
-  "https://cdn.21st.dev/assets/mirror/98/989f6e3fb1763ee781695ca8471c7b5c34ee8162b73cb966a692df7183434dd6.jpg",
-  "https://cdn.21st.dev/assets/mirror/d4/d42e2bf7d2616d0f8b7133f77efbc40bfbd042fbe5dd5e2ae3bb0b0cd5bf0b00.jpg",
-  "https://cdn.21st.dev/assets/mirror/34/34ec840fc286ece83ac48705cb38c8b7bfae31022d3869530edad1e1b1305933.jpg",
-  "https://cdn.21st.dev/assets/mirror/3a/3ad7469aaf0ee239cd4a79d5cbd089e88ee36def81eff12b76288139985a8bea.jpg",
-  "https://cdn.21st.dev/assets/mirror/82/82d335fc097e30d74dc1b664327e735c0c2c01f807575623c72e2379f3bb3ae6.jpg",
-  "https://cdn.21st.dev/assets/mirror/d5/d55bd9d62a8a40170fdb1bab434888bb28c9f11cf7d20bd6dcbe3befe8077abe.jpg",
+  "/digital-marketing/hero/hero-1.jpg",
+  "/digital-marketing/hero/hero-2.jpg",
+  "/digital-marketing/hero/hero-3.jpg",
+  "/digital-marketing/hero/hero-4.jpg",
+  "/digital-marketing/hero/hero-5.jpg",
+  "/digital-marketing/hero/hero-6.jpg",
 ];
 
 const CAROUSEL_FEATURE_ITEMS = [
@@ -30,8 +28,7 @@ const CAROUSEL_FEATURE_ITEMS = [
     summary:
       "Targeted PPC advertising, multi-channel acquisition funnels, and programmatic campaign scaling tailored for commercial velocity.",
     url: "#",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+    image: "/digital-marketing/online-marketing.jpg",
   },
   {
     id: "influencer-marketing",
@@ -39,8 +36,7 @@ const CAROUSEL_FEATURE_ITEMS = [
     summary:
       "Curated creator collaborations, regional GCC influencer activations, and branded endorsements driving authentic market resonance.",
     url: "#",
-    image:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop",
+    image: "/digital-marketing/influencer-marketing.jpg",
   },
   {
     id: "branding",
@@ -48,17 +44,15 @@ const CAROUSEL_FEATURE_ITEMS = [
     summary:
       "Bespoke brand architecture, bilingual Arabic/Latin typography pairing, optical logos, and 60+ page corporate identity manuals.",
     url: "#",
-    image:
-      "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800&auto=format&fit=crop",
+    image: "/digital-marketing/branding.jpg",
   },
   {
-    id: "social-media-creative",
-    title: "Social Media Creative",
+    id: "social-media-posts",
+    title: "Social Media Posts",
     summary:
       "Cinema-grade 4K vertical reels, high-retention motion carousels, algorithmic hooks, and synchronized editorial feed calendars.",
     url: "#",
-    image:
-      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=800&auto=format&fit=crop",
+    image: "/digital-marketing/social-media-posts.jpg",
   },
   {
     id: "company-profile",
@@ -66,8 +60,7 @@ const CAROUSEL_FEATURE_ITEMS = [
     summary:
       "Magazines, publications, newsletters, brochures, sell sheets, emailers, postcards, booklets, catalogues, and menus crafted in Figma & Adobe.",
     url: "#",
-    image:
-      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800&auto=format&fit=crop",
+    image: "/digital-marketing/company-profile.jpg",
   },
 ];
 

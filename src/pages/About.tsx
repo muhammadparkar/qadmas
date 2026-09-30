@@ -46,10 +46,19 @@ export default function About() {
           We founded Qadmas Technologies after watching too many businesses across Qatar and the UAE get burned by agencies that overpromise, outsource to invisible subcontractors, and vanish after receiving their deposit.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-[840px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 max-w-[880px] mx-auto">
           {stats.map((stat, i) => (
-            <div key={i} className="rounded-3xl border border-slate-200/80 p-6 bg-white text-center shadow-lg hover:shadow-xl transition-all duration-300">
-              <div className="font-apple text-[36px] font-bold text-apple-blue leading-none mb-2">
+            <div
+              key={i}
+              className="rounded-3xl border border-slate-200/80 px-3 sm:px-4 md:px-6 py-6 bg-white text-center shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-center"
+            >
+              <div
+                className={`font-apple font-bold text-apple-blue leading-none mb-2 whitespace-nowrap tracking-tight ${
+                  stat.value.length > 6
+                    ? "text-[28px] sm:text-[18px] md:text-[23px] lg:text-[28px] xl:text-[32px]"
+                    : "text-[36px]"
+                }`}
+              >
                 {stat.value}
               </div>
               <div className="font-apple text-[13px] text-slate">
